@@ -12,9 +12,13 @@ function App() {
         <h1>NavBar</h1>
       </div>
 
+      <p>Hi hows it going</p>
+
       <div>
         <h1>Hero</h1>
       </div>
+
+      <h1>Testing branch checkotu</h1>
 
       <div>
         <a href="https://vitejs.dev" target="_blank">
