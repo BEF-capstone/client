@@ -8,19 +8,8 @@ function App() {
 
   return (
     <>
-      <div className="navbar">
-        <h1>NavBar</h1>
-      </div>
-
-      <p>Hi hows it going</p>
-
       <div>
-        <h1>Hero</h1>
-      </div>
-
-      <h1>Testing branch checkotu</h1>
-
-      <div>
+        <h1>Efren Changes</h1>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
