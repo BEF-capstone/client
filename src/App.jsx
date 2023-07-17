@@ -16,6 +16,72 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
+
+
+  const onRegister= async (first_name, last_name, username, email, password) => {
+    try {
+      const response = await fetch("http://localhost:3001/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({first_name, last_name, username, email, password
+          
+          
+        }),
+      }); 
+
+ //wait for the response
+    const data = await response.json();
+
+    if (response.ok) {
+      console.log(response); //optional - display a success message
+      const { token } = response;
+    //Registration successful
+      setisLoggedIn(true);
+    } else {
+      logoutUser();
+      //Registration failed
+      // console.log(data.message); //optional - display error meesage
+    }
+  } catch (error) {
+    console.error("Error: ", error);
+  }
+};
+
+
+const handleLogin = async (email, password) => {
+  try {
+    const response = await fetch("http://localhost:3001/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+    console.log(data, response)
+    if (response.ok) {
+      const { token } = data;
+      localStorage.setItem("lifetracker_token", token)
+      //Successful Login
+      setisLoggedIn(true);
+      setLoginError(""); 
+      // setUserId(response.data.user.id)
+      //gives hte values for usere id that then i can use in out files to do it 
+
+      //define this 
+      console.log(data.message); //optional - display a success message
+    } else {
+      //Login failed
+      setLoginError(data.message);
+      console.log(data.message); //optional - display error message
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
   return (
     <>
       <div>
@@ -23,7 +89,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Landing />}></Route>
-            <Route path="/authenticate" element={<AuthPage />}></Route>
+            <Route path="/authenticate" element={<AuthPage onRegister= {onRegister} handleLogin={handleLogin}/>}></Route>
             <Route path="/user-profile" element={<Profile />}></Route>
             <Route path="/create-recipe" element={<CuisinePage />}></Route>
             <Route path="/ingredients" element={<IngredientsPage />}></Route>
