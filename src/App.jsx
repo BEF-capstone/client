@@ -11,6 +11,8 @@ import RecipeBook from "./Components/RecipeBook/RecipeBook";
 import GroceryList from "./Components/GroceryList/GroceryList";
 import RecipePage from "./Components/RecipePage/RecipePage";
 import Footer from "./Components/Footer/Footer";
+/* REACT BROWSER ROUTER */
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -19,15 +21,17 @@ function App() {
       <div>
         <BrowserRouter>
           <NavBar />
-          <Route path="/" element={<Landing />}></Route>
-          <Route path="/authenticate" element={<AuthPage />}></Route>
-          <Route path="/user-profile" element={<Profile />}></Route>
-          <Route path="/create-recipe" element={<CuisinePage />}></Route>
-          <Route path="/ingredients" element={<IngredientsPage />}></Route>
-          <Route path="/favorites" element={<FavoritesPage />}></Route>
-          <Route path="/recipe-book" element={<RecipeBook />}></Route>
-          <Route path="/grocery-list" element={<GroceryList />}></Route>
-          <Route path="/recipe-result" element={<RecipePage />}></Route>
+          <Routes>
+            <Route path="/" element={<Landing />}></Route>
+            <Route path="/authenticate" element={<AuthPage />}></Route>
+            <Route path="/user-profile" element={<Profile />}></Route>
+            <Route path="/create-recipe" element={<CuisinePage />}></Route>
+            <Route path="/ingredients" element={<IngredientsPage />}></Route>
+            <Route path="/favorites" element={<FavoritesPage />}></Route>
+            <Route path="/recipe-book" element={<RecipeBook />}></Route>
+            <Route path="/grocery-list" element={<GroceryList />}></Route>
+            <Route path="/recipe-result" element={<RecipePage />}></Route>
+          </Routes>
           <Footer />
         </BrowserRouter>
       </div>
