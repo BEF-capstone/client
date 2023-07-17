@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const WorldMap = () => {
   return (
-    <div>WorldMap</div>
-  )
-}
+    <div>
+      <img src="../images/world-map.png" />
+    </div>
+  );
+};
 
-export default WorldMap
+export default WorldMap;
 
-
-//Designated location pinpoint for each recipe 
+//Designated location pinpoint for each recipe
