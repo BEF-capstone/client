@@ -7,3 +7,6 @@ const NavBar = () => {
 }
 
 export default NavBar
+
+
+//Navbar with links to other pages when clicked 

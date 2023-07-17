@@ -7,3 +7,6 @@ const Landing = () => {
 }
 
 export default Landing
+
+
+//Landing Page for the website 

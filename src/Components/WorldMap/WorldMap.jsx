@@ -7,3 +7,6 @@ const WorldMap = () => {
 }
 
 export default WorldMap
+
+
+//Designated location pinpoint for each recipe 

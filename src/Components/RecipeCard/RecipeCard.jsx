@@ -7,3 +7,6 @@ const RecipeCard = () => {
 }
 
 export default RecipeCard
+
+
+// Recipes with Cook Time and instructions
