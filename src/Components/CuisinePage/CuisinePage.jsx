@@ -7,3 +7,6 @@ const CuisinePage = () => {
 }
 
 export default CuisinePage
+
+
+//CuisinePage displays the Cuisine selections 

@@ -7,3 +7,6 @@ const AuthPage = () => {
 }
 
 export default AuthPage
+
+
+//AuthPage is for Login and 

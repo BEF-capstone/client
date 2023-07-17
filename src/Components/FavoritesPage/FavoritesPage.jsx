@@ -7,3 +7,6 @@ const FavoritesPage = () => {
 }
 
 export default FavoritesPage
+
+
+//allows users to see which components were favorited
