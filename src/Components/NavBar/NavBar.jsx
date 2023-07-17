@@ -76,7 +76,7 @@ export default function NavBar() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
-                color="inherit"
+                color="primary-main"
               >
                 <AccountCircle />
               </IconButton>
