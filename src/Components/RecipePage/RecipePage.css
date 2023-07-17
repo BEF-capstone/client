@@ -1,0 +1,12 @@
+.recipe-display {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.recipe_card {
+  flex-basis: 50%;
+}
+
+.world_map {
+  flex-basis: 50%;
+}
