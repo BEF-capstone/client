@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const RecipePage = () => {
   return (
-    <div>RecipePage</div>
-  )
-}
+    <div>
+      <h1>Recipe Page</h1>
+    </div>
+  );
+};
 
-export default RecipePage
+export default RecipePage;
