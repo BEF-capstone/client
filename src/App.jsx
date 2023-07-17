@@ -1,49 +1,37 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+/* REACT COMPONENTS */
+import NavBar from "./Components/NavBar/NavBar";
+import Landing from "./Components/Landing/Landing";
+import AuthPage from "./Components/AuthPage/AuthPage";
+import Profile from "./Components/Profile/Profile";
+import CuisinePage from "./Components/CuisinePage/CuisinePage";
+import IngredientsPage from "./Components/IngredientsPage/IngredientsPage";
+import FavoritesPage from "./Components/FavoritesPage/FavoritesPage";
+import RecipeBook from "./Components/RecipeBook/RecipeBook";
+import GroceryList from "./Components/GroceryList/GroceryList";
+import RecipePage from "./Components/RecipePage/RecipePage";
+import Footer from "./Components/Footer/Footer";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div>
-        <h1>Efren Changes</h1>
-
-
-        <h2>Profile Page</h2>
-
-
-        <h1> LANDING PAGE by Bless</h1>
-
-        
-
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <BrowserRouter>
+          <NavBar />
+          <Route path="/" element={<Landing />}></Route>
+          <Route path="/authenticate" element={<AuthPage />}></Route>
+          <Route path="/user-profile" element={<Profile />}></Route>
+          <Route path="/create-recipe" element={<CuisinePage />}></Route>
+          <Route path="/ingredients" element={<IngredientsPage />}></Route>
+          <Route path="/favorites" element={<FavoritesPage />}></Route>
+          <Route path="/recipe-book" element={<RecipeBook />}></Route>
+          <Route path="/grocery-list" element={<GroceryList />}></Route>
+          <Route path="/recipe-result" element={<RecipePage />}></Route>
+          <Footer />
+        </BrowserRouter>
       </div>
-      <h1>Chef Compass</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <h1> this is chef bef</h1>
-
-      <h2> This is the ingredients section</h2>
     </>
-
-  
   );
 }
 
