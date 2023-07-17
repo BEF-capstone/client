@@ -69,38 +69,32 @@ const CuisinePage = () => {
 
   // includes a search input field and the CuisineType component which displays the cuisines.
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
-  return (
-    <div>
-      <h2>Cuisine</h2>
-      {/* Search input field */}
-      <input
-        type="text"
-        value={searchInput}
-        onChange={handleSearchInputChange}
-        placeholder="Look for cuisine here..."
-      />
-
-      {/* Render the CuisineType component */}
-      {cuisines.length > 0 ? (
-        <CuisineType
-          cuisines={cuisines}
-          selectedCuisine={selectedCuisine}
-          handleCuisineSelection={handleCuisineSelection}
-        />
-      ) : (
-        <p>No cuisines found.</p>
-      )}
-    </div>
+// If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
+return (
+  <div>
+  <h2>Cuisine</h2>
+  {/* Search input field */}
+  <input
+  type="text"
+  value={searchInput}
+  onChange={handleSearchInputChange}
+  placeholder="Look for cuisine here..."
+  />
+  
+  
+  {/* Render the CuisineType component */}
+  {cuisines.length > 0 ? (
+  <CuisineType
+  cuisines={cuisines}
+  selectedCuisine={selectedCuisine}
+  handleCuisineSelection={handleCuisineSelection}
+  />
+  ) : (
+  <p>No cuisines found.</p>
+  )}
+  </div>
   );
-};
-
-export default CuisinePage;
-
-
-
-
-
-
-
-
-
+  };
+  
+  
+  export default CuisinePage;

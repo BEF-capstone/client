@@ -7,3 +7,6 @@ const Profile = () => {
 }
 
 export default Profile
+
+
+//Profile with user name favorites grocery list and etc
