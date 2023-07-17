@@ -1,12 +1,15 @@
-import React from 'react'
+import React from "react";
+import "./Landing.css";
+import { Container } from "@mui/material";
 
 const Landing = () => {
   return (
-    <div>Landing</div>
-  )
-}
+    <Container>
+      <div className="landing">Landing</div>;
+    </Container>
+  );
+};
 
-export default Landing
+export default Landing;
 
-
-//Landing Page for the website 
+//Landing Page for the website
