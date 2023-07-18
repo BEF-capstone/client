@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import './CuisineType.css'; // Import the CSS file for styling
 
 // Define the CuisineType component
-const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection }) => {
+const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handleLoadMore }) => {
   // Event handler for cuisine click
   const handleCuisineClick = (cuisine) => {
     handleCuisineSelection(cuisine);
