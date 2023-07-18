@@ -6,11 +6,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { SvgIcon } from "@mui/material";
@@ -33,19 +29,17 @@ export default function NavBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup>
-      <AppBar position="static" sx={{ backgroundColor: "#0e0e2c" }}>
+      <Link to="/create-recipe">
+        <button>choose cuisine</button>
+      </Link>
+      <Link to="/ingredients">
+        <button>ingredients</button>
+      </Link>
+      <Link to="/recipe-result">
+        <button>recipe result</button>
+      </Link>
+
+      <AppBar position="static" sx={{ backgroundColor: "secondary.main" }}>
         <Toolbar>
           <Link to="/">
             <IconButton
@@ -55,7 +49,7 @@ export default function NavBar() {
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-              <SvgIcon fontSize="large">
+              <SvgIcon fontSize="large" sx={{ color: "secondary.text" }}>
                 <path
                   d="M15.5,5.5C15.5,4.67,16.17,4,17,4C17.83,4,18.5,4.67,18.5,5.5V8h1V5.5C19.5,3.57,17.93,2,16,2
         c-1.93,0-3.5,1.57-3.5,3.5V8h1V5.5z M12,5.5C12,3.57,10.43,2,8.5,2C6.57,2,5,3.57,5,5.5V8h1V5.5C6,4.67,6.67,4,7.5,4
@@ -65,22 +59,28 @@ export default function NavBar() {
               </SvgIcon>
             </IconButton>
           </Link>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, color: "secondary.text" }}
+          >
             Chef Compass
           </Typography>
           {auth && (
             <div>
               <IconButton
+                sx={{ color: "secondary.text" }}
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
-                color="primary-main"
+                // color="secondary.text"
               >
                 <AccountCircle />
               </IconButton>
               <Menu
+                sx={{ color: "secondart.text" }}
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
