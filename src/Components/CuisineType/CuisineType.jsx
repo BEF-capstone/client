@@ -1,5 +1,10 @@
 // Import necessary dependencies
 import React from 'react';
+// import { Link } from 
+import { Link } from 'react-router-dom';
+
+// Define the CuisineType component
+
 import './CuisineType.css'; // Import the CSS file for styling
 
 // Define the CuisineType component
@@ -27,16 +32,15 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection }) => {
           </div>
         ))}
       </div>
+      {/* Load More button */}
+      <button onClick={handleLoadMore}>Load More</button>
+
+      <Link to="/ingredients">
+        <button>Next</button>
+      </Link>
+
     </div>
   );
 };
 
 export default CuisineType;
-
-
-
-
-
-
-
-
