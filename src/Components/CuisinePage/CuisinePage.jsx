@@ -12,7 +12,6 @@ const CuisinePage = () => {
   //State variable for displayed cuisines count, initially set to 9
   const [cuisinesCount, setCuisinesCount] = useState(9);
 
-
   // An array of objects, each representing a cuisine and its image.
   const initialCuisines = 
 
@@ -49,8 +48,6 @@ const CuisinePage = () => {
 useEffect(() => {
   setCuisines(initialCuisines.slice(0, cuisinesCount));
 }, [cuisinesCount]);
-
-
 
   // Event handler for the search input change called whenever the search input field changes.
   // It updates the state of the searchInput and cuisines variables based on the input.
@@ -122,6 +119,7 @@ return (
   <p>No cuisines found.</p>
 
   
+
 
   )}
   </div>

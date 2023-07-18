@@ -1,11 +1,14 @@
 // Import necessary dependencies
 import React from 'react';
 // import { Link } from 
-import './CuisineType.css'; // Import the CSS file for styling
 import { Link } from 'react-router-dom';
 
 // Define the CuisineType component
-const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handleLoadMore }) => {
+
+import './CuisineType.css'; // Import the CSS file for styling
+
+// Define the CuisineType component
+const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection }) => {
   // Event handler for cuisine click
   const handleCuisineClick = (cuisine) => {
     handleCuisineSelection(cuisine);
@@ -29,24 +32,15 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
           </div>
         ))}
       </div>
-
       {/* Load More button */}
       <button onClick={handleLoadMore}>Load More</button>
 
       <Link to="/ingredients">
         <button>Next</button>
       </Link>
+
     </div>
   );
 };
 
 export default CuisineType;
-
-
-
-
-
-
-
-
-

@@ -1,12 +1,27 @@
-import React from 'react'
-
+import React from "react";
+import "./Landing.css";
+import { Container, Typography } from "@mui/material";
+import { Image } from "mui-image";
 const Landing = () => {
   return (
-    <div>Landing</div>
-  )
-}
+    <Container sx={{ backgroundColor: "primary.main" }}>
+      <Hero />
+    </Container>
+  );
+};
 
-export default Landing
+export const Hero = () => {
+  return (
+    <Container>
+      <Typography variant="h1">Explore your Inner Chef!</Typography>
+      <Typography variant="h2">
+        With Chef Compass an AI powered recipe book
+      </Typography>
+      <Image src="./images/logo.webp" />
+    </Container>
+  );
+};
 
+export default Landing;
 
-//Landing Page for the website 
+//Landing Page for the website

@@ -14,94 +14,107 @@ import Footer from "./Components/Footer/Footer";
 /* REACT BROWSER ROUTER */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import { Container } from "@mui/material";
 
 function App() {
-
-
-  const onRegister= async (first_name, last_name, username, email, password) => {
+  const onRegister = async (
+    first_name,
+    last_name,
+    username,
+    email,
+    password
+  ) => {
     try {
       const response = await fetch("http://localhost:3001/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({first_name, last_name, username, email, password
-          
-          
+        body: JSON.stringify({
+          first_name,
+          last_name,
+          username,
+          email,
+          password,
         }),
-      }); 
+      });
 
- //wait for the response
-    const data = await response.json();
+      //wait for the response
+      const data = await response.json();
 
-    if (response.ok) {
-      console.log(response); //optional - display a success message
-      const { token } = response;
-    //Registration successful
-      setisLoggedIn(true);
-    } else {
-      logoutUser();
-      //Registration failed
-      // console.log(data.message); //optional - display error meesage
+      if (response.ok) {
+        console.log(response); //optional - display a success message
+        const { token } = response;
+        //Registration successful
+        setisLoggedIn(true);
+      } else {
+        logoutUser();
+        //Registration failed
+        // console.log(data.message); //optional - display error meesage
+      }
+    } catch (error) {
+      console.error("Error: ", error);
     }
-  } catch (error) {
-    console.error("Error: ", error);
-  }
-};
+  };
 
+  const handleLogin = async (email, password) => {
+    try {
+      const response = await fetch("http://localhost:3001/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-const handleLogin = async (email, password) => {
-  try {
-    const response = await fetch("http://localhost:3001/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+      const data = await response.json();
+      console.log(data, response);
+      if (response.ok) {
+        const { token } = data;
+        localStorage.setItem("lifetracker_token", token);
+        //Successful Login
+        setisLoggedIn(true);
+        setLoginError("");
+        // setUserId(response.data.user.id)
+        //gives hte values for usere id that then i can use in out files to do it
 
-    const data = await response.json();
-    console.log(data, response)
-    if (response.ok) {
-      const { token } = data;
-      localStorage.setItem("lifetracker_token", token)
-      //Successful Login
-      setisLoggedIn(true);
-      setLoginError(""); 
-      // setUserId(response.data.user.id)
-      //gives hte values for usere id that then i can use in out files to do it 
-
-      //define this 
-      console.log(data.message); //optional - display a success message
-    } else {
-      //Login failed
-      setLoginError(data.message);
-      console.log(data.message); //optional - display error message
+        //define this
+        console.log(data.message); //optional - display a success message
+      } else {
+        //Login failed
+        setLoginError(data.message);
+        console.log(data.message); //optional - display error message
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
-  } catch (error) {
-    console.error("Error:", error);
-  }
-};
+  };
+  // const classes = useStyles();
   return (
-    <>
-      <div>
-        <BrowserRouter>
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<Landing />}></Route>
-            <Route path="/authenticate" element={<AuthPage onRegister= {onRegister} handleLogin={handleLogin}/>}></Route>
-            <Route path="/user-profile" element={<Profile />}></Route>
-            <Route path="/create-recipe" element={<CuisinePage />}></Route>
-            <Route path="/ingredients" element={<IngredientsPage />}></Route>
-            <Route path="/favorites" element={<FavoritesPage />}></Route>
-            <Route path="/recipe-book" element={<RecipeBook />}></Route>
-            <Route path="/grocery-list" element={<GroceryList />}></Route>
-            <Route path="/recipe-result" element={<RecipePage />}></Route>
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </div>
-    </>
+    <Container
+      sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Landing />}></Route>
+          <Route
+            path="/authenticate"
+            element={
+              <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
+            }
+          ></Route>
+          <Route path="/user-profile" element={<Profile />}></Route>
+          <Route path="/create-recipe" element={<CuisinePage />}></Route>
+          <Route path="/ingredients" element={<IngredientsPage />}></Route>
+          <Route path="/favorites" element={<FavoritesPage />}></Route>
+          <Route path="/recipe-book" element={<RecipeBook />}></Route>
+          <Route path="/grocery-list" element={<GroceryList />}></Route>
+          <Route path="/recipe-result" element={<RecipePage />}></Route>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </Container>
   );
 }
 
