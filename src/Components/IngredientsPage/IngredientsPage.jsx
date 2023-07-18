@@ -38,7 +38,7 @@ const IngredientsPage = () => {
 {/*  */}
           <ul>
             {ingredients.map((ingredients, index) =>(
-            <li key ={index}> {ingredients} </li> ))}
+            <p key ={index}> {ingredients} </p> ))}
           </ul>
     </div>
   );
