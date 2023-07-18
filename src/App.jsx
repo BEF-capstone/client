@@ -89,8 +89,11 @@ function App() {
       console.error("Error:", error);
     }
   };
+  // const classes = useStyles();
   return (
-    <Container>
+    <Container
+      sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <BrowserRouter>
         <NavBar />
         <Routes>
