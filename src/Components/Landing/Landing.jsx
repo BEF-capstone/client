@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Landing.css";
 import { Container, Typography } from "@mui/material";
 import { Image } from "mui-image";
 const Landing = () => {
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "white";
+  }, []);
+
   return (
-    <Container sx={{ backgroundColor: "primary.main" }}>
+    <Container sx={{ backgroundColor: "white" }}>
       <Hero />
     </Container>
   );
