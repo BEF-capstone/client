@@ -60,9 +60,8 @@ const RecipePage = () => {
       <div className="recipe-display">
         <RecipeCard
           className="recipe_card"
-          recipe={JSON.stringify(recipes[0])}
+          recipe={JSON.stringify(recipes[1])}
         />
-        <WorldMap className="world_map" />
       </div>
     </div>
   );
