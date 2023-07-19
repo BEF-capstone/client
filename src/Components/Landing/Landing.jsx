@@ -1,3 +1,4 @@
+
 // import React from "react";
 // import "./Landing.css";
 // import { Container, Typography } from "@mui/material";
@@ -33,7 +34,13 @@ import LandingVideo from "../LandingVideo/LandingVideo.mp4"
 import './Landing.css'; // Import the CSS file for styling
 
 const Landing = () => {
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "white";
+  }, []);
+
   return (
+
     <div className="video-container">
       <video autoPlay muted loop>
         <source src={LandingVideo} type="video/mp4" />

@@ -14,7 +14,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.5",
     "@mui/icons-material": "^5.14.0",
-    "@mui/material": "^5.14.0",
+    "@mui/material": "^5.14.1",
     "emotion": "^11.0.0",
     "luxon": "^3.3.0",
     "mui-image": "^1.0.7",

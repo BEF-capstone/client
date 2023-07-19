@@ -1,6 +1,6 @@
 // Import necessary dependencies
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Box, Typography, TextField } from '@mui/material';
 import CuisineType from '../CuisineType/CuisineType';
 
 // Define the CuisinePage component
@@ -36,6 +36,10 @@ const CuisinePage = () => {
 
   //Usine slice to display only the first 'cuisinesCount' cuisines
   const [cuisines, setCuisines] = useState(initialCuisines.slice(0, cuisinesCount));
+
+  useEffect(() => {
+    document.body.style.backgroundColor = "#FEFCF0";
+  }, []);
 
  // Function to handle clicking the Load More button
  const handleLoadMore = () => {
@@ -96,35 +100,30 @@ useEffect(() => {
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
 // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
 return (
-  <div>
-  <h2>Cuisine</h2>
-  {/* Search input field */}
-  <input
-  type="text"
-  value={searchInput}
-  onChange={handleSearchInputChange}
-  placeholder="Look for cuisine here..."
+<Box >
+    
+  <Typography variant="h2" gutterBottom sx={{ mb: 10, mt: 10 }}>Cuisine</Typography>
+
+  <TextField
+    value={searchInput}
+    onChange={handleSearchInputChange}
+    label="Look for cuisine here..."
+    variant="standard"
+    sx={{ mb: 10, mt: 3, width: '500px' }}
   />
-  
-  
-  {/* Render the CuisineType component */}
+
   {cuisines.length > 0 ? (
-  <CuisineType
-  cuisines={cuisines}
-  selectedCuisine={selectedCuisine}
-  handleCuisineSelection={handleCuisineSelection}
-  handleLoadMore={handleLoadMore}
-  />
+    <CuisineType
+      cuisines={cuisines}
+      selectedCuisine={selectedCuisine}
+      handleCuisineSelection={handleCuisineSelection}
+      handleLoadMore={handleLoadMore}
+    />
   ) : (
-  <p>No cuisines found.</p>
-
-  
-
-
+    <Typography variant="h6">No cuisines found.</Typography>
   )}
-  </div>
-  );
-  };
-  
-  
-  export default CuisinePage;
+</Box>
+);
+};
+
+export default CuisinePage;
