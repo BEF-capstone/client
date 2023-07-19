@@ -38,6 +38,18 @@ export default function NavBar() {
       <Link to="/recipe-result">
         <button>recipe result</button>
       </Link>
+      <Link to="/user-profile">
+        <button>user profile</button>
+      </Link>
+      <Link to="/favorites">
+        <button>favorites</button>
+      </Link>
+      <Link to="/grocery-list">
+        <button>grocery list</button>
+      </Link>
+      <Link to="/authenticate">
+        <button>auth</button>
+      </Link>
 
       <AppBar position="static" sx={{ backgroundColor: "secondary.main" }}>
         <Toolbar>
