@@ -1,0 +1,33 @@
+
+.video-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  video {
+    width: 100%;
+    display: block;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+  
+  .typewriter-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    padding: 10px;
+    white-space: nowrap;
+  }
+  
+  .typewriter-text span {
+    display: inline-block;
+    overflow: hidden;
+    animation: typing 5s steps(40) infinite;
+  }
