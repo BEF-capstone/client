@@ -2,13 +2,13 @@ import { useState } from "react"
 import React from 'react'
 import "./IngredientsPage.css"
 
+
 const IngredientsPage = () => {
 
 // using State to handle the changing values of ingredients and the input box 
   const [ingredients, setIngredients]= useState([]);
   const [inputValue, setInputValue]= useState(" ");
   const maxIngredients = 5;
-
 
   //changes value (inputValue) of the input field when a user puts in something different 
   const handleInputValue = (e)=>{
@@ -39,7 +39,8 @@ const IngredientsPage = () => {
     <div className="return"> 
  
     <div className="form-container"> 
-    <input 
+
+        <input 
           type= "type"
           value= {inputValue}
           onChange= {handleInputValue}

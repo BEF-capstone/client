@@ -1,4 +1,3 @@
-
 // import React from "react";
 // import "./Landing.css";
 // import { Container, Typography } from "@mui/material";
@@ -34,11 +33,14 @@ import LandingVideo from "../LandingVideo/LandingVideo.mp4"
 import './Landing.css'; // Import the CSS file for styling
 import About from "../About/About"
 import HowTo from '../HowTo/HowTo';
+
 const Landing = () => {
+  // useEffect(() => {
+  //   document.body.style.backgroundColor = "white";
+  // }, []);
 
 
   return (
-
     <div className="video-container">
       <video autoPlay muted loop>
         <source src={LandingVideo} type="video/mp4" />
@@ -57,6 +59,7 @@ const Landing = () => {
             <p>Everyone's welcome in this kitchen</p>
             <p>Stirring The Way</p>
          </div>
+
       </div>
 
       <div className='Pages'>

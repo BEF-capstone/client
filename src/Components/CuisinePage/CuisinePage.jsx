@@ -53,35 +53,48 @@ useEffect(() => {
   setCuisines(initialCuisines.slice(0, cuisinesCount));
 }, [cuisinesCount]);
 
-  // Event handler for the search input change called whenever the search input field changes.
-  // It updates the state of the searchInput and cuisines variables based on the input.
-  const handleSearchInputChange = (event) => {
-    const userInput = event.target.value;
-    setSearchInput(userInput);
+// The event handler for the search input field change
+const handleSearchInputChange = (event) => {
+  // Get the current input from the user
+  const userInput = event.target.value;
 
+  // Set the state of the searchInput variable to reflect the current user input
+  setSearchInput(userInput);
 
-    // If the user has entered something into the search input, we'll try to find any matching cuisines.
-    // If we find any, we move them to the top of the list. If we don't find any, we set cuisines to an empty array.
-    // If the search input is empty, we reset the cuisines back to their initial state.
+  // If the user has entered something into the search field
+  if (userInput !== '') {
 
-    if (userInput !== '') {
-      const matchingCuisine = initialCuisines.find(cuisine =>
-        cuisine.name.toLowerCase().includes(userInput.toLowerCase())
+    // Find all cuisines in the initialCuisines array whose name includes the user's input
+    // Case is ignored by converting both to lower case
+    const matchingCuisines = initialCuisines.filter(cuisine =>
+      cuisine.name.toLowerCase().includes(userInput.toLowerCase())
+    );
+
+    // If at least one matching cuisine was found
+    if (matchingCuisines.length > 0) {
+      
+      // Find all cuisines that do not include the user's input in their name
+      // Again, case is ignored by converting both to lower case
+      const otherCuisines = initialCuisines.filter(cuisine =>
+        !cuisine.name.toLowerCase().includes(userInput.toLowerCase())
       );
 
-      if (matchingCuisine) {
-        const newCuisines = [
-          matchingCuisine,
-          ...initialCuisines.filter(cuisine => cuisine.name !== matchingCuisine.name)
-        ];
-        setCuisines(newCuisines);
-      } else {
-        setCuisines([]);
-      }
-    } else {
-      setCuisines([...initialCuisines]);
+      // Update the cuisines state to first include all matching cuisines, followed by the other cuisines
+      setCuisines([...matchingCuisines, ...otherCuisines]);
+
+    } else { // If no cuisines match the user's input
+      
+      // Update the cuisines state to an empty array
+      setCuisines([]);
     }
-  };
+    
+  } else { // If the user has not entered anything into the search field
+
+    // Reset the cuisines to their initial state
+    setCuisines([...initialCuisines]);
+  }
+};
+
 
   // Event handler called when a cuisine is selected or deselected.
   // It updates the state of the selectedCuisine variable accordingly.
@@ -100,30 +113,43 @@ useEffect(() => {
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
 // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
 return (
-<Box >
-    
-  <Typography variant="h2" gutterBottom sx={{ mb: 10, mt: 10 }}>Cuisine</Typography>
+  <Box >
+    <Typography variant="h2" gutterBottom sx={{ mb: 10, mt: 10, color: 'darkslategray', fontFamily: 'Italiana' }}>
+      Select Cuisine
+    </Typography>
 
-  <TextField
-    value={searchInput}
-    onChange={handleSearchInputChange}
-    label="Look for cuisine here..."
-    variant="standard"
-    sx={{ mb: 10, mt: 3, width: '500px' }}
-  />
-
-  {cuisines.length > 0 ? (
-    <CuisineType
-      cuisines={cuisines}
-      selectedCuisine={selectedCuisine}
-      handleCuisineSelection={handleCuisineSelection}
-      handleLoadMore={handleLoadMore}
+    <TextField
+      value={searchInput}
+      onChange={handleSearchInputChange}
+      label="Look for cuisine here..."
+      variant="standard"
+      sx={{ mb: 5, mt: 3, width: '500px',
+        '& .MuiInput-underline:after': { // This selector targets the underline in the "after" pseudo-element (which is active during focus)
+          borderBottom: '1px solid black', // Change this color to the color you want for the underline
+        },
+        '& .MuiInput-underline:before': { // This selector targets the underline in the "before" pseudo-element (which is the default state)
+          borderBottom: '1px solid black', // Change this color to the color you want for the underline
+        },
+      }}
     />
-  ) : (
-    <Typography variant="h6">No cuisines found.</Typography>
-  )}
-</Box>
+
+    <Box sx={{ minHeight: '400px' }}>
+      {cuisines.length > 0 ? (
+        <CuisineType
+          cuisines={cuisines}
+          selectedCuisine={selectedCuisine}
+          handleCuisineSelection={handleCuisineSelection}
+          handleLoadMore={handleLoadMore}
+        />
+      ) : (
+        <Typography variant="h6" sx={{color: 'darkslategray', fontFamily: 'Italiana' }}>
+          No cuisines found.
+        </Typography>
+      )}
+    </Box>
+  </Box>
 );
-};
+}
+
 
 export default CuisinePage;
