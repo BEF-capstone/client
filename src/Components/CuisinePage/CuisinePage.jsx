@@ -151,4 +151,5 @@ return (
 );
 }
 
+
 export default CuisinePage;

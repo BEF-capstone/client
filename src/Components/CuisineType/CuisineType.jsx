@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Card, CardMedia, Box, Typography } from '@mui/material';
+
 import { Link as RouterLink } from 'react-router-dom';
 
 const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handleLoadMore }) => {
@@ -8,6 +9,7 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
   };
 
   return (
+
     <Box sx={{ padding: '0 15%', mt: 10 }}>
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3 }}> 
         {cuisines.map((cuisine) => (
@@ -42,6 +44,7 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
       </Button>
     </Box>
   );
+
 };
 
 export default CuisineType;

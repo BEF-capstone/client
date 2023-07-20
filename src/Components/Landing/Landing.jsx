@@ -32,12 +32,11 @@
 import React from 'react';
 import LandingVideo from "../LandingVideo/LandingVideo.mp4"
 import './Landing.css'; // Import the CSS file for styling
-
+// import About from "../About/About"
+// import HowTo from '../HowTo/HowTo';
 const Landing = () => {
 
-  // useEffect(() => {
-  //   document.body.style.backgroundColor = "white";
-  // }, []);
+
 
   return (
 
@@ -58,10 +57,11 @@ const Landing = () => {
         <span>Chef Compass</span>
         
         <span>Stirring The Way</span>
-
-
-
       </div>
+
+{/* 
+      <About/>
+      <HowTo/> */}
     </div>
   );
 };
