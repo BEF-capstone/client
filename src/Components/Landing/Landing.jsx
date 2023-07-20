@@ -32,8 +32,8 @@
 import React from 'react';
 import LandingVideo from "../LandingVideo/LandingVideo.mp4"
 import './Landing.css'; // Import the CSS file for styling
-// import About from "../About/About"
-// import HowTo from '../HowTo/HowTo';
+import About from "../About/About"
+import HowTo from '../HowTo/HowTo';
 const Landing = () => {
 
 
@@ -44,23 +44,27 @@ const Landing = () => {
         <source src={LandingVideo} type="video/mp4" />
       </video>
       <div className="typewriter-text">
-        <span>Chef? </span>
 
-        <span> Parent? </span>
+        <div className='titles'>
+          <h1>Chef? </h1>
+          <h1> Parent? </h1>
+          <h1> Just starting out?</h1>
+          <h1>Chef Compass</h1>
 
-        <span> Just starting out?</span>
+        </div>
 
-
-        <span>Everyone's welcome in this kitchen</span>
-
-        <span>Chef Compass</span>
-        
-        <span>Stirring The Way</span>
+        <div className='titles'>
+            <p>Everyone's welcome in this kitchen</p>
+            <p>Stirring The Way</p>
+         </div>
       </div>
 
-{/* 
+      <div className='Pages'>
+
       <About/>
-      <HowTo/> */}
+      <HowTo/> 
+
+      </div>
     </div>
   );
 };

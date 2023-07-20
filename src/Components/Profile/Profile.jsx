@@ -1,63 +1,109 @@
-import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
+// import React, { useState } from 'react'
+// import {Link} from 'react-router-dom'
 
-const Profile = () => {
-  const [profilePic, setProfilePic]= useState(null)
+// const Profile = () => {
+//   const [profilePic, setProfilePic]= useState(null)
 
 
 
-    const handlePictureUpload = (event)=>{
+//     const handlePictureUpload = (event)=>{
 
-      const file = event.target.value[0]
-      setProfilePic(file)
-    }
-  return (
+//       const file = event.target.value[0]
+//       setProfilePic(file)
+//     }
+//   return (
 
-    <div>
-         <h1>Profile</h1>
+//     <div>
+//          <h1>Profile</h1>
 
-         <div>
+//          <div>
 
-            <h2>Profile Picture</h2>
-                    <input type="file" accept="image/*" capture="camera" onChange={handlePictureUpload} />
+//             <h2>Profile Picture</h2>
+//                     <input type="file" accept="image/*" capture="camera" onChange={handlePictureUpload} />
 
-                      {profilePic && (
-                        <img src={URL.createObjectURL(profilePic)} alt="Profile" />
-                      )}
-                          {/* <h2>Profile Picture</h2>
-                          <input type="file" onChange={handlePictureUpload} />
+//                       {profilePic && (
+//                         <img src={URL.createObjectURL(profilePic)} alt="Profile" />
+//                       )}
+//                           {/* <h2>Profile Picture</h2>
+//                           <input type="file" onChange={handlePictureUpload} />
 
-                          {profilePic && (
-                            <img src={URL.createObjectURL(profilePic)} alt="Profile" />
-                          )}
-                        </div> */}
+//                           {profilePic && (
+//                             <img src={URL.createObjectURL(profilePic)} alt="Profile" />
+//                           )}
+//                         </div> */}
 
-                  <div>
+//                   <div>
                   
                   
-                      <h2>Navigation</h2>
+//                       <h2>Navigation</h2>
 
 
-                          <ul>
-                            <p>
-                              <Link to="/favorites">Favorites</Link>
-                            </p>
-                            <p>
-                              <Link to="/recipe-book">Recipe Book</Link>
-                            </p>
-                            <p>
-                              <Link to="/grocery-list">Grocery List</Link>
-                            </p>
-                          </ul>
-                    </div>
-            </div>
-    </div>
+//                           <ul>
+//                             <p>
+//                               <Link to="/favorites">Favorites</Link>
+//                             </p>
+//                             <p>
+//                               <Link to="/recipe-book">Recipe Book</Link>
+//                             </p>
+//                             <p>
+//                               <Link to="/grocery-list">Grocery List</Link>
+//                             </p>
+//                           </ul>
+//                     </div>
+//             </div>
+//     </div>
 
-  );
-};
+//   );
+// };
 
 
-export default Profile
+// export default Profile
 
 
 //Profile with user name favorites grocery list and etc
+
+
+
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import defaultProfilePic from "../defaultProfilePic/defaultProfilePic.jpg"
+const Profile = () => {
+const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the default profile picture
+
+  const handlePictureUpload = (event) => {
+    const file = event.target.files[0]; // Use "files" instead of "value" to get the uploaded file
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilePic(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  return (
+    <div>
+      <h1>Profile</h1>
+      <div className='img'>
+        <input type="file" accept="image/*" capture="camera" onChange={handlePictureUpload} />
+        {profilePic && <img src={profilePic} alt="Profile" />}
+      </div>
+      <div>
+        {/* <h2>Navigation</h2> */}
+        <ul>
+          <p>
+            <Link to="/favorites">Favorites</Link>
+          </p>
+          <p>
+            <Link to="/recipe-book">Recipe Book</Link>
+          </p>
+          <p>
+            <Link to="/grocery-list">Grocery List</Link>
+          </p>
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default Profile;
