@@ -69,10 +69,9 @@ const IngredientsPage = () => {
       </Box>
 
 
-      IngredientsPage
-          <input 
+     
 
-    <div className="return"> 
+        <div className="return"> 
  
     <div className="form-container"> 
 
@@ -99,12 +98,12 @@ const IngredientsPage = () => {
             <p key ={index}> {ingredients} </p> ))}
           </ul>
           </div>
-
+</div>
     </div>
-  );
-};
+  )
+}
 
-export default IngredientsPage
+export default IngredientsPage;
 
 
 //the ingredients that the user lsits that they need 
