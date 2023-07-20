@@ -1,11 +1,95 @@
-/* Landing.css */
-.landing {
+/* .landing {
   height: 800px;
 }
 
 .video-container {
+  position:relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+video {
+  width: 100%; 
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+.typewriter-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.typewriter-text span {
+  display: inline-block;
+  overflow: hidden;
+  animation: typing 5s steps(40) infinite, blink-caret 1s step-end infinite alternate;
+} */
+
+
+/* Landing.css */
+
+/* .landing {
+  height: 800px;
+  display: flex; 
+  justify-content: center;
+  align-items: flex-start; 
+}
+
+.video-container {
   position: relative;
-  max-width: 800px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+video {
+  width: 100%; 
+  display: block;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+.typewriter-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.typewriter-text span {
+  display: inline-block;
+  overflow: hidden;
+  animation: typing 5s steps(40) infinite, blink-caret 1s step-end infinite alternate;
+} */
+
+
+/* Landing.css */
+
+.landing {
+  height: 800px;
+  display: flex; /* Use flexbox layout */
+  justify-content: center; /* Center the content horizontally */
+  align-items: flex-start; /* Align the content to the top of the page */
+}
+
+.video-container {
+  position: relative;
+  max-width: 1200px;
   margin: 0 auto;
 }
 

@@ -27,6 +27,7 @@
 
 //Landing Page for the website
 
+
 import React from "react";
 import LandingVideo from "../LandingVideo/LandingVideo.mp4";
 import "./Landing.css"; // Import the CSS file for styling
@@ -35,6 +36,7 @@ const Landing = () => {
   // useEffect(() => {
   //   document.body.style.backgroundColor = "white";
   // }, []);
+
 
   return (
     <div className="video-container">
@@ -54,6 +56,10 @@ const Landing = () => {
 
         <span>Stirring The Way</span>
       </div>
+
+{/* 
+      <About/>
+      <HowTo/> */}
     </div>
   );
 };
