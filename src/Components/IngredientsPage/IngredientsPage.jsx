@@ -6,6 +6,9 @@ import { Typography, Box } from '@mui/material';
 
 const IngredientsPage = () => {
 
+
+  
+
 // using State to handle the changing values of ingredients and the input box 
   const [ingredients, setIngredients]= useState([]);
   const [inputValue, setInputValue]= useState(" ");
