@@ -35,9 +35,9 @@ import './Landing.css'; // Import the CSS file for styling
 
 const Landing = () => {
 
-  useEffect(() => {
-    document.body.style.backgroundColor = "white";
-  }, []);
+  // useEffect(() => {
+  //   document.body.style.backgroundColor = "white";
+  // }, []);
 
   return (
 
