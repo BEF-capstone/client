@@ -1,19 +1,20 @@
 import React from "react";
 import "./Footer.css";
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, Box } from "@mui/material";
 const Footer = () => {
   return (
-    <Container
+    <Box
       sx={{
         backgroundColor: "secondary.main",
         color: "secondary.text",
         padding: "20px",
+        width: "100vw",
       }}
     >
       <Typography variant="p">
         Created By: Blessing Adomakoh, Faaizah Afoda, Efren Mendoza
       </Typography>
-    </Container>
+    </Box>
   );
 };
 

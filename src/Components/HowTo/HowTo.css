@@ -1,0 +1,25 @@
+/* About.css */
+
+/* Container for the about text */
+.How-container {
+    display: flex;
+    background-color: #e9e2df;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Text on the left side */
+  .How-text {
+    flex: 1;
+    padding-right: 20px;
+    color: #A3320B;
+
+  }
+  
+  /* Styling for the text */
+  .How-text p {
+    margin: 0 0 15px;
+    line-height: 1.5;
+    font-size: 16px;
+  }
+  
