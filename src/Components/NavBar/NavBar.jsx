@@ -28,7 +28,7 @@ export default function NavBar() {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, width: "100vw" }}>
       <Link to="/create-recipe">
         <button>choose cuisine</button>
       </Link>

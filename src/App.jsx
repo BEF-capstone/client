@@ -91,30 +91,36 @@ function App() {
   };
   // const classes = useStyles();
   return (
-    <Container
-      sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
-    >
+    <div>
       <BrowserRouter>
         <NavBar />
-        <Routes>
-          <Route path="/" element={<Landing />}></Route>
-          <Route
-            path="/authenticate"
-            element={
-              <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
-            }
-          ></Route>
-          <Route path="/user-profile" element={<Profile />}></Route>
-          <Route path="/create-recipe" element={<CuisinePage />}></Route>
-          <Route path="/ingredients" element={<IngredientsPage />}></Route>
-          <Route path="/favorites" element={<FavoritesPage />}></Route>
-          <Route path="/recipe-book" element={<RecipeBook />}></Route>
-          <Route path="/grocery-list" element={<GroceryList />}></Route>
-          <Route path="/recipe-result" element={<RecipePage />}></Route>
-        </Routes>
+        <Container
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+          }}
+        >
+          <Routes>
+            <Route path="/" element={<Landing />}></Route>
+            <Route
+              path="/authenticate"
+              element={
+                <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
+              }
+            ></Route>
+            <Route path="/user-profile" element={<Profile />}></Route>
+            <Route path="/create-recipe" element={<CuisinePage />}></Route>
+            <Route path="/ingredients" element={<IngredientsPage />}></Route>
+            <Route path="/favorites" element={<FavoritesPage />}></Route>
+            <Route path="/recipe-book" element={<RecipeBook />}></Route>
+            <Route path="/grocery-list" element={<GroceryList />}></Route>
+            <Route path="/recipe-result" element={<RecipePage />}></Route>
+          </Routes>
+        </Container>
         <Footer />
       </BrowserRouter>
-    </Container>
+    </div>
   );
 }
 
