@@ -56,7 +56,7 @@ const RecipePage = () => {
     <div className="recipe-page">
       <h1>Recipe Page</h1>
 
-      <h2>Yes {user}!</h2>
+      <h2>Yes Chef {user}!</h2>
       <div className="recipe-display">
         <RecipeCard
           className="recipe_card"
