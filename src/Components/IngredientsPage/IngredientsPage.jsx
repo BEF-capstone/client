@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { Typography, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 import "./IngredientsPage.css"
+import { react } from '@vitejs/plugin-react';
 
 
 

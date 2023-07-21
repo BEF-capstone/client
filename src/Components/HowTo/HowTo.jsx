@@ -13,6 +13,8 @@ const HowTo = () => {
             <p> 3. Click stir to get started</p>
 
         </div>
+        </div>
+
 
 
   )

@@ -35,7 +35,7 @@ const About = () => {
         <p>Let Chef Compass be your guide!</p>
       </div>
 
-    </div>
+    
 
   );
 }
