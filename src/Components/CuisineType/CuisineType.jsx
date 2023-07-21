@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Card, CardMedia, Box, Typography } from '@mui/material';
-
 import { Link as RouterLink } from 'react-router-dom';
 
 const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handleLoadMore }) => {

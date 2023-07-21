@@ -8,8 +8,12 @@ import Login from "../Login/Login";
 
 const AuthPage = ({ onRegister }, { handleLogin }) => {
   return (
-    // <div className="AuthPage">
-    <Container>
+    <Container maxWidth="false" disableGutters
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      minHeight: "100vh",
+      backgroundColor: '#FEFCF0', width: '100%' }}>
       <Box
         sx={{
           display: "flex",

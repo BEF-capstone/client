@@ -35,9 +35,6 @@ import About from "../About/About"
 import HowTo from '../HowTo/HowTo';
 
 const Landing = () => {
-  // useEffect(() => {
-  //   document.body.style.backgroundColor = "white";
-  // }, []);
 
 
 
