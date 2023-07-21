@@ -1,11 +1,23 @@
 .form-container {
   position: absolute; 
-  bottom: 350px;
+  bottom: 310px;
   left: 340px; 
   max-width: 400px;
   height: 10vh;
   padding: 20px;
 }
+
+.form-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #412020;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff; /* This will make the text color white */
+}
+
 
 .bowl-image {
   position: absolute;
@@ -47,7 +59,7 @@ p{
 .form-container button {
   width: 100%;
   padding: 10px;
-  background-color: #CB6D0F;
+  background-color: #412020;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -60,7 +72,7 @@ p{
 
 .ingredients-list {
   position: absolute;
-  bottom: 500px; /* Adjust as needed */
+  bottom: 450px; /* Adjust as needed */
   left: 955px; /* Adjust as needed */
   list-style: none;
   margin: 0;
@@ -78,14 +90,21 @@ p{
 
 .return a button {
   position: absolute;
-  bottom: 200px; /* Adjust as needed */
-  left: 1000px; /* Adjust as needed */
+  bottom: 350px; 
+  left: 1000px; 
   padding: 10px;
-  background-color: #CB6D0F;
+  background-color: #412020;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   color: #fff;
   text-decoration: none;
+}
+
+.ingredient_title {
+  font-family: 'Italiana';
+  font-size: 40px;
+  margin-top: 60px;
+  margin-right: 290px;
 }
