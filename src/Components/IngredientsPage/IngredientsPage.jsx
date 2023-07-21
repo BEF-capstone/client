@@ -117,5 +117,3 @@ export default IngredientsPage;
 
 
 //the ingredients that the user lsits that they need 
-
-
