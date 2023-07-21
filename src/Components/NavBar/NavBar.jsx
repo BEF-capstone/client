@@ -146,7 +146,7 @@ export default function NavBar() {
     <Box sx={{ flexGrow: 1, width: "100%", margin: 0 }}>
 
 
-       <AppBar position="static" sx={{ backgroundColor: "#B23850", boxShadow: 'none', width: "100%", margin: 0 }}>
+       <AppBar position="static" sx={{ backgroundColor: "#6B0504", boxShadow: 'none', width: "100%", margin: 0 }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
        
            <Link to="/">
