@@ -93,14 +93,15 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <NavBar />
-        <Container
+        <Container maxWidth="false" disableGutters
           sx={{
             display: "flex",
             flexDirection: "column",
             minHeight: "100vh",
           }}
         >
+        <NavBar />
+
           <Routes>
             <Route path="/" element={<Landing />}></Route>
             <Route
@@ -117,8 +118,8 @@ function App() {
             <Route path="/grocery-list" element={<GroceryList />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>
           </Routes>
+          <Footer />
         </Container>
-        <Footer />
       </BrowserRouter>
     </div>
   );
