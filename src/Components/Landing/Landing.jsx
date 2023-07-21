@@ -3,6 +3,7 @@ import LandingVideo from "../LandingVideo/LandingVideo.mp4";
 import "./Landing.css"; // Import the CSS file for styling
 import About from "../About/About";
 import HowTo from "../HowTo/HowTo";
+import Pics from "../Pics/Bowl";
 
 const Landing = () => {
   return (
@@ -32,6 +33,9 @@ const Landing = () => {
         <About />
         <HowTo />
       </div>
+      {/* <div className="Bowl">
+        <Pics />
+      </div> */}
     </>
   );
 };

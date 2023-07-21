@@ -7,6 +7,19 @@
   padding: 20px;
 }
 
+
+.form-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #412020;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff; 
+}
+
+
 .bowl-image {
   position: absolute;
   bottom: 0px;
@@ -16,6 +29,15 @@
   z-index: 1;
 }
 
+
+.bowl-image {
+  position: absolute;
+  bottom: 0px;
+  left: 100px;
+  width: 700px; 
+  height: 600px; 
+  z-index: 1;
+}
 .return {
   position: relative;
   z-index: 2;
@@ -26,8 +48,22 @@ p{
   font-weight: bold;
   text-decoration: underline;
   text-align: center;
+
 }
 
+
+.return {
+
+  position: relative;
+  z-index: 2;
+}
+
+p{
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+}
 
 .return {
   display: flex;
@@ -48,13 +84,13 @@ p{
 .form-container button {
   width: 100%;
   padding: 10px;
-  background-color: #CB6D0F;
+
+  background-color: #412020;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
 }
-
 
 .form-container button:disabled {
   cursor: not-allowed;
@@ -80,14 +116,22 @@ p{
 
 .return a button {
   position: absolute;
-  bottom: 200px; 
+  bottom: 350px; 
   left: 1000px; 
   padding: 10px;
-  background-color: #CB6D0F;
+  background-color: #412020;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   color: #fff;
   text-decoration: none;
+}
+
+.ingredient_title {
+  font-family: 'Italiana';
+  font-size: 40px;
+  margin-top: 60px;
+  margin-right: 290px;
+
 }

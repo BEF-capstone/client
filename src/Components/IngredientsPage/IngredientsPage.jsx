@@ -66,7 +66,8 @@ const IngredientsPage = () => {
         <img src="../images/ceramic bowl.png" className="bowl-image" alt="Bowl" />
 
       <Box sx={{ position: 'absolute', top: '150px', left: '150px' }}>
-        <Typography variant="h5" sx={{ color: 'darkslategray', fontFamily: 'Italiana' }}>
+        <Typography variant="h5" sx={{ color: 'darkslategray', fontFamily: 'Italiana', fontSize: '30px' }}>
+
           {`Chosen Cuisine: ${selectedCuisine || ''}`}
         </Typography>
       </Box>
@@ -93,6 +94,9 @@ const IngredientsPage = () => {
             </button>
           </div>
 
+
+          <h5 className="ingredient_title">Ingredients</h5>
+
           <Link to="/recipe-result">
              <button>MIX</button>
           </Link>
@@ -113,5 +117,3 @@ export default IngredientsPage;
 
 
 //the ingredients that the user lsits that they need 
-
-
