@@ -7,6 +7,7 @@
   padding: 20px;
 }
 
+
 .form-container button {
   width: 100%;
   padding: 10px;
@@ -15,7 +16,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  color: #fff; /* This will make the text color white */
+  color: #fff; 
 }
 
 
