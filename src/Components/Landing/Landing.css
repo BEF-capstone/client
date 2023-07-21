@@ -7,14 +7,22 @@
 
 .video-container {
   position: relative;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
+.container {
+  transform: translateY(100%);
+  transition: transform 0.5s ease-out;
+}
+
+/* 
+
 video {
-  width: 100%; /* Set the video width to 100% to make it responsive */
+  width: 150%; /* Set the video width to 100% to make it responsive 
   display: block;
 }
+*/
 
 @keyframes typing {
   from {
@@ -41,4 +49,15 @@ video {
   display: inline-block;
   overflow: hidden;
   animation: typing 5s steps(35) infinite, blink-caret 1s step-end infinite alternate;
+}
+
+
+/* .Pages {
+  padding: 2%;
+  margin: 2px;
+  /* Add padding or margin as needed */
+/* }  */
+
+.Pages .container {
+  transform: translateY(0); /* Reset the transform to 0 for the sliding effect */
 }

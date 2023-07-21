@@ -40,7 +40,6 @@ const Landing = () => {
   // }, []);
 
 
-
   return (
     <div className="video-container">
       <video autoPlay muted loop>
