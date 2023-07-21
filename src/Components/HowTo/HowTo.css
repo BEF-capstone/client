@@ -3,22 +3,39 @@
 /* Container for the about text */
 .How-container {
     display: flex;
-    background-color: #e9e2df;
+    background-color: #6B0504;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+  /* .How-container {
+    display: flex;
+    background-color: #6e9e2dfB0504;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  } */
+
   /* Text on the left side */
   .How-text {
     flex: 1;
-    padding-right: 20px;
-    color: #A3320B;
+    text-align: right;
+    padding-right: 200px;
+    color: #ca491f;
 
   }
+
+  /*   .How-text {
+    flex: 1;
+    text-align: right;
+    padding-right: 200px;
+    color: #A3320B;
+
+  } */
   
   /* Styling for the text */
   .How-text p {
     margin: 0 0 15px;
+    text-align: right;
+    color: #ca491f;
     line-height: 1.5;
     font-size: 16px;
   }

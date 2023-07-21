@@ -1,5 +1,5 @@
 .landing {
-  height: 800px;
+  height: 10000px;
   display: flex; /* Use flexbox layout */
   justify-content: center; /* Center the content horizontally */
   align-items: flex-start; /* Align the content to the top of the page */
@@ -7,26 +7,53 @@
 
 .video-container {
   position: relative;
-  max-width: 100%;
-  margin: 0 auto;
+  height: 500px; 
+  margin-left: -600px;
+  /* overflow: hidden; */
 }
 
-.container {
+.video-container video {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  object-fit: cover;
+  width: 118.5%;  
+  object-fit: cover;
+  display: block; 
+  
+  
+}
+.Pages {
+  position: absolute;
+  width: 152.5%;  
+  object-fit: cover;
+  display: block; 
+  margin-left: -600px;
+  /* margin: 2px; */
+  /* Add padding or margin as needed */
+   
+} 
+
+.Pages .container {
+  
+  transform: translateY(0); /* Reset the transform to 0 for the sliding effect */
+   
+}
+
+/* .container {
   transform: translateY(100%);
   transition: transform 0.5s ease-out;
-}
+} */
+
 
 /* 
-
-video {
-  width: 150%; /* Set the video width to 100% to make it responsive 
-  display: block;
-}
-*/
-
 @keyframes typing {
   from {
     width: 0;
+  }
+  to {
+    width: 0; 
   }
 }
 
@@ -38,26 +65,48 @@ video {
   padding: 10px;
   white-space: nowrap;
 }
-
 .typewriter-text h1 {
   display: inline-block;
   overflow: hidden;
   animation: typing 6s steps(40) infinite, blink-caret 1s step-end infinite alternate;
 }
 
+
+
 .typewriter-text p {
   display: inline-block;
   overflow: hidden;
   animation: typing 5s steps(35) infinite, blink-caret 1s step-end infinite alternate;
 }
+ */
 
 
-/* .Pages {
-  padding: 2%;
-  margin: 2px;
-  /* Add padding or margin as needed */
-/* }  */
-
-.Pages .container {
-  transform: translateY(0); /* Reset the transform to 0 for the sliding effect */
+  .typewriter-animation {
+  overflow: hidden; 
+  white-space: nowrap; 
+  animation: typewriter 3s steps(40) infinite;
 }
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%; 
+  }
+}
+
+.erasing-animation {
+  overflow: hidden;
+  white-space: nowrap; 
+  animation: eraser 2s steps(40) infinite;
+}
+
+@keyframes eraser {
+  from {
+    width: 100%; 
+  }
+  to {
+    width: 0; 
+  }
+} 
