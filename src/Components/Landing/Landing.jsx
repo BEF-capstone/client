@@ -1,17 +1,17 @@
-import React from 'react';
-import LandingVideo from "../LandingVideo/LandingVideo.mp4"
-import './Landing.css'; // Import the CSS file for styling
-import About from "../About/About"
-import HowTo from '../HowTo/HowTo';
-
+import React from "react";
+import LandingVideo from "../LandingVideo/LandingVideo.mp4";
+import "./Landing.css"; // Import the CSS file for styling
+import About from "../About/About";
+import HowTo from "../HowTo/HowTo";
 
 const Landing = () => {
   return (
-    <div className="video-container">
+    <>
+      <div className="video-container">
         <video autoPlay muted loop>
           <source src={LandingVideo} type="video/mp4" />
         </video>
-        <div className="typewriter-text">
+        {/* <div className="typewriter-text">
 
             <div className='titles'>
                   <h1 className="typewriter-animation">Chef? </h1>
@@ -26,16 +26,13 @@ const Landing = () => {
                 <p erasing-animation> Stirring The Way</p>
             </div>
 
-        </div>
-
-        <div className='Pages'>
-
-        <About/>
-        <HowTo/> 
-
-
-        </div>
-    </div>
+        </div> */}
+      </div>
+      <div className="Pages">
+        <About />
+        <HowTo />
+      </div>
+    </>
   );
 };
 
