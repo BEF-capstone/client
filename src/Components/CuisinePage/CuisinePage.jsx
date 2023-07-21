@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, TextField } from '@mui/material';
 import CuisineType from '../CuisineType/CuisineType';
+// import './CuisinePage.css'
 
 // Define the CuisinePage component
 const CuisinePage = () => {
@@ -36,10 +37,6 @@ const CuisinePage = () => {
 
   //Usine slice to display only the first 'cuisinesCount' cuisines
   const [cuisines, setCuisines] = useState(initialCuisines.slice(0, cuisinesCount));
-
-  useEffect(() => {
-    document.body.style.backgroundColor = "#FEFCF0";
-  }, []);
 
  // Function to handle clicking the Load More button
  const handleLoadMore = () => {
@@ -113,7 +110,7 @@ const handleSearchInputChange = (event) => {
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
 // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
 return (
-  <Box >
+  <Box sx={{ backgroundColor: '#FEFCF0', minHeight: '100vh', width: '100%' }}>
     <Typography variant="h2" gutterBottom sx={{ mb: 10, mt: 10, color: 'darkslategray', fontFamily: 'Italiana' }}>
       Select Cuisine
     </Typography>

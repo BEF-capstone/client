@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { Typography, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 import "./IngredientsPage.css"
 
 
@@ -62,7 +63,9 @@ const IngredientsPage = () => {
   return (
 
     <div> 
-      <Box sx={{ position: 'fixed', top: '150px', left: '150px' }}>
+        <img src="../images/ceramic bowl.png" className="bowl-image" alt="Bowl" />
+
+      <Box sx={{ position: 'absolute', top: '150px', left: '150px' }}>
         <Typography variant="h5" sx={{ color: 'darkslategray', fontFamily: 'Italiana' }}>
           {`Chosen Cuisine: ${selectedCuisine || ''}`}
         </Typography>
@@ -86,13 +89,16 @@ const IngredientsPage = () => {
 
 {/* after button is clicked user can put another ingredient  */}
           <button onClick={HandleAddIngredient}> 
-          Enter Ingredient
-          </button>
+            STIR          
+            </button>
           </div>
+
+          <Link to="/recipe-result">
+             <button>MIX</button>
+          </Link>
 
           <div className="ingredients-list"> 
 
-{/*  */}
           <ul>
             {ingredients.map((ingredients, index) =>(
             <p key ={index}> {ingredients} </p> ))}

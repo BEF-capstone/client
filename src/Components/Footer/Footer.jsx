@@ -1,14 +1,16 @@
 import React from "react";
 import "./Footer.css";
-import { Container, Typography, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
+
 const Footer = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "secondary.main",
+        backgroundColor: "#6B0504",
         color: "secondary.text",
         padding: "20px",
-        width: "100vw",
+        width: "100%",
+        margin: 0,
       }}
     >
       <Typography variant="p">
@@ -19,5 +21,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
 //Socials and Contact info
