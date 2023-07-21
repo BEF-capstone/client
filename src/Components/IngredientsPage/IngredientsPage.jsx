@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import { Typography, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
 import "./IngredientsPage.css"
 
 
@@ -63,11 +62,8 @@ const IngredientsPage = () => {
   return (
 
     <div> 
-        <img src="../images/ceramic bowl.png" className="bowl-image" alt="Bowl" />
-
-      <Box sx={{ position: 'absolute', top: '150px', left: '150px' }}>
-        <Typography variant="h5" sx={{ color: 'darkslategray', fontFamily: 'Italiana', fontSize: '30px' }}>
-
+      <Box sx={{ position: 'fixed', top: '150px', left: '150px' }}>
+        <Typography variant="h5" sx={{ color: 'darkslategray', fontFamily: 'Italiana' }}>
           {`Chosen Cuisine: ${selectedCuisine || ''}`}
         </Typography>
       </Box>
@@ -90,19 +86,13 @@ const IngredientsPage = () => {
 
 {/* after button is clicked user can put another ingredient  */}
           <button onClick={HandleAddIngredient}> 
-            STIR          
-            </button>
+          Enter Ingredient
+          </button>
           </div>
-
-
-          <h5 className="ingredient_title">Ingredients</h5>
-
-          <Link to="/recipe-result">
-             <button>MIX</button>
-          </Link>
 
           <div className="ingredients-list"> 
 
+{/*  */}
           <ul>
             {ingredients.map((ingredients, index) =>(
             <p key ={index}> {ingredients} </p> ))}
@@ -114,7 +104,6 @@ const IngredientsPage = () => {
 }
 
 export default IngredientsPage;
-
 
 
 //the ingredients that the user lsits that they need 
