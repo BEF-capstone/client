@@ -62,7 +62,9 @@ const IngredientsPage = () => {
   return (
 
     <div> 
-      <Box sx={{ position: 'fixed', top: '150px', left: '150px' }}>
+        <img src="../images/ceramic bowl.png" className="bowl-image" alt="Bowl" />
+
+      <Box sx={{ position: 'absolute', top: '150px', left: '150px' }}>
         <Typography variant="h5" sx={{ color: 'darkslategray', fontFamily: 'Italiana' }}>
           {`Chosen Cuisine: ${selectedCuisine || ''}`}
         </Typography>
@@ -90,6 +92,10 @@ const IngredientsPage = () => {
           </button>
           </div>
 
+          <Link to="/recipe-result">
+             <button>MIX</button>
+          </Link>
+
           <div className="ingredients-list"> 
 
 {/*  */}
@@ -107,5 +113,3 @@ export default IngredientsPage;
 
 
 //the ingredients that the user lsits that they need 
-
-
