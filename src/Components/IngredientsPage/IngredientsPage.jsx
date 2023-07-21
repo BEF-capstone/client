@@ -67,6 +67,7 @@ const IngredientsPage = () => {
 
       <Box sx={{ position: 'absolute', top: '150px', left: '150px' }}>
         <Typography variant="h5" sx={{ color: 'darkslategray', fontFamily: 'Italiana', fontSize: '30px' }}>
+
           {`Chosen Cuisine: ${selectedCuisine || ''}`}
         </Typography>
       </Box>
@@ -92,6 +93,7 @@ const IngredientsPage = () => {
             STIR          
             </button>
           </div>
+
 
           <h5 className="ingredient_title">Ingredients</h5>
 

@@ -24,8 +24,9 @@ import "./About.css";
 
 const About = () => {
   return (
-    <Element name="about" className='about-container'> 
-      <div className='about-text'>
+
+    <div name="about" className='about-container'> 
+
         <h1>About</h1>
         <p>This application is meant to aid people</p>
         <p>who need a bit of help in the kitchen.</p> 
@@ -33,7 +34,9 @@ const About = () => {
         <p>But Food doesnt have to be.</p>
         <p>Let Chef Compass be your guide!</p>
       </div>
-    </Element>
+
+    </div>
+
   );
 }
 
