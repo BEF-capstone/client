@@ -30,14 +30,6 @@
 }
 
 
-.bowl-image {
-  position: absolute;
-  bottom: 0px;
-  left: 100px;
-  width: 700px; 
-  height: 600px; 
-  z-index: 1;
-}
 
 .return {
   position: relative;

@@ -6,11 +6,12 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "#6B0504",
+        backgroundColor: "#241023",
         color: "secondary.text",
         padding: "20px",
         width: "100%",
         margin: 0,
+        
       }}
     >
       <Typography variant="p">
@@ -23,4 +24,3 @@ const Footer = () => {
 export default Footer;
 
 
-//Socials and Contact info
