@@ -1,9 +1,10 @@
 import React from 'react'
+import "../Pics/Bowl.css"
 
 const Bowl = () => {
   return (
-<div className="bowl-image">
-<img src="../images/ceramic bowl.png" className="bowl-image" alt="Bowl" />
+<div className="bowl-image2">
+<img src="../images/ceramic bowl.png"  alt="Bowl" />
 </div>
   )
 }
