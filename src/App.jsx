@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid } from '@mui/material';
+import { Grid } from "@mui/material";
 import NavBar from "./Components/NavBar/NavBar";
 import Landing from "./Components/Landing/Landing";
 import AuthPage from "./Components/AuthPage/AuthPage";
@@ -11,6 +11,8 @@ import RecipeBook from "./Components/RecipeBook/RecipeBook";
 import GroceryList from "./Components/GroceryList/GroceryList";
 import RecipePage from "./Components/RecipePage/RecipePage";
 import Footer from "./Components/Footer/Footer";
+import TestingPage from "./Components/TestingPage/TestingPage";
+import NotFound from "./Components/NotFound/NotFound";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Container } from "@mui/material";
@@ -91,23 +93,24 @@ function App() {
   // const classes = useStyles();
   return (
     <div>
-
       <BrowserRouter>
-        <Container maxWidth="false" disableGutters
+        <Container
+          maxWidth="false"
+          disableGutters
           sx={{
             display: "flex",
             flexDirection: "column",
             minHeight: "100vh",
           }}
         >
-        <NavBar />
+          <NavBar />
 
           <Routes>
             <Route path="/" element={<Landing />}></Route>
             <Route
               path="/authenticate"
               element={
-                <AuthPage onRegister={onRegister} handleLogin={handleLogin} />  
+                <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
               }
             ></Route>
             <Route path="/user-profile" element={<Profile />}></Route>
@@ -117,6 +120,8 @@ function App() {
             <Route path="/recipe-book" element={<RecipeBook />}></Route>
             <Route path="/grocery-list" element={<GroceryList />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>
+            <Route path="/testing" element={<TestingPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </Container>

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import defaultProfilePic from "../defaultProfilePic/defaultProfilePic.jpg"
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import defaultProfilePic from "../defaultProfilePic/defaultProfilePic.jpg";
 const Profile = () => {
-const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the default profile picture
+  const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the default profile picture
 
   const handlePictureUpload = (event) => {
     const file = event.target.files[0]; // Use "files" instead of "value" to get the uploaded file
@@ -18,8 +18,13 @@ const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the defa
   return (
     <div>
       <h1>Profile</h1>
-      <div className='img'>
-        <input type="file" accept="image/*" capture="camera" onChange={handlePictureUpload} />
+      <div className="img">
+        <input
+          type="file"
+          accept="image/*"
+          capture="camera"
+          onChange={handlePictureUpload}
+        />
         {profilePic && <img src={profilePic} alt="Profile" />}
       </div>
       <div>
