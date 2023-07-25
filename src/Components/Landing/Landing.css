@@ -4,16 +4,23 @@
   align-items: flex-start; /* Align the content to the top of the page */
 }
 
-.video-container {
+/* .video-container {
   position: relative;
-  /* overflow: hidden; */
-}
+} */
 
-.video-container video {
+/* .video-container video {
   position: relative;
-  top: 0;
-  left: 0;
-  height: 100%;
+  opacity: 0.7;
+  height: 50%;
+  object-fit: cover;
+  width: 100%;   
+} */
+
+
+ video {
+  position: relative;
+  opacity: 0.7;
+  height: 50%;
   object-fit: cover;
   width: 100%;   
 }
@@ -25,7 +32,7 @@
 } 
 
 .Pages > * {
-  width: 50%;
+  width: 100%;
   display: flex;
   background-color: #6B0504;
   padding: 20px;
@@ -45,26 +52,70 @@
   color: #fffbfb;
 }
 
-.Pages .container {
-  
-  transform: translateY(0); /* Reset the transform to 0 for the sliding effect */
-   
-}
 
-/* .container {
-  transform: translateY(100%);
-  transition: transform 0.5s ease-out;
-} */
-
-
-/* 
-@keyframes typing {
+@keyframes typewriter {
   from {
     width: 0;
   }
   to {
-    width: 0; 
+    width: 100%; 
   }
+}
+  .typewriter-animation {
+  font-size: 1000%;
+  color: white;
+  overflow: hidden; 
+  white-space: nowrap; 
+  animation: typewriter 3s steps(40)forwards, blinking 1s infinite;
+  border-right: 2px solid;
+}
+
+@keyframes blinking {
+  0% {border-right-color: transparent}
+  50% {border-right-color: white}
+  100% {border-right-color: transparent}
+}
+.erasing-animation {
+  color:white;
+  font-size: 200%;
+  overflow: hidden;
+  white-space: nowrap; 
+  /* animation: eraser 3s steps(40) infinite; */
+  text-decoration: none;
+
+} 
+
+@keyframes eraser {
+  from {
+    width: 0; 
+
+    /* width: 100%;  */
+  }
+  to {
+    width: 100%;
+    /* width: 0;  */
+  }
+} 
+
+ .container {
+  transform: translateY(100%);
+  transition: transform 0.5s ease-out;
+} 
+/* for the typrwriter script */
+@keyframes typing {
+  /* from {
+    width: 0;
+  } */
+  from {
+    width: 0; 
+
+    /* width: 100%;  */
+  }
+  to {
+    width: 100%;
+    /* width: 0;  */
+  }
+
 }
 
 .typewriter-text {
@@ -75,48 +126,31 @@
   padding: 10px;
   white-space: nowrap;
 }
-.typewriter-text h1 {
-  display: inline-block;
-  overflow: hidden;
-  animation: typing 6s steps(40) infinite, blink-caret 1s step-end infinite alternate;
+/* testing scroll fuction */
+/* .scroll{
+  position:absolute;
+  bottom:40px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.6;
+  will-change: opacity;
+} */
+
+.scroll {
+  animation: blinking 1.5s infinite;
+  position: absolute;
+  bottom: 40px;
+  left: 50%; /* Center the element horizontally */
+  transform: translateX(-50%);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0.8; /* Increase the opacity to make the text more visible */
+  will-change: opacity;
 }
-
-
-
-.typewriter-text p {
-  display: inline-block;
-  overflow: hidden;
-  animation: typing 5s steps(35) infinite, blink-caret 1s step-end infinite alternate;
+@keyframes blink {
+  0% { opacity: 1; } /* Visible */
+  50% { opacity: 0; } /* Invisible */
+  100% { opacity: 1; } /* Visible */
 }
- */
-
-
-  .typewriter-animation {
-  overflow: hidden; 
-  white-space: nowrap; 
-  animation: typewriter 3s steps(40) infinite;
-}
-
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%; 
-  }
-}
-
-.erasing-animation {
-  overflow: hidden;
-  white-space: nowrap; 
-  animation: eraser 2s steps(40) infinite;
-}
-
-@keyframes eraser {
-  from {
-    width: 100%; 
-  }
-  to {
-    width: 0; 
-  }
-} 

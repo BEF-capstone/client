@@ -21,8 +21,6 @@
   color: #fff; 
 }
 
-
-
 .bowl-image {
   position: absolute;
   bottom: 190px;
@@ -31,6 +29,7 @@
   height: 400px; 
   /* z-index: 1; */
 }
+
 
 .return {
   position: relative;
