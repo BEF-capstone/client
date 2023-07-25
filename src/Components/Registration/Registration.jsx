@@ -14,14 +14,14 @@ const Registration = () => {
     <Container>
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 5,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Typography component="h2" variant="h5">
-          Register
+        <Typography component="h2" variant="h5" sx={{ml: 0, mb: 5, color: '#A3320B'}}>
+          Create Account
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
           <Grid container spacing={2}>
@@ -119,10 +119,10 @@ const Registration = () => {
           <Button
             type="submit"
             variant="contained"
-            fullWidth
+            
             sx={{ mt: 3, mb: 2, backgroundColor: 'black', color: 'white' }}
           >
-            Register
+            Create
           </Button>
         </Box>
       </Box>

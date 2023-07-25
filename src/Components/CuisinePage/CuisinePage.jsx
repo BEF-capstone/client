@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, TextField } from '@mui/material';
 import CuisineType from '../CuisineType/CuisineType';
+import { Link as RouterLink } from 'react-router-dom';
 // import './CuisinePage.css'
 
 // Define the CuisinePage component
@@ -19,7 +20,6 @@ const CuisinePage = () => {
   // Each cuisine object has a name and an image URL.
   // These will be displayed in the CuisineType component.
   [
-    { name: "No Cuisine Preference", image: "https://icons.veryicon.com/png/o/miscellaneous/myicon-1/none-1.png"},
     { name: "Ghanaian", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpK2KICcB7qwod7JdMQ2AgOT8GcoSHh5IhgQ&usqp=CAU" },
     { name: "Togolese", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4Clhc5s04hqozbsftAGyAUIGG99Y9mSqCWw&usqp=CAU" },
     { name: "Mexican", image: "https://images.immediate.co.uk/production/volatile/sites/30/2022/10/Pork-carnitas-b94893e.jpg?quality=90&resize=556,505" },
@@ -129,6 +129,18 @@ return (
         },
       }}
     />
+
+  <RouterLink to={`/ingredients?cuisine= No Cuisine Preference`}>
+    <Typography variant="h5" gutterBottom sx={{ mb: 10, mt: -3, color: 'darkslategray', fontFamily: 'Italiana', fontSize: 20, cursor: 'pointer', transition: 'transform 0.15s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.05)'},
+                  color: '#688F26'
+                  }}>
+      No Cuisine Preference? Click here!
+    </Typography>
+  </RouterLink>
+
+
 
     <Box sx={{ minHeight: '400px' }}>
       {cuisines.length > 0 ? (

@@ -8,9 +8,10 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
   };
 
   return (
-
     <Box sx={{ padding: '0 15%', mt: 10 }}>
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 3 }}> 
+      <Box sx={{ display: 'grid', 
+                  gridTemplateColumns: { xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+                  gap: 3 }}> 
         {cuisines.map((cuisine) => (
           <RouterLink to={`/ingredients?cuisine=${cuisine.name}`}>
             <Card
@@ -47,4 +48,5 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
 };
 
 export default CuisineType;
+
 

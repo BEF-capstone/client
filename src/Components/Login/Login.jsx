@@ -8,15 +8,16 @@ const Login = () => {
     <Container>
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 0,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        {/* <Typography component="h2" variant="h5" sx={{color: 'white'}}>
-          Sign In
-        </Typography> */}
+
+        <Typography component="h2" variant="h5" sx={{ml: 0, mb: 5, color: '#A3320B'}}>
+          Login
+        </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate>
           <TextField
             margin="normal"
@@ -54,7 +55,7 @@ const Login = () => {
           <Button
             type="submit"
             variant="contained"
-            fullWidth
+            
             sx={{ mt: 3, mb: 2, backgroundColor: 'black', color: 'white'
           }}
           >
