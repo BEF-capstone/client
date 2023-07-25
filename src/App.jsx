@@ -1,5 +1,5 @@
 import { useState } from "react";
-/* REACT COMPONENTS */
+import { Grid } from '@mui/material';
 import NavBar from "./Components/NavBar/NavBar";
 import Landing from "./Components/Landing/Landing";
 import AuthPage from "./Components/AuthPage/AuthPage";
@@ -11,7 +11,6 @@ import RecipeBook from "./Components/RecipeBook/RecipeBook";
 import GroceryList from "./Components/GroceryList/GroceryList";
 import RecipePage from "./Components/RecipePage/RecipePage";
 import Footer from "./Components/Footer/Footer";
-/* REACT BROWSER ROUTER */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Container } from "@mui/material";
@@ -92,6 +91,7 @@ function App() {
   // const classes = useStyles();
   return (
     <div>
+
       <BrowserRouter>
         <Container maxWidth="false" disableGutters
           sx={{
@@ -107,7 +107,7 @@ function App() {
             <Route
               path="/authenticate"
               element={
-                <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
+                <AuthPage onRegister={onRegister} handleLogin={handleLogin} />  
               }
             ></Route>
             <Route path="/user-profile" element={<Profile />}></Route>

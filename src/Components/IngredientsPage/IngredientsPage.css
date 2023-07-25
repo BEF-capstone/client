@@ -1,10 +1,12 @@
 .form-container {
   position: absolute; 
-  bottom: 350px;
-  left: 340px; 
+  bottom: 250px; 
+  left: 320px;  
   max-width: 400px;
   height: 10vh;
   padding: 20px;
+  /* z-index: 3;  */
+
 }
 
 
@@ -20,23 +22,14 @@
 }
 
 
-.bowl-image {
-  position: absolute;
-  bottom: 0px;
-  left: 100px;
-  width: 700px; 
-  height: 600px; 
-  z-index: 1;
-}
-
 
 .bowl-image {
   position: absolute;
-  bottom: 0px;
-  left: 100px;
-  width: 700px; 
-  height: 600px; 
-  z-index: 1;
+  bottom: 190px;
+  left: 200px;
+  width: 500px; 
+  height: 400px; 
+  /* z-index: 1; */
 }
 
 .return {
@@ -99,8 +92,8 @@ p{
 
 .ingredients-list {
   position: absolute;
-  bottom: 500px; /* Adjust as needed */
-  left: 955px; /* Adjust as needed */
+  bottom: 500px; 
+  left: 955px; 
   list-style: none;
   margin: 0;
   padding: 0;
@@ -120,12 +113,12 @@ p{
   bottom: 350px; 
   left: 1000px; 
   padding: 10px;
-  background-color: #412020;
-  border: none;
+  background-color: transparent;
+  border: 3px solid #3B945E;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  color: #fff;
+  color: #3B945E;
   text-decoration: none;
 }
 
@@ -136,3 +129,46 @@ p{
   margin-right: 290px;
 
 }
+
+.ladle-image {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  top: 150px;
+  left: 300px;
+  
+  /* set ladle visible
+  opacity: 1;
+
+  /* define the animation */
+  /* animation: stir 2s linear infinite;
+  z-index: 3; */
+}
+
+/* this animation keyframes causes the ladle to rotate in a circular motion */
+/* @keyframes stir {
+  0% {
+    transform: rotate3d(1, 0, 0, 0deg) translate3d(0px, 0px, 0px);
+  }
+
+  25% {
+    transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 10px, 0px);
+  }
+
+  50% {
+    transform: rotate3d(1, 0, 0, 0deg) translate3d(0px, 0px, 0px);
+  }
+
+  75% {
+    transform: rotate3d(1, 0, 0, 20deg) translate3d(0px, -10px, 0px);
+  }
+
+  100% {
+    transform: rotate3d(1, 0, 0, 0deg) translate3d(0px, 0px, 0px);
+  }
+} */
+
+
+
+
+
