@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import queryString from 'query-string';
-import { Typography, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
-import "./IngredientsPage.css"
-
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
+import { Typography, Box } from "@mui/material";
+import { Link } from "react-router-dom";
+import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
+import IngredientsList from "../IngredientsList/IngredientsList";
 
 const IngredientsPage = () => {
-// using State to handle the changing values of ingredients and the input box
-  const [ingredients, setIngredients]= useState([]);
-  const [inputValue, setInputValue]= useState("");
+  // setting limitation to the amount of ingredients added
+  const maxIngredients = 5;
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
 
 
-  // Initialize state for the selected cuisine
   const [selectedCuisine, setSelectedCuisine] = useState("");
 
   // Get the location object
@@ -23,97 +22,72 @@ const IngredientsPage = () => {
     const values = queryString.parse(location.search);
     setSelectedCuisine(values.cuisine);
   }, [location]);
-  const maxIngredients = 5;
-
-  //changes value (inputValue) of the input field when a user puts in something different
-  const handleInputValue = (e)=>{
-    setInputValue(e.target.value);
-  }
   
-  //using spreader so that the previous ingredient entered in the array and populated
-  //while the field input is set back to an empty string
-  const HandleAddIngredient = (e)=>{
-    if (ingredients.length >= maxIngredients) {
+  const [inputValue, setInputValue]= useState("");
+  // handling the update of the inputvalue when the user types in the input field
+
+  const handleInputValue = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  // adding a new ingredient to the selected ingredient list
+  const handleAddIngredient = () => {
+    if (selectedIngredients.length >= maxIngredients) {
       alert("You cannot enter more than 5 ingredients.");
       return;
     }
-    if (ingredients.length < 5 && inputValue.trim() !== "")
-    { setIngredients([...ingredients, inputValue]);
-    setInputValue('')};
-  }
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      HandleAddIngredient();
+    if (selectedIngredients.length < 5 && inputValue.trim() !== "") {
+      setSelectedIngredients([...selectedIngredients, inputValue]);
+      setInputValue("");
     }
+  };
+
+  // Ingredients carousel and related functions
+  const carouselIngredients = [
+    {
+      id: "1",
+      name: "broccoli",
+      image:
+        "https://chefsmandala.com/wp-content/uploads/2018/03/Broccoli-600x338.jpg",
+    },
+    {
+      id: "2",
+      name: "pasta",
+      image:
+        "https://www.allrecipes.com/thmb/fclPUtUAfb-SvePj3o4crWTsFcM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/241920-easy-homemade-pasta-dough-ddmfs-4x3-c7172fe3104e43868f928c077d3a3397.jpg",
+    },
+    {
+      id: "3",
+      name: "tomato",
+      image:
+        "https://post.healthline.com/wp-content/uploads/2020/09/tomatoes-1200x628-facebook-1200x628.jpg",
+    },
+    // Add more ingredients with their names and image paths here
+  ];
+
+  // handing drag event on an ingredient in the caroseul
+  const handleDragIngredient = (ingredient) => {
+    setSelectedIngredients([...selectedIngredients, ingredient]);
   };
 
   return (
     <div>
-      <img src="../images/ceramic bowl.png" className="bowl-image" alt="Bowl" />
-      <img 
-        src="../images/ladle.png" 
-        className="ladle-image" 
-        alt="Ladle stirring" 
-        style={{animationPlayState: ingredients.length > 0 ? 'running' : 'paused'}}
+      <div className="ChosenCusine">Chosen Cuisine: {selectedCuisine || ""}</div>
+      {/* renders the ingredientcarousel components by passing its props   */}
+      <IngredientsCarousel
+        carouselIngredients={carouselIngredients}
+        onDragIngredient={handleDragIngredient}
       />
-
-      <Box sx={{ position: 'absolute', top: '150px', left: '150px' }}>
-        <Typography variant="h5" sx={{ color: 'darkslategray', fontFamily: 'Italiana', fontSize: '30px' }}>
-          {`Chosen Cuisine: ${selectedCuisine || ''}`}
-        </Typography>
-      </Box>
-      <div className="return">
-        <div className="form-container">
-          {/* Input field with a horizontal line */}
-          <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputValue}
-          onKeyDown={handleKeyPress}
-          placeholder="Enter an ingredient"
-          // Hide the default input box styling
-          style={{
-            border: 'none',
-            outline: 'none',
-            fontSize: '16px',
-            color: 'black',
-            width: '100%',
-            borderBottom: '1px solid #412020', // Add this
-            background: 'transparent', // Add this
-          }}
-        />
-          {/* after button is clicked user can put another ingredient  */}
-          <button
-            onClick={HandleAddIngredient}
-            // Transparent background for the "STIR" button
-            style={{
-              padding: '8px 16px',
-              background: 'transparent',
-              color: '#3B945E',
-              border: '3px solid #3B945E',
-              borderRadius: '5px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              marginTop: 20,
-            }}
-          >
-            STIR
-          </button>
-        </div>
-        <h5 className="ingredient_title">Ingredients</h5>
-        <Link to="/recipe-result">
-          <button>MIX</button>
-        </Link>
-        <div className="ingredients-list">
-          <ul>
-            {ingredients.map((ingredient, index) => (
-              <p key={index}>{ingredient}</p>
-            ))}
-          </ul>
-        </div>
-      </div>
+      <IngredientsList
+        selectedIngredients={selectedIngredients}
+        setSelectedIngredients={setSelectedIngredients}
+        onAddIngredient={handleAddIngredient}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        // Pass the handleDeleteIngredient function to IngredientsList
+      />
     </div>
-  )
-}
+  );
+};
 
 export default IngredientsPage;

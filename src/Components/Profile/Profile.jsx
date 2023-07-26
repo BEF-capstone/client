@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import defaultProfilePic from "../defaultProfilePic/defaultProfilePic.jpg"
+import "../Profile/Profile.css"
 const Profile = () => {
 const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the default profile picture
 
@@ -18,23 +19,22 @@ const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the defa
   return (
     <div>
       <h1>Profile</h1>
-      <div className='img'>
+      <div className='ProfilePic'>
         <input type="file" accept="image/*" capture="camera" onChange={handlePictureUpload} />
-        {profilePic && <img src={profilePic} alt="Profile" />}
+        {profilePic && <img className= "ProfilePicImage" src={profilePic} alt="Profile" />}
       </div>
-      <div>
-        {/* <h2>Navigation</h2> */}
-        <ul>
-          <p>
+      <div className='links'>
+            <img className="icon" src="https://i.fbcd.co/products/original/4cb3dfa788bdb2c97db08616a58304e4b6dd72d374e551cc419a77c4af6ec16e.jpg  "></img>
+
             <Link to="/favorites">Favorites</Link>
-          </p>
-          <p>
+          
+  
+          <img className="icon" src="  "></img>
+
             <Link to="/recipe-book">Recipe Book</Link>
-          </p>
-          <p>
+  
+          <img className="icon" src="  "></img>
             <Link to="/grocery-list">Grocery List</Link>
-          </p>
-        </ul>
       </div>
     </div>
   );

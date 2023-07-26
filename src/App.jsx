@@ -80,7 +80,7 @@ function App() {
       console.log(data, response);
       if (response.ok) {
         const { token } = data;
-        localStorage.setItem("lifetracker_token", token);
+        localStorage.setItem("Chef_token", token);
         //Successful Login
         setIsLoggedIn(true);
         // navigate('/');
