@@ -7,9 +7,12 @@ import {
   Grid,
   Button,
 } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
+
 
 const Registration = () => {
-  const handleSubmit = () => {};
+  const handleSubmit = () => {}
+
   return (
     <Container>
       <Box

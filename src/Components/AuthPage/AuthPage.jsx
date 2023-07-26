@@ -5,10 +5,16 @@ import LoginForm from "../LoginForm/LoginForm";
 import Registration from "../Registration/Registration";
 import { Grid, Box, Container, useMediaQuery, useTheme } from "@mui/material";
 import Login from "../Login/Login";
+import { useNavigate } from "react-router-dom";
 
-const AuthPage = ({ onRegister }, { handleLogin }) => {
+
+const AuthPage = ({ navigate, onRegister , handleLogin }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const handleSuccessfulLoginOrRegistration = () => {
+    navigate('/');
+  };
 
   return (
     <Grid container direction="row" justifyContent="center" alignItems="center" style={{ minHeight: '100vh', padding: '0 20px' }}>

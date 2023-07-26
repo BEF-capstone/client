@@ -13,7 +13,7 @@ const Landing = () => {
         <video autoPlay muted loop>
           <source src={LandingVideo} type="video/mp4" />
         </video>
-        <div className="typewriter-text">
+        <div name="/" className="typewriter-text">
 
             <div className='titles'>
               {/* <br>

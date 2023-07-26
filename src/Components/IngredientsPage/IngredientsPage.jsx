@@ -11,17 +11,19 @@ const IngredientsPage = () => {
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
 
+
   const [selectedCuisine, setSelectedCuisine] = useState("");
+
   // Get the location object
   const location = useLocation();
+
   // Use useEffect to parse the query string whenever the location changes
   useEffect(() => {
     const values = queryString.parse(location.search);
     setSelectedCuisine(values.cuisine);
   }, [location]);
-
-  const [inputValue, setInputValue] = useState("");
-
+  
+  const [inputValue, setInputValue]= useState("");
   // handling the update of the inputvalue when the user types in the input field
 
   const handleInputValue = (e) => {

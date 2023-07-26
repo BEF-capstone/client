@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -14,13 +14,14 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import CuisinePage from "../CuisinePage/CuisinePage";
 
-export default function NavBar() {
-  const [auth, setAuth] = React.useState(true);
+export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -30,8 +31,77 @@ export default function NavBar() {
     setAnchorEl(event.currentTarget);
   };
   
-  const handleClose = () => {
+  const handleClose = (e) => {
+    if (e.target.innerText === "Logout") {
+      handleLogout();
+    }
     setAnchorEl(null);
+  };
+
+  
+  //added
+  const renderLinks = () => {
+    console.log("LOGIN HERE", isLoggedIn)
+    if (isLoggedIn) {
+      console.log("LOGIN HERE", isLoggedIn)
+      return (
+        <>
+          <ScrollLink to="about" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold', ml: 111 }}>About</MenuItem>
+          </ScrollLink>
+          <ScrollLink to="how-to" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>How to</MenuItem>
+          </ScrollLink>
+          <ScrollLink to="contact" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Contact</MenuItem>
+          </ScrollLink>
+          <Link to="/create-recipe">
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Mix</MenuItem>
+          </Link>
+
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <Link to="/user-profile">
+              <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>My Account</MenuItem>
+            </Link>
+            <Link to="/">
+            <MenuItem onClick={handleLogout} sx={{ fontFamily: "Italiana" }}>Logout</MenuItem>
+            </Link>
+
+          </Menu>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <ScrollLink to="about" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>About</MenuItem>
+          </ScrollLink>
+          <ScrollLink to="how-to" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>How to</MenuItem>
+          </ScrollLink>
+          <ScrollLink to="contact" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Contact</MenuItem>
+          </ScrollLink>
+          <Link to="/authenticate">
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Sign In</MenuItem>
+          </Link>
+        </>
+      );
+    }
   };
   
 
@@ -57,29 +127,42 @@ export default function NavBar() {
                </SvgIcon>
             </IconButton>
           </Link>
-          {!isMobile && (
+
+            {isMobile && !isLoggedIn && (
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <ScrollLink to="about" smooth={true}>
-                <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 15, fontWeight: 'bold' }}>About</MenuItem>
-              </ScrollLink>
-              <ScrollLink to="how-to" smooth={true}>
-                <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 15, fontWeight: 'bold' }}>How to</MenuItem>
-              </ScrollLink>
-              <ScrollLink to="contact" smooth={true}>
-                <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 15, fontWeight: 'bold' }}>Contact</MenuItem>
-              </ScrollLink>
               <Link to="/authenticate">
-                <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 15, fontWeight: 'bold' }}>Sign In</MenuItem>
-              </Link>
-              <Link to="/create-recipe">
-                <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 15, fontWeight: 'bold' }}>Mix</MenuItem>
+                <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Sign In</MenuItem>
               </Link>
             </Box>
           )}
 
-            {/* Part 2: Account button */}
-          {auth && (
-            <div>
+          {!isMobile && !isLoggedIn &&
+          ( <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <ScrollLink to="about" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>About</MenuItem>
+          </ScrollLink>
+          <ScrollLink to="how-to" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>How to</MenuItem>
+          </ScrollLink>
+          <ScrollLink to="contact" smooth={true}>
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Contact</MenuItem>
+          </ScrollLink>
+          <Link to="/authenticate">
+            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Sign In</MenuItem>
+          </Link>
+          </Box>
+          )}
+          
+          {!isMobile && isLoggedIn && 
+          !(location.pathname === "/create-recipe" ||
+          location.pathname === "/ingredients" ||
+          location.pathname === "/recipe-result" ||         
+          location.pathname === "/favorites" ||
+          location.pathname === "/recipe-book" ||
+          location.pathname === "/grocery-list") &&(
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+              {renderLinks()}
+              <div>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -88,7 +171,7 @@ export default function NavBar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle sx={{ color: "white", mt: -1 }} />
+                <AccountCircle sx={{ color: "white", mt: 0 }} />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -108,12 +191,17 @@ export default function NavBar() {
                 <Link to="/user-profile">
                   <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>My Account</MenuItem>
                 </Link>
+                <Link to="/"> 
                 <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>Logout</MenuItem>
+                </Link>
               </Menu>
             </div>
+          
+            </Box>
           )}
 
-          {isMobile && (
+
+          {isMobile && isLoggedIn && (
             <IconButton
               size="large"
               edge="start"
@@ -124,6 +212,65 @@ export default function NavBar() {
               <MenuIcon fontSize="large" sx={{ color: "white" }} />
             </IconButton>
           )}
+
+        {!isMobile && isLoggedIn && 
+          (location.pathname === "/create-recipe" ||
+            location.pathname === "/ingredients" ||
+            location.pathname === "/recipe-result" ||
+            location.pathname === "/favorites" ||
+            location.pathname === "/recipe-book" ||
+            location.pathname === "/grocery-list") && (
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Link to="/create-recipe">
+              <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Mix</MenuItem>
+            </Link>
+            <Link to="/favorites">
+              <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Favorites</MenuItem>
+            </Link>
+            <Link to="/recipe-book">
+              <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Recipe Book</MenuItem>
+            </Link>
+            <Link to="/grocery-list">
+              <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Grocery List</MenuItem>
+            </Link>
+            <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle sx={{ color: "white", mt: 0 }} />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <Link to="/user-profile">
+                  <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>My Account</MenuItem>
+                </Link>
+                <Link to="/"> 
+                <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>Logout</MenuItem>
+                </Link>
+              </Menu>
+            </div>
+          </Box>
+        )}
+
+
         </Toolbar>
       </AppBar>
 
@@ -133,15 +280,28 @@ export default function NavBar() {
         onClose={handleDrawerToggle}
       >
         <List>
-          <ListItem ListItemButton key={"Sign In"} component={Link} to="/authenticate">
-            <ListItemText primary={"Sign In"} />
-          </ListItem>
-          <ListItem ListItemButton key={"Mix"} component={Link} to="/create-recipe">
-            <ListItemText primary={"Mix"} />
-          </ListItem>
+          {isLoggedIn ? (
+            <>
+              <ListItem button key={"Mix"} component={Link} to="/create-recipe">
+                <ListItemText primary={"Mix"} />
+              </ListItem>
+              <ListItem button key={"Logout"} onClick={handleLogout}>
+                <ListItemText primary={"Logout"} />
+              </ListItem>
+            </>
+          ) : (
+            <ListItem button key={"Sign In"} component={Link} to="/authenticate">
+              <ListItemText primary={"Sign In"} />
+            </ListItem>
+          )}
         </List>
       </Drawer>
+
+
+
+
     </Box>
   );
 }
+
 
