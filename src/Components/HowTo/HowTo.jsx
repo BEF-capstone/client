@@ -4,7 +4,7 @@ import "./HowTo.css";
 const HowTo = () => {
   return (
 
-    <div className="How-container">
+    <div name="how-to" className="How-container">
           <div className="centered-text">
             <h1> How To </h1>
             <p> 1. Select a Cuisine of your choice!</p>
