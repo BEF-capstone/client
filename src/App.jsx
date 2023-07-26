@@ -1,26 +1,39 @@
-import { useState } from "react";
-/* REACT COMPONENTS */
+/* React and Stylesheet Imports */
+import { React, useEffect } from "react";
+import "./App.css";
+/* Router Imports */
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+/* Component Imports */
 import NavBar from "./Components/NavBar/NavBar";
 import Landing from "./Components/Landing/Landing";
+import Footer from "./Components/Footer/Footer";
+/* Data Pages */
 import AuthPage from "./Components/AuthPage/AuthPage";
-import Profile from "./Components/Profile/Profile";
 import CuisinePage from "./Components/CuisinePage/CuisinePage";
 import IngredientsPage from "./Components/IngredientsPage/IngredientsPage";
 import FavoritesPage from "./Components/FavoritesPage/FavoritesPage";
-import RecipeBook from "./Components/RecipeBook/RecipeBook";
-import GroceryList from "./Components/GroceryList/GroceryList";
+import RecipeBookPage from "./Components/RecipeBookPage/RecipeBookPage";
+import ProfilePage from "./Components/ProfilePage/ProfilePage";
+import GroceryListPage from "./Components/GroceryListPage/GroceryListPage";
 import RecipePage from "./Components/RecipePage/RecipePage";
-import Footer from "./Components/Footer/Footer";
-/* REACT BROWSER ROUTER */
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import "./App.css";
+import TestingPage from "./Components/TestingPage/TestingPage";
+import NotFoundPage from "./Components/NotFoundPage/NotFoundPage";
+/* MUI Framework Imports */
 import { Container } from "@mui/material";
 
 function App() {
+  /* 
+    Registartion and Login handling
+  */
+
+  useEffect(() => {
+    const checkLoggedIn = () => {
+      const token = Cookies.get("token");
+    };
+  });
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   // const navigate = useNavigate();
-
 
   const onRegister = async (
     first_name,
@@ -64,7 +77,6 @@ function App() {
   };
 
   const handleLogin = async (email, password) => {
-
     // setIsLoggedIn(true);
 
     try {
@@ -104,34 +116,45 @@ function App() {
     setIsLoggedIn(false);
   };
 
-
   return (
     <div>
       <BrowserRouter>
-        <Container maxWidth="false" disableGutters
+        <Container
+          maxWidth="false"
+          disableGutters
           sx={{
             display: "flex",
             flexDirection: "column",
             minHeight: "100vh",
           }}
         >
-          <NavBar isLoggedIn={isLoggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />
+          <NavBar
+            isLoggedIn={isLoggedIn}
+            handleLogin={handleLogin}
+            handleLogout={handleLogout}
+          />
 
           <Routes>
             <Route path="/" element={<Landing />}></Route>
             <Route
               path="/authenticate"
-              element={ isLoggedIn ? <Landing /> : 
-                <AuthPage onRegister={onRegister} handleLogin={handleLogin} /> 
+              element={
+                isLoggedIn ? (
+                  <Landing />
+                ) : (
+                  <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
+                )
               }
             ></Route>
-            <Route path="/user-profile" element={<Profile />}></Route>
+            <Route path="/user-profile" element={<ProfilePage />}></Route>
             <Route path="/create-recipe" element={<CuisinePage />}></Route>
             <Route path="/ingredients" element={<IngredientsPage />}></Route>
             <Route path="/favorites" element={<FavoritesPage />}></Route>
-            <Route path="/recipe-book" element={<RecipeBook />}></Route>
-            <Route path="/grocery-list" element={<GroceryList />}></Route>
+            <Route path="/recipe-book" element={<RecipeBookPage />}></Route>
+            <Route path="/grocery-list" element={<GroceryListPage />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>
+            <Route path="/testing" element={<TestingPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
         </Container>
