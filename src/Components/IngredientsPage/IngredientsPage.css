@@ -1,12 +1,18 @@
-.form-container {
+.ChosenCusine{
+  top: '150px';
+   left: '150px';
+   color: 'darkslategray';
+   font: 'Italiana';
+  font-size: '30px' ;
+}
+
+/* .form-container {
   position: absolute; 
   bottom: 250px; 
   left: 320px;  
   max-width: 400px;
   height: 10vh;
   padding: 20px;
-  /* z-index: 3;  */
-
 }
 
 
@@ -27,7 +33,6 @@
   left: 200px;
   width: 500px; 
   height: 400px; 
-  /* z-index: 1; */
 }
 
 
@@ -136,13 +141,8 @@ p{
   top: 150px;
   left: 300px;
   
-  /* set ladle visible
-  opacity: 1;
 
-  /* define the animation */
-  /* animation: stir 2s linear infinite;
-  z-index: 3; */
-}
+} */
 
 /* this animation keyframes causes the ladle to rotate in a circular motion */
 /* @keyframes stir {
@@ -166,7 +166,6 @@ p{
     transform: rotate3d(1, 0, 0, 0deg) translate3d(0px, 0px, 0px);
   }
 } */
-
 
 
 
