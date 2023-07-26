@@ -1,27 +1,35 @@
 import React from "react";
-import RecipeCard from "../RecipeCard/RecipeCard";
-import RecipeResult from "../RecipeResult/RecipeResult";
 import { useState } from "react";
+import RecipeResult from "../RecipeResult/RecipeResult";
 
 const TestingPage = () => {
   const [recipe, setRecipe] = React.useState({});
   const [recipeName, setRecipeName] = React.useState();
   const [madeQuery, setMadeQuery] = React.useState(false);
 
-  const [ingredients, setIngredients] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const maxIngredients = 5;
+  // ingredients array from Ingredients page
+  const [ingredients, setIngredients] = useState([
+    "onions, green pepper, tomatoes, ground beef",
+  ]);
 
+  // cuisine selection from Cuisine page
+  const [cuisine, setCuisine] = useState("");
+
+  // POST request to openAI routes
   const createRecipe = async () => {
+    // pass ingredients arr and cuisine string
     const options = {
       method: "POST",
       body: JSON.stringify({
-        message: "hello how are you",
+        cuisine: cuisine,
+        ingredients: ingredients,
       }),
       headers: {
         "Content-Type": "application/json",
       },
     };
+
+    // Make post request
     try {
       const response = await fetch(
         "http://localhost:3001/api/openAi/create_recipe",
@@ -41,83 +49,10 @@ const TestingPage = () => {
     }
   };
 
-  const handleInputValue = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      HandleAddIngredient();
-    }
-  };
-
-  const HandleAddIngredient = (e) => {
-    if (ingredients.length >= maxIngredients) {
-      alert("You cannot enter more than 5 ingredients.");
-      return;
-    }
-    if (ingredients.length < 5 && inputValue.trim() !== "") {
-      setIngredients([...ingredients, inputValue]);
-      setInputValue("");
-    }
-  };
-
-  console.log(ingredients);
-
   return (
     <div>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={handleInputValue}
-        onKeyDown={handleKeyPress}
-        placeholder="Enter an ingredient"
-        // Hide the default input box styling
-        style={{
-          border: "none",
-          outline: "none",
-          fontSize: "16px",
-          color: "black",
-          width: "100%",
-          borderBottom: "1px solid #412020", // Add this
-          background: "transparent", // Add this
-        }}
-      />
-      <button
-        onClick={HandleAddIngredient}
-        // Transparent background for the "STIR" button
-        style={{
-          padding: "8px 16px",
-          background: "transparent",
-          color: "#3B945E",
-          border: "3px solid #3B945E",
-          borderRadius: "5px",
-          fontSize: "16px",
-          cursor: "pointer",
-          marginTop: 20,
-        }}
-      >
-        STIR
-      </button>
-      <div className="ingredients-list">
-        <ul>
-          {ingredients.map((ingredient, index) => (
-            <p key={index}>{ingredient}</p>
-          ))}
-        </ul>
-      </div>
-      <button onClick={createRecipe}> PROMPT GPT </button>
-
-      {/* <p>{recipe.recipe_name}</p> */}
-      {/* <RecipeResult
-        recipe_name={recipe.recipe_name}
-        difficulty={recipe.difficulty}
-        servings={recipe.servings}
-        ingredients={recipe.ingredients}
-        instructions={recipe.instructions}
-      /> */}
+      <button onClick={createRecipe}>PROMPT GPT</button>
       {madeQuery && <RecipeResult recipe={recipe} />}
-      {/* <p>{JSON.stringify(recipe)}</p> */}
     </div>
   );
 };

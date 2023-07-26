@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./ProfilePage.css";
+
 import defaultProfilePic from "../defaultProfilePic/defaultProfilePic.jpg";
-const Profile = () => {
+const ProfilePage = () => {
   const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the default profile picture
 
   const handlePictureUpload = (event) => {
@@ -45,4 +47,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;
