@@ -1,3 +1,4 @@
+// Importing necessary components and hooks from the react, react-router-dom, and material-ui libraries
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Link as ScrollLink } from 'react-scroll';
@@ -14,23 +15,30 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import CuisinePage from "../CuisinePage/CuisinePage";
 
-export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
+export default function NavBar( { isLoggedIn, handleLogout } ) {
+  // Using React's useState hook to initialize and handle the state of anchorEl and mobileOpen
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  // Using MUI's useTheme and useMediaQuery hooks to check if the current screen size is 'sm' or smaller
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const location = useLocation();
 
+  // Using react-router-dom's useLocation hook to access the location object that represents the current URL
+  const location = useLocation(); //to get location of page in order to place something there
+
+  // Function to toggle mobileOpen state
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  // Function to handle the opening of the user menu
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
   
+  // Function to handle the closing of the user menu and logout if clicked on 'Logout'
   const handleClose = (e) => {
     if (e.target.innerText === "Logout") {
       handleLogout();
@@ -39,13 +47,13 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
   };
 
   
-  //added
+  // Function to render different links based on whether the user is logged in or not
   const renderLinks = () => {
-    console.log("LOGIN HERE", isLoggedIn)
     if (isLoggedIn) {
-      console.log("LOGIN HERE", isLoggedIn)
       return (
         <>
+        {/* Links to different sections of the page that scroll smoothly */}
+        {/* 'to' prop of ScrollLink component represents the id of the section to scroll to */}
           <ScrollLink to="about" smooth={true}>
             <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold', ml: 111 }}>About</MenuItem>
           </ScrollLink>
@@ -55,10 +63,13 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
           <ScrollLink to="contact" smooth={true}>
             <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Contact</MenuItem>
           </ScrollLink>
+
+          {/* Mix link is a regular link using react-router-dom's Link component to a new page '/create-recipe' */}
           <Link to="/create-recipe">
             <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Mix</MenuItem>
           </Link>
 
+          {/* User Menu containing links to My Account page and Logout option */}
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}
@@ -109,6 +120,7 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
     <Box sx={{ flexGrow: 1, width: "100%", margin: 0 }}>
       <AppBar position="static" sx={{ backgroundColor: "#6B0504", boxShadow: 'none', width: "100%", margin: 0 }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          {/* Link to home page and display icon button for navigation */}
           <Link to="/">
             <IconButton
               size="large"
@@ -128,6 +140,7 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
             </IconButton>
           </Link>
 
+            {/* Check if mobile view and not logged in, if true display sign in link */}
             {isMobile && !isLoggedIn && (
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Link to="/authenticate">
@@ -136,6 +149,7 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
             </Box>
           )}
 
+          {/* Check if not mobile view and not logged in, if true display about, how-to, contact, and sign in links */}
           {!isMobile && !isLoggedIn &&
           ( <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <ScrollLink to="about" smooth={true}>
@@ -153,13 +167,15 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
           </Box>
           )}
           
+          {/* Check if not mobile view and logged in, if true display rendered links and user menu except for certain routes */}
           {!isMobile && isLoggedIn && 
           !(location.pathname === "/create-recipe" ||
           location.pathname === "/ingredients" ||
           location.pathname === "/recipe-result" ||         
           location.pathname === "/favorites" ||
           location.pathname === "/recipe-book" ||
-          location.pathname === "/grocery-list") &&(
+          location.pathname === "/grocery-list" || 
+          location.pathname === "/user-profile") &&(
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               {renderLinks()}
               <div>
@@ -200,7 +216,7 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
             </Box>
           )}
 
-
+          {/* If mobile view and logged in, display menu icon button for navigation drawer */}
           {isMobile && isLoggedIn && (
             <IconButton
               size="large"
@@ -213,13 +229,15 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
             </IconButton>
           )}
 
+        {/* Check if not mobile view and logged in, if true display Mix, Favorites, Recipe Book, Grocery List, and user menu for certain routes */}
         {!isMobile && isLoggedIn && 
           (location.pathname === "/create-recipe" ||
             location.pathname === "/ingredients" ||
             location.pathname === "/recipe-result" ||
             location.pathname === "/favorites" ||
             location.pathname === "/recipe-book" ||
-            location.pathname === "/grocery-list") && (
+            location.pathname === "/grocery-list" || 
+            location.pathname === "/user-profile") && (
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Link to="/create-recipe">
               <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Mix</MenuItem>
@@ -269,35 +287,76 @@ export default function NavBar( { isLoggedIn, handleLogin, handleLogout } ) {
             </div>
           </Box>
         )}
-
-
         </Toolbar>
       </AppBar>
 
+      {/* Navigation drawer for mobile view */}
       <Drawer
         anchor={"right"}
         open={mobileOpen}
         onClose={handleDrawerToggle}
       >
         <List>
-          {isLoggedIn ? (
+          {/* Check if logged in and not on certain routes, if true display My Account, Mix, and Logout links */}
+          {isLoggedIn && !(location.pathname === "/create-recipe" ||
+            location.pathname === "/ingredients" ||
+            location.pathname === "/recipe-result" ||
+            location.pathname === "/favorites" ||
+            location.pathname === "/recipe-book" ||
+            location.pathname === "/grocery-list" || 
+            location.pathname === "/user-profile") && (
             <>
-              <ListItem button key={"Mix"} component={Link} to="/create-recipe">
+              <ListItem key={"My Account"} component={Link} to="/user-profile">
+                <ListItemText primary={"My Account"} />
+              </ListItem>
+              <ListItem key={"Mix"} component={Link} to="/create-recipe">
                 <ListItemText primary={"Mix"} />
               </ListItem>
-              <ListItem button key={"Logout"} onClick={handleLogout}>
+              <ListItem key={"Logout"} component={Link} to="/" onClick={handleLogout}>
                 <ListItemText primary={"Logout"} />
               </ListItem>
             </>
-          ) : (
-            <ListItem button key={"Sign In"} component={Link} to="/authenticate">
+          )}
+           
+          {/* Check if not logged in, if true display Sign In link */}
+          {!isLoggedIn && (
+            <ListItem key={"Sign In"} component={Link} to="/authenticate">
               <ListItemText primary={"Sign In"} />
             </ListItem>
           )}
+
+          {/* Check if logged in and on certain routes, if true display My Account, Mix, Favorites, Recipe Book, Grocery List, and Logout links */}
+          {isLoggedIn && 
+          (location.pathname === "/create-recipe" ||
+            location.pathname === "/ingredients" ||
+            location.pathname === "/recipe-result" ||
+            location.pathname === "/favorites" ||
+            location.pathname === "/recipe-book" ||
+            location.pathname === "/grocery-list" || 
+            location.pathname === "/user-profile") && 
+            <>
+            <ListItem key={"My Account"} component={Link} to="/user-profile">
+                <ListItemText primary={"My Account"} />
+            </ListItem>
+            <ListItem key={"Mix"} component={Link} to="/create-recipe">
+             <ListItemText primary={"Mix"} />
+           </ListItem>
+           <ListItem key={"Favorites"} component={Link} to="/favorites">
+             <ListItemText primary={"Favorites"} />
+           </ListItem>
+           <ListItem key={"Recipe Book"} component={Link} to="/recipe-book">
+             <ListItemText primary={"Recipe Book"} />
+           </ListItem>
+           <ListItem key={"Grocery List"} component={Link} to="/grocery-book">
+             <ListItemText primary={"Grocery List"} />
+           </ListItem>
+           <ListItem key={"Logout"} component={Link} to="/" onClick={handleLogout}>
+                <ListItemText primary={"Logout"} />
+              </ListItem>
+           </>
+            }
         </List>
       </Drawer>
-
-
 
 
     </Box>
