@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid } from '@mui/material';
+/* REACT COMPONENTS */
 import NavBar from "./Components/NavBar/NavBar";
 import Landing from "./Components/Landing/Landing";
 import AuthPage from "./Components/AuthPage/AuthPage";
@@ -11,11 +11,17 @@ import RecipeBook from "./Components/RecipeBook/RecipeBook";
 import GroceryList from "./Components/GroceryList/GroceryList";
 import RecipePage from "./Components/RecipePage/RecipePage";
 import Footer from "./Components/Footer/Footer";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+/* REACT BROWSER ROUTER */
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import { Container } from "@mui/material";
 
 function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // const navigate = useNavigate();
+
+
   const onRegister = async (
     first_name,
     last_name,
@@ -45,7 +51,8 @@ function App() {
         console.log(response); //optional - display a success message
         const { token } = response;
         //Registration successful
-        setisLoggedIn(true);
+        setIsLoggedIn(true);
+        // navigate('/');
       } else {
         logoutUser();
         //Registration failed
@@ -57,6 +64,9 @@ function App() {
   };
 
   const handleLogin = async (email, password) => {
+
+    // setIsLoggedIn(true);
+
     try {
       const response = await fetch("http://localhost:3001/api/auth/login", {
         method: "POST",
@@ -72,7 +82,8 @@ function App() {
         const { token } = data;
         localStorage.setItem("lifetracker_token", token);
         //Successful Login
-        setisLoggedIn(true);
+        setIsLoggedIn(true);
+        // navigate('/');
         setLoginError("");
         // setUserId(response.data.user.id)
         //gives hte values for usere id that then i can use in out files to do it
@@ -88,10 +99,14 @@ function App() {
       console.error("Error:", error);
     }
   };
-  // const classes = useStyles();
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
+
   return (
     <div>
-
       <BrowserRouter>
         <Container maxWidth="false" disableGutters
           sx={{
@@ -100,14 +115,14 @@ function App() {
             minHeight: "100vh",
           }}
         >
-        <NavBar />
+          <NavBar isLoggedIn={isLoggedIn} handleLogin={handleLogin} handleLogout={handleLogout} />
 
           <Routes>
             <Route path="/" element={<Landing />}></Route>
             <Route
               path="/authenticate"
-              element={
-                <AuthPage onRegister={onRegister} handleLogin={handleLogin} />  
+              element={ isLoggedIn ? <Landing /> : 
+                <AuthPage onRegister={onRegister} handleLogin={handleLogin} /> 
               }
             ></Route>
             <Route path="/user-profile" element={<Profile />}></Route>
