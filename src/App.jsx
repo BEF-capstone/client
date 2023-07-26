@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./Components/NavBar/NavBar";
 import Landing from "./Components/Landing/Landing";
 import Footer from "./Components/Footer/Footer";
-import NotFound from "./Components/NotFoundPage/NotFoundPage";
 /* Data Pages */
 import AuthPage from "./Components/AuthPage/AuthPage";
 import CuisinePage from "./Components/CuisinePage/CuisinePage";
