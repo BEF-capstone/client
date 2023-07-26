@@ -32,6 +32,9 @@ function App() {
     };
   });
 
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // const navigate = useNavigate();
+
   const onRegister = async (
     first_name,
     last_name,
@@ -61,7 +64,8 @@ function App() {
         console.log(response); //optional - display a success message
         const { token } = response;
         //Registration successful
-        setisLoggedIn(true);
+        setIsLoggedIn(true);
+        // navigate('/');
       } else {
         logoutUser();
         //Registration failed
@@ -73,6 +77,8 @@ function App() {
   };
 
   const handleLogin = async (email, password) => {
+    // setIsLoggedIn(true);
+
     try {
       const response = await fetch("http://localhost:3001/api/auth/login", {
         method: "POST",
@@ -86,9 +92,10 @@ function App() {
       console.log(data, response);
       if (response.ok) {
         const { token } = data;
-        localStorage.setItem("lifetracker_token", token);
+        localStorage.setItem("Chef_token", token);
         //Successful Login
-        setisLoggedIn(true);
+        setIsLoggedIn(true);
+        // navigate('/');
         setLoginError("");
         // setUserId(response.data.user.id)
         //gives hte values for usere id that then i can use in out files to do it
@@ -104,6 +111,11 @@ function App() {
       console.error("Error:", error);
     }
   };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <div>
       <BrowserRouter>
@@ -116,14 +128,22 @@ function App() {
             minHeight: "100vh",
           }}
         >
-          <NavBar />
+          <NavBar
+            isLoggedIn={isLoggedIn}
+            handleLogin={handleLogin}
+            handleLogout={handleLogout}
+          />
 
           <Routes>
             <Route path="/" element={<Landing />}></Route>
             <Route
               path="/authenticate"
               element={
-                <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
+                isLoggedIn ? (
+                  <Landing />
+                ) : (
+                  <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
+                )
               }
             ></Route>
             <Route path="/user-profile" element={<ProfilePage />}></Route>

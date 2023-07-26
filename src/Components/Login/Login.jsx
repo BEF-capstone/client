@@ -1,8 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 import { Box, TextField, Button, Typography, Container } from "@mui/material";
 
-const Login = () => {
+const Login = ( {isLoggedIn, handleLogin} ) => {
   const handleSubmit = () => {};
+
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/'); 
+  //   }
+  // }, [isLoggedIn, navigate]);
+
+
 
   return (
     <Container>
@@ -18,7 +29,7 @@ const Login = () => {
         <Typography component="h2" variant="h5" sx={{ml: 0, mb: 5, color: '#A3320B'}}>
           Login
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate>
+        <Box component="form" onSubmit={handleSubmit} handleLogin={handleLogin} noValidate>
           <TextField
             margin="normal"
             required

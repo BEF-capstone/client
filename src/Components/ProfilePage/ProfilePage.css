@@ -1,3 +1,10 @@
-.img{
-    size-adjust: 50%;
-}
+/* .ProfilePic img{
+    max-height: 50%;
+    max-width: 50%;
+} */
+
+.ProfilePicImage {
+    align-self: left;
+    width: 50%; /* You can adjust this value as needed */
+    height: 50%; /* You can adjust this value as needed */
+  }

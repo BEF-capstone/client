@@ -13,17 +13,17 @@ const Landing = () => {
         <video autoPlay muted loop>
           <source src={LandingVideo} type="video/mp4" />
         </video>
-        <div className="typewriter-text">
+        <div name="/" className="typewriter-text">
 
             <div className='titles'>
-              <br>
+              {/* <br>
               </br>
               <br>
               </br>
               <br>
               </br>
               <br>
-              </br>
+              </br> */}
                    <h1 className="typewriter-animation">Chef Compass </h1>
         
                 <p className="erasing-animation">More Eating.  Less thinking.</p>
@@ -33,9 +33,9 @@ const Landing = () => {
         </div>
       {/* </div> */}
       <div className="scroll">Scroll</div>
-      <div className="Hero">
+      {/* <div className="Hero">
         <Hero />
-      </div>
+      </div> */}
       <div className="Pages">
         <About />
       </div>

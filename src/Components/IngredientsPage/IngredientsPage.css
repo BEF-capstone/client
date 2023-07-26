@@ -5,7 +5,6 @@
   max-width: 400px;
   height: 10vh;
   padding: 20px;
-  /* z-index: 3;  */
 }
 
 .form-container button {
@@ -25,7 +24,6 @@
   left: 200px;
   width: 500px;
   height: 400px;
-  /* z-index: 1; */
 }
 
 .return {

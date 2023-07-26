@@ -14,7 +14,7 @@ const Footer = () => {
         
       }}
     >
-      <Typography variant="p">
+      <Typography name="contact" variant="p">
         Created By: Blessing Adomakoh, Faaizah Afoda, Efren Mendoza
       </Typography>
     </Box>
