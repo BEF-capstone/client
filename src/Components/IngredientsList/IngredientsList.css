@@ -1,8 +1,9 @@
-.banner{
-    background-color: #241023;
-    padding: 1%
+.Delete-button{
+    border-radius: 90%;
+    color:brown;
+    
 }
-
-.banner h1{
-    color: white;
+.Delete-button p{
+ color: red;
+    
 }
