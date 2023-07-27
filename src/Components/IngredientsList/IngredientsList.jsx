@@ -33,7 +33,7 @@ const IngredientsList = ({
             <p key={index}>{ingredient}</p>
 
             <button className="Delete-button" onClick={() => handleDeleteIngredient(index)}>
-              <p> x</p>
+              <p> x </p>
             </button>
           </>
         ))}

@@ -48,6 +48,8 @@ const IngredientsPage = () => {
     }
   };
 
+  
+
   // Ingredients carousel and related functions
   const carouselIngredients = [
     {
@@ -127,6 +129,7 @@ const IngredientsPage = () => {
       <IngredientsList
         selectedIngredients={selectedIngredients}
         setSelectedIngredients={setSelectedIngredients}
+
         onAddIngredient={handleAddIngredient}
         inputValue={inputValue}
         setInputValue={setInputValue}
@@ -135,6 +138,10 @@ const IngredientsPage = () => {
       <IngredientsCarousel
         carouselIngredients={carouselIngredients}
         onDragIngredient={handleDragIngredient}
+        onAddIngredient={handleAddIngredient}
+        selectedIngredients={selectedIngredients}
+        setSelectedIngredients= {setSelectedIngredients}
+        handleAddIngredient= {handleAddIngredient}
       />
       <Link to="/recipe-result">
         <button>MIX</button>

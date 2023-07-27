@@ -1,9 +1,80 @@
 .Delete-button{
-    border-radius: 90%;
+    border-radius: 50%;
     color:brown;
     
 }
 .Delete-button p{
- color: red;
+ color: white;
     
 }
+
+
+.ingredient-textbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    display: flex; /* Display list items in a row */
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    justify-content: center; /* Center items horizontally */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 5px;
+  }
+  
+  .Delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .Text-input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: black;
+    width: 100%;
+    border-bottom: 1px solid #412020;
+    background: transparent;
+  }
+  
+  .Stir-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: #3b945e;
+    border: 3px solid #3b945e;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
