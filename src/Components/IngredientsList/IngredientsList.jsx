@@ -24,11 +24,7 @@ const IngredientsList = ({
 
   return (
     <div className="ingredient-textbox">
-        {/* seperation banner  */}
-      <div className="banner">
-        <h1>Let's Get Started</h1>
-      </div>
-      {/* seperation banner */}
+   
       <h2>Ingredients List:</h2>
 
       <ul>
@@ -36,14 +32,15 @@ const IngredientsList = ({
           <>
             <p key={index}>{ingredient}</p>
 
-            <button onClick={() => handleDeleteIngredient(index)}>
-              Remove
+            <button className="Delete-button" onClick={() => handleDeleteIngredient(index)}>
+              <p> x</p>
             </button>
           </>
         ))}
       </ul>
       <input
         type="text"
+        className="Text-input"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyPress}
@@ -73,9 +70,7 @@ const IngredientsList = ({
       >
         STIR
       </button>
-      <Link to="/recipe-result">
-        <button>MIX</button>
-      </Link>
+   
     </div>
   );
 };
