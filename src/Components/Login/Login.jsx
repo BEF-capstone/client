@@ -1,17 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, TextField, Button, Typography, Container } from "@mui/material";
+import apiClient from "../../services/apiClient";
 
 const Login = ({ handleLogin }) => {
-  const handleSubmit = () => {};
+  const nav = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  // const navigate = useNavigate();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const dataInput = new FormData(e.currentTarget);
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate('/');
-  //   }
-  // }, [isLoggedIn, navigate]);
+    const { data, error } = await apiClient.login({
+      email: dataInput.get("email"),
+      password: dataInput.get("password"),
+    });
+
+    if (error) {
+      console.error(error);
+      setError(error);
+    } else {
+      setError("");
+      handleLogin(data);
+      nav("/create-recipe");
+    }
+  };
 
   return (
     <Container>
@@ -30,12 +45,7 @@ const Login = ({ handleLogin }) => {
         >
           Login
         </Typography>
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          handleLogin={handleLogin}
-          noValidate
-        >
+        <Box component="form" onSubmit={handleSubmit} noValidate>
           <TextField
             margin="normal"
             required
@@ -63,7 +73,8 @@ const Login = ({ handleLogin }) => {
             fullWidth
             variant="standard"
             id="password"
-            label="Password"
+            type="password"
+            label="Enter Password"
             name="password"
             autoComplete="password"
             sx={{
