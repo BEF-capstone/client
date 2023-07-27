@@ -18,23 +18,7 @@ const IngredientsCarousel = ({ carouselIngredients, onDragIngredient, setSelecte
   };
 
   // Function to handle the drop event on the carousel
-//   const handleDrop = (event, ingredient) => {
-//     event.preventDefault();
-
-//     const ingredientName = event.dataTransfer.getData("text/plain");
-//     // Call the onDragIngredient function passed as a prop with the dropped ingredient name
-
-//     onDragIngredient(ingredientName);
-
-
-//     // Add the dragged ingredient to the selectedIngredients list
-//     setSelectedIngredients((prevIngredients) => {
-//         if (prevIngredients.length >= 5) {
-//           return prevIngredients;
-//         }
-//         return [...prevIngredients, ingredientName];
-//       });
-//     }
+// git push --set-upstream origin ingredients
 
 const handleDrop = (event, ingredient) => {
     event.preventDefault();
