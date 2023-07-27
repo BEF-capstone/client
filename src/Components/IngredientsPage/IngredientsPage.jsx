@@ -5,20 +5,19 @@ import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
-import axios from 'axios'; // HTTP client library
+import RecipeResult from "../RecipeResult/RecipeResult";
+import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
-
 
 const IngredientsPage = () => {
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  
-// in order to make sure the selected cuisine renders 
+
+  // in order to make sure the selected cuisine renders
   const [selectedCuisine, setSelectedCuisine] = useState("");
   const [madeQuery, setMadeQuery] = useState(false);
   // Get the location object
-  const location = useLocation();
 
   // Use useEffect to parse the query string whenever the location changes
   useEffect(() => {
@@ -28,8 +27,8 @@ const IngredientsPage = () => {
     console.log(selectedIngredients);
   }, [location]);
 
-
   const [inputValue, setInputValue] = useState("");
+  const [recipe, setRecipe] = useState({});
   // handling the update of the inputvalue when the user types in the input field
 
   const handleInputValue = (e) => {
@@ -59,39 +58,39 @@ const IngredientsPage = () => {
     // } catch (error) {
     //   console.error(error);
     // }
-      // pass ingredients arr and cuisine string
-      const options = {
-        method: "POST",
-        body: JSON.stringify({
-          cuisine: selectedCuisine,
-          ingredients: selectedIngredients,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-  
-      // Make post request
-      try {
-        const response = await fetch(
-          "http://localhost:3001/api/openAi/create_recipe",
-          options
-        );
-        const data = await response.json();
-        let content = await data.choices[0].message.content;
-        console.log(content);
-        console.log(typeof content);
-        content = JSON.parse(content);
-        // setRecipe(content);
-        // setRecipeName(content.recipe_name);
-        // console.log("recipe Name: ", recipeName);
-        //
-        setMadeQuery(true);
-        // when madeQuery, render recipe card
-      } catch (e) {
-        console.error(e);
-      }
+    // pass ingredients arr and cuisine string
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        cuisine: selectedCuisine,
+        ingredients: selectedIngredients,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     };
+
+    // Make post request
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/openAi/create_recipe",
+        options
+      );
+      const data = await response.json();
+      let content = await data.choices[0].message.content;
+      console.log(content);
+      console.log(typeof content);
+      content = JSON.parse(content);
+      setRecipe(content);
+      // setRecipeName(content.recipe_name);
+      // console.log("recipe Name: ", recipeName);
+      //
+      setMadeQuery(true);
+      // when madeQuery, render recipe card
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // Ingredients carousel and related functions
   const carouselIngredients = [
@@ -99,7 +98,8 @@ const IngredientsPage = () => {
       id: "1",
       name: "broccoli",
       image:
-"https://chatelaine.com/wp-content/uploads/2009/06/jamie-oliver-broccoli-salad-square.jpg",    },
+        "https://chatelaine.com/wp-content/uploads/2009/06/jamie-oliver-broccoli-salad-square.jpg",
+    },
     {
       id: "2",
       name: "pasta",
@@ -159,16 +159,20 @@ const IngredientsPage = () => {
 
   return (
     <div className="Page">
-           {/* seperation banner  */}
-           <div className="banner">
+      {/* seperation banner  */}
+      <div className="banner">
         <h1>Let's Get Cooking!</h1>
-        <p> To get started, input 5 ingredients or click/drag from common items from the carsouel into the textbox! </p>
+        <p>
+          {" "}
+          To get started, input 5 ingredients or click/drag from common items
+          from the carsouel into the textbox!{" "}
+        </p>
       </div>
       {/* seperation banner */}
       <div className="ChosenCusine">
         Chosen Cuisine: {selectedCuisine || ""}
       </div>
-      
+
       {/* renders the ingredientcarousel components by passing its props   */}
       <IngredientsList
         selectedIngredients={selectedIngredients}
@@ -182,9 +186,12 @@ const IngredientsPage = () => {
         carouselIngredients={carouselIngredients}
         onDragIngredient={handleDragIngredient}
       />
-      <Link to="/recipe-result" onClick={handleSubmit}>
+      {/* <Link to="/recipe-result" onClick={handleSubmit}> */}
+      <Link onClick={handleSubmit}>
         <button>MIX</button>
       </Link>
+
+      {madeQuery && <RecipeResult recipe={recipe} />}
     </div>
   );
 };
