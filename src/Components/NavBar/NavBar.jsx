@@ -21,9 +21,9 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  // Using MUI's useTheme and useMediaQuery hooks to check if the current screen size is 'sm' or smaller
+  // Using MUI's useTheme and useMediaQuery hooks to check if the current screen size is 'lg' or smaller
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   // Using react-router-dom's useLocation hook to access the location object that represents the current URL
   const location = useLocation(); //to get location of page in order to place something there
