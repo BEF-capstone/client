@@ -20,100 +20,81 @@ import TestingPage from "./Components/TestingPage/TestingPage";
 import NotFoundPage from "./Components/NotFoundPage/NotFoundPage";
 /* MUI Framework Imports */
 import { Container } from "@mui/material";
+/* Authentication Imports */
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 
 function App() {
-  /* 
-    Registartion and Login handling
-  */
+  /* Authentication States */
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [loginError, setLoginError] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
 
+  /* Registartion and Login handling */
   useEffect(() => {
     const checkLoggedIn = () => {
       const token = Cookies.get("token");
+      if (token) {
+        const decodeToken = jwtDecode(token);
+        setUserId(decodeToken.userID);
+        setUserName(decodeToken.userName);
+        // handle login based on token expiration
+        if (decodeToken.exp * 1000 > Date.now()) {
+          setLoggedIn(true);
+        } else {
+          handleLogout();
+        }
+      }
     };
-  });
+    checkLoggedIn();
+  }, [userId]);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  // const navigate = useNavigate();
-
-  const onRegister = async (
-    first_name,
-    last_name,
-    username,
-    email,
-    password
-  ) => {
+  // authenticate and login user, set a cookie with user token
+  const handleLogin = async (data) => {
     try {
-      const response = await fetch("http://localhost:3001/api/auth/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          first_name,
-          last_name,
-          username,
-          email,
-          password,
-        }),
-      });
-
-      //wait for the response
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log(response); //optional - display a success message
-        const { token } = response;
-        //Registration successful
-        setIsLoggedIn(true);
-        // navigate('/');
-      } else {
-        logoutUser();
-        //Registration failed
-        // console.log(data.message); //optional - display error meesage
-      }
-    } catch (error) {
-      console.error("Error: ", error);
-    }
-  };
-
-  const handleLogin = async (email, password) => {
-    // setIsLoggedIn(true);
-
-    try {
-      const response = await fetch("http://localhost:3001/api/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-      console.log(data, response);
-      if (response.ok) {
-        const { token } = data;
-        localStorage.setItem("Chef_token", token);
-        //Successful Login
-        setIsLoggedIn(true);
-        // navigate('/');
+      const { token, user, message } = data;
+      if (user) {
+        Cookies.set("token", token);
+        setLoggedIn(true);
         setLoginError("");
-        // setUserId(response.data.user.id)
-        //gives hte values for usere id that then i can use in out files to do it
-
-        //define this
-        console.log(data.message); //optional - display a success message
+        console.log(message); // display success login message
+        setUserName(user.firstname);
+        setUserId(user.id);
       } else {
-        //Login failed
-        setLoginError(data.message);
-        console.log(data.message); //optional - display error message
+        setLoginError(message);
+        console.log(message); // display failed login message
       }
-    } catch (error) {
-      console.error("Error:", error);
+    } catch (e) {
+      console.error(`Login Failed : ${e}`);
     }
   };
 
+  // register a user, set a new cookie with user token
+  const handleRegistration = async (data) => {
+    try {
+      const { token, user, message } = data;
+      if (user) {
+        Cookies.set("token", token);
+        setLoggedIn(true);
+        console.log(`message: ${message}`);
+        setUserName(user.firstname);
+        setUserId(user.id);
+      } else {
+        console.log(`no user message: ${message}`);
+      }
+    } catch (e) {
+      console.error(`Registration Failed: ${e}`);
+    }
+  };
+
+  // logout user, remove cookie and clear fields
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    console.log(`logout`);
+    Cookies.remove("token");
+    setLoggedIn(false);
+    setUserName("");
+    setUserId("");
   };
 
   return (
@@ -128,25 +109,24 @@ function App() {
             minHeight: "100vh",
           }}
         >
-          <NavBar
-            isLoggedIn={isLoggedIn}
-            handleLogin={handleLogin}
-            handleLogout={handleLogout}
-          />
+          <NavBar isLoggedIn={loggedIn} handleLogout={handleLogout} />
 
           <Routes>
             <Route path="/" element={<Landing />}></Route>
             <Route
               path="/authenticate"
               element={
-                isLoggedIn ? (
+                loggedIn ? (
                   <Landing />
                 ) : (
-                  <AuthPage onRegister={onRegister} handleLogin={handleLogin} />
+                  <AuthPage
+                    handleLogin={handleLogin}
+                    handleRegistration={handleRegistration}
+                  />
                 )
               }
             ></Route>
-            <Route path="/user-profile" element={<ProfilePage />}></Route>
+            <Route path="/user-profile" element={<ProfilePage />} />
             <Route path="/create-recipe" element={<CuisinePage />}></Route>
             <Route path="/ingredients" element={<IngredientsPage />}></Route>
             <Route path="/favorites" element={<FavoritesPage />}></Route>
