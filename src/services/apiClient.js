@@ -1,5 +1,7 @@
 import API_BASE_URL from "../../constants";
-import { axios } from "axios";
+// import { axios } from "axios";
+
+import axios from "axios";
 
 class ApiClient {
   constructor(remoteHostUrl) {
