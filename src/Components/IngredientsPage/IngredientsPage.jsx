@@ -48,6 +48,7 @@ const IngredientsPage = () => {
     }
   };
 
+
   const handleSubmit = async () => {
     // try {
     //   const response = await axios.post('http://localhost:3000/create_recipe', {
@@ -92,6 +93,7 @@ const IngredientsPage = () => {
         console.error(e);
       }
     };
+
 
   // Ingredients carousel and related functions
   const carouselIngredients = [
@@ -173,6 +175,7 @@ const IngredientsPage = () => {
       <IngredientsList
         selectedIngredients={selectedIngredients}
         setSelectedIngredients={setSelectedIngredients}
+
         onAddIngredient={handleAddIngredient}
         inputValue={inputValue}
         setInputValue={setInputValue}
@@ -181,6 +184,10 @@ const IngredientsPage = () => {
       <IngredientsCarousel
         carouselIngredients={carouselIngredients}
         onDragIngredient={handleDragIngredient}
+        onAddIngredient={handleAddIngredient}
+        selectedIngredients={selectedIngredients}
+        setSelectedIngredients= {setSelectedIngredients}
+        handleAddIngredient= {handleAddIngredient}
       />
       <Link to="/recipe-result" onClick={handleSubmit}>
         <button>MIX</button>
