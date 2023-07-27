@@ -5,6 +5,7 @@ import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
+import axios from 'axios'; // HTTP client library
 import "./IngredientsPage.css";
 
 
@@ -13,11 +14,9 @@ const IngredientsPage = () => {
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
   
-/////////////////////////////////////////////////////////
 // in order to make sure the selected cuisine renders 
-
   const [selectedCuisine, setSelectedCuisine] = useState("");
-
+  const [madeQuery, setMadeQuery] = useState(false);
   // Get the location object
   const location = useLocation();
 
@@ -25,8 +24,9 @@ const IngredientsPage = () => {
   useEffect(() => {
     const values = queryString.parse(location.search);
     setSelectedCuisine(values.cuisine);
+    console.log(selectedCuisine);
+    console.log(selectedIngredients);
   }, [location]);
-/////////////////////////////////////////////////////////
 
 
   const [inputValue, setInputValue] = useState("");
@@ -48,7 +48,52 @@ const IngredientsPage = () => {
     }
   };
 
+
+  const handleSubmit = async () => {
+    // try {
+    //   const response = await axios.post('http://localhost:3000/create_recipe', {
+    //     cuisine: selectedCuisine,
+    //     ingredients: selectedIngredients
+    //   });
+
+    //   console.log(response.data);
+    // } catch (error) {
+    //   console.error(error);
+    // }
+      // pass ingredients arr and cuisine string
+      const options = {
+        method: "POST",
+        body: JSON.stringify({
+          cuisine: selectedCuisine,
+          ingredients: selectedIngredients,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
   
+      // Make post request
+      try {
+        const response = await fetch(
+          "http://localhost:3001/api/openAi/create_recipe",
+          options
+        );
+        const data = await response.json();
+        let content = await data.choices[0].message.content;
+        console.log(content);
+        console.log(typeof content);
+        content = JSON.parse(content);
+        // setRecipe(content);
+        // setRecipeName(content.recipe_name);
+        // console.log("recipe Name: ", recipeName);
+        //
+        setMadeQuery(true);
+        // when madeQuery, render recipe card
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
 
   // Ingredients carousel and related functions
   const carouselIngredients = [
@@ -109,8 +154,9 @@ const IngredientsPage = () => {
   ];
 
   // handing drag event on an ingredient in the caroseul
-  const handleDragIngredient = (carouselIngredients) => {
-    setSelectedIngredients([...selectedIngredients, carouselIngredients]);
+
+  const handleDragIngredient = (carouselIngredient) => {
+    setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
   };
 
   return (
@@ -143,7 +189,7 @@ const IngredientsPage = () => {
         setSelectedIngredients= {setSelectedIngredients}
         handleAddIngredient= {handleAddIngredient}
       />
-      <Link to="/recipe-result">
+      <Link to="/recipe-result" onClick={handleSubmit}>
         <button>MIX</button>
       </Link>
     </div>

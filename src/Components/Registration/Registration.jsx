@@ -11,15 +11,19 @@ import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/apiClient";
 
 const Registration = ({ handleRegistration }) => {
+  const nav = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // get data from apiClient: POST /registration
     console.log("HERE");
+    const dataInput = new FormData(e.currentTarget);
+
     const { data, error } = await apiClient.register({
-      firstname: firstname,
-      lastname: lastname,
-      email: email,
-      password: password,
+      firstname: dataInput.get("firstname"),
+      lastname: dataInput.get("lastname"),
+      email: dataInput.get("email"),
+      password: dataInput.get("password"),
     });
     console.log("API REQ SUCCESFUL");
     // handle registration
