@@ -13,7 +13,7 @@ const TestingPage = () => {
   ]);
 
   // cuisine selection from Cuisine page
-  const [cuisine, setCuisine] = useState("");
+  const [cuisine, setCuisine] = useState("mexican");
 
   // POST request to openAI routes
   const createRecipe = async () => {

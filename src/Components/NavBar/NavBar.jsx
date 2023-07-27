@@ -1,7 +1,7 @@
 // Importing necessary components and hooks from the react, react-router-dom, and material-ui libraries
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Link as ScrollLink } from 'react-scroll';
+import { Link as ScrollLink } from "react-scroll";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,11 +10,12 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { SvgIcon, useMediaQuery, useTheme } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+
 
 export default function NavBar( { isLoggedIn, handleLogout } ) {
   // Using React's useState hook to initialize and handle the state of anchorEl and mobileOpen
@@ -23,7 +24,8 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
 
   // Using MUI's useTheme and useMediaQuery hooks to check if the current screen size is 'sm' or smaller
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const location = useLocation();
 
   // Using react-router-dom's useLocation hook to access the location object that represents the current URL
   const location = useLocation(); //to get location of page in order to place something there
@@ -46,7 +48,6 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
     setAnchorEl(null);
   };
 
-  
   // Function to render different links based on whether the user is logged in or not
   const renderLinks = () => {
     if (isLoggedIn) {
@@ -55,18 +56,55 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
         {/* Links to different sections of the page that scroll smoothly */}
         {/* 'to' prop of ScrollLink component represents the id of the section to scroll to */}
           <ScrollLink to="about" smooth={true}>
-            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold', ml: 111 }}>About</MenuItem>
+            <MenuItem
+              sx={{
+                fontFamily: "Italiana",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+                ml: 111,
+              }}
+            >
+              About
+            </MenuItem>
           </ScrollLink>
           <ScrollLink to="how-to" smooth={true}>
-            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>How to</MenuItem>
+            <MenuItem
+              sx={{
+                fontFamily: "Italiana",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+            >
+              How to
+            </MenuItem>
           </ScrollLink>
           <ScrollLink to="contact" smooth={true}>
-            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Contact</MenuItem>
+            <MenuItem
+              sx={{
+                fontFamily: "Italiana",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+            >
+              Contact
+            </MenuItem>
           </ScrollLink>
 
           {/* Mix link is a regular link using react-router-dom's Link component to a new page '/create-recipe' */}
           <Link to="/create-recipe">
-            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Mix</MenuItem>
+            <MenuItem
+              sx={{
+                fontFamily: "Italiana",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+            >
+              Mix
+            </MenuItem>
           </Link>
 
           {/* User Menu containing links to My Account page and Logout option */}
@@ -86,12 +124,15 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
             onClose={handleClose}
           >
             <Link to="/user-profile">
-              <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>My Account</MenuItem>
+              <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>
+                My Account
+              </MenuItem>
             </Link>
             <Link to="/">
-            <MenuItem onClick={handleLogout} sx={{ fontFamily: "Italiana" }}>Logout</MenuItem>
+              <MenuItem onClick={handleLogout} sx={{ fontFamily: "Italiana" }}>
+                Logout
+              </MenuItem>
             </Link>
-
           </Menu>
         </>
       );
@@ -99,26 +140,69 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
       return (
         <>
           <ScrollLink to="about" smooth={true}>
-            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>About</MenuItem>
+            <MenuItem
+              sx={{
+                fontFamily: "Italiana",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+            >
+              About
+            </MenuItem>
           </ScrollLink>
           <ScrollLink to="how-to" smooth={true}>
-            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>How to</MenuItem>
+            <MenuItem
+              sx={{
+                fontFamily: "Italiana",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+            >
+              How to
+            </MenuItem>
           </ScrollLink>
           <ScrollLink to="contact" smooth={true}>
-            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Contact</MenuItem>
+            <MenuItem
+              sx={{
+                fontFamily: "Italiana",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+            >
+              Contact
+            </MenuItem>
           </ScrollLink>
           <Link to="/authenticate">
-            <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Sign In</MenuItem>
+            <MenuItem
+              sx={{
+                fontFamily: "Italiana",
+                color: "white",
+                fontSize: 20,
+                fontWeight: "bold",
+              }}
+            >
+              Sign In
+            </MenuItem>
           </Link>
         </>
       );
     }
   };
-  
 
   return (
     <Box sx={{ flexGrow: 1, width: "100%", margin: 0 }}>
-      <AppBar position="static" sx={{ backgroundColor: "#6B0504", boxShadow: 'none', width: "100%", margin: 0 }}>
+      <AppBar
+        position="static"
+        sx={{
+          backgroundColor: "#6B0504",
+          boxShadow: "none",
+          width: "100%",
+          margin: 0,
+        }}
+      >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Link to home page and display icon button for navigation */}
           <Link to="/">
@@ -129,22 +213,32 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-             <SvgIcon fontSize="large" sx={{ color: "black" }}>
-               <path
-                   d="M15.5,5.5C15.5,4.67,16.17,4,17,4C17.83,4,18.5,4.67,18.5,5.5V8h1V5.5C19.5,3.57,17.93,2,16,2
+              <SvgIcon fontSize="large" sx={{ color: "black" }}>
+                <path
+                  d="M15.5,5.5C15.5,4.67,16.17,4,17,4C17.83,4,18.5,4.67,18.5,5.5V8h1V5.5C19.5,3.57,17.93,2,16,2
         c-1.93,0-3.5,1.57-3.5,3.5V8h1V5.5z M12,5.5C12,3.57,10.43,2,8.5,2C6.57,2,5,3.57,5,5.5V8h1V5.5C6,4.67,6.67,4,7.5,4
          C8.33,4,9,4.67,9,5.5V8h3V5.5z M15.74,8L14,9.74V10h-4v-0.26L8.26,8H15.74z M3.37,9l-1.74,1.74L3.37,12H1v2h2v2h2v-2h6v2h2v-2h2v-2
          h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
-               />
-               </SvgIcon>
+                />
+              </SvgIcon>
             </IconButton>
           </Link>
+
 
             {/* Check if mobile view and not logged in, if true display sign in link */}
             {isMobile && !isLoggedIn && (
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
               <Link to="/authenticate">
-                <MenuItem sx={{ fontFamily: "Italiana", color: "white", fontSize: 20, fontWeight: 'bold' }}>Sign In</MenuItem>
+                <MenuItem
+                  sx={{
+                    fontFamily: "Italiana",
+                    color: "white",
+                    fontSize: 20,
+                    fontWeight: "bold",
+                  }}
+                >
+                  Sign In
+                </MenuItem>
               </Link>
             </Box>
           )}
@@ -280,9 +374,93 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
                 <Link to="/user-profile">
                   <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>My Account</MenuItem>
                 </Link>
-                <Link to="/"> 
-                <MenuItem onClick={handleClose} sx={{ fontFamily: "Italiana" }}>Logout</MenuItem>
+                <Link to="/favorites">
+                  <MenuItem
+                    sx={{
+                      fontFamily: "Italiana",
+                      color: "white",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Favorites
+                  </MenuItem>
                 </Link>
+
+                <Link to="/recipe-book">
+                  <MenuItem
+                    sx={{
+                      fontFamily: "Italiana",
+                      color: "white",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Recipe Book
+                  </MenuItem>
+                </Link>
+                <Link to="/grocery-list">
+                  <MenuItem
+                    sx={{
+                      fontFamily: "Italiana",
+                      color: "white",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Grocery List
+                  </MenuItem>
+                </Link>
+                <div>
+                  <IconButton
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleMenu}
+                    color="inherit"
+                  >
+                    <AccountCircle sx={{ color: "white", mt: 0 }} />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorEl)}
+                    onClose={handleClose}
+                  >
+                    <Link to="/user-profile">
+                      <MenuItem
+                        onClick={handleClose}
+                        sx={{ fontFamily: "Italiana" }}
+                      >
+                        My Account
+                      </MenuItem>
+                    </Link>
+                    <Link to="/">
+                      <MenuItem
+                        onClick={handleClose}
+                        sx={{ fontFamily: "Italiana" }}
+                      >
+                        Logout
+                      </MenuItem>
+                    </Link>
+                  </Menu>
+                </div>
+              </Box>
+            )}
+        </Toolbar>
+      </AppBar>
+
+      <Drawer anchor={"right"} open={mobileOpen} onClose={handleDrawerToggle}>
               </Menu>
             </div>
           </Box>
@@ -316,6 +494,7 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
                 <ListItemText primary={"Logout"} />
               </ListItem>
             </>
+
           )}
            
           {/* Check if not logged in, if true display Sign In link */}
@@ -357,10 +536,6 @@ export default function NavBar( { isLoggedIn, handleLogout } ) {
             }
         </List>
       </Drawer>
-
-
     </Box>
   );
 }
-
-
