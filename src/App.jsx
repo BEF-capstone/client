@@ -1,5 +1,5 @@
 /* React and Stylesheet Imports */
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 /* Router Imports */
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -26,7 +26,7 @@ import jwtDecode from "jwt-decode";
 
 function App() {
   /* Authentication States */
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [loginError, setLoginError] = useState("");
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");

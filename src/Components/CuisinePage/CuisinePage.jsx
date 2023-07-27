@@ -3,16 +3,18 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography, TextField } from "@mui/material";
 import CuisineType from "../CuisineType/CuisineType";
 import { Link as RouterLink } from "react-router-dom";
-// import './CuisinePage.css'
 
 // Define the CuisinePage component
 const CuisinePage = () => {
   // Define state variables using the useState hook
   const [searchInput, setSearchInput] = useState(""); // State variable for search input
-  const [selectedCuisine, setSelectedCuisine] = useState(""); // State variable for selected cuisine
+  const [selectedCuisine, setSelectedCuisine] = useState(""); 
 
   //State variable for displayed cuisines count, initially set to 9
   const [cuisinesCount, setCuisinesCount] = useState(9);
+
+  // Use useState to store the cuisines, initially set to an empty array.
+  // const [cuisines, setCuisines] = useState([]);
 
   // An array of objects, each representing a cuisine and its image.
   const initialCuisines =
@@ -34,7 +36,6 @@ const CuisinePage = () => {
         image:
           "https://images.immediate.co.uk/production/volatile/sites/30/2022/10/Pork-carnitas-b94893e.jpg?quality=90&resize=556,505",
       },
-      // more cuisines later
       {
         name: "Ethiopian",
         image:
@@ -95,9 +96,24 @@ const CuisinePage = () => {
 
   // An effect that runs whenever cuisinesCount changes.
   // It updates the list of cuisines to display.
+  // useEffect(() => {
+  //   setCuisines(initialCuisines.slice(0, cuisinesCount));
+  // }, [cuisinesCount]);
+
+
+  // Fetch data from the server when the component mounts.
   useEffect(() => {
-    setCuisines(initialCuisines.slice(0, cuisinesCount));
-  }, [cuisinesCount]);
+    const fetchCuisines = async () => {
+      try {
+        // const response = await axios.get("/api/cuisines"); 
+        // setCuisines(response.data.slice(0, cuisinesCount));
+      } catch (error) {
+        console.error("Error fetching cuisines data: ", error);
+      }
+    };
+    fetchCuisines();
+  }, [cuisinesCount]); // Refresh the data whenever cuisinesCount changes
+
 
   // The event handler for the search input field change
   const handleSearchInputChange = (event) => {
