@@ -97,9 +97,24 @@ const CuisinePage = () => {
 
   // An effect that runs whenever cuisinesCount changes.
   // It updates the list of cuisines to display.
+  // useEffect(() => {
+  //   setCuisines(initialCuisines.slice(0, cuisinesCount));
+  // }, [cuisinesCount]);
+
+
+  // Fetch data from the server when the component mounts.
   useEffect(() => {
-    setCuisines(initialCuisines.slice(0, cuisinesCount));
-  }, [cuisinesCount]);
+    const fetchCuisines = async () => {
+      try {
+        // const response = await axios.get("/api/cuisines"); 
+        // setCuisines(response.data.slice(0, cuisinesCount));
+      } catch (error) {
+        console.error("Error fetching cuisines data: ", error);
+      }
+    };
+    fetchCuisines();
+  }, [cuisinesCount]); // Refresh the data whenever cuisinesCount changes
+
 
 
   // Fetch data from the server when the component mounts.

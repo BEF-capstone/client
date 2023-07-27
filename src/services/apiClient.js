@@ -35,6 +35,11 @@ class ApiClient {
     console.log("here 1");
     try {
       console.log("here 2");
+      console.log("url: ", url);
+      console.log("method: ", method);
+      console.log("data: ", data);
+      console.log("params: ", params);
+      console.log("headers: ", headers);
       const res = await axios({ url, method, data, params, headers });
       console.log("here 3");
       console.log(`res is ${res.data}`);

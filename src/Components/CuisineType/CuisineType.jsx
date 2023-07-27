@@ -2,27 +2,39 @@ import React from 'react';
 import { Button, Card, Box, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
+
 const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handleLoadMore }) => {
   if (cuisines.length === 0) {
     return <p>Loading cuisines...</p>;
   }
-  
+
   const handleCuisineClick = (cuisine) => {
     handleCuisineSelection(cuisine);
   };
 
   return (
-    <Box sx={{ padding: '0 15%', mt: 10 }}>
-      <Box sx={{ display: 'grid', 
-                  gridTemplateColumns: { xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-                  gap: 3 }}> 
+    <Box sx={{ padding: "0 15%", mt: 10 }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "repeat(1, 1fr)",
+            sm: "repeat(2, 1fr)",
+            md: "repeat(3, 1fr)",
+          },
+          gap: 3,
+        }}
+      >
         {cuisines.map((cuisine) => (
-          <RouterLink to={`/ingredients?cuisine=${cuisine.name}`}>
+          <RouterLink
+            key={cuisine.name}
+            to={`/ingredients?cuisine=${cuisine.name}`}
+          >
             <Card
               key={cuisine.name}
               onClick={() => handleCuisineClick(cuisine.name)}
               sx={{
-                cursor: 'pointer',
+                cursor: "pointer",
                 padding: 2,
                 height: '250px',
                 backgroundImage: `url(${cuisine.image})`, // add the image as a background
@@ -53,10 +65,12 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
             >
                 {cuisine.name}
             </Typography>
+
             </Card>
           </RouterLink>
         ))}
       </Box>
+
       <Button variant="contained" color="primary" onClick={handleLoadMore} sx={{ mt: 4, mb: 4, fontFamily: 'Italiana' }}>
         See More
       </Button>
@@ -65,6 +79,4 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
 };
 
 export default CuisineType;
-
-
 
