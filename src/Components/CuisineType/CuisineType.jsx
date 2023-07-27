@@ -1,12 +1,13 @@
-import React from "react";
-import { Button, Card, CardMedia, Box, Typography } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import React from 'react';
+import { Button, Card, Box, Typography } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 
 const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handleLoadMore }) => {
   if (cuisines.length === 0) {
     return <p>Loading cuisines...</p>;
   }
+
   const handleCuisineClick = (cuisine) => {
     handleCuisineSelection(cuisine);
   };
@@ -35,38 +36,42 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
               sx={{
                 cursor: "pointer",
                 padding: 2,
-                height: "300px",
-                backgroundColor:
-                  selectedCuisine === cuisine.name ? "#8D8741" : "transparent",
-                transition: "transform 0.15s ease-in-out",
-                "&:hover": {
-                  transform: "scale(1.05)",
+                height: '250px',
+                backgroundImage: `url(${cuisine.image})`, // add the image as a background
+                backgroundSize: 'cover', // make sure it covers the whole card
+                opacity: 0.8,
+                backgroundColor: selectedCuisine === cuisine.name ? "#8D8741" : "transparent",
+                transition: 'transform 0.15s ease-in-out',
+                '&:hover': {
+                  transform: 'scale(1.05)',
                 },
+                display: 'flex', // align the text vertically and horizontally
+                justifyContent: 'center',
+                alignItems: 'center',
+                position: 'relative', // relative to the card
               }}
             >
-              <CardMedia
-                component="img"
-                height="200"
-                image={cuisine.image}
-                alt={cuisine.name}
-              />
-              <Typography
-                variant="h6"
-                align="center"
-                sx={{ fontFamily: "Italiana" }}
-              >
+            <Typography 
+                variant="h6" 
+                align="center" 
+                sx={{ 
+                    fontFamily: 'Italiana',
+                    fontSize: 30,
+                    color: '#fff', 
+                    fontWeight: 'bold', // Change fontWeight to 'bold' or 700
+                    position: 'absolute', 
+                    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', 
+                }}
+            >
                 {cuisine.name}
-              </Typography>
+            </Typography>
+
             </Card>
           </RouterLink>
         ))}
       </Box>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleLoadMore}
-        sx={{ mt: 4, mb: 4, fontFamily: "Italiana" }}
-      >
+
+      <Button variant="contained" color="primary" onClick={handleLoadMore} sx={{ mt: 4, mb: 4, fontFamily: 'Italiana' }}>
         See More
       </Button>
     </Box>
@@ -74,3 +79,4 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
 };
 
 export default CuisineType;
+

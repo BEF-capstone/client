@@ -94,7 +94,6 @@ const IngredientsPage = () => {
       }
     };
 
-
   // Ingredients carousel and related functions
   const carouselIngredients = [
     {
