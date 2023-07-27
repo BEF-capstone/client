@@ -1,0 +1,52 @@
+/* img .ingredient-image {
+
+    size-adjust: 10%;
+} */
+
+.image-carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .carousel {
+    display: flex;
+    align-items: center;
+  }
+  
+  .carousel button {
+    margin: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .carousel button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .images-wrapper {
+    display: flex;
+  }
+  
+  .image-slide {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  .image-slide img {
+    max-width: 100%;
+    max-height: 200px;
+    border-radius: 8px;
+  }
+  
+  .page-count {
+    text-align: center;
+    margin-top: 10px;
+  }

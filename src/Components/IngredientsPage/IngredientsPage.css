@@ -1,4 +1,71 @@
-.form-container {
+
+.Page{
+  background-color: #FEFCF0}
+
+.ChosenCusine{
+  font-family: 'Italiana';
+  font-size: 200%;
+  font-weight: bold;
+  padding-top: 4%;
+  padding: 4%,
+}
+.banner{
+    background-color: #241023;
+    padding: 0.4%;
+
+    color: white;
+
+}
+
+.image-carousel-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+}
+
+.carousel button {
+  margin: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.carousel button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.images-wrapper {
+  display: flex;
+}
+
+.image-slide {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.image-slide img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+}
+
+.page-count {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* .form-container {
   position: absolute;
   bottom: 250px;
   left: 320px;
@@ -119,41 +186,4 @@ p {
   margin-top: 60px;
   margin-right: 290px;
 }
-
-.ladle-image {
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  top: 150px;
-  left: 300px;
-
-  /* set ladle visible
-  opacity: 1;
-
-  /* define the animation */
-  /* animation: stir 2s linear infinite;
-  z-index: 3; */
-}
-
-/* this animation keyframes causes the ladle to rotate in a circular motion */
-/* @keyframes stir {
-  0% {
-    transform: rotate3d(1, 0, 0, 0deg) translate3d(0px, 0px, 0px);
-  }
-
-  25% {
-    transform: rotate3d(1, 0, 0, -20deg) translate3d(0px, 10px, 0px);
-  }
-
-  50% {
-    transform: rotate3d(1, 0, 0, 0deg) translate3d(0px, 0px, 0px);
-  }
-
-  75% {
-    transform: rotate3d(1, 0, 0, 20deg) translate3d(0px, -10px, 0px);
-  }
-
-  100% {
-    transform: rotate3d(1, 0, 0, 0deg) translate3d(0px, 0px, 0px);
-  }
-} */
+ */
