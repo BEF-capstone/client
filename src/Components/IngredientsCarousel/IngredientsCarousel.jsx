@@ -32,6 +32,8 @@ const IngredientsCarousel = ({ carouselIngredients, onDragIngredient }) => {
     // Call the onDragIngredient function passed as a prop with the dropped ingredient name
 
     onDragIngredient(ingredientName);
+    //   setSelectedIngredients((prevIngredients) => [...prevIngredients, ingredientName]);
+
   };
 
 
@@ -46,7 +48,14 @@ const IngredientsCarousel = ({ carouselIngredients, onDragIngredient }) => {
   };
 
   const totalPages = Math.ceil(carouselIngredients.length / 3); // Calculate total number of pages
+///Handling click:
+const handleIngredientClick = (ingredient) => {
+    // Call the onDragIngredient function passed as a prop with the clicked ingredient name
+    onDragIngredient(ingredient.name);
 
+    // Add the clicked ingredient to the selectedIngredients list
+    setSelectedIngredients((prevIngredients) => [...prevIngredients, ingredient.name]);
+  };
   return (
       <div className="ingredient-containment">
         <>
@@ -64,6 +73,8 @@ const IngredientsCarousel = ({ carouselIngredients, onDragIngredient }) => {
             className="ingredient-slide"
             onDragOver={(e) => handleDragOver(e)} // Attach handleDragOver as an event handler
             onDrop={(e) => handleDrop(e, carouselIngredients)} // Attach handleDrop as an event handler
+            onClick={() => handleIngredientClick(carouselIngredients)} // Added the onClick handler for the ingredient slide
+
             >
             <img
               src={carouselIngredients.image}
