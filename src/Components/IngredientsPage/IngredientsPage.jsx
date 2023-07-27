@@ -85,6 +85,7 @@ const IngredientsPage = () => {
         // setRecipe(content);
         // setRecipeName(content.recipe_name);
         // console.log("recipe Name: ", recipeName);
+        //
         setMadeQuery(true);
         // when madeQuery, render recipe card
       } catch (e) {
