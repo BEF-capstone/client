@@ -1,20 +1,27 @@
+
 .landing {
-  display: flex; /* Use flexbox layout */
-  justify-content: center; /* Center the content horizontally */
-  align-items: flex-start; /* Align the content to the top of the page */
+  position: relative; /* Make this a positioned parent */
+  width: 100%;
+  height: 100vh; /* adjust this to suit your needs */
+  overflow: hidden;
 }
 
- video {
-  position: relative;
-  opacity: 0.7;
-  height: 50%;
-  object-fit: cover;
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  opacity: 0.7;
+  object-fit: cover;
 }
+
 .Pages {
   width: 100%;
   object-fit: cover;
   display: flex;
+  flex-wrap: wrap;
 }
 .Pages > * {
   width: 100%;
@@ -43,12 +50,14 @@
   }
 }
   .typewriter-animation {
-  font-size: 1000%;
+  /* font-size: 1000%; */
+  font-size: 8vw; /* 8% of the viewport's width */
   color: white;
   overflow: hidden;
   white-space: nowrap;
   animation: typewriter 3s steps(40)forwards, blinking 1s infinite;
   border-right: 2px solid;
+  margin-bottom: 10%;
 }
 @keyframes blinking {
   0% {border-right-color: transparent}
@@ -57,7 +66,8 @@
 }
 .erasing-animation {
   color:white;
-  font-size: 200%;
+  /* font-size: 200%; */
+  font-size: 3vw; /* 3% of the viewport's width */
   overflow: hidden;
   white-space: nowrap;
   /* animation: eraser 3s steps(40) infinite; */
@@ -91,14 +101,24 @@
     /* width: 0;  */
   }
 }
-.typewriter-text {
+/* .typewriter-text {
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 10px;
   white-space: nowrap;
+} */
+
+
+.typewriter-text {
+  position: absolute;
+  top: 40%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  /* center the text block */
 }
+
 /* testing scroll fuction */
 /* .scroll{
   position:absolute;
@@ -109,20 +129,42 @@
   opacity: 0.6;
   will-change: opacity;
 } */
-.scroll {
+
+
+/* .scroll {
   animation: blinking 1.5s infinite;
   position: absolute;
   bottom: 40px;
   left: 50%; /* Center the element horizontally */
+  /* transform: translateX(-50%); */
+  /* letter-spacing: 3px; */
+  /* text-transform: uppercase; */
+  /* text-align: center; */
+  /* opacity: 0.8; Increase the opacity to make the text more visible */
+  /* will-change: opacity; */
+/* } */ 
+
+.scroll {
+  position: absolute;
+  bottom: 100px; /* adjust this as needed */
+  left: 50%; /* Center the element horizontally */
   transform: translateX(-50%);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  text-align: center;
-  opacity: 0.8; /* Increase the opacity to make the text more visible */
-  will-change: opacity;
 }
+
+
+
 @keyframes blink {
   0% { opacity: 1; } /* Visible */
   50% { opacity: 0; } /* Invisible */
   100% { opacity: 1; } /* Visible */
+}
+
+/* for smaller screens */
+@media screen and (max-width: 600px) {
+  h1.typewriter-animation {
+    font-size: 3rem; 
+  }
+  p.erasing-animation  {
+    font-size: 1.2rem; 
+  }
 }
