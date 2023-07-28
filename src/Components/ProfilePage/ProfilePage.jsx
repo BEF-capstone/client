@@ -31,7 +31,7 @@ const ProfilePage = ( {handleLogout}) => {
         <h3 className="fullname">Full Name: </h3>
         <h3 className="email">Email: </h3>
         <h5>
-        <Link to="/"  onClick={handleLogout}>
+        <Link to="/" onClick={handleLogout}>
         Logout
         </Link>
         </h5>

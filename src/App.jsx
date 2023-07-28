@@ -127,7 +127,7 @@ function App() {
                 )
               }
             ></Route>
-            <Route path="/user-profile" element={<ProfilePage />} />
+            <Route path="/user-profile" element={<ProfilePage handleLogout={handleLogout}/>} />
             <Route path="/create-recipe" element={<CuisinePage />}></Route>
             <Route path="/ingredients" element={<IngredientsPage />}></Route>
             <Route path="/favorites" element={<FavoritesPage />}></Route>
