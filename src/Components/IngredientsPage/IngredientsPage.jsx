@@ -5,102 +5,78 @@ import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
-import RecipeResult from "../RecipeResult/RecipeResult";
-import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
+
 
 const IngredientsPage = () => {
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(""); // New state to store error message
+  const [inputValue, setInputValue] = useState("");
+  // handling the update of the inputvalue when the user types in the input field
 
-  // in order to make sure the selected cuisine renders
+  
+/////////////////////////////////////////////////////////
+// in order to make sure the selected cuisine renders 
+
   const [selectedCuisine, setSelectedCuisine] = useState("");
-  const [madeQuery, setMadeQuery] = useState(false);
+
   // Get the location object
+  const location = useLocation();
 
   // Use useEffect to parse the query string whenever the location changes
   useEffect(() => {
     const values = queryString.parse(location.search);
     setSelectedCuisine(values.cuisine);
-    console.log(selectedCuisine);
-    console.log(selectedIngredients);
   }, [location]);
+/////////////////////////////////////////////////////////
 
-  const [inputValue, setInputValue] = useState("");
-  const [recipe, setRecipe] = useState({});
-  // handling the update of the inputvalue when the user types in the input field
+
 
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
-  };
+    setErrorMessage("");
 
+  };
+  
   // adding a new ingredient to the selected ingredient list
   const handleAddIngredient = () => {
     if (selectedIngredients.length >= maxIngredients) {
-      alert("You cannot enter more than 5 ingredients.");
+      setErrorMessage("You cannot enter more than 5 ingredients.");
+      console.log("this is an error")
       return;
     }
     if (selectedIngredients.length < 5 && inputValue.trim() !== "") {
       setSelectedIngredients([...selectedIngredients, inputValue]);
       setInputValue("");
+      setErrorMessage("");
+
     }
   };
 
-
-  const handleSubmit = async () => {
-    // try {
-    //   const response = await axios.post('http://localhost:3000/create_recipe', {
-    //     cuisine: selectedCuisine,
-    //     ingredients: selectedIngredients
-    //   });
-
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
-    // pass ingredients arr and cuisine string
-    const options = {
-      method: "POST",
-      body: JSON.stringify({
-        cuisine: selectedCuisine,
-        ingredients: selectedIngredients,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    // Make post request
-    try {
-      const response = await fetch(
-        "http://localhost:3001/api/openAi/create_recipe",
-        options
-      );
-      const data = await response.json();
-      let content = await data.choices[0].message.content;
-      console.log(content);
-      console.log(typeof content);
-      content = JSON.parse(content);
-      setRecipe(content);
-      // setRecipeName(content.recipe_name);
-      // console.log("recipe Name: ", recipeName);
-      //
-      setMadeQuery(true);
-      // when madeQuery, render recipe card
-    } catch (e) {
-      console.error(e);
-    }
+  // handing drag event on an ingredient in the caroseul
+  const handleDragIngredient = (carouselIngredients) => {
+    setSelectedIngredients([...selectedIngredients, carouselIngredients]);
   };
 
+
+
+  const handleDeleteIngredient = (index) => {
+    const updatedIngredients = [...selectedIngredients];
+    updatedIngredients.splice(index, 1);
+    setSelectedIngredients(updatedIngredients);
+    setErrorMessage(""); // Clear the error message when an ingredient is removed
+  };
   // Ingredients carousel and related functions
+
+
   const carouselIngredients = [
     {
       id: "1",
       name: "broccoli",
       image:
-        "https://chatelaine.com/wp-content/uploads/2009/06/jamie-oliver-broccoli-salad-square.jpg",
-    },
+"https://chatelaine.com/wp-content/uploads/2009/06/jamie-oliver-broccoli-salad-square.jpg",    },
     {
       id: "2",
       name: "pasta",
@@ -152,28 +128,19 @@ const IngredientsPage = () => {
     // Add more ingredients with their names and image paths here
   ];
 
-  // handing drag event on an ingredient in the caroseul
-
-  const handleDragIngredient = (carouselIngredient) => {
-    setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
-  };
 
   return (
     <div className="Page">
-      {/* seperation banner  */}
-      <div className="banner">
+           {/* seperation banner  */}
+           <div className="banner">
         <h1>Let's Get Cooking!</h1>
-        <p>
-          {" "}
-          To get started, input 5 ingredients or click/drag from common items
-          from the carsouel into the textbox!{" "}
-        </p>
+        <p> To get started, input 5 ingredients or click/drag from common items from the carsouel into the textbox! </p>
       </div>
       {/* seperation banner */}
       <div className="ChosenCusine">
         Chosen Cuisine: {selectedCuisine || ""}
       </div>
-
+      
       {/* renders the ingredientcarousel components by passing its props   */}
       <IngredientsList
         selectedIngredients={selectedIngredients}
@@ -181,23 +148,27 @@ const IngredientsPage = () => {
 
         onAddIngredient={handleAddIngredient}
         inputValue={inputValue}
+        handleDeleteIngredient={handleDeleteIngredient} // Pass the updated handleDeleteIngredient function to IngredientsList
+
         setInputValue={setInputValue}
-        // Pass the handleDeleteIngredient function to IngredientsList
       />
+        {errorMessage && (
+                <Typography variant="body2" color="error" sx={{ mt: 1 }}>
+                  {errorMessage}
+                </Typography>
+              )}
       <IngredientsCarousel
         carouselIngredients={carouselIngredients}
         onDragIngredient={handleDragIngredient}
-        onAddIngredient={handleAddIngredient}
         selectedIngredients={selectedIngredients}
         setSelectedIngredients= {setSelectedIngredients}
-        handleAddIngredient= {handleAddIngredient}
+        
       />
-      {/* <Link to="/recipe-result" onClick={handleSubmit}> */}
-      <Link onClick={handleSubmit}>
+
+
+      <Link to="/recipe-result">
         <button>MIX</button>
       </Link>
-
-      {madeQuery && <RecipeResult recipe={recipe} />}
     </div>
   );
 };
