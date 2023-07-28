@@ -18,32 +18,47 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <> 
+    <section className="full">
       <h1>Profile</h1>
       <div className="img">
+        {profilePic && (
+          <img src={profilePic} className="ProfilePicImage" alt="Profile" />
+        )}
+        <h1> Chef BEF </h1>
+        {/* <label htmlFor="file-upload" className="custom-file-upload">
+            Upload Profile Picture
+          </label> */}
         <input
           type="file"
+          id="file-upload"
           accept="image/*"
           capture="camera"
           onChange={handlePictureUpload}
-        />
-        {profilePic && <img src={profilePic} alt="Profile" />}
-      </div>
-      <div>
+          />
+          </div>
+      </section>
+
+      <section className="fullInfo">
+        <div className="userInfo">
+          <h2> Full Name: </h2>
+          <h2> Nickname: </h2>
+          <h2> Email: </h2>
+        </div>
         {/* <h2>Navigation</h2> */}
-        <ul>
+        <container className="links">
           <p>
-            <Link to="/favorites">Favorites</Link>
+            <Link to="/favorites"> ❤️ Favorites</Link>
           </p>
           <p>
-            <Link to="/recipe-book">Recipe Book</Link>
+            <Link to="/recipe-book"> 📖 Recipe Book</Link>
           </p>
           <p>
-            <Link to="/grocery-list">Grocery List</Link>
+            <Link to="/grocery-list"> 🛒 Grocery List</Link>
           </p>
-        </ul>
-      </div>
-    </div>
+        </container>
+      </section>
+    </>
   );
 };
 

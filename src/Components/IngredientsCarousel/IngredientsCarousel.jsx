@@ -61,61 +61,57 @@ const handleDrop = (event, ingredient) => {
 
   };
 
-  useEffect(() => {
-    // Function to automatically scroll to the next slide after a specific interval
-    const autoScroll = setInterval(() => {
-      setCurrentSlide((prevSlide) =>
-        prevSlide + 3 < carouselIngredients.length ? prevSlide + 3 : 0
-      );
-    }, 3000);
-    return () => clearInterval(autoScroll);
-  }, [carouselIngredients.length]);
-
+ 
   return (
+    <>
+    {/* <h1 classname= "words">Ingredient Carousel</h1> */}
     <div className="ingredient-containment">
-      <>
-        <h1>Ingredient Carousel</h1>
 
-        {/*  */}
-        <button onClick={handlePrevious} disabled={currentSlide === 0}>
+       <div className="MOVE"> 
+              <div className="images-wrapper">
+        <button className="Pagnation" onClick={handlePrevious} disabled={currentSlide === 0}>
           Previous
         </button>
-        <div className="images-wrapper">
-          {carouselIngredients
-            .slice(currentSlide, currentSlide + 3)
-            .map((carouselIngredients, index) => (
-              // <div key={index} className="image-slide">
-              <div
-                key={carouselIngredients.id}
-                className="ingredient-slide"
-                onDragOver={(e) => handleDragOver(e)} // Attach handleDragOver as an event handler
-                onDrop={(e) => handleDrop(e, carouselIngredients)} // Attach handleDrop as an event handler
-                onClick={() => handleIngredientClick(carouselIngredients)
-                } // Added the onClick handler for the ingredient slide
-              >
-                <img
-                  src={carouselIngredients.image}
-                  alt={`Ingredient: ${carouselIngredients.name}`}
-                  className="ingredient-image"
-                  draggable="true"
-                  onDragStart={(e) => handleDragStart(e, carouselIngredients)}
-                />{" "}
-              </div>
+                {carouselIngredients
+                  .slice(currentSlide, currentSlide + 3)
+                  .map((carouselIngredients, index) => (
+                    // <div key={index} className="image-slide">
+                    <div
+                      key={carouselIngredients.id}
+                      className="ingredient-slide"
+                      onDragOver={(e) => handleDragOver(e)} // Attach handleDragOver as an event handler
+                      onDrop={(e) => handleDrop(e, carouselIngredients)} // Attach handleDrop as an event handler
+                      onClick={() => handleIngredientClick(carouselIngredients)
+                      } // Added the onClick handler for the ingredient slide
+                    >
+                      <img
+                        src={carouselIngredients.image}
+                        alt={`Ingredient: ${carouselIngredients.name}`}
+                        className="ingredient-image"
+                        draggable="true"
+                        onDragStart={(e) => handleDragStart(e, carouselIngredients)}
+                      />{" "}
+                      
+                    </div>
+              
             ))}
-        </div>
+
         <button
           onClick={handleNext}
-
+          className="Pagnation"
+          
           disabled={currentSlide === carouselIngredients.length - 3}
-        >
+          >
           Next
         </button>
+            </div>
+          </div>
         <p className="page-count">
           Page {Math.floor(currentSlide / 3) + 1} of {totalPages}
         </p>
        
-      </>
     </div>
+      </>
   );
 };
 
