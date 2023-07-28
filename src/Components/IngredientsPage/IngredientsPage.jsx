@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
 import RecipeResult from "../RecipeResult/RecipeResult";
+/* REDUX IMPORTS */
+import { useDispatch } from "react-redux";
+import { setData } from "../../redux/store";
+
 import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
 
@@ -13,11 +17,11 @@ const IngredientsPage = () => {
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-
   // in order to make sure the selected cuisine renders
   const [selectedCuisine, setSelectedCuisine] = useState("");
   const [madeQuery, setMadeQuery] = useState(false);
-  // Get the location object
+  // redux dispatch
+  const dispatch = useDispatch();
 
   // Use useEffect to parse the query string whenever the location changes
   useEffect(() => {
@@ -47,19 +51,7 @@ const IngredientsPage = () => {
     }
   };
 
-
   const handleSubmit = async () => {
-    // try {
-    //   const response = await axios.post('http://localhost:3000/create_recipe', {
-    //     cuisine: selectedCuisine,
-    //     ingredients: selectedIngredients
-    //   });
-
-    //   console.log(response.data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
-    // pass ingredients arr and cuisine string
     const options = {
       method: "POST",
       body: JSON.stringify({
@@ -82,6 +74,8 @@ const IngredientsPage = () => {
       console.log(content);
       console.log(typeof content);
       content = JSON.parse(content);
+
+      dispatch(setData(content));
       setRecipe(content);
       // setRecipeName(content.recipe_name);
       // console.log("recipe Name: ", recipeName);
@@ -178,7 +172,6 @@ const IngredientsPage = () => {
       <IngredientsList
         selectedIngredients={selectedIngredients}
         setSelectedIngredients={setSelectedIngredients}
-
         onAddIngredient={handleAddIngredient}
         inputValue={inputValue}
         setInputValue={setInputValue}
@@ -189,15 +182,15 @@ const IngredientsPage = () => {
         onDragIngredient={handleDragIngredient}
         onAddIngredient={handleAddIngredient}
         selectedIngredients={selectedIngredients}
-        setSelectedIngredients= {setSelectedIngredients}
-        handleAddIngredient= {handleAddIngredient}
+        setSelectedIngredients={setSelectedIngredients}
+        handleAddIngredient={handleAddIngredient}
       />
-      {/* <Link to="/recipe-result" onClick={handleSubmit}> */}
-      <Link onClick={handleSubmit}>
+
+      <Link to="/recipe-result" onClick={handleSubmit}>
         <button>MIX</button>
       </Link>
 
-      {madeQuery && <RecipeResult recipe={recipe} />}
+      {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
     </div>
   );
 };
