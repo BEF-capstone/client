@@ -5,8 +5,9 @@ import "./IngredientsCarousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const IngredientsCarousel = ({ carouselIngredients, onDragIngredient, setSelectedIngredients, onAddIngredient, handleAddIngredient}) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const IngredientsCarousel = ({ carouselIngredients, selectedIngredients, setSelectedIngredients}) => {
+    const maxIngredients = 5;
+    const [currentSlide, setCurrentSlide] = useState(0);
 
   /// The Drag const account so passing the information from dragging to putting it in the text box
   const handleDragStart = (event, ingredient) =>
@@ -18,23 +19,7 @@ const IngredientsCarousel = ({ carouselIngredients, onDragIngredient, setSelecte
   };
 
   // Function to handle the drop event on the carousel
-//   const handleDrop = (event, ingredient) => {
-//     event.preventDefault();
-
-//     const ingredientName = event.dataTransfer.getData("text/plain");
-//     // Call the onDragIngredient function passed as a prop with the dropped ingredient name
-
-//     onDragIngredient(ingredientName);
-
-
-//     // Add the dragged ingredient to the selectedIngredients list
-//     setSelectedIngredients((prevIngredients) => {
-//         if (prevIngredients.length >= 5) {
-//           return prevIngredients;
-//         }
-//         return [...prevIngredients, ingredientName];
-//       });
-//     }
+// git push --set-upstream origin ingredients
 
 const handleDrop = (event, ingredient) => {
     event.preventDefault();
@@ -63,22 +48,16 @@ const handleDrop = (event, ingredient) => {
   const totalPages = Math.ceil(carouselIngredients.length / 3); // Calculate total number of pages
   ///Handling click:
   const handleIngredientClick = (ingredient) => {
-    // Call the onDragIngredient function passed as a prop with the clicked ingredient name
-    console.log("success")
-    
-    onDragIngredient(ingredient.name);
-
-
-    // if (carouselIngredients.length >= maxIngredients) {
-    //     alert("You cannot enter more than 5 ingredients.");
-    //     return;
-    //   }
-    //   if (carouselIngredients.length < 5 && inputValue.trim() !== "") {
-    //     setSelectedIngredients([...carouselIngredients, inputValue]);
-    //     setInputValue("");
-    //   }
-    
-    
+      if (selectedIngredients.length >= maxIngredients) {
+          alert("You cannot add more than 5 ingredients.");
+          return;
+        }
+        
+        console.log("success")
+        setSelectedIngredients((prevIngredients) => [
+            ...prevIngredients,
+        ingredient.name,
+      ]);
 
   };
 

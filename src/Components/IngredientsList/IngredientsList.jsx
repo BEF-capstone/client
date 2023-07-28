@@ -8,6 +8,7 @@ const IngredientsList = ({
   onAddIngredient,
   inputValue,
   setInputValue,
+  handleDeleteIngredient
 }) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -15,12 +16,6 @@ const IngredientsList = ({
     }
   };
 
-  //structuring the delte function when an ingredient is added
-  const handleDeleteIngredient = (index) => {
-    const updatedIngredients = [...selectedIngredients];
-    updatedIngredients.splice(index, 1);
-    setSelectedIngredients(updatedIngredients);
-  };
 
   return (
     <div className="ingredient-textbox">

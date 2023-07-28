@@ -49,11 +49,13 @@ const CuisinePage = () => {
       {
         name: "Guatemalan",
         image:
+
           "https://www.willflyforfood.net/wp-content/uploads/2021/07/guatemalan-tostadas.jpg.webp",
       },
       {
         name: "Brazilian",
         image:
+
         "https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/v1625766316/Traditional-Brazilian-Food-MAIN/Traditional-Brazilian-Food-MAIN.jpg",
       },
       {
@@ -263,7 +265,6 @@ const CuisinePage = () => {
           "https://i0.wp.com/bestofvegancom.lightningbasecdn.com/wp-content/uploads/2022/02/ct-sierra-leone-1.jpeg?w=1280&ssl=1",
       },
 
-
     ];
 
   //Usine slice to display only the first 'cuisinesCount' cuisines
@@ -282,6 +283,21 @@ const CuisinePage = () => {
   useEffect(() => {
     setCuisines(initialCuisines.slice(0, cuisinesCount));
   }, [cuisinesCount]);
+
+
+  // Fetch data from the server when the component mounts.
+  useEffect(() => {
+    const fetchCuisines = async () => {
+      try {
+        // const response = await axios.get("/api/cuisines"); 
+        // setCuisines(response.data.slice(0, cuisinesCount));
+      } catch (error) {
+        console.error("Error fetching cuisines data: ", error);
+      }
+    };
+    fetchCuisines();
+  }, [cuisinesCount]); // Refresh the data whenever cuisinesCount changes
+
 
 
   // Fetch data from the server when the component mounts.
@@ -370,6 +386,7 @@ const CuisinePage = () => {
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
   return (
+
     <Box sx={{ backgroundColor: '#7D4E57', minHeight: "100vh", width: "100%" }}>
       <Typography
         variant="h2"
