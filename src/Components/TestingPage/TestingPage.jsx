@@ -41,7 +41,7 @@ const TestingPage = () => {
       console.log(typeof content);
       content = JSON.parse(content);
       setRecipe(content);
-      setRecipeName(content.recipe_name);
+      setRecipeName(content.recipeName);
       console.log("recipe Name: ", recipeName);
       setMadeQuery(true);
     } catch (e) {

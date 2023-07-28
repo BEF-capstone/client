@@ -5,6 +5,11 @@ import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
+import RecipeResult from "../RecipeResult/RecipeResult";
+/* REDUX IMPORTS */
+import { useDispatch } from "react-redux";
+import { setData } from "../../redux/store";
+import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
 
 
@@ -12,6 +17,11 @@ const IngredientsPage = () => {
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
+  // in order to make sure the selected cuisine renders
+  const [selectedCuisine, setSelectedCuisine] = useState("");
+  const [madeQuery, setMadeQuery] = useState(false);
+  // redux dispatch
+  const dispatch = useDispatch();
   const [errorMessage, setErrorMessage] = useState(""); // New state to store error message
   const [inputValue, setInputValue] = useState("");
   // handling the update of the inputvalue when the user types in the input field
@@ -55,6 +65,42 @@ const IngredientsPage = () => {
     }
   };
 
+
+  const handleSubmit = async () => {
+    const options = {
+      method: "POST",
+      body: JSON.stringify({
+        cuisine: selectedCuisine,
+        ingredients: selectedIngredients,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    // Make post request
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/openAi/create_recipe",
+        options
+      );
+      const data = await response.json();
+      let content = await data.choices[0].message.content;
+      console.log(content);
+      console.log(typeof content);
+      content = JSON.parse(content);
+
+      dispatch(setData(content));
+      setRecipe(content);
+      // setRecipeName(content.recipe_name);
+      // console.log("recipe Name: ", recipeName);
+      //
+      setMadeQuery(true);
+      // when madeQuery, render recipe card
+    } catch (e) {
+      console.error(e);
+    }
+  }
   // handing drag event on an ingredient in the caroseul
   const handleDragIngredient = (carouselIngredients) => {
     setSelectedIngredients([...selectedIngredients, carouselIngredients]);
@@ -158,7 +204,6 @@ const IngredientsPage = () => {
       <IngredientsList
         selectedIngredients={selectedIngredients}
         setSelectedIngredients={setSelectedIngredients}
-
         onAddIngredient={handleAddIngredient}
         inputValue={inputValue}
         handleDeleteIngredient={handleDeleteIngredient} // Pass the updated handleDeleteIngredient function to IngredientsList
@@ -174,6 +219,16 @@ const IngredientsPage = () => {
         carouselIngredients={carouselIngredients}
         onDragIngredient={handleDragIngredient}
         selectedIngredients={selectedIngredients}
+
+        setSelectedIngredients={setSelectedIngredients}
+        handleAddIngredient={handleAddIngredient}
+      />
+
+      <Link to="/recipe-result" onClick={handleSubmit}>
+        <button>MIX</button>
+      </Link>
+
+      {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
         setSelectedIngredients= {setSelectedIngredients}
         
       />

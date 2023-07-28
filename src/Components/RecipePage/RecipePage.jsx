@@ -1,6 +1,13 @@
 import React from "react";
+
+import RecipeResult from "../RecipeResult/RecipeResult";
+
 import RecipeCard from "../RecipeCard/RecipeCard";
 import WorldMap from "../WorldMap/WorldMap";
+
+/* Redux Imports */
+import { useSelector } from "react-redux";
+
 import "./RecipePage.css";
 
 const RecipePage = () => {
@@ -52,15 +59,19 @@ const RecipePage = () => {
 
   const user = "Efren";
 
+  const recipeData = useSelector((state) => state.data);
+  console.log(recipeData);
+
   return (
     <div className="recipe-page">
       <h1>Recipe Page</h1>
 
       <h2>Yes Chef {user}!</h2>
       <div className="recipe-display">
-        <RecipeCard
+        <RecipeResult
           className="recipe_card"
-          recipe={JSON.stringify(recipes[1])}
+          // recipe={JSON.stringify(recipes[1])}
+          recipe={recipeData}
         />
       </div>
     </div>
