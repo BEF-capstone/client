@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./ProfilePage.css";
 import defaultProfilePic from "../defaultProfilePic/defaultProfilePic.jpg";
 
-const ProfilePage = ( {handleLogout}) => {
+const ProfilePage = ({ handleLogout }) => {
   const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the default profile picture
 
   const handlePictureUpload = (event) => {
@@ -18,40 +18,38 @@ const ProfilePage = ( {handleLogout}) => {
   };
 
   return (
-
     <div className="ProfilePage">
       <h1>Profile</h1>
       <div className="imgContainer">
-      <div className="ProfilePicWrapper">
-        {profilePic && <img className="ProfilePicImage" src={profilePic} alt="Profile" />}
-      </div>
-        <h2 className= "name">Chef BEF</h2>
+        <div className="ProfilePicWrapper">
+          {profilePic && (
+            <img className="ProfilePicImage" src={profilePic} alt="Profile" />
+          )}
+        </div>
+        <h2 className="name">Chef BEF</h2>
         <label htmlFor="fileUpload" className="customFileUpload">
           Upload Profile Picture
         </label>
         <h3 className="fullname">Full Name: </h3>
         <h3 className="email">Email: </h3>
         <h5>
-        <Link to="/" onClick={handleLogout}>
-        Logout
-        </Link>
+          <Link to="/" onClick={handleLogout}>
+            Logout
+          </Link>
         </h5>
-
-
 
         <input
           id="fileUpload"
           type="file"
-          id="file-upload"
           accept="image/*"
           capture="camera"
           onChange={handlePictureUpload}
-          style={{ display: 'none' }} // hide the default input
+          style={{ display: "none" }} // hide the default input
         />
-    </div>
+      </div>
 
       <div>
-        <ul >
+        <ul>
           <p>
             <Link to="/favorites"> ❤️ Favorites</Link>
           </p>
@@ -61,11 +59,10 @@ const ProfilePage = ( {handleLogout}) => {
           <p>
             <Link to="/grocery-list"> 🛒 Grocery List</Link>
           </p>
-        </container>
-      </section>
-    </>
+        </ul>
+      </div>
+    </div>
   );
 };
 
 export default ProfilePage;
-

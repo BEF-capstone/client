@@ -8,7 +8,7 @@ import { Link as RouterLink } from "react-router-dom";
 const CuisinePage = () => {
   // Define state variables using the useState hook
   const [searchInput, setSearchInput] = useState(""); // State variable for search input
-  const [selectedCuisine, setSelectedCuisine] = useState(""); 
+  const [selectedCuisine, setSelectedCuisine] = useState("");
 
   //State variable for displayed cuisines count, initially set to 9
   const [cuisinesCount, setCuisinesCount] = useState(9);
@@ -39,24 +39,21 @@ const CuisinePage = () => {
       {
         name: "Ethiopian",
         image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYIims8OA_L3VZP-vEFYWul5RzHswxKs_sIA&usqp=CAU",
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYIims8OA_L3VZP-vEFYWul5RzHswxKs_sIA&usqp=CAU",
       },
       {
         name: "Palestinian",
-        image:
-          "https://facts.net/wp-content/uploads/2022/07/Arab-Cuisine.jpg",
+        image: "https://facts.net/wp-content/uploads/2022/07/Arab-Cuisine.jpg",
       },
       {
         name: "Guatemalan",
         image:
-
           "https://www.willflyforfood.net/wp-content/uploads/2021/07/guatemalan-tostadas.jpg.webp",
       },
       {
         name: "Brazilian",
         image:
-
-        "https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/v1625766316/Traditional-Brazilian-Food-MAIN/Traditional-Brazilian-Food-MAIN.jpg",
+          "https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/v1625766316/Traditional-Brazilian-Food-MAIN/Traditional-Brazilian-Food-MAIN.jpg",
       },
       {
         name: "Indonesian",
@@ -188,11 +185,13 @@ const CuisinePage = () => {
         name: "Somali",
         image:
           "https://travelfoodatlas.com/wp-content/uploads/2022/11/Sambusa.jpg.webp",
-      },{
+      },
+      {
         name: "Danish",
         image:
           "https://www.visitdenmark.com/sites/visitdenmark.com/files/styles/highlight_big/public/2019-02/Wienerbr%C3%B8d_24315.jpg?h=2c9c0a85&itok=f3ibzz6W",
-      },{
+      },
+      {
         name: "Nigerian",
         image:
           "https://www.willflyforfood.net/wp-content/uploads/2021/06/nigerian-food-amala-and-ewedu.jpg.webp",
@@ -206,7 +205,8 @@ const CuisinePage = () => {
         name: "Peruvian",
         image:
           "https://feastio.com/wp-content/uploads/2022/12/Aji-de-gallina.jpg",
-      },{
+      },
+      {
         name: "Kenyan",
         image:
           "https://www.intrepidtravel.com/adventures/wp-content/uploads/2022/05/Kenya-Nyama-Choma-sharing-plate-traditional-dish-1320191333-ss-800x450-1.jpg",
@@ -235,36 +235,42 @@ const CuisinePage = () => {
         name: "Zambian",
         image:
           "https://www.chefspencil.com/wp-content/uploads/Ifinkubala.jpg.webp",
-      },{
+      },
+      {
         name: "Panamanian",
         image:
           "https://www.willflyforfood.net/wp-content/uploads/2022/12/panamanian-food-carimanolas-de-carne.jpg.webp",
-      },{
+      },
+      {
         name: "Albanian",
         image:
           "https://nomadparadise.com/wp-content/uploads/2020/06/albanian_food_09.jpg.webp",
-      },{
+      },
+      {
         name: "Algerian",
         image:
           "https://www.veryhungrynomads.com/wp-content/uploads/2022/03/Chakhchoukha-food-of-algeria.jpg",
-      },{
+      },
+      {
         name: "Colombian",
         image:
           "https://www.tastingtable.com/img/gallery/13-popular-colombian-foods-you-have-to-try-at-least-once/bandeja-paisa-1660143303.webp",
-      },{
+      },
+      {
         name: "Tanzanian",
         image:
           "https://www.chefspencil.com/wp-content/uploads/Samaki-wa-Kupaka.jpg.webp",
-      },{
+      },
+      {
         name: "Malaysian",
         image:
           "https://cdn.tasteatlas.com//images/dishes/38d76c6f763345919779e65c33aad430.jpg?w=905&h=510",
-      },{
+      },
+      {
         name: "Sierra Leonean",
         image:
           "https://i0.wp.com/bestofvegancom.lightningbasecdn.com/wp-content/uploads/2022/02/ct-sierra-leone-1.jpeg?w=1280&ssl=1",
       },
-
     ];
 
   //Usine slice to display only the first 'cuisinesCount' cuisines
@@ -284,12 +290,11 @@ const CuisinePage = () => {
     setCuisines(initialCuisines.slice(0, cuisinesCount));
   }, [cuisinesCount]);
 
-
   // Fetch data from the server when the component mounts.
   useEffect(() => {
     const fetchCuisines = async () => {
       try {
-        // const response = await axios.get("/api/cuisines"); 
+        // const response = await axios.get("/api/cuisines");
         // setCuisines(response.data.slice(0, cuisinesCount));
       } catch (error) {
         console.error("Error fetching cuisines data: ", error);
@@ -298,13 +303,11 @@ const CuisinePage = () => {
     fetchCuisines();
   }, [cuisinesCount]); // Refresh the data whenever cuisinesCount changes
 
-
-
   // Fetch data from the server when the component mounts.
   useEffect(() => {
     const fetchCuisines = async () => {
       try {
-        // const response = await axios.get("/api/cuisines"); 
+        // const response = await axios.get("/api/cuisines");
         // setCuisines(response.data.slice(0, cuisinesCount));
       } catch (error) {
         console.error("Error fetching cuisines data: ", error);
@@ -313,13 +316,11 @@ const CuisinePage = () => {
     fetchCuisines();
   }, [cuisinesCount]); // Refresh the data whenever cuisinesCount changes
 
-
-
   // Fetch data from the server when the component mounts.
   useEffect(() => {
     const fetchCuisines = async () => {
       try {
-        // const response = await axios.get("/api/cuisines"); 
+        // const response = await axios.get("/api/cuisines");
         // setCuisines(response.data.slice(0, cuisinesCount));
       } catch (error) {
         console.error("Error fetching cuisines data: ", error);
@@ -327,7 +328,6 @@ const CuisinePage = () => {
     };
     fetchCuisines();
   }, [cuisinesCount]); // Refresh the data whenever cuisinesCount changes
-
 
   // The event handler for the search input field change
   const handleSearchInputChange = (event) => {
@@ -386,8 +386,7 @@ const CuisinePage = () => {
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
   return (
-
-    <Box sx={{ backgroundColor: '#7D4E57', minHeight: "100vh", width: "100%" }}>
+    <Box sx={{ backgroundColor: "#7D4E57", minHeight: "100vh", width: "100%" }}>
       <Typography
         variant="h2"
         gutterBottom
@@ -417,22 +416,22 @@ const CuisinePage = () => {
         }}
       /> */}
       <TextField
-  value={searchInput}
-  onChange={handleSearchInputChange}
-  label="Look for cuisine here..."
-  variant="standard"
-  sx={{
-    mb: 5,
-    mt: 3,
-    width: { xs: '90%', sm: '75%', md: '60%', lg: '40%', xl: '40%' }, 
-    "& .MuiInput-underline:after": {
-      borderBottom: "1px solid black",
-    },
-    "& .MuiInput-underline:before": {
-      borderBottom: "1px solid black",
-    },
-  }}
-/>
+        value={searchInput}
+        onChange={handleSearchInputChange}
+        label="Look for cuisine here..."
+        variant="standard"
+        sx={{
+          mb: 5,
+          mt: 3,
+          width: { xs: "90%", sm: "75%", md: "60%", lg: "40%", xl: "40%" },
+          "& .MuiInput-underline:after": {
+            borderBottom: "1px solid black",
+          },
+          "& .MuiInput-underline:before": {
+            borderBottom: "1px solid black",
+          },
+        }}
+      />
 
       <RouterLink to={`/ingredients?cuisine=`}>
         <Typography
@@ -441,6 +440,7 @@ const CuisinePage = () => {
           sx={{
             mb: 10,
             mt: -3,
+            ml: 85,
             color: "white",
             fontFamily: "Italiana",
             fontSize: 20,

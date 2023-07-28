@@ -25,7 +25,7 @@
 //               <br>
 //               </br> */}
 //                    <h1 className="typewriter-animation">Chef Compass </h1>
-        
+
 //                 <p className="erasing-animation">More Eating.  Less thinking.</p>
 //                 {/* <p erasing-animation> Stirring The Way</p> */}
 //             </div>
@@ -61,14 +61,16 @@ import Pics from "../Pics/Bowl";
 const Landing = () => {
   return (
     <>
-      <div className="landing"> {/* This is the common parent */}
+      <div className="landing">
+        {" "}
+        {/* This is the common parent */}
         <video autoPlay muted loop>
           <source src={LandingVideo} type="video/mp4" />
         </video>
         <div name="/" className="typewriter-text">
-          <div className='titles'>
+          <div className="titles">
             <h1 className="typewriter-animation">Chef Compass </h1>
-            <p className="erasing-animation">More Eating.  Less thinking.</p>
+            <p className="erasing-animation">More Eating. Less thinking.</p>
           </div>
         </div>
         <div className="scroll">Scroll</div>
@@ -90,4 +92,3 @@ const Landing = () => {
 };
 
 export default Landing;
-
