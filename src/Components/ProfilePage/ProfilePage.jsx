@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ProfilePage.css";
-
 import defaultProfilePic from "../defaultProfilePic/defaultProfilePic.jpg";
-const ProfilePage = () => {
+
+const ProfilePage = ( {handleLogout}) => {
   const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the default profile picture
 
   const handlePictureUpload = (event) => {
@@ -18,35 +18,40 @@ const ProfilePage = () => {
   };
 
   return (
-    <> 
-    <section className="full">
+
+    <div className="ProfilePage">
       <h1>Profile</h1>
-      <div className="img">
-        {profilePic && (
-          <img src={profilePic} className="ProfilePicImage" alt="Profile" />
-        )}
-        <h1> Chef BEF </h1>
-        {/* <label htmlFor="file-upload" className="custom-file-upload">
-            Upload Profile Picture
-          </label> */}
+      <div className="imgContainer">
+      <div className="ProfilePicWrapper">
+        {profilePic && <img className="ProfilePicImage" src={profilePic} alt="Profile" />}
+      </div>
+        <h2 className= "name">Chef BEF</h2>
+        <label htmlFor="fileUpload" className="customFileUpload">
+          Upload Profile Picture
+        </label>
+        <h3 className="fullname">Full Name: </h3>
+        <h3 className="email">Email: </h3>
+        <h5>
+        <Link to="/" onClick={handleLogout}>
+        Logout
+        </Link>
+        </h5>
+
+
+
         <input
+          id="fileUpload"
           type="file"
           id="file-upload"
           accept="image/*"
           capture="camera"
           onChange={handlePictureUpload}
-          />
-          </div>
-      </section>
+          style={{ display: 'none' }} // hide the default input
+        />
+    </div>
 
-      <section className="fullInfo">
-        <div className="userInfo">
-          <h2> Full Name: </h2>
-          <h2> Nickname: </h2>
-          <h2> Email: </h2>
-        </div>
-        {/* <h2>Navigation</h2> */}
-        <container className="links">
+      <div>
+        <ul >
           <p>
             <Link to="/favorites"> ❤️ Favorites</Link>
           </p>
@@ -63,3 +68,4 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+
