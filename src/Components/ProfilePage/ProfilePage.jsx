@@ -18,6 +18,7 @@ const ProfilePage = ( {handleLogout}) => {
   };
 
   return (
+
     <div className="ProfilePage">
       <h1>Profile</h1>
       <div className="imgContainer">
@@ -37,9 +38,11 @@ const ProfilePage = ( {handleLogout}) => {
         </h5>
 
 
+
         <input
           id="fileUpload"
           type="file"
+          id="file-upload"
           accept="image/*"
           capture="camera"
           onChange={handlePictureUpload}
@@ -50,17 +53,17 @@ const ProfilePage = ( {handleLogout}) => {
       <div>
         <ul >
           <p>
-            <Link to="/favorites">Favorites</Link>
+            <Link to="/favorites"> ❤️ Favorites</Link>
           </p>
           <p>
-            <Link to="/recipe-book">Recipe Book</Link>
+            <Link to="/recipe-book"> 📖 Recipe Book</Link>
           </p>
           <p>
-            <Link to="/grocery-list">Grocery List</Link>
+            <Link to="/grocery-list"> 🛒 Grocery List</Link>
           </p>
-        </ul>
-      </div>
-    </div>
+        </container>
+      </section>
+    </>
   );
 };
 

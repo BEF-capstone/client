@@ -1,20 +1,45 @@
 
 .Page{
-  background-color: #FEFCF0}
+  background-color: #c9c6b4}
+
+  .banner2 p{
+    font-size: 200%;
+  }
+
+  .carousel-container {
+    position: relative;
+  }
+  
+.back{
+  display: flex;
+  justify-content: left;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+
+
+
+
 
 .ChosenCusine{
   font-family: 'Italiana';
   font-size: 200%;
   font-weight: bold;
+  color: black;
+}
+.words{
+  font-family: 'Italiana';
+  font-size: 200%;
+  font-weight: bold;
   padding-top: 4%;
-  padding: 4%,
+  padding: 4%;
+  color: black;
 }
 .banner{
     background-color: #241023;
     padding: 0.4%;
-
     color: white;
-
 }
 
 .image-carousel-container {
@@ -50,9 +75,12 @@
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(160, 28, 28, 0.1);
   background-color: #f9f9f9;
+  padding: 40%;
+
 }
+
 
 .image-slide img {
   max-width: 100%;
@@ -65,125 +93,20 @@
   margin-top: 10px;
 }
 
-/* .form-container {
-  position: absolute;
-  bottom: 250px;
-  left: 320px;
-  max-width: 400px;
-  height: 10vh;
-  padding: 20px;
-}
 
-.form-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #412020;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  color: #fff;
-}
 
-.bowl-image {
-  position: absolute;
-  bottom: 190px;
-  left: 200px;
-  width: 500px;
-  height: 400px;
-}
-
-.return {
+.ingredient-slide {
   position: relative;
-  z-index: 2;
-}
-
-p {
-  color: black;
-  font-weight: bold;
-  text-decoration: underline;
-  text-align: center;
-}
-
-.return {
-  position: relative;
-  z-index: 2;
-}
-
-p {
-  color: black;
-  font-weight: bold;
-  text-decoration: underline;
-  text-align: center;
-}
-
-.return {
   display: flex;
-  justify-content: flex-end;
-  align-items: right;
-  height: 100vh;
-  padding: 20px;
-}
-
-.form-container input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.form-container button {
-  width: 100%;
-  padding: 10px;
-
-  background-color: #412020;
-  border: none;
-  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  background-color: whitesmoke; /* Red fill color */
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
-.form-container button:disabled {
-  cursor: not-allowed;
+.ingredient-slide:hover {
+  background-color: blue; /* Blue hover color */
 }
-
-.ingredients-list {
-  position: absolute;
-  bottom: 500px;
-  left: 955px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-}
-
-.ingredients-list p {
-  margin-bottom: 5px;
-  font-weight: bold;
-  text-decoration: underline;
-  text-align: center;
-  color: black;
-}
-
-.return a button {
-  position: absolute;
-  bottom: 350px;
-  left: 1000px;
-  padding: 10px;
-  background-color: transparent;
-  border: 3px solid #3b945e;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  color: #3b945e;
-  text-decoration: none;
-}
-
-.ingredient_title {
-  font-family: "Italiana";
-  font-size: 40px;
-  margin-top: 60px;
-  margin-right: 290px;
-}
- */

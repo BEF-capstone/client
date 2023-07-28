@@ -1,3 +1,34 @@
+
+.ProfilePicImage {
+    width: 50%; /* You can adjust this value as needed */
+    height: 50%; /* You can adjust this value as needed */
+    border-radius: 50%;
+  }
+
+  .links{
+    text-align: center;
+  }
+
+
+  .fullInfo{
+
+    align-items: right;
+  }
+  .full{
+    align-items: left;
+     
+  }
+
+  .file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+
   /* .imgContainer {
     display: flex;
     flex-direction: column;
@@ -147,3 +178,4 @@ ul {
     padding-left: 20px;
   }
 }
+

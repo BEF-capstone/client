@@ -129,16 +129,30 @@ const IngredientsPage = () => {
 
 
   return (
-    <div className="Page">
+    <>
+
+ <div className="Page">
            {/* seperation banner  */}
-           <div className="banner">
-        <h1>Let's Get Cooking!</h1>
-        <p> To get started, input 5 ingredients or click/drag from common items from the carsouel into the textbox! </p>
+      <div className="banner">
+        <h1 classsname= "words">Let's Get Cooking!</h1>
+     
       </div>
+      <div className="back">
+      <Link to="/create-recipe">
+        <button >Back</button>
+      </Link> 
+      </div>
+      
       {/* seperation banner */}
       <div className="ChosenCusine">
         Chosen Cuisine: {selectedCuisine || ""}
       </div>
+
+      <div className="banner2">
+
+<p className="words"> Add 5 ingredients or click/drag from the carsouel into the textbox! </p>
+
+</div>
       
       {/* renders the ingredientcarousel components by passing its props   */}
       <IngredientsList
@@ -166,9 +180,11 @@ const IngredientsPage = () => {
 
 
       <Link to="/recipe-result">
-        <button>MIX</button>
+        <button className="MIX">MIX</button>
       </Link>
     </div>
+    </>
+
   );
 };
 
