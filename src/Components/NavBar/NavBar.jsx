@@ -15,6 +15,7 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+// import makeStyles from '@mui/core/styles'
 
 export default function NavBar({ isLoggedIn, handleLogout }) {
   // Using React's useState hook to initialize and handle the state of anchorEl and mobileOpen
@@ -44,6 +45,15 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
     }
     setAnchorEl(null);
   };
+
+  // const useStyles = makeStyles(theme => ({
+  //   root: {
+  //     boxShadow: "none",
+  //     backgroundColor: "#cccccc" 
+  //   } 
+  // }));
+
+  // const classes = useStyles()
 
   // Function to render different links based on whether the user is logged in or not
   const renderLinks = () => {
@@ -194,7 +204,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#6B0504",
+          backgroundColor: "#7D4E57",
           boxShadow: "none",
           width: "100%",
           margin: 0,

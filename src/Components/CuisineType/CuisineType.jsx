@@ -25,7 +25,7 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
           gap: 3,
         }}
       >
-        {cuisines.map((cuisine) => (
+        {cuisines.filter(Boolean).map((cuisine) => (
           <RouterLink
             key={cuisine.name}
             to={`/ingredients?cuisine=${cuisine.name}`}
@@ -37,6 +37,7 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
                 cursor: "pointer",
                 padding: 2,
                 height: '250px',
+                boxShadow: 10,
                 backgroundImage: `url(${cuisine.image})`, // add the image as a background
                 backgroundSize: 'cover', // make sure it covers the whole card
                 opacity: 0.8,

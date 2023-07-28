@@ -9,9 +9,9 @@ import RecipeResult from "../RecipeResult/RecipeResult";
 /* REDUX IMPORTS */
 import { useDispatch } from "react-redux";
 import { setData } from "../../redux/store";
-
 import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
+
 
 const IngredientsPage = () => {
   // setting limitation to the amount of ingredients added
@@ -22,34 +22,49 @@ const IngredientsPage = () => {
   const [madeQuery, setMadeQuery] = useState(false);
   // redux dispatch
   const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState(""); // New state to store error message
+  const [inputValue, setInputValue] = useState("");
+  // handling the update of the inputvalue when the user types in the input field
+
+  
+/////////////////////////////////////////////////////////
+// in order to make sure the selected cuisine renders 
+
+  const [selectedCuisine, setSelectedCuisine] = useState("");
+
+  // Get the location object
+  const location = useLocation();
 
   // Use useEffect to parse the query string whenever the location changes
   useEffect(() => {
     const values = queryString.parse(location.search);
     setSelectedCuisine(values.cuisine);
-    console.log(selectedCuisine);
-    console.log(selectedIngredients);
   }, [location]);
+/////////////////////////////////////////////////////////
 
-  const [inputValue, setInputValue] = useState("");
-  const [recipe, setRecipe] = useState({});
-  // handling the update of the inputvalue when the user types in the input field
+
 
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
-  };
+    setErrorMessage("");
 
+  };
+  
   // adding a new ingredient to the selected ingredient list
   const handleAddIngredient = () => {
     if (selectedIngredients.length >= maxIngredients) {
-      alert("You cannot enter more than 5 ingredients.");
+      setErrorMessage("You cannot enter more than 5 ingredients.");
+      console.log("this is an error")
       return;
     }
     if (selectedIngredients.length < 5 && inputValue.trim() !== "") {
       setSelectedIngredients([...selectedIngredients, inputValue]);
       setInputValue("");
+      setErrorMessage("");
+
     }
   };
+
 
   const handleSubmit = async () => {
     const options = {
@@ -85,16 +100,28 @@ const IngredientsPage = () => {
     } catch (e) {
       console.error(e);
     }
+  }
+  // handing drag event on an ingredient in the caroseul
+  const handleDragIngredient = (carouselIngredients) => {
+    setSelectedIngredients([...selectedIngredients, carouselIngredients]);
   };
 
+
+  const handleDeleteIngredient = (index) => {
+    const updatedIngredients = [...selectedIngredients];
+    updatedIngredients.splice(index, 1);
+    setSelectedIngredients(updatedIngredients);
+    setErrorMessage(""); // Clear the error message when an ingredient is removed
+  };
   // Ingredients carousel and related functions
+
+
   const carouselIngredients = [
     {
       id: "1",
       name: "broccoli",
       image:
-        "https://chatelaine.com/wp-content/uploads/2009/06/jamie-oliver-broccoli-salad-square.jpg",
-    },
+"https://chatelaine.com/wp-content/uploads/2009/06/jamie-oliver-broccoli-salad-square.jpg",    },
     {
       id: "2",
       name: "pasta",
@@ -146,42 +173,53 @@ const IngredientsPage = () => {
     // Add more ingredients with their names and image paths here
   ];
 
-  // handing drag event on an ingredient in the caroseul
-
-  const handleDragIngredient = (carouselIngredient) => {
-    setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
-  };
 
   return (
-    <div className="Page">
-      {/* seperation banner  */}
+    <>
+
+ <div className="Page">
+           {/* seperation banner  */}
       <div className="banner">
-        <h1>Let's Get Cooking!</h1>
-        <p>
-          {" "}
-          To get started, input 5 ingredients or click/drag from common items
-          from the carsouel into the textbox!{" "}
-        </p>
+        <h1 classsname= "words">Let's Get Cooking!</h1>
+     
       </div>
+      <div className="back">
+      <Link to="/create-recipe">
+        <button >Back</button>
+      </Link> 
+      </div>
+      
       {/* seperation banner */}
       <div className="ChosenCusine">
         Chosen Cuisine: {selectedCuisine || ""}
       </div>
 
+      <div className="banner2">
+
+<p className="words"> Add 5 ingredients or click/drag from the carsouel into the textbox! </p>
+
+</div>
+      
       {/* renders the ingredientcarousel components by passing its props   */}
       <IngredientsList
         selectedIngredients={selectedIngredients}
         setSelectedIngredients={setSelectedIngredients}
         onAddIngredient={handleAddIngredient}
         inputValue={inputValue}
+        handleDeleteIngredient={handleDeleteIngredient} // Pass the updated handleDeleteIngredient function to IngredientsList
+
         setInputValue={setInputValue}
-        // Pass the handleDeleteIngredient function to IngredientsList
       />
+        {errorMessage && (
+                <Typography variant="body2" color="error" sx={{ mt: 1 }}>
+                  {errorMessage}
+                </Typography>
+              )}
       <IngredientsCarousel
         carouselIngredients={carouselIngredients}
         onDragIngredient={handleDragIngredient}
-        onAddIngredient={handleAddIngredient}
         selectedIngredients={selectedIngredients}
+
         setSelectedIngredients={setSelectedIngredients}
         handleAddIngredient={handleAddIngredient}
       />
@@ -191,7 +229,17 @@ const IngredientsPage = () => {
       </Link>
 
       {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
+        setSelectedIngredients= {setSelectedIngredients}
+        
+      />
+
+
+      <Link to="/recipe-result">
+        <button className="MIX">MIX</button>
+      </Link>
     </div>
+    </>
+
   );
 };
 

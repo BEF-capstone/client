@@ -8,6 +8,7 @@ const IngredientsList = ({
   onAddIngredient,
   inputValue,
   setInputValue,
+  handleDeleteIngredient
 }) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -15,12 +16,6 @@ const IngredientsList = ({
     }
   };
 
-  //structuring the delte function when an ingredient is added
-  const handleDeleteIngredient = (index) => {
-    const updatedIngredients = [...selectedIngredients];
-    updatedIngredients.splice(index, 1);
-    setSelectedIngredients(updatedIngredients);
-  };
 
   return (
     <div className="ingredient-textbox">
@@ -30,7 +25,7 @@ const IngredientsList = ({
       <ul>
         {selectedIngredients.map((ingredient, index) => (
           <>
-            <p key={index}>{ingredient}</p>
+            <p className="list" key={index}>{ingredient}</p>
 
             <button className="Delete-button" onClick={() => handleDeleteIngredient(index)}>
               <p> x </p>
@@ -47,11 +42,11 @@ const IngredientsList = ({
         placeholder="Enter an ingredient"
         style={{
           border: "none",
-          outline: "none",
+          outline: "black",
           fontSize: "16px",
           color: "black",
           width: "100%",
-          borderBottom: "1px solid #412020",
+          borderBottom: "1px solid white",
           background: "transparent",
         }}
       />
@@ -60,11 +55,12 @@ const IngredientsList = ({
         style={{
           padding: "8px 16px",
           background: "transparent",
-          color: "#3B945E",
-          border: "3px solid #3B945E",
+          color: "black",
+          border: "3px solid #white",
           borderRadius: "5px",
+          borderColor: "white",
           fontSize: "16px",
-          cursor: "pointer",
+          cursor: "pointer" ,
           marginTop: 20,
         }}
       >
