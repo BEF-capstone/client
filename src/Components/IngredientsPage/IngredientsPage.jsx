@@ -61,7 +61,6 @@ const IngredientsPage = () => {
   };
 
 
-
   const handleDeleteIngredient = (index) => {
     const updatedIngredients = [...selectedIngredients];
     updatedIngredients.splice(index, 1);
