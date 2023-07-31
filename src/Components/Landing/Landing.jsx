@@ -27,15 +27,15 @@ const Landing = () => {
         <Hero />
       </div> */}
       <Hero />
-      <div className="Pages">
+      {/* <div className="Pages">
         <About />
-      </div>
+      </div> */}
       <div className="Pages">
         <HowTo />
       </div>
-      <div className="Bowl">
+      {/* <div className="Bowl">
         <Pics />
-      </div>
+      </div> */}
     </>
   );
 };

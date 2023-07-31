@@ -57,12 +57,12 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <ScrollLink to="about" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "cursive",
+                fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 25,
                 fontWeight: "bold",
-                left: -510,
-                top: 15
+                left: -770,
+                top: 10
               }}
             >
               About
@@ -71,26 +71,26 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <ScrollLink to="how-to" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "cursive",
+                fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 25,
                 fontWeight: "bold",
-                left: -470,
-                top: 15
+                left: -670,
+                top: 10
               }}
             >
-              How to
+              How To
             </MenuItem>
           </ScrollLink>
           <ScrollLink to="contact" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "cursive",
+                fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 25,
                 fontWeight: "bold",
-                left: -430,
-                top: 15
+                left: -570,
+                top: 10
               }}
             >
               Contact
@@ -101,12 +101,12 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <Link to="/create-recipe">
             <MenuItem
               sx={{
-                fontFamily: "cursive",
+                fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 25,
                 fontWeight: "bold",
-                left: -390,
-                top: 15
+                left: -470,
+                top: 10
               }}
             >
               Mix
@@ -148,12 +148,12 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <ScrollLink to="about" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "cursive",
+                fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 25,
                 fontWeight: "bold",
                 left: -510,
-                top: 15
+                top: 10
               }}
             >
               About
@@ -162,19 +162,19 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <ScrollLink to="how-to" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "Italiana",
+                fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 20,
                 fontWeight: "bold",
               }}
             >
-              How to
+              How To
             </MenuItem>
           </ScrollLink>
           <ScrollLink to="contact" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "Italiana",
+                fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 20,
                 fontWeight: "bold",
@@ -186,7 +186,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <Link to="/authenticate">
             <MenuItem
               sx={{
-                fontFamily: "Italiana",
+                fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 20,
                 fontWeight: "bold",
@@ -205,7 +205,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#474b4f",
+          backgroundColor: "#eabd0b",
           boxShadow: "none",
           width: "100%",
           margin: 0,
@@ -239,7 +239,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
               <Link to="/authenticate">
                 <MenuItem
                   sx={{
-                    fontFamily: "Italiana",
+                    fontFamily: "Times New Roman",
                     color: "white",
                     fontSize: 20,
                     fontWeight: "bold",
@@ -257,7 +257,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
               <ScrollLink to="about" smooth={true}>
                 <MenuItem
                   sx={{
-                    fontFamily: "cursive",
+                    fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 25,
                 fontWeight: "bold",
@@ -271,7 +271,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
               <ScrollLink to="how-to" smooth={true}>
                 <MenuItem
                   sx={{
-                    fontFamily: "Italiana",
+                    fontFamily: "Times New Roman",
                     color: "white",
                     fontSize: 20,
                     fontWeight: "bold",
@@ -283,7 +283,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
               <ScrollLink to="contact" smooth={true}>
                 <MenuItem
                   sx={{
-                    fontFamily: "Italiana",
+                    fontFamily: "Times New Roman",
                     color: "white",
                     fontSize: 20,
                     fontWeight: "bold",
@@ -295,7 +295,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
               <Link to="/authenticate">
                 <MenuItem
                   sx={{
-                    fontFamily: "Italiana",
+                    fontFamily: "Times New Roman",
                     color: "white",
                     fontSize: 20,
                     fontWeight: "bold",
@@ -394,12 +394,12 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                 <Link to="/create-recipe">
                   <MenuItem
                     sx={{
-                      fontFamily: "cursive",
+                      fontFamily: "Times New Roman",
                       color: "white",
                       fontSize: 25,
                       fontWeight: "bold",
-                      left: -510,
-                      top: 15
+                      left: -600,
+                      top: 10
                     }}
                   >
                     Mix
@@ -408,12 +408,12 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                 <Link to="/favorites">
                   <MenuItem
                     sx={{
-                      fontFamily: "cursive",
+                      fontFamily: "Times New Roman",
                 color: "white",
                 fontSize: 25,
                 fontWeight: "bold",
-                left: -470,
-                top: 15
+                left: -540,
+                top: 10
                     }}
                   >
                     Favorites
@@ -422,10 +422,12 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                 <Link to="/recipe-book">
                   <MenuItem
                     sx={{
-                      fontFamily: "Italiana",
+                      fontFamily: "Times New Roman",
                       color: "white",
-                      fontSize: 20,
+                      fontSize: 25,
                       fontWeight: "bold",
+                      right: 480,
+                      top:10,
                     }}
                   >
                     Recipe Book
@@ -436,8 +438,10 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                     sx={{
                       fontFamily: "Italiana",
                       color: "white",
-                      fontSize: 20,
+                      fontSize: 25,
                       fontWeight: "bold",
+                      right: 440,
+                      top: 10,
                     }}
                   >
                     Grocery List
