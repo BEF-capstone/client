@@ -11,6 +11,8 @@ const StyledBox = styled(Box)(({ theme }) => ({
   height: '100vh',
 }));
 
+// Testing merge
+
 const Hero = () => {
   return (
     <StyledBox>
