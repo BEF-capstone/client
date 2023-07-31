@@ -394,27 +394,6 @@ const CuisinePage = () => {
       >
         Select Cuisine
       </Typography>
-      {/* "#9A9B73" */}
-
-      {/* <TextField
-        value={searchInput}
-        onChange={handleSearchInputChange}
-        label="Look for cuisine here..."
-        variant="standard"
-        sx={{
-          mb: 5,
-          mt: 3,
-          width: "500px",
-          "& .MuiInput-underline:after": {
-            // This selector targets the underline in the "after" pseudo-element (which is active during focus)
-            borderBottom: "1px solid black", // Change this color to the color you want for the underline
-          },
-          "& .MuiInput-underline:before": {
-            // This selector targets the underline in the "before" pseudo-element (which is the default state)
-            borderBottom: "1px solid black", // Change this color to the color you want for the underline
-          },
-        }}
-      /> */}
       <TextField
         value={searchInput}
         onChange={handleSearchInputChange}
@@ -440,7 +419,7 @@ const CuisinePage = () => {
           sx={{
             mb: 10,
             mt: -3,
-            ml: 85,
+            ml: 73,
             color: "white",
             fontFamily: "Italiana",
             fontSize: 20,
