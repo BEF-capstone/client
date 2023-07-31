@@ -12,7 +12,7 @@ import {
 
 import { DateTime } from "luxon";
 
-const RecipeCard = () => {
+const RecipeCard = ({ recipe }) => {
   // recipes is dummy data, should make request from openAi-api
   const recipes = [
     {
@@ -59,7 +59,7 @@ const RecipeCard = () => {
       ],
     },
   ];
-  let recipe = recipes[0];
+  // let recipe = recipes[0];
 
   return (
     <div>
