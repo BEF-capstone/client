@@ -20,9 +20,8 @@ const IngredientsPage = () => {
   const [inputValue, setInputValue] = useState("");
   // handling the update of the inputvalue when the user types in the input field
 
-  
-/////////////////////////////////////////////////////////
-// in order to make sure the selected cuisine renders
+  /////////////////////////////////////////////////////////
+  // in order to make sure the selected cuisine renders
   const [selectedCuisine, setSelectedCuisine] = useState("");
   const [madeQuery, setMadeQuery] = useState(false);
   // redux dispatch
@@ -36,7 +35,6 @@ const IngredientsPage = () => {
     console.log(selectedIngredients);
   }, [location]);
 
-  const [inputValue, setInputValue] = useState("");
   const [recipe, setRecipe] = useState({});
   // handling the update of the inputvalue when the user types in the input field
 
