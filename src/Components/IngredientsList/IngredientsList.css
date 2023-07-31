@@ -71,14 +71,14 @@ h2 {
     border-bottom: 1px solid #412020;
     background: transparent;
   } */
-
-.Stir-button {
-  padding: 8px 16px;
-  background: transparent;
-  color: white;
-  border: 3px solid white;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
-}
+  
+  .Stir-button {
+    padding: 8px 16px;
+    background: transparent;
+    color: white;
+    border: 3px solid white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }

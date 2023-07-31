@@ -21,6 +21,7 @@ const IngredientsList = ({
     <div className="ingredient-textbox">
    
       <h2>Ingredients List:</h2>
+      {/*  */}
 
       <ul>
         {selectedIngredients.map((ingredient, index) => (

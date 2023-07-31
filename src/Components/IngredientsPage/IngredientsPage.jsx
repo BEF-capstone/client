@@ -16,7 +16,13 @@ const IngredientsPage = () => {
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  // in order to make sure the selected cuisine renders
+  const [errorMessage, setErrorMessage] = useState(""); // New state to store error message
+  const [inputValue, setInputValue] = useState("");
+  // handling the update of the inputvalue when the user types in the input field
+
+  
+/////////////////////////////////////////////////////////
+// in order to make sure the selected cuisine renders
   const [selectedCuisine, setSelectedCuisine] = useState("");
   const [madeQuery, setMadeQuery] = useState(false);
   // redux dispatch

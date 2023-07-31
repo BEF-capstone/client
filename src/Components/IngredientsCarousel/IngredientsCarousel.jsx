@@ -115,4 +115,6 @@ const handleDrop = (event, ingredient) => {
   );
 };
 
+// 
+
 export default IngredientsCarousel;
