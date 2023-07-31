@@ -19,7 +19,7 @@ const IngredientsPage = () => {
   
 /////////////////////////////////////////////////////////
 // in order to make sure the selected cuisine renders 
-
+// 
   const [selectedCuisine, setSelectedCuisine] = useState("");
 
   // Get the location object
