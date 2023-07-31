@@ -15,6 +15,7 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+
 // import makeStyles from '@mui/core/styles'
 
 export default function NavBar({ isLoggedIn, handleLogout }) {
@@ -46,30 +47,22 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
     setAnchorEl(null);
   };
 
-  // const useStyles = makeStyles(theme => ({
-  //   root: {
-  //     boxShadow: "none",
-  //     backgroundColor: "#cccccc" 
-  //   } 
-  // }));
-
-  // const classes = useStyles()
-
-  // Function to render different links based on whether the user is logged in or not
   const renderLinks = () => {
     if (isLoggedIn) {
       return (
         <>
           {/* Links to different sections of the page that scroll smoothly */}
           {/* 'to' prop of ScrollLink component represents the id of the section to scroll to */}
+          
           <ScrollLink to="about" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "Italiana",
+                fontFamily: "cursive",
                 color: "white",
-                fontSize: 20,
+                fontSize: 25,
                 fontWeight: "bold",
-                ml: 111,
+                left: -510,
+                top: 15
               }}
             >
               About
@@ -78,10 +71,12 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <ScrollLink to="how-to" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "Italiana",
+                fontFamily: "cursive",
                 color: "white",
-                fontSize: 20,
+                fontSize: 25,
                 fontWeight: "bold",
+                left: -470,
+                top: 15
               }}
             >
               How to
@@ -90,10 +85,12 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <ScrollLink to="contact" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "Italiana",
+                fontFamily: "cursive",
                 color: "white",
-                fontSize: 20,
+                fontSize: 25,
                 fontWeight: "bold",
+                left: -430,
+                top: 15
               }}
             >
               Contact
@@ -104,10 +101,12 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <Link to="/create-recipe">
             <MenuItem
               sx={{
-                fontFamily: "Italiana",
+                fontFamily: "cursive",
                 color: "white",
-                fontSize: 20,
+                fontSize: 25,
                 fontWeight: "bold",
+                left: -390,
+                top: 15
               }}
             >
               Mix
@@ -149,10 +148,12 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <ScrollLink to="about" smooth={true}>
             <MenuItem
               sx={{
-                fontFamily: "Italiana",
+                fontFamily: "cursive",
                 color: "white",
-                fontSize: 20,
+                fontSize: 25,
                 fontWeight: "bold",
+                left: -510,
+                top: 15
               }}
             >
               About
@@ -204,10 +205,11 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#7D4E57",
+          backgroundColor: "#474b4f",
           boxShadow: "none",
           width: "100%",
           margin: 0,
+          height: 70
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -220,7 +222,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-              <SvgIcon fontSize="large" sx={{ color: "black" }}>
+              <SvgIcon fontSize="large" sx={{ color: "white" }}>
                 <path
                   d="M15.5,5.5C15.5,4.67,16.17,4,17,4C17.83,4,18.5,4.67,18.5,5.5V8h1V5.5C19.5,3.57,17.93,2,16,2
 c-1.93,0-3.5,1.57-3.5,3.5V8h1V5.5z M12,5.5C12,3.57,10.43,2,8.5,2C6.57,2,5,3.57,5,5.5V8h1V5.5C6,4.67,6.67,4,7.5,4
@@ -255,10 +257,12 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
               <ScrollLink to="about" smooth={true}>
                 <MenuItem
                   sx={{
-                    fontFamily: "Italiana",
-                    color: "white",
-                    fontSize: 20,
-                    fontWeight: "bold",
+                    fontFamily: "cursive",
+                color: "white",
+                fontSize: 25,
+                fontWeight: "bold",
+                left: -510,
+                top: 15
                   }}
                 >
                   About
@@ -325,7 +329,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                     onClick={handleMenu}
                     color="inherit"
                   >
-                    <AccountCircle sx={{ color: "white", mt: 0 }} />
+                    <AccountCircle sx={{ color: "white", mt: 1 }} />
                   </IconButton>
                   <Menu
                     id="menu-appbar"
@@ -390,10 +394,12 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                 <Link to="/create-recipe">
                   <MenuItem
                     sx={{
-                      fontFamily: "Italiana",
+                      fontFamily: "cursive",
                       color: "white",
-                      fontSize: 20,
+                      fontSize: 25,
                       fontWeight: "bold",
+                      left: -510,
+                      top: 15
                     }}
                   >
                     Mix
@@ -402,10 +408,12 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                 <Link to="/favorites">
                   <MenuItem
                     sx={{
-                      fontFamily: "Italiana",
-                      color: "white",
-                      fontSize: 20,
-                      fontWeight: "bold",
+                      fontFamily: "cursive",
+                color: "white",
+                fontSize: 25,
+                fontWeight: "bold",
+                left: -470,
+                top: 15
                     }}
                   >
                     Favorites

@@ -51,8 +51,12 @@ video {
 }
   .typewriter-animation {
   /* font-size: 1000%; */
-  font-size: 8vw; /* 8% of the viewport's width */
-  color: white;
+  font-size: 9vw; /* 8% of the viewport's width */
+  /* color: white;
+   */
+   color: #FCCD04;
+   font-family: cursive;
+   font-weight: bold;
   overflow: hidden;
   white-space: nowrap;
   animation: typewriter 3s steps(40)forwards, blinking 1s infinite;
