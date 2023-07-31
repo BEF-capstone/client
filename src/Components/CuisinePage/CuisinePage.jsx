@@ -1,8 +1,21 @@
 // Import necessary dependencies
 import React, { useState, useEffect } from "react";
-import { Box, Typography, TextField } from "@mui/material";
+import { Box, Grid, TextField, Typography } from "@mui/material";
 import CuisineType from "../CuisineType/CuisineType";
 import { Link as RouterLink } from "react-router-dom";
+import { styled } from '@mui/system';
+
+const StyledBox = styled(Box)(({ theme }) => ({
+  backgroundImage: `url("https://images.pexels.com/photos/7605261/pexels-photo-7605261.jpeg?auto=compress&cs=tinysrgb&w=1600")`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
+  minHeight: '100vh',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+}));
+
+
 
 // Define the CuisinePage component
 const CuisinePage = () => {
@@ -384,46 +397,54 @@ const CuisinePage = () => {
 
   // includes a search input field and the CuisineType component which displays the cuisines.
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
-  // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
   return (
-    <Box sx={{ backgroundColor: "#7D4E57", minHeight: "100vh", width: "100%" }}>
-      <Typography
-        variant="h2"
-        gutterBottom
-        sx={{ mb: 10, mt: 10, color: "white", fontFamily: "Italiana" }}
-      >
-        Select Cuisine
-      </Typography>
-      <TextField
-        value={searchInput}
-        onChange={handleSearchInputChange}
-        label="Look for cuisine here..."
-        variant="standard"
-        sx={{
-          mb: 5,
-          mt: 3,
-          width: { xs: "90%", sm: "75%", md: "60%", lg: "40%", xl: "40%" },
-          "& .MuiInput-underline:after": {
-            borderBottom: "1px solid black",
-          },
-          "& .MuiInput-underline:before": {
-            borderBottom: "1px solid black",
-          },
-        }}
-      />
-
-      <RouterLink to={`/ingredients?cuisine=`}>
+    <StyledBox
+    // sx={{
+    //   backgroundColor: "#7D4E57",
+    //   minHeight: "100vh",
+    //   width: "100%",
+    //   px: 2, // Add horizontal padding
+    // }}
+  >
+    <Grid container justifyContent="center" alignItems="center" spacing={2}>
+      <Grid item xs={12}>
+        <Typography
+          variant="h2"
+          gutterBottom
+          sx={{ color: "white", fontFamily: "Italiana", textAlign: "center", mt: 10 }}
+        >
+          Select Cuisine
+        </Typography>
+      </Grid>
+      <Grid item xs={12} sm={8} md={6} lg={4}>
+        <TextField
+          value={searchInput}
+          onChange={handleSearchInputChange}
+          label="Look for cuisine here..."
+          variant="standard"
+          sx={{
+            width: "100%", // Full width on all screen sizes
+            "& .MuiInput-underline:after": {
+              borderBottom: "1px solid black",
+            },
+            "& .MuiInput-underline:before": {
+              borderBottom: "1px solid black",
+            },
+            mx: "auto", // Center the search field
+          }}
+        />
+      </Grid>
+      <Grid item xs={12}>
         <Typography
           variant="h5"
-          gutterBottom
+          component={RouterLink} // Use Typography as a link component
+          to={`/ingredients?cuisine=`}
           sx={{
-            mb: 10,
-            mt: -3,
-            ml: 73,
             color: "white",
             fontFamily: "Italiana",
             fontSize: 20,
             cursor: "pointer",
+            textAlign: "center",
             transition: "transform 0.15s ease-in-out",
             "&:hover": {
               transform: "scale(1.05)",
@@ -432,27 +453,28 @@ const CuisinePage = () => {
         >
           No Cuisine Preference? Click here!
         </Typography>
-      </RouterLink>
+      </Grid>
+    </Grid>
 
-      <Box sx={{ minHeight: "400px" }}>
-        {cuisines.length > 0 ? (
-          <CuisineType
-            cuisines={cuisines}
-            selectedCuisine={selectedCuisine}
-            handleCuisineSelection={handleCuisineSelection}
-            handleLoadMore={handleLoadMore}
-          />
-        ) : (
-          <Typography
-            variant="h6"
-            sx={{ color: "darkslategray", fontFamily: "Italiana" }}
-          >
-            No cuisines found.
-          </Typography>
-        )}
-      </Box>
+    <Box sx={{ minHeight: "400px" }}>
+      {cuisines.length > 0 ? (
+        <CuisineType
+          cuisines={cuisines}
+          selectedCuisine={selectedCuisine}
+          handleCuisineSelection={handleCuisineSelection}
+          handleLoadMore={handleLoadMore}
+        />
+      ) : (
+        <Typography
+          variant="h6"
+          sx={{ color: "darkslategray", fontFamily: "Italiana" }}
+        >
+          No cuisines found.
+        </Typography>
+      )}
     </Box>
-  );
+  </StyledBox>
+);
 };
 
 export default CuisinePage;

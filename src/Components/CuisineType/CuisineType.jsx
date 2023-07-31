@@ -40,7 +40,7 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
                 boxShadow: 10,
                 backgroundImage: `url(${cuisine.image})`, // add the image as a background
                 backgroundSize: 'cover', // make sure it covers the whole card
-                opacity: 0.8,
+                opacity: 1,
                 backgroundColor: selectedCuisine === cuisine.name ? "#8D8741" : "transparent",
                 transition: 'transform 0.15s ease-in-out',
                 '&:hover': {
