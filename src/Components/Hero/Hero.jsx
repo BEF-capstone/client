@@ -4,7 +4,7 @@ import { Container, Typography, Box } from "@mui/material";
 import { styled } from '@mui/system';
 
 const StyledBox = styled(Box)(({ theme }) => ({
-  backgroundImage: `url(https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1600)`,
+  backgroundImage: `url(https://images.pexels.com/photos/1660030/pexels-photo-1660030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   backgroundPosition: '',

@@ -24,6 +24,7 @@ const Landing = () => {
         </div>
         <Info/>
         {/* <div className="scroll">Scroll</div> */}
+
       {/* </div> */}
       {/* <div className="Hero">
         <Hero />

@@ -128,7 +128,7 @@ const ProfilePage = ({ handleLogout }) => {
 
   return (
     <div className="ProfilePage">
-      <h1>Profile</h1>
+      <h1 className="profileTitle">Profile</h1>
       <div className="imgContainer">
         <div className="ProfilePicWrapper">
           {/* Replace the image rendering with the ProfilePicture component */}
@@ -158,9 +158,6 @@ const ProfilePage = ({ handleLogout }) => {
 
       <div>
         <ul>
-          <p>
-            <Link to="/favorites"> ❤️ Favorites</Link>
-          </p>
           <p>
             <Link to="/recipe-book"> 📖 Recipe Book</Link>
           </p>
