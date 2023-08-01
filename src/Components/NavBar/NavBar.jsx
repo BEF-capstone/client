@@ -205,7 +205,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
       <AppBar
         position="static"
         sx={{
-          backgroundColor: "#eabd0b",
+          backgroundColor: "#90323D",
           boxShadow: "none",
           width: "100%",
           margin: 0,
