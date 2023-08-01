@@ -68,6 +68,7 @@ const IngredientsPage = () => {
 
     // Make post request
     try {
+      console.log("openAi here");
       const response = await fetch(
         "http://localhost:3001/api/openAi/create_recipe",
         options
@@ -78,11 +79,34 @@ const IngredientsPage = () => {
       console.log(typeof content);
       content = JSON.parse(content);
 
+      const recipeOptions = {
+        method: "POST",
+        body: JSON.stringify({
+          recipe_name: content.recipeName,
+          description: content.recipeDescription,
+          prep_time: content.prepTime,
+          difficulty: content.difficulty,
+          servings: content.servings.toString(),
+          instructions: {},
+          ingredients: {},
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
       dispatch(setData(content));
       setRecipe(content);
       // console.log("recipe Name: ", recipeName);
       //
       setMadeQuery(true);
+
+      console.log("adding recipe to recipe table");
+      const add_recipe_res = await fetch(
+        "http://localhost:3001/api/recipes/add-recipe",
+        recipeOptions
+      );
+      console.log("added recipe to recipes table");
       // when madeQuery, render recipe card
     } catch (e) {
       console.error(e);

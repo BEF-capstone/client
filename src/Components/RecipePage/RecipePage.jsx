@@ -68,11 +68,7 @@ const RecipePage = () => {
 
       <h2>Yes Chef {user}!</h2>
       <div className="recipe-display">
-        <RecipeResult
-          className="recipe_card"
-          // recipe={JSON.stringify(recipes[1])}
-          recipe={recipeData}
-        />
+        <RecipeResult className="recipe_card" recipe={recipeData} />
       </div>
     </div>
   );

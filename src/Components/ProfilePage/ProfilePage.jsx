@@ -6,12 +6,13 @@ import defaultProfilePic from "../defaultProfilePic/defaultProfilePic.jpg";
 const ProfilePage = ({ handleLogout }) => {
   const [profilePic, setProfilePic] = useState(defaultProfilePic); // Set the default profile picture
 
-  const handlePictureUpload = (event) => {
+  const handlePictureUpload = async (event) => {
     const file = event.target.files[0]; // Use "files" instead of "value" to get the uploaded file
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setProfilePic(reader.result);
+        console.log(reader.result);
       };
       reader.readAsDataURL(file);
     }

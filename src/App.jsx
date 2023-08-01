@@ -17,6 +17,7 @@ import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import GroceryListPage from "./Components/GroceryListPage/GroceryListPage";
 import RecipePage from "./Components/RecipePage/RecipePage";
 import TestingPage from "./Components/TestingPage/TestingPage";
+import RecipeBookTest from "./Components/RecipeBookTest";
 import NotFoundPage from "./Components/NotFoundPage/NotFoundPage";
 /* MUI Framework Imports */
 import { Container } from "@mui/material";
@@ -30,7 +31,6 @@ function App() {
   const [loginError, setLoginError] = useState("");
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
-
 
   /* Registartion and Login handling */
   useEffect(() => {
@@ -127,14 +127,17 @@ function App() {
                 )
               }
             ></Route>
-            <Route path="/user-profile" element={<ProfilePage handleLogout={handleLogout}/>} />
+            <Route
+              path="/user-profile"
+              element={<ProfilePage handleLogout={handleLogout} />}
+            />
             <Route path="/create-recipe" element={<CuisinePage />}></Route>
             <Route path="/ingredients" element={<IngredientsPage />}></Route>
             <Route path="/favorites" element={<FavoritesPage />}></Route>
             <Route path="/recipe-book" element={<RecipeBookPage />}></Route>
             <Route path="/grocery-list" element={<GroceryListPage />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>
-            <Route path="/testing" element={<TestingPage />} />
+            <Route path="/testing" element={<RecipeBookTest />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />

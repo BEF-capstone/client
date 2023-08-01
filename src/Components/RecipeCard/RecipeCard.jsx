@@ -14,6 +14,7 @@ import { DateTime } from "luxon";
 
 const RecipeCard = ({ recipe }) => {
   // recipes is dummy data, should make request from openAi-api
+
   const recipes = [
     {
       title: "Spaghetti with Tomato, Garlic, and Bacon",
