@@ -132,7 +132,10 @@ function App() {
               element={<ProfilePage handleLogout={handleLogout} />}
             />
             <Route path="/create-recipe" element={<CuisinePage />}></Route>
-            <Route path="/ingredients" element={<IngredientsPage />}></Route>
+            <Route
+              path="/ingredients"
+              element={<IngredientsPage userId={userId} />}
+            ></Route>
             <Route path="/favorites" element={<FavoritesPage />}></Route>
             <Route path="/recipe-book" element={<RecipeBookPage />}></Route>
             <Route path="/grocery-list" element={<GroceryListPage />}></Route>
