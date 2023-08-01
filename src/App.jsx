@@ -11,7 +11,6 @@ import Footer from "./Components/Footer/Footer";
 import AuthPage from "./Components/AuthPage/AuthPage";
 import CuisinePage from "./Components/CuisinePage/CuisinePage";
 import IngredientsPage from "./Components/IngredientsPage/IngredientsPage";
-import FavoritesPage from "./Components/FavoritesPage/FavoritesPage";
 import RecipeBookPage from "./Components/RecipeBookPage/RecipeBookPage";
 import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import GroceryListPage from "./Components/GroceryListPage/GroceryListPage";
@@ -133,7 +132,6 @@ function App() {
             />
             <Route path="/create-recipe" element={<CuisinePage />}></Route>
             <Route path="/ingredients" element={<IngredientsPage />}></Route>
-            <Route path="/favorites" element={<FavoritesPage />}></Route>
             <Route path="/recipe-book" element={<RecipeBookPage />}></Route>
             <Route path="/grocery-list" element={<GroceryListPage />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>

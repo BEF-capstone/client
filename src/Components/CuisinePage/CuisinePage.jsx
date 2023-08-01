@@ -3,17 +3,17 @@ import React, { useState, useEffect } from "react";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import CuisineType from "../CuisineType/CuisineType";
 import { Link as RouterLink } from "react-router-dom";
-import { styled } from '@mui/system';
+// import { styled } from '@mui/system';
 
-const StyledBox = styled(Box)(({ theme }) => ({
-  backgroundImage: `url("https://images.pexels.com/photos/7605261/pexels-photo-7605261.jpeg?auto=compress&cs=tinysrgb&w=1600")`,
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  minHeight: '100vh',
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'space-between',
-}));
+// const StyledBox = styled(Box)(({ theme }) => ({
+//   backgroundImage: `url("https://images.pexels.com/photos/7605261/pexels-photo-7605261.jpeg?auto=compress&cs=tinysrgb&w=1600")`,
+//   backgroundRepeat: 'no-repeat',
+//   backgroundSize: 'cover',
+//   minHeight: '100vh',
+//   display: 'flex',
+//   flexDirection: 'column',
+//   justifyContent: 'space-between',
+// }));
 
 
 
@@ -398,13 +398,13 @@ const CuisinePage = () => {
   // includes a search input field and the CuisineType component which displays the cuisines.
   // If there are no cuisines to display (cuisines is an empty array), we display a "No cuisines found." message instead.
   return (
-    <StyledBox
-    // sx={{
-    //   backgroundColor: "#7D4E57",
-    //   minHeight: "100vh",
-    //   width: "100%",
-    //   px: 2, // Add horizontal padding
-    // }}
+    <Box
+    sx={{
+      backgroundColor: "#C98C93",
+      minHeight: "100vh",
+      width: "100%",
+      px: 2, // Add horizontal padding
+    }}
   >
     <Grid container justifyContent="center" alignItems="center" spacing={2}>
       <Grid item xs={12}>
@@ -413,7 +413,14 @@ const CuisinePage = () => {
           gutterBottom
           sx={{ color: "white", fontFamily: "Italiana", textAlign: "center", mt: 10 }}
         >
-          Select Cuisine
+          Time to Mix!
+        </Typography>
+        <Typography
+          variant="h3"
+          gutterBottom
+          sx={{ color: "white", fontFamily: "Italiana", textAlign: "center", mt: 3, fontSize: 35 }}
+        >
+          Select a cuisine that best suits your tastebuds!
         </Typography>
       </Grid>
       <Grid item xs={12} sm={8} md={6} lg={4}>
@@ -473,7 +480,7 @@ const CuisinePage = () => {
         </Typography>
       )}
     </Box>
-  </StyledBox>
+  </Box>
 );
 };
 

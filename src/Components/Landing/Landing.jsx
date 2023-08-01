@@ -9,7 +9,7 @@ import Pics from "../Pics/Bowl";
 const Landing = () => {
   return (
     <>
-      <div className="landing">
+      {/* <div className="landing"> */}
         {" "}
         {/* This is the common parent */}
         <video autoPlay muted loop>
@@ -22,11 +22,11 @@ const Landing = () => {
           </div>
         </div>
         <div className="scroll">Scroll</div>
-      </div>
+      {/* </div> */}
       {/* <div className="Hero">
         <Hero />
       </div> */}
-      <Hero />
+      {/* <Hero /> */}
       {/* <div className="Pages">
         <About />
       </div> */}
