@@ -5,6 +5,7 @@ import About from "../About/About";
 import HowTo from "../HowTo/HowTo";
 import Hero from "../Hero/Hero";
 import Pics from "../Pics/Bowl";
+import Info from "../Info/Info"
 
 const Landing = () => {
   return (
@@ -21,7 +22,9 @@ const Landing = () => {
             <p className="erasing-animation">More Eating. Less thinking.</p>
           </div>
         </div>
-        <div className="scroll">Scroll</div>
+        <Info/>
+        {/* <div className="scroll">Scroll</div> */}
+
       {/* </div> */}
       {/* <div className="Hero">
         <Hero />
@@ -30,9 +33,9 @@ const Landing = () => {
       {/* <div className="Pages">
         <About />
       </div> */}
-      <div className="Pages">
+      {/* <div className="Pages">
         <HowTo />
-      </div>
+      </div> */}
       {/* <div className="Bowl">
         <Pics />
       </div> */}
