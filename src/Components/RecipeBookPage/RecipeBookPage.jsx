@@ -61,16 +61,19 @@ const RecipeBookPage = ({ userIdProp }) => {
     // add more recipes as needed
   ]);
 
-  const [userId, setUserId] = useState(userIdProp);
+  const [userId, setUserId] = useState("");
 
   // Fetch recipes from backend and append to recipes array
   useEffect(() => {
-    if (!dataLoaded) {
+    if (userId === "") {
       const token = Cookies.get("token");
       if (token) {
         const decodeToken = jwtDecode(token);
         setUserId(decodeToken.userID);
       }
+    }
+
+    if (!dataLoaded) {
       const fetchRecipes = async () => {
         try {
           const data = await apiClient.getUserRecipes({ userId: userId });
@@ -125,7 +128,7 @@ const RecipeBookPage = ({ userIdProp }) => {
     });
 
   return (
-    <Box sx={{backgroundColor: "#C98C93", height: '100vh'}}>
+    <Box sx={{ backgroundColor: "#C98C93", height: "100vh" }}>
       <Container>
         <Typography
           variant="h1"
