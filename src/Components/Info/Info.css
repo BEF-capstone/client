@@ -1,0 +1,33 @@
+.Info{
+        height: 35vw;
+        background-color: #5E0B15 ;
+        display:flex;
+        align-items: center;
+        margin-top: 0vw;
+}
+
+
+.text{
+    font-family: cursive;
+    color:#FCCD04;
+}
+
+.ptext{
+    color:white;
+    align-items: center;
+}
+
+.About{
+    border-style: dotted;
+border-width: 1px;
+padding-left: 12%;
+top:0%;
+}
+
+.Get-Started{
+    padding: 8%;
+}
+
+.Recipes{
+    padding: 3%;
+}

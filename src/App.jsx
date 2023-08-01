@@ -11,7 +11,6 @@ import Footer from "./Components/Footer/Footer";
 import AuthPage from "./Components/AuthPage/AuthPage";
 import CuisinePage from "./Components/CuisinePage/CuisinePage";
 import IngredientsPage from "./Components/IngredientsPage/IngredientsPage";
-import FavoritesPage from "./Components/FavoritesPage/FavoritesPage";
 import RecipeBookPage from "./Components/RecipeBookPage/RecipeBookPage";
 import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import GroceryListPage from "./Components/GroceryListPage/GroceryListPage";

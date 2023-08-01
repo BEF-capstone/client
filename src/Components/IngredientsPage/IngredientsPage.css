@@ -1,6 +1,7 @@
 
 .Page{
-  background-color: #c9c6b4}
+  background-color: #c9c6b4;
+  background-image: linear-gradient(to right, red , yellow);}
 
   .banner2 p{
     font-size: 200%;

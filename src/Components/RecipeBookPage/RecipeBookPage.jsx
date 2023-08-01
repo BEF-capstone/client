@@ -11,21 +11,21 @@ import {
   Grid,
   Card,
 } from "@mui/material";
-import { styled } from "@mui/system";
+// import { styled } from "@mui/system";
 import apiClient from "../../services/apiClient";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 
 // Define a styled component for the main container with specific styles
-const StyledBox = styled(Box)(({ theme }) => ({
-  backgroundImage: `url(https://images.pexels.com/photos/5965947/pexels-photo-5965947.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load)`,
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-  minHeight: "100vh",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-}));
+// const StyledBox = styled(Box)(({ theme }) => ({
+//   backgroundImage: `url(https://images.pexels.com/photos/5965947/pexels-photo-5965947.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load)`,
+//   backgroundRepeat: "no-repeat",
+//   backgroundSize: "cover",
+//   minHeight: "100vh",
+//   display: "flex",
+//   flexDirection: "column",
+//   justifyContent: "space-between",
+// }));
 
 // Function to format date in MM-DD-YYYY format
 const formatDate = (dateString) => {
@@ -125,7 +125,7 @@ const RecipeBookPage = ({ userIdProp }) => {
     });
 
   return (
-    <StyledBox>
+    <Box sx={{backgroundColor: "#C98C93", height: '100vh'}}>
       <Container>
         <Typography
           variant="h1"
@@ -195,7 +195,7 @@ const RecipeBookPage = ({ userIdProp }) => {
                     my: 5,
                     p: 2,
                     borderRadius: 2,
-                    backgroundColor: "#49B265",
+                    backgroundColor: "#5e0b15",
                     boxShadow: 10,
                     height: "100%",
                     display: "flex",
@@ -223,7 +223,7 @@ const RecipeBookPage = ({ userIdProp }) => {
           )}
         </Grid>
       </Container>
-    </StyledBox>
+    </Box>
   );
 };
 
