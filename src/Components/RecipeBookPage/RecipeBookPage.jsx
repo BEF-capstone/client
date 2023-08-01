@@ -13,6 +13,8 @@ import {
 } from "@mui/material";
 // import { styled } from "@mui/system";
 import apiClient from "../../services/apiClient";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 
 // Define a styled component for the main container with specific styles
 // const StyledBox = styled(Box)(({ theme }) => ({
@@ -37,7 +39,7 @@ const formatDate = (dateString) => {
     .padStart(2, "0")}-${year}`;
 };
 
-const RecipeBookPage = () => {
+const RecipeBookPage = ({ userIdProp }) => {
   // Define state for search term
   const [search, setSearch] = useState("");
 
@@ -59,14 +61,21 @@ const RecipeBookPage = () => {
     // add more recipes as needed
   ]);
 
+  const [userId, setUserId] = useState(userIdProp);
+
   // Fetch recipes from backend and append to recipes array
   useEffect(() => {
     if (!dataLoaded) {
+      const token = Cookies.get("token");
+      if (token) {
+        const decodeToken = jwtDecode(token);
+        setUserId(decodeToken.userID);
+      }
       const fetchRecipes = async () => {
         try {
-          const data = await apiClient.getRecipes();
-          const dataRecipes = data.data.recipes;
-          setRecipes(recipes.concat(dataRecipes));
+          const data = await apiClient.getUserRecipes({ userId: userId });
+          const recipeArray = data.data.recipe;
+          setRecipes(recipes.concat(recipeArray));
           setDataLoaded(true);
         } catch (e) {
           console.error(`error: ${e}`);
