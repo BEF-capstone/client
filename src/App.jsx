@@ -135,7 +135,6 @@ function App() {
               path="/ingredients"
               element={<IngredientsPage userId={userId} />}
             ></Route>
-            <Route path="/favorites" element={<FavoritesPage />}></Route>
             <Route path="/recipe-book" element={<RecipeBookPage />}></Route>
             <Route path="/grocery-list" element={<GroceryListPage />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>
