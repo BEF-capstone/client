@@ -34,8 +34,6 @@ class ApiClient {
     }
     try {
       const res = await axios({ url, method, data, params, headers });
-      console.log("here 3");
-      console.log(`res is ${res.data}`);
       return { data: res.data, params: params, error: null, message: null };
     } catch (e) {
       console.error("APIClient make request error", e.response);
@@ -61,6 +59,13 @@ class ApiClient {
       endpoint: `api/auth/register`,
       method: `POST`,
       data: creds,
+    });
+  }
+
+  async getRecipes() {
+    return await this.request({
+      endpoint: `api/recipes/read-recipes`,
+      method: `GET`,
     });
   }
 }
