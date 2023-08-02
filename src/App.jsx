@@ -138,7 +138,7 @@ function App() {
             <Route path="/recipe-book" element={<RecipeBookPage />}></Route>
             <Route path="/grocery-list" element={<GroceryListPage />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>
-            <Route path="/testing" element={<RecipeBookTest />} />
+            <Route path="/testing" element={<TestingPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
