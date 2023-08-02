@@ -5,8 +5,11 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 0vw;
+    padding-bottom: 2%;
 }
-
+.Explore-button{
+    margin:16%;
+}
 .banner3{
 
     background-color: #5E0B15 ;
