@@ -1,8 +1,7 @@
 
 .Page{
-  background-color: #c9c6b4;
-  background-image: linear-gradient(to right, red , yellow);}
-
+  background-color: #C98C93;
+}
   .banner2 p{
     font-size: 200%;
   }
@@ -16,6 +15,15 @@
   justify-content: left;
   margin-top: 10px;
   margin-left: 10px;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
 }
 
 .ChosenCusine{
