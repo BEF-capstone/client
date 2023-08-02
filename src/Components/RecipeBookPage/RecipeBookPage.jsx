@@ -10,11 +10,13 @@ import {
   FormControl,
   Grid,
   Card,
+  Button
 } from "@mui/material";
 // import { styled } from "@mui/system";
 import apiClient from "../../services/apiClient";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
 
 // Define a styled component for the main container with specific styles
 // const StyledBox = styled(Box)(({ theme }) => ({
@@ -52,16 +54,19 @@ const RecipeBookPage = ({ userIdProp }) => {
   // Dummy data
   const [recipes, setRecipes] = useState([
     {
-      recipe_name: "Chicken Biryani",
-      difficulty: "Medium",
-      createdAt: "2022-01-01",
+      recipe_name: "Waakye",
+      difficulty: "Hard",
+      createdAt: "2002-12-23",
     },
-    { recipe_name: "Pizza", difficulty: "Easy", createdAt: "2021-12-01" },
-    { recipe_name: "Tiramisu", difficulty: "Hard", createdAt: "2022-06-15" },
+    { recipe_name: "Green Chile Enchiladas", difficulty: "Hard", createdAt: "2002-11-18" },
+    { recipe_name: "Peanut Stew", difficulty: "Hard", createdAt: "2003-08-16" },
     // add more recipes as needed
   ]);
 
   const [userId, setUserId] = useState("");
+
+    // redux dispatch
+    const dispatch = useDispatch();
 
   // Fetch recipes from backend and append to recipes array
   useEffect(() => {
@@ -98,8 +103,20 @@ const RecipeBookPage = ({ userIdProp }) => {
     setSortBy(event.target.value);
   };
 
-  // Filter and sort the recipes based on search and sortBy states
-  // Filter and sort the recipes based on search and sortBy states
+
+  // Function to handle card click event
+  const handleSubmitRecipe = (recipe_name) => { 
+    // Redux logic to update recipe info
+    // Fetch recipe details by name
+  //   apiClient.getRecipeByName(recipe_name).then((data) => {
+  //     dispatch(setData(data)); // Update Redux state with fetched recipe info
+  //   });
+  }
+
+  
+
+
+    // Filter and sort the recipes based on search and sortBy states
   const displayedRecipes = [...recipes]
     .filter((recipe) =>
       recipe.recipe_name.toLowerCase().includes(search.toLowerCase())
@@ -128,7 +145,7 @@ const RecipeBookPage = ({ userIdProp }) => {
     });
 
   return (
-    <Box sx={{ backgroundColor: "#C98C93", height: "100vh" }}>
+    <Box sx={{backgroundColor: "#C98C93", minHeight: '100vh'}}>
       <Container>
         <Typography
           variant="h1"
@@ -189,7 +206,7 @@ const RecipeBookPage = ({ userIdProp }) => {
         </Box>
 
         {/* Begin Grid for recipes */}
-        <Grid container spacing={3} justifyContent="center">
+        <Grid sx={{mb:10}} container spacing={3} justifyContent="center">
           {displayedRecipes.length > 0 ? (
             displayedRecipes.map((recipe) => (
               <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
@@ -205,7 +222,12 @@ const RecipeBookPage = ({ userIdProp }) => {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
+                    '&:hover': { // Adding hover effect
+                      transform: 'scale(1.05)',
+                      transition: 'transform .3s ease-in-out',
+                    },
                   }}
+                onClick={() => handleSubmitRecipe(recipe.recipe_name)} // Call handleSubmitRecipe with recipe name
                 >
                   <Typography variant="h5" sx={{ color: "white" }}>
                     {recipe.recipe_name}
@@ -216,11 +238,13 @@ const RecipeBookPage = ({ userIdProp }) => {
                   <Typography sx={{ color: "white" }}>
                     {formatDate(recipe.createdAt)}
                   </Typography>
+                  <Button onClick={() => handleDeleteRecipe(recipe.recipe_name)} variant="contained" color="secondary" sx={{mt: 3}}>x</Button>
+
                 </Card>
               </Grid>
             ))
           ) : (
-            <Typography variant="h5" sx={{ my: 2, color: "white" }}>
+            <Typography variant="h5" sx={{ my: 10, color: "white" }}>
               No recipe found
             </Typography>
           )}

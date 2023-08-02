@@ -26,7 +26,7 @@ import jwtDecode from "jwt-decode";
 
 function App() {
   /* Authentication States */
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");

@@ -11,11 +11,10 @@ const Footer = () => {
         padding: "20px",
         width: "100%",
         margin: 0,
-        
       }}
     >
       <Typography name="contact" variant="p">
-        Created By: Blessing Adomakoh, Faaizah Afoda, Efren Mendoza
+        Created By: Blessing Adomakoh, Efren Mendoza, Faaizah Afoda
       </Typography>
     </Box>
   );
