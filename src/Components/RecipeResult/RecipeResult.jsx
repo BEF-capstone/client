@@ -1,6 +1,7 @@
 import React from "react";
 
 import Loading from "../Loading/Loading";
+import { Box } from "@mui/material";
 
 import {
   Card,
@@ -60,8 +61,10 @@ const RecipeResult = ({ recipe }) => {
           </CardContent>
         </Card>
       ) : (
-        <LoadingAnimation />
-      )}
+        <Box sx={{ mt: 2, mb: 5 }}>
+          <LoadingAnimation />
+        </Box> 
+     )}
     </div>
   );
 };

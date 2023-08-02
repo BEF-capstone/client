@@ -1,6 +1,4 @@
 import API_BASE_URL from "../../constants";
-// import { axios } from "axios";
-
 import axios from "axios";
 
 class ApiClient {
@@ -23,18 +21,19 @@ class ApiClient {
   async request({ endpoint, method, data = {} }) {
     // construct url to given endpoint
     const url = `${API_BASE_URL}/${endpoint}`;
-    console.log("url is : ", url);
-    // dynamic params for GET request
     const params = method.toUpperCase() === "GET" ? data : {};
-
     const headers = { "Content-Type": "application/json" };
-
     if (this.token) {
       headers["Authorization"] = `Bearer ${this.token}`;
     }
     try {
       const res = await axios({ url, method, data, params, headers });
-      return { data: res.data, params: params, error: null, message: null };
+      return {
+        data: res.data,
+        params: params,
+        error: null,
+        message: "api client success",
+      };
     } catch (e) {
       console.error("APIClient make request error", e.response);
       if (e.response.status === 404) return { data: null, error: "Not Found" };
@@ -66,6 +65,30 @@ class ApiClient {
     return await this.request({
       endpoint: `api/recipes/read-recipes`,
       method: `GET`,
+    });
+  }
+
+  async getUserRecipes(userInfo) {
+    return await this.request({
+      endpoint: `api/recipes/user-recipes`,
+      method: `POST`,
+      data: userInfo,
+    });
+  }
+
+  async createNewRecipe(body) {
+    return await this.request({
+      endpoint: `api/openAi/create_recipe`,
+      method: `POST`,
+      data: body,
+    });
+  }
+
+  async addToRecipeBook(body) {
+    return await this.request({
+      endpoint: `api/recipes/add-recipe`,
+      method: `POST`,
+      data: body,
     });
   }
 }

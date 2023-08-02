@@ -57,7 +57,6 @@ const RecipePage = () => {
     },
   ];
 
-  const user = "Efren";
 
   const recipeData = useSelector((state) => state.data);
   console.log(recipeData);
@@ -66,7 +65,7 @@ const RecipePage = () => {
     <div className="recipe-page">
       <h1>Recipe Page</h1>
 
-      <h2>Yes Chef {user}!</h2>
+      <h2 className='chef'>Yes Chef!</h2>
       <div className="recipe-display">
         <RecipeResult className="recipe_card" recipe={recipeData} />
       </div>

@@ -10,3 +10,8 @@
 .world_map {
   flex-basis: 50%;
 }
+
+.chef {
+  font-size: 300%;
+  margin-top: -70px;
+}
