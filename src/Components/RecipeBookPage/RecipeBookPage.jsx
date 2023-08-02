@@ -63,19 +63,22 @@ const RecipeBookPage = ({ userIdProp }) => {
     // add more recipes as needed
   ]);
 
-  const [userId, setUserId] = useState(userIdProp);
+  const [userId, setUserId] = useState("");
 
     // redux dispatch
     const dispatch = useDispatch();
 
   // Fetch recipes from backend and append to recipes array
   useEffect(() => {
-    if (!dataLoaded) {
+    if (userId === "") {
       const token = Cookies.get("token");
       if (token) {
         const decodeToken = jwtDecode(token);
         setUserId(decodeToken.userID);
       }
+    }
+
+    if (!dataLoaded) {
       const fetchRecipes = async () => {
         try {
           const data = await apiClient.getUserRecipes({ userId: userId });
