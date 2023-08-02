@@ -8,7 +8,6 @@ const IngredientsList = ({
   onAddIngredient,
   inputValue,
   setInputValue,
-  handleDeleteIngredient
 }) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -16,6 +15,12 @@ const IngredientsList = ({
     }
   };
 
+  const handleDeleteIngredient = (index) => {
+    const updatedIngredients = [...selectedIngredients];
+    updatedIngredients.splice(index, 1);
+    setSelectedIngredients(updatedIngredients);
+    console.log("done")
+    }
 
   return (
     <div className="ingredient-textbox">
@@ -23,7 +28,7 @@ const IngredientsList = ({
       <h2>Ingredients List:</h2>
       {/*  */}
 
-      <ul>
+      <ul className="INList">
         {selectedIngredients.map((ingredient, index) => (
           <>
             <p className="list" key={index}>{ingredient}</p>

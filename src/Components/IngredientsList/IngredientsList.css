@@ -1,13 +1,3 @@
-/* .Delete-button{
-    border-radius: 90%;
-    color:brown;
-    
-}
-.Delete-button p{
- color: white;
-    
-} */
-
 .list {
   color: black;
 }
@@ -28,14 +18,17 @@ h2 {
   margin-bottom: 10px;
 }
 
-ul {
-  display: flex; /* Display list items in a row */
-  flex-wrap: wrap; /* Allow items to wrap to the next row */
-  justify-content: center; /* Center items horizontally */
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.INList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
+  border-radius: 4%;
+  border-color:black ;
 }
+
 
 li {
   display: flex;
@@ -62,15 +55,6 @@ li {
 h2 {
   color: black;
 }
-/* .Text-input {
-    border: none;
-    outline: none;
-    font-size: 16px;
-    color: white;
-    width: 100%;
-    border-bottom: 1px solid #412020;
-    background: transparent;
-  } */
   
   .Stir-button {
     padding: 8px 16px;

@@ -172,7 +172,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, width: "100%", margin: 0 }}>
+    <Box sx={{ width: "100%", margin: 0 }}>
       <AppBar
         position="static"
         sx={{
@@ -180,8 +180,9 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           boxShadow: "none",
           width: "100%",
           margin: 0,
-          height: 70
+          minHeight: "7vh"
         }}
+        // minHeight: "8vh"
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -204,7 +205,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
             </IconButton>
           </Link>
           <Link to="/">
-            <Typography sx={{ color: '#eabd0b', fontSize: 25 }}>Chef Compass</Typography>
+            <Typography sx={{ color: '#eabd0b', fontSize: 25, fontFamily: "cursive" }}>Chef Compass</Typography>
           </Link>
         </div>
 

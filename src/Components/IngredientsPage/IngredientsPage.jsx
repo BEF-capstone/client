@@ -11,6 +11,7 @@ import { setData } from "../../redux/store";
 
 import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
+import Info from "../Info/Info";
 
 const IngredientsPage = () => {
   // setting limitation to the amount of ingredients added
@@ -35,6 +36,8 @@ const IngredientsPage = () => {
     console.log(selectedIngredients);
   }, [location]);
 
+
+    
   const [recipe, setRecipe] = useState({});
   // handling the update of the inputvalue when the user types in the input field
 
@@ -52,6 +55,11 @@ const IngredientsPage = () => {
       setSelectedIngredients([...selectedIngredients, inputValue]);
       setInputValue("");
     }
+  };
+
+  // handing drag event on an ingredient in the caroseul
+  const handleDragIngredient = (carouselIngredient) => {
+    setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
   };
 
   const handleSubmit = async () => {
@@ -114,6 +122,8 @@ const IngredientsPage = () => {
   };
 
   // Ingredients carousel and related functions
+
+  
   const carouselIngredients = [
     {
       id: "1",
@@ -172,52 +182,54 @@ const IngredientsPage = () => {
     // Add more ingredients with their names and image paths here
   ];
 
-  // handing drag event on an ingredient in the caroseul
-
-  const handleDragIngredient = (carouselIngredient) => {
-    setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
-  };
-
+// minHeight: "90vh",
   return (
-    <div className="Page">
-      {/* seperation banner  */}
-      <div className="banner">
-        <h1>Let's Get Cooking!</h1>
-        <p>
-          {" "}
-          To get started, input 5 ingredients or click/drag from common items
-          from the carsouel into the textbox!{" "}
-        </p>
-      </div>
-      {/* seperation banner */}
-      <div className="ChosenCusine">
-        Chosen Cuisine: {selectedCuisine || ""}
-      </div>
+    <Box sx={{ minHeight: "90vh", backgroundColor: "#C98C93"}}>
+    {/* <div className="Page"> */}
+        <div className="banner">
+          <h1>Time To Stir!</h1>
+          <p>
+            Choose up to 5 ingredients or click/drag from common items from the
+            carsouel into the textbox!{" "}
+          </p>
+        </div>
+        {/* seperation banner */}
+        <div className="ChosenCusine">
+          Chosen Cuisine: {selectedCuisine || ""}
+        </div>
 
-      {/* renders the ingredientcarousel components by passing its props   */}
-      <IngredientsList
-        selectedIngredients={selectedIngredients}
-        setSelectedIngredients={setSelectedIngredients}
-        onAddIngredient={handleAddIngredient}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        // Pass the handleDeleteIngredient function to IngredientsList
-      />
-      <IngredientsCarousel
-        carouselIngredients={carouselIngredients}
-        onDragIngredient={handleDragIngredient}
-        onAddIngredient={handleAddIngredient}
-        selectedIngredients={selectedIngredients}
-        setSelectedIngredients={setSelectedIngredients}
-        handleAddIngredient={handleAddIngredient}
-      />
+        {/* renders the ingredientcarousel components by passing its props   */}
+        <IngredientsList
+          selectedIngredients={selectedIngredients}
+          setSelectedIngredients={setSelectedIngredients}
+          onAddIngredient={handleAddIngredient}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          // handleDeleteIgredient= {handleDeleteIngredient}
 
-      <Link to="/recipe-result" onClick={handleSubmit}>
-        <button>MIX</button>
-      </Link>
+          // Pass the handleDeleteIngredient function to IngredientsList
+        />
+        {/* <Info
+      handleSubmit={handleSubmit}/> */}
+        <IngredientsCarousel
+          carouselIngredients={carouselIngredients}
+          onDragIngredient={handleDragIngredient}
+          onAddIngredient={handleAddIngredient}
+          selectedIngredients={selectedIngredients}
+          setSelectedIngredients={setSelectedIngredients}
+          handleAddIngredient={handleAddIngredient}
+        />
 
-      {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
-    </div>
+        <Link to="/create-recipe" onClick={handleSubmit}>
+          <button>BACK</button>
+        </Link>
+        <Link to="/recipe-result" onClick={handleSubmit}>
+          <button>MIX</button>
+        </Link>
+
+        {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
+      {/* </div> */}
+    </Box>
   );
 };
 

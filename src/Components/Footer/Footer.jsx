@@ -11,7 +11,7 @@ const Footer = () => {
         padding: "20px",
         width: "100%",
         margin: 0,
-        
+        minHeight: "5vh"
       }}
     >
       <Typography name="contact" variant="p">

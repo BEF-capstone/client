@@ -19,7 +19,6 @@ const IngredientsCarousel = ({ carouselIngredients, selectedIngredients, setSele
   };
 
   // Function to handle the drop event on the carousel
-// git push --set-upstream origin ingredients
 
 const handleDrop = (event, ingredient) => {
     event.preventDefault();
@@ -49,7 +48,7 @@ const handleDrop = (event, ingredient) => {
   ///Handling click:
   const handleIngredientClick = (ingredient) => {
       if (selectedIngredients.length >= maxIngredients) {
-          alert("You cannot add more than 5 ingredients.");
+          alert("You have entered the max number of ingredients.");
           return;
         }
         
