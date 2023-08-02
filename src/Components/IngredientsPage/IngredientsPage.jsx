@@ -42,9 +42,7 @@ const IngredientsPage = () => {
 
 
     
-  const [recipe, setRecipe] = useState({});
-  // handling the update of the inputvalue when the user types in the input field
-
+ 
 
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
