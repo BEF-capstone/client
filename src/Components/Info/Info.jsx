@@ -18,6 +18,7 @@ const Info = ({ handleSubmit }) => {
           padding: 5,
         }}
       >
+
         <div className="About">
           <h1 className="text"> About </h1>
           <p className="ptext">

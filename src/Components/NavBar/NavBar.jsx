@@ -52,7 +52,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           {/* Links to different sections of the page that scroll smoothly */}
           {/* 'to' prop of ScrollLink component represents the id of the section to scroll to */}
           
-          <ScrollLink to="about" smooth={true}>
+          <ScrollLink to="info" smooth={true}>
             <MenuItem
               sx={{
                 fontFamily: "Times New Roman",
@@ -116,7 +116,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
     } else {
       return (
         <>
-          <ScrollLink to="about" smooth={true}>
+          <ScrollLink to="info" smooth={true}>
             <MenuItem
               sx={{
                 fontFamily: "Times New Roman",
@@ -232,58 +232,32 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
           {/* Check if not mobile view and not logged in, if true display about, how-to, contact, and sign in links */}
           {!isMobile && !isLoggedIn && (
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <ScrollLink to="about" smooth={true}>
-                <MenuItem
-                  sx={{
-                    fontFamily: "Times New Roman",
-                color: "white",
+              <ScrollLink to="info" smooth={true}>
+            <MenuItem
+              sx={{
+                fontFamily: "Times New Roman",
+                color: '#eabd0b',
                 fontSize: 25,
                 fontWeight: "bold",
-                left: -800,
-                top: 15
-                  }}
-                >
-                  About
-                </MenuItem>
-              </ScrollLink>
-              <ScrollLink to="how-to" smooth={true}>
-                <MenuItem
-                  sx={{
-                    fontFamily: "Times New Roman",
-                color: "white",
-                fontSize: 25,
-                fontWeight: "bold",
-                left: -700,
-                top: 15
-                  }}
-                >
-                  How to
-                </MenuItem>
-              </ScrollLink>
-              <ScrollLink to="contact" smooth={true}>
-                <MenuItem
-                 sx={{
-                  fontFamily: "Times New Roman",
-              color: "white",
-              fontSize: 25,
-              fontWeight: "bold",
-              left: -600,
-              top: 15
-                }}
-                >
-                  Contact
-                </MenuItem>
+                right: 20,
+                top: 5,
+                border: 3,
+                borderColor: '#eabd0b'
+              }}
+            >
+              Get Started
+            </MenuItem>
               </ScrollLink>
               <Link to="/authenticate">
                 <MenuItem
-                 sx={{
-                  fontFamily: "Times New Roman",
-              color: "white",
-              fontSize: 25,
-              fontWeight: "bold",
-              left: -500,
-              top: 15
-                }}
+                  sx={{
+                    fontFamily: "Times New Roman",
+                    color: "white",
+                    fontSize: 25,
+                    fontWeight: "bold",
+                    right: 15,
+                    top: 8
+                  }}
                 >
                   Sign In
                 </MenuItem>
@@ -312,7 +286,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                     onClick={handleMenu}
                     color="inherit"
                   >
-                    <AccountCircle sx={{ color: "white", mt: 1 }} />
+                    <AccountCircle sx={{ color: '#eabd0b', mt: 1 }} />
                   </IconButton>
                   <Menu
                     id="menu-appbar"

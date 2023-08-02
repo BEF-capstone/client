@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from "react";
-import queryString from "query-string";
-import { Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
+import "./IngredientsPage.css";
+import queryString from "query-string";
 import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
-import RecipeResult from "../RecipeResult/RecipeResult";
 /* REDUX IMPORTS */
 import { useDispatch } from "react-redux";
 import { setData } from "../../redux/store";
+/* ApiClient */
+import apiClient from "../../services/apiClient";
+
 
 import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
 import Info from "../Info/Info";
 
 const IngredientsPage = () => {
+
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(""); // New state to store error message
-  const [inputValue, setInputValue] = useState("");
   // handling the update of the inputvalue when the user types in the input field
-
-  /////////////////////////////////////////////////////////
+  const [inputValue, setInputValue] = useState("");
   // in order to make sure the selected cuisine renders
   const [selectedCuisine, setSelectedCuisine] = useState("");
+  // handling the update of the inputvalue when the user types in the input field
+  const [recipe, setRecipe] = useState({});
+  // state to prompt loading screen
   const [madeQuery, setMadeQuery] = useState(false);
   // redux dispatch
   const dispatch = useDispatch();
@@ -37,15 +40,17 @@ const IngredientsPage = () => {
   }, [location]);
 
 
+
     
   const [recipe, setRecipe] = useState({});
   // handling the update of the inputvalue when the user types in the input field
+
 
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
   };
 
-  // adding a new ingredient to the selected ingredient list
+  // Handle adding a new ingredient to the selected ingredient list
   const handleAddIngredient = () => {
     if (selectedIngredients.length >= maxIngredients) {
       alert("You cannot enter more than 5 ingredients.");
@@ -58,64 +63,44 @@ const IngredientsPage = () => {
   };
 
   // handing drag event on an ingredient in the caroseul
+
   const handleDragIngredient = (carouselIngredient) => {
     setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
   };
 
   const handleSubmit = async () => {
-    const options = {
-      method: "POST",
-      body: JSON.stringify({
+    try {
+      // pass cuisine and ingredients array as body parameters
+      let body = JSON.stringify({
         cuisine: selectedCuisine,
         ingredients: selectedIngredients,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    // Make post request
-    try {
-      console.log("openAi here");
-      const response = await fetch(
-        "http://localhost:3001/api/openAi/create_recipe",
-        options
-      );
-      const data = await response.json();
+      });
+      // make POST req to openAI endpoint
+      const response = await apiClient.createNewRecipe(body);
+      // get data
+      const data = await response.data;
+      // recipe info
       let content = await data.choices[0].message.content;
-      console.log(content);
-      console.log(typeof content);
       content = JSON.parse(content);
-
-      const recipeOptions = {
-        method: "POST",
-        body: JSON.stringify({
-          recipe_name: content.recipeName,
-          description: content.recipeDescription,
-          prep_time: content.prepTime,
-          difficulty: content.difficulty,
-          servings: content.servings.toString(),
-          instructions: {},
-          ingredients: {},
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
+      console.log(content);
+      // send recipe to redux, to render in recipe card
       dispatch(setData(content));
       setRecipe(content);
-      // console.log("recipe Name: ", recipeName);
-      //
       setMadeQuery(true);
-
-      console.log("adding recipe to recipe table");
-      const add_recipe_res = await fetch(
-        "http://localhost:3001/api/recipes/add-recipe",
-        recipeOptions
-      );
-      console.log("added recipe to recipes table");
-      // when madeQuery, render recipe card
+      // POST recipe to recipe book table
+      body = JSON.stringify({
+        recipe_name: content.recipeName,
+        description: content.recipeDescription,
+        prep_time: content.prepTime,
+        difficulty: content.difficulty,
+        servings: content.servings.toString(),
+        instructions: content.instructions,
+        ingredients: content.ingredients,
+        createdBy: userId,
+      });
+      if (content) {
+        apiClient.addToRecipeBook(body);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -182,7 +167,6 @@ const IngredientsPage = () => {
     // Add more ingredients with their names and image paths here
   ];
 
-// minHeight: "90vh",
   return (
     <Box sx={{ minHeight: "90vh", backgroundColor: "#C98C93"}}>
     {/* <div className="Page"> */}
@@ -230,6 +214,7 @@ const IngredientsPage = () => {
         {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
       {/* </div> */}
     </Box>
+
   );
 };
 

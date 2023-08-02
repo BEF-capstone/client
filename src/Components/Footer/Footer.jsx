@@ -12,10 +12,11 @@ const Footer = () => {
         width: "100%",
         margin: 0,
         minHeight: "5vh"
+
       }}
     >
       <Typography name="contact" variant="p">
-        Created By: Blessing Adomakoh, Faaizah Afoda, Efren Mendoza
+        Created By: Blessing Adomakoh, Efren Mendoza, Faaizah Afoda
       </Typography>
     </Box>
   );

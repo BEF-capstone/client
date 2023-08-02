@@ -7,6 +7,7 @@ import HowTo from "../HowTo/HowTo";
 import Hero from "../Hero/Hero";
 import Pics from "../Pics/Bowl";
 import Info from "../Info/Info"
+import Creators from '../Creators/Creators'
 
 const Landing = () => {
   return (
@@ -24,6 +25,7 @@ const Landing = () => {
           </div>
         </div>
         <Info/>
+        <Creators />
         {/* <div className="scroll">Scroll</div> */}
 
       {/* </div> */}
