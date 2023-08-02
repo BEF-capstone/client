@@ -26,7 +26,7 @@ import jwtDecode from "jwt-decode";
 
 function App() {
   /* Authentication States */
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [userName, setUserName] = useState("");
   const [userId, setUserId] = useState("");
@@ -138,7 +138,7 @@ function App() {
             <Route path="/recipe-book" element={<RecipeBookPage />}></Route>
             <Route path="/grocery-list" element={<GroceryListPage />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>
-            <Route path="/testing" element={<RecipeBookTest />} />
+            <Route path="/testing" element={<TestingPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
