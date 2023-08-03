@@ -10,13 +10,17 @@ import {
   FormControl,
   Grid,
   Card,
-  Button
+  Button,
 } from "@mui/material";
 // import { styled } from "@mui/system";
 import apiClient from "../../services/apiClient";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setRecipeData } from "../../redux/recipeDataSlice";
+import { useNavigate } from "react-router-dom";
+
+import recipeDataSlice from "../../redux/recipeDataSlice";
 
 // Define a styled component for the main container with specific styles
 // const StyledBox = styled(Box)(({ theme }) => ({
@@ -41,7 +45,12 @@ const formatDate = (dateString) => {
     .padStart(2, "0")}-${year}`;
 };
 
-const RecipeBookPage = ({ userIdProp }) => {
+const RecipeBookPage = ({ userId }) => {
+  /* Redux Dispatch */
+  const dispatch = useDispatch();
+  /* React Router Dom */
+  const nav = useNavigate();
+
   // Define state for search term
   const [search, setSearch] = useState("");
 
@@ -58,40 +67,31 @@ const RecipeBookPage = ({ userIdProp }) => {
       difficulty: "Hard",
       createdAt: "2002-12-23",
     },
-    { recipe_name: "Green Chile Enchiladas", difficulty: "Hard", createdAt: "2002-11-18" },
+    {
+      recipe_name: "Green Chile Enchiladas",
+      difficulty: "Hard",
+      createdAt: "2002-11-18",
+    },
     { recipe_name: "Peanut Stew", difficulty: "Hard", createdAt: "2003-08-16" },
     // add more recipes as needed
   ]);
 
-  const [userId, setUserId] = useState("");
-
-    // redux dispatch
-    const dispatch = useDispatch();
+  const fetchRecipes = async () => {
+    try {
+      const data = await apiClient.getUserRecipes({ userId: userId });
+      const recipeArray = data.data.recipe;
+      setRecipes(recipes.concat(recipeArray));
+      setDataLoaded(true);
+    } catch (e) {
+      console.error(`error: ${e}`);
+    }
+  };
 
   // Fetch recipes from backend and append to recipes array
   useEffect(() => {
-    if (userId === "") {
-      const token = Cookies.get("token");
-      if (token) {
-        const decodeToken = jwtDecode(token);
-        setUserId(decodeToken.userID);
-      }
-    }
-
-    if (!dataLoaded) {
-      const fetchRecipes = async () => {
-        try {
-          const data = await apiClient.getUserRecipes({ userId: userId });
-          const recipeArray = data.data.recipe;
-          setRecipes(recipes.concat(recipeArray));
-          setDataLoaded(true);
-        } catch (e) {
-          console.error(`error: ${e}`);
-        }
-      };
-      fetchRecipes();
-    }
-  }, [dataLoaded]);
+    console.log(`userID: ${userId}`);
+    fetchRecipes();
+  }, []);
 
   // Event handler for updating search term state
   const handleSearchChange = (event) => {
@@ -103,20 +103,30 @@ const RecipeBookPage = ({ userIdProp }) => {
     setSortBy(event.target.value);
   };
 
+  const checkRecipeData = () => {
+    const recipeDataState = useSelector((state) => state.recipeData.data);
+    return recipeDataState;
+  };
 
   // Function to handle card click event
-  const handleSubmitRecipe = (recipe_name) => { 
-    // Redux logic to update recipe info
-    // Fetch recipe details by name
-  //   apiClient.getRecipeByName(recipe_name).then((data) => {
-  //     dispatch(setData(data)); // Update Redux state with fetched recipe info
-  //   });
-  }
+  const handleSubmitRecipe = async (recipe_name) => {
+    try {
+      const body = JSON.stringify({
+        recipeName: recipe_name,
+      });
+      const res = await apiClient.getRecipeByName(body);
+      const data = await res.data;
+      const recipe = await data.recipe;
+      // Redux Dispatch
+      dispatch(setRecipeData(recipe));
+      console.log(`dispatched data to recipe slice`);
+      nav("/recipe-result");
+    } catch (e) {
+      console.error(`error fetching recipe data: ${e}`);
+    }
+  };
 
-  
-
-
-    // Filter and sort the recipes based on search and sortBy states
+  // Filter and sort the recipes based on search and sortBy states
   const displayedRecipes = [...recipes]
     .filter((recipe) =>
       recipe.recipe_name.toLowerCase().includes(search.toLowerCase())
@@ -145,7 +155,7 @@ const RecipeBookPage = ({ userIdProp }) => {
     });
 
   return (
-    <Box sx={{backgroundColor: "#C98C93", minHeight: '100vh'}}>
+    <Box sx={{ backgroundColor: "#C98C93", minHeight: "100vh" }}>
       <Container>
         <Typography
           variant="h1"
@@ -206,7 +216,7 @@ const RecipeBookPage = ({ userIdProp }) => {
         </Box>
 
         {/* Begin Grid for recipes */}
-        <Grid sx={{mb:10}} container spacing={3} justifyContent="center">
+        <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
           {displayedRecipes.length > 0 ? (
             displayedRecipes.map((recipe) => (
               <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
@@ -222,12 +232,13 @@ const RecipeBookPage = ({ userIdProp }) => {
                     flexDirection: "column",
                     alignItems: "center",
                     justifyContent: "center",
-                    '&:hover': { // Adding hover effect
-                      transform: 'scale(1.05)',
-                      transition: 'transform .3s ease-in-out',
+                    "&:hover": {
+                      // Adding hover effect
+                      transform: "scale(1.05)",
+                      transition: "transform .3s ease-in-out",
                     },
                   }}
-                onClick={() => handleSubmitRecipe(recipe.recipe_name)} // Call handleSubmitRecipe with recipe name
+                  onClick={() => handleSubmitRecipe(recipe.recipe_name)} // Call handleSubmitRecipe with recipe name
                 >
                   <Typography variant="h5" sx={{ color: "white" }}>
                     {recipe.recipe_name}
@@ -238,8 +249,14 @@ const RecipeBookPage = ({ userIdProp }) => {
                   <Typography sx={{ color: "white" }}>
                     {formatDate(recipe.createdAt)}
                   </Typography>
-                  <Button onClick={() => handleDeleteRecipe(recipe.recipe_name)} variant="contained" color="secondary" sx={{mt: 3}}>x</Button>
-
+                  <Button
+                    onClick={() => handleDeleteRecipe(recipe.recipe_name)}
+                    variant="contained"
+                    color="secondary"
+                    sx={{ mt: 3 }}
+                  >
+                    x
+                  </Button>
                 </Card>
               </Grid>
             ))

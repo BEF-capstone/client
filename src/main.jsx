@@ -6,7 +6,8 @@ import "./index.css";
 import { ThemeProvider, createTheme } from "@mui/material";
 
 import { configureStore } from "@reduxjs/toolkit";
-import dataReducer from "./redux/store.js";
+import recipeDataSlice from "./redux/recipeDataSlice.js";
+import authDataSlice from "./redux/authDataSlice.js";
 
 const theme = createTheme({
   palette: {
@@ -21,10 +22,14 @@ const theme = createTheme({
   },
 });
 
+/* Redux Reducers & Store */
+const rootReducer = {
+  recipeData: recipeDataSlice,
+  userData: authDataSlice,
+};
+
 const store = configureStore({
-  reducer: {
-    data: dataReducer,
-  },
+  reducer: rootReducer,
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
