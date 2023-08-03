@@ -22,6 +22,8 @@ const RecipeCard = ({ recipe }) => {
           subheader={DateTime.now().toLocaleString()}
         />
         <CardContent>
+          <Typography>{recipe.description}</Typography>
+
           <Typography align="left" variant="h6">
             Ingredients:
           </Typography>

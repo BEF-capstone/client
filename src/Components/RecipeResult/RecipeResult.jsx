@@ -63,8 +63,8 @@ const RecipeResult = ({ recipe }) => {
       ) : (
         <Box sx={{ mt: 2, mb: 5 }}>
           <LoadingAnimation />
-        </Box> 
-     )}
+        </Box>
+      )}
     </div>
   );
 };

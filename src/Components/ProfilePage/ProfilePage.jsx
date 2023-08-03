@@ -1,9 +1,8 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./ProfilePage.css";
 import Avatar from "@mui/material/Avatar";
-
-import { useDispatch, useSelector } from "react-redux";
 
 const ProfilePage = ({ handleLogout }) => {
   const avatarImageSrc = "../images/chefprofilepic.png";
