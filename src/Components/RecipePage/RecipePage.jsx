@@ -13,6 +13,7 @@ import "./RecipePage.css";
 const RecipePage = () => {
   /* Redux Data */
   const dispatch = useDispatch();
+
   const recipeData = useSelector((state) => state.recipeData.recipeData);
 
   // useEffect(() => {
