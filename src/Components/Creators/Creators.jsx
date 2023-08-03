@@ -5,7 +5,7 @@ const creatorsData = [
   {
     name: 'Blessing Adomakoh',
     school: 'Pomona College',
-    year: 'Rising Junior',
+    year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Waakye (Ghanaian Cuisine)',
     imageUrl: "../images/Blessing.jpg",
@@ -13,7 +13,7 @@ const creatorsData = [
   {
     name: 'Efren Enriquez Mendoza',
     school: 'UT Austin',
-    year: 'Rising Junior',
+    year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Green Chile Enchiladas (Mexican Cuisine)',
     imageUrl: '../images/Efren.jpg',
@@ -21,7 +21,7 @@ const creatorsData = [
   {
     name: 'Faaizah Afoda',
     school: 'CUNY Hunter College',
-    year: 'Rising Junior',
+    year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Peanut Stew (Togolese Cuisine)',
     imageUrl: '../images/Faaizah.jpg',

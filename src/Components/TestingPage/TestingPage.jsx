@@ -1,56 +1,41 @@
 import React from "react";
 import { useState } from "react";
 import RecipeResult from "../RecipeResult/RecipeResult";
+import RecipeCard from "../RecipeCard/RecipeCard";
 
 const TestingPage = () => {
-  const [recipe, setRecipe] = React.useState({});
-  const [recipeName, setRecipeName] = React.useState();
-  const [madeQuery, setMadeQuery] = React.useState(false);
-
-  // ingredients array from Ingredients page
-  const [ingredients, setIngredients] = useState([
-    "onions, green pepper, tomatoes, ground beef",
-  ]);
-
-  // cuisine selection from Cuisine page
-  const [cuisine, setCuisine] = useState("mexican");
-
-  // POST request to openAI routes
-  const createRecipe = async () => {
-    // pass ingredients arr and cuisine string
-    const options = {
-      method: "POST",
-      body: JSON.stringify({
-        cuisine: cuisine,
-        ingredients: ingredients,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    // Make post request
-    try {
-      const response = await fetch(
-        "http://localhost:3001/api/openAi/create_recipe",
-        options
-      );
-      const data = await response.json();
-      let content = await data.choices[0].message.content;
-      console.log(content);
-      console.log(typeof content);
-      content = JSON.parse(content);
-      setRecipe(content);
-      setRecipeName(content.recipeName);
-      console.log("recipe Name: ", recipeName);
-      setMadeQuery(true);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  // const recipe = {
+  //   id: 19,
+  //   createdAt: 2023-08-02T20:49:05.434Z,
+  //   recipe_name: 'Togolese Broccoli Salad',
+  //   description: 'A refreshing and nutritious salad with a Togolese twist',
+  //   prep_time: '10 minutes',
+  //   difficulty: 'Easy',
+  //   servings: '4',
+  //   instructions: [
+  //     '1. Cut the broccoli florets into bite-sized pieces and blanch them in boiling water for 2 minutes. Drain and transfer to a bowl.',
+  //     '2. Finely chop the red onion and add it to the bowl with the broccoli.',
+  //     '3. In a separate bowl, combine the lemon juice, olive oil, salt, and pepper. Mix well.',
+  //     '4. Pour the dressing over the broccoli and red onion. Toss to coat evenly.',
+  //     '5. Add the roasted peanuts, cilantro leaves, and dried currants to the bowl. Mix gently to combine.',
+  //     '6. Let the salad sit in the refrigerator for at least 30 minutes to allow the flavors to meld together.',
+  //     '7. Serve chilled and enjoy!'
+  //   ],
+  //   ingredients: [
+  //     '2 heads of broccoli',
+  //     '1 red onion',
+  //     '1/2 cup roasted peanuts',
+  //     '1/4 cup fresh cilantro leaves',
+  //     '1/4 cup dried currants',
+  //     '2 tablespoons lemon juice',
+  //     '2 tablespoons olive oil',
+  //     'Salt and pepper to taste'
+  //   ]
+  // }
 
   return (
     <div>
+      {/* <RecipeCard recipe={recipe} /> */}
       <button onClick={createRecipe}>PROMPT GPT</button>
       {madeQuery && <RecipeResult recipe={recipe} />}
     </div>

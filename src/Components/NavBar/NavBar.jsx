@@ -172,7 +172,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
   };
 
   return (
-    <Box sx={{ flexGrow: 1, width: "100%", margin: 0 }}>
+    <Box sx={{ width: "100%", margin: 0 }}>
       <AppBar
         position="static"
         sx={{
@@ -180,8 +180,9 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           boxShadow: "none",
           width: "100%",
           margin: 0,
-          height: 70
+          minHeight: "7vh"
         }}
+        // minHeight: "8vh"
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -204,31 +205,12 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
             </IconButton>
           </Link>
           <Link to="/">
-            <Typography sx={{ color: '#eabd0b', fontSize: 25 }}>Chef Compass</Typography>
+            <Typography sx={{ color: '#eabd0b', fontSize: 25, fontFamily: "cursive" }}>Chef Compass</Typography>
           </Link>
         </div>
 
 
-
-          {/* Check if mobile view and not logged in, if true display sign in link */}
-          {isMobile && !isLoggedIn && (
-            <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <Link to="/authenticate">
-                <MenuItem
-                  sx={{
-                    fontFamily: "Times New Roman",
-                    color: "white",
-                    fontSize: 20,
-                    fontWeight: "bold",
-                  }}
-                >
-                  Sign In
-                </MenuItem>
-              </Link>
-            </Box>
-          )}
-
-          {/* Check if not mobile view and not logged in, if true display about, how-to, contact, and sign in links */}
+          {/* Check if not mobile view and not logged in, if true display get started, recipe book, and sign in links */}
           {!isMobile && !isLoggedIn && (
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
               <ScrollLink to="info" smooth={true}>
@@ -247,6 +229,20 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
               Get Started
             </MenuItem>
               </ScrollLink>
+              <Link to="/recipe-book">
+                <MenuItem
+                  sx={{
+                    fontFamily: "Times New Roman",
+                    color: "white",
+                    fontSize: 25,
+                    fontWeight: "bold",
+                    right: 15,
+                    top: 8
+                  }}
+                >
+                  Recipe Book
+                </MenuItem>
+              </Link>
               <Link to="/authenticate">
                 <MenuItem
                   sx={{
@@ -325,6 +321,18 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
 
           {/* If mobile view and logged in, display menu icon button for navigation drawer */}
           {isMobile && isLoggedIn && (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              onClick={handleDrawerToggle}
+            >
+              <MenuIcon fontSize="large" sx={{ color: "white" }} />
+            </IconButton>
+          )}
+
+          {isMobile && !isLoggedIn && (
             <IconButton
               size="large"
               edge="start"
@@ -440,7 +448,21 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
       {/* Navigation drawer for mobile view */}
       <Drawer anchor={"right"} open={mobileOpen} onClose={handleDrawerToggle}>
         <List>
-          {/* Check if logged in and not on certain routes, if true display My Account, Mix, and Logout links */}
+
+          {/* Check if not logged in, if true display sign in and recipe book link */}
+          {!isLoggedIn && (
+            <>
+              <ListItem key={"Recipe Book"} component={Link} to="/recipe-book">
+                <ListItemText primary={"Recipe Book"} />
+              </ListItem>
+              <ListItem key={"Sign In"} component={Link} to="/authenticate">
+                <ListItemText primary={"Sign In"} />
+              </ListItem>
+            </>
+          )}
+            
+
+          {/* // Check if logged in and not on certain routes, if true display My Account, Mix, and Logout links */}
           {isLoggedIn &&
             !(
               location.pathname === "/create-recipe" ||
@@ -471,12 +493,6 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                 </ListItem>
               </>
             )}
-          {/* Check if not logged in, if true display Sign In link */}
-          {!isLoggedIn && (
-            <ListItem key={"Sign In"} component={Link} to="/authenticate">
-              <ListItemText primary={"Sign In"} />
-            </ListItem>
-          )}
 
           {/* Check if logged in and on certain routes, if true display My Account, Mix, Recipe Book, Grocery List, and Logout links */}
           {isLoggedIn &&

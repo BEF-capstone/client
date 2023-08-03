@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Grid, TextField, Typography } from "@mui/material";
 import LandingVideo from "../LandingVideo/LandingVideo.mp4";
 import "./Landing.css"; // Import the CSS file for styling
 import About from "../About/About";
@@ -30,12 +31,11 @@ const Landing = () => {
       {/* </div> */}
       {/* <div className="Hero">
         <Hero />
-      </div> */}
-      {/* <Hero /> */}
-      {/* <div className="Pages">
+      </div>
+      <div className="Pages">
         <About />
-      </div> */}
-      {/* <div className="Pages">
+      </div>
+      <div className="Pages">
         <HowTo />
       </div> */}
       {/* <div className="Bowl">
