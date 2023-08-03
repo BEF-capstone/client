@@ -1,3 +1,4 @@
+import { bindActionCreators } from "@reduxjs/toolkit";
 import API_BASE_URL from "../../constants";
 import axios from "axios";
 
@@ -65,6 +66,14 @@ class ApiClient {
     return await this.request({
       endpoint: `api/recipes/read-recipes`,
       method: `GET`,
+    });
+  }
+
+  async getRecipeByName(body) {
+    return await this.request({
+      endpoint: `api/recipes/recipe-by-name`,
+      method: `POST`,
+      data: body,
     });
   }
 

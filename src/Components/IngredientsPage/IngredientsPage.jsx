@@ -6,7 +6,7 @@ import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
 /* REDUX IMPORTS */
 import { useDispatch } from "react-redux";
-import { setData } from "../../redux/store";
+import { setRecipeData } from "../../redux/recipeDataSlice";
 /* ApiClient */
 import apiClient from "../../services/apiClient";
 import { Box } from "@mui/material";
@@ -67,7 +67,7 @@ const IngredientsPage = () => {
         cuisine: selectedCuisine,
         ingredients: selectedIngredients,
       });
-      dispatch(setData(null));
+      dispatch(setRecipeData(null));
       // make POST req to openAI endpoint
       const response = await apiClient.createNewRecipe(body);
       // get data
@@ -77,7 +77,7 @@ const IngredientsPage = () => {
       content = JSON.parse(content);
       console.log(content);
       // send recipe to redux, to render in recipe card
-      dispatch(setData(content));
+      dispatch(setRecipeData(content));
       setRecipe(content);
       setMadeQuery(true);
       // POST recipe to recipe book table
