@@ -23,7 +23,7 @@ const RecipeCard = ({ recipe }) => {
         />
         <CardContent>
           <Typography align="left" variant="h6">
-            Ingredients:{" "}
+            Ingredients:
           </Typography>
           {/* LIST INGREDIENTS */}
           <List>
@@ -40,7 +40,7 @@ const RecipeCard = ({ recipe }) => {
           </List>
 
           <Typography align="left" variant="h6">
-            Method:{" "}
+            Method:
           </Typography>
           {/* LIST INSTRUCTIONS */}
           <List>
