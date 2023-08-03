@@ -35,9 +35,16 @@ function App() {
   const userId = useSelector((state) => state.userData.userId);
   const [loginError, setLoginError] = useState("");
 
+
   // const [loggedIn, setLoggedIn] = useState(false);
   // const [userName, setUserName] = useState("");
   // const [userId, setUserId] = useState("");
+
+//   const [userName, setUserName] = useState("");
+//   const [userId, setUserId] = useState("");
+//   const [user, setUser] = useState("");
+
+
 
   /* Registartion and Login handling */
   useEffect(() => {
@@ -56,8 +63,8 @@ function App() {
         userId: decodeToken.userId,
       };
       dispatch(setUserData(loggedInUserData));
-      setUserId(decodeToken.userID);
-      setUserName(decodeToken.userName);
+//       setUserId(decodeToken.userID);
+//       setUserName(decodeToken.userName);
       // handle login based on token expiration
       if (decodeToken.exp * 1000 > Date.now()) {
         setLoggedIn(true);
@@ -67,12 +74,12 @@ function App() {
     }
   };
 
-  // authenticate and login user, set a cookie with user token
   const handleLogin = async (data) => {
     try {
       const { token, user, message } = data;
       if (user) {
         Cookies.set("token", token);
+
 
         const loggedInUserData = {
           loggedIn: true,
@@ -86,16 +93,23 @@ function App() {
         // console.log(message); // display success login message
         // setUserName(user.firstname);
         // setUserId(user.id);
+
+//         setLoggedIn(true);
+//         setLoginError("");
+//         console.log(message); 
+//         setUserName(user.firstname);
+//         setUserId(user.id);
+//         setUser(user); // updating the user state 
+
       } else {
         setLoginError(message);
-        console.log(message); // display failed login message
+        console.log(message);
       }
     } catch (e) {
       console.error(`Login Failed : ${e}`);
     }
   };
-
-  // register a user, set a new cookie with user token
+  //hello
   const handleRegistration = async (data) => {
     try {
       const { token, user, message } = data;
@@ -113,6 +127,12 @@ function App() {
         // console.log(`message: ${message}`);
         // setUserName(user.firstname);
         // setUserId(user.id);
+
+//         setLoggedIn(true);
+//         console.log(`message: ${message}`);
+//         setUserName(user.firstname);
+//         setUserId(user.id);
+//         setUser(user); // Update the user state here
       } else {
         console.log(`no user message: ${message}`);
       }
@@ -120,6 +140,7 @@ function App() {
       console.error(`Registration Failed: ${e}`);
     }
   };
+  
 
   // logout user, remove cookie and clear fields
   const handleLogout = () => {
@@ -163,7 +184,7 @@ function App() {
             ></Route>
             <Route
               path="/user-profile"
-              element={<ProfilePage handleLogout={handleLogout} />}
+              element={<ProfilePage user={user} handleLogout={handleLogout} />}
             />
             <Route path="/create-recipe" element={<CuisinePage />}></Route>
             <Route

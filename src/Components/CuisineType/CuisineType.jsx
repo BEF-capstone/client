@@ -41,7 +41,6 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
                 backgroundImage: `url(${cuisine.image})`, // add the image as a background
                 backgroundSize: 'cover', // make sure it covers the whole card
                 opacity: 1,
-                backgroundColor: selectedCuisine === cuisine.name ? "#8D8741" : "transparent",
                 transition: 'transform 0.15s ease-in-out',
                 '&:hover': {
                   transform: 'scale(1.05)',
@@ -52,20 +51,21 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
                 position: 'relative', // relative to the card
               }}
             >
-            <Typography 
-                variant="h6" 
-                align="center" 
-                sx={{ 
-                    fontFamily: 'Italiana',
-                    fontSize: 30,
-                    color: '#fff', 
-                    fontWeight: 'bold', // Change fontWeight to 'bold' or 700
-                    position: 'absolute', 
-                    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', 
-                }}
-            >
-                {cuisine.name}
-            </Typography>
+         <Typography 
+          variant="h6" 
+          align="center" 
+          sx={{ 
+            fontFamily: 'Italiana',
+            fontSize: 45,
+            color: '#fff', 
+            fontWeight: 'bold',
+            position: 'absolute', 
+            textShadow: '3px 3px #999, 5px 5px #555, 7px 7px #333', // 3D effect
+          }}
+        >
+          {cuisine.name}
+        </Typography>
+
 
             </Card>
           </RouterLink>
