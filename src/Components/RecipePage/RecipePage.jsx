@@ -2,8 +2,6 @@ import React from "react";
 
 import RecipeResult from "../RecipeResult/RecipeResult";
 
-import RecipeCard from "../RecipeCard/RecipeCard";
-import WorldMap from "../WorldMap/WorldMap";
 
 /* Redux Imports */
 import { useSelector } from "react-redux";

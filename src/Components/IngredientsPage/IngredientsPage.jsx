@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./IngredientsPage.css";
+import { Box, Grid, TextField, Typography } from "@mui/material";
 import queryString from "query-string";
 import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
@@ -10,13 +11,11 @@ import { setData } from "../../redux/store";
 /* ApiClient */
 import apiClient from "../../services/apiClient";
 
-
 import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
 import Info from "../Info/Info";
 
 const IngredientsPage = () => {
-
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
@@ -31,6 +30,13 @@ const IngredientsPage = () => {
   // redux dispatch
   const dispatch = useDispatch();
 
+  //Error message
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const handleErrorMessage = (message) => {
+    setErrorMessage(message);
+  };
+
   // Use useEffect to parse the query string whenever the location changes
   useEffect(() => {
     const values = queryString.parse(location.search);
@@ -39,32 +45,35 @@ const IngredientsPage = () => {
     console.log(selectedIngredients);
   }, [location]);
 
-
-
-    
- 
-
   const handleInputValue = (e) => {
     setInputValue(e.target.value);
   };
 
   // Handle adding a new ingredient to the selected ingredient list
-  const handleAddIngredient = () => {
+  const handleAddIngredient = (ingredient) => {
     if (selectedIngredients.length >= maxIngredients) {
-      alert("You cannot enter more than 5 ingredients.");
+      setErrorMessage("You have enter the max number of ingredients.");
       return;
     }
+    // if (selectedIngredients.includes(ingredient.name)) {
+    //   setErrorMessage("This ingredient is already selected.");
+    //   return;
+    //   console.log("you alreaady said that")
+    // }
+
     if (selectedIngredients.length < 5 && inputValue.trim() !== "") {
+      setErrorMessage(null);
       setSelectedIngredients([...selectedIngredients, inputValue]);
       setInputValue("");
+      console.log("incrementing the listtt???");
     }
   };
 
   // handing drag event on an ingredient in the caroseul
 
-  const handleDragIngredient = (carouselIngredient) => {
-    setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
-  };
+  // const handleDragIngredient = (carouselIngredient) => {
+  //   setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
+  // };
 
   const handleSubmit = async () => {
     try {
@@ -106,8 +115,7 @@ const IngredientsPage = () => {
 
   // Ingredients carousel and related functions
 
-  
-  const carouselIngredients = [
+  const [carouselIngredients, setCarouselIngredients] = useState([
     {
       id: "1",
       name: "broccoli",
@@ -162,57 +170,90 @@ const IngredientsPage = () => {
       image:
         "https://cf-images.us-east-1.prod.boltdns.net/v1/static/507936866/f936391e-9328-4690-887e-d327ffc0a433/29040a0e-90c3-4c63-9705-387fdb7384d8/1800x1012/match/image.jpg",
     },
-    // Add more ingredients with their names and image paths here
-  ];
+    {
+      id: "10",
+      name: "Flour",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOMGLiGUi7KqUtI9z-Gn-btmq_U-R4qzaOIA&usqp=CAU",
+    },
+    {
+      id: "11",
+      name: "Milk",
+      image:
+        "https://images.immediate.co.uk/production/volatile/sites/30/2020/02/Glass-and-bottle-of-milk-fe0997a.jpg",
+    },
+    {
+      id: "12",
+      name: "Green Onion",
+      image:
+        "https://www.thedailymeal.com/img/gallery/whats-the-difference-between-scallions-and-green-onions/l-intro-1672833580.jpg",
+    },
+    {
+      id: "13",
+      name: "Apples",
+      image:
+        "https://hips.hearstapps.com/hmg-prod/images/apples-at-farmers-market-royalty-free-image-1627321463.jpg?crop=1.00xw:0.631xh;0.00160xw,0.206xh&resize=1200:*",
+    },
+    {
+      id: "14",
+      name: "Ranch",
+      image: "https://images.heb.com/is/image/HEBGrocery/000163630-1",
+    },
+    {
+      id: "15",
+      name: "Honey",
+      image:
+        "https://www.jessicagavin.com/wp-content/uploads/2019/02/honey-pin.jpg",
+    },
+  ]);
+  // Add more ingredients with their names and image paths here
 
   return (
-    <Box sx={{ minHeight: "90vh", backgroundColor: "#C98C93"}}>
-    {/* <div className="Page"> */}
-        <div className="banner">
-          <h1>Time To Stir!</h1>
-          <p>
-            Choose up to 5 ingredients or click/drag from common items from the
-            carsouel into the textbox!{" "}
-          </p>
-        </div>
-        {/* seperation banner */}
-        <div className="ChosenCusine">
-          Chosen Cuisine: {selectedCuisine || ""}
-        </div>
+    <Box sx={{ minHeight: "90vh", backgroundColor: "#C98C93" }}>
+      {/* <div className="Page"> */}
+      <div className="banner">
+        <h1 className="StirTime">Time To Stir!</h1>
+        <p>
+          Choose up to 5 ingredients or click/drag from common items from the
+          carsouel into the textbox!{" "}
+        </p>
+      </div>
+      {/* seperation banner */}
+      <div className="ChosenCusine">
+        Chosen Cuisine: {selectedCuisine || ""}
+      </div>
 
-        {/* renders the ingredientcarousel components by passing its props   */}
-        <IngredientsList
-          selectedIngredients={selectedIngredients}
-          setSelectedIngredients={setSelectedIngredients}
-          onAddIngredient={handleAddIngredient}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          // handleDeleteIgredient= {handleDeleteIngredient}
+      {/* renders the ingredientcarousel components by passing its props   */}
+      <IngredientsList
+        selectedIngredients={selectedIngredients}
+        setSelectedIngredients={setSelectedIngredients}
+        onAddIngredient={handleAddIngredient}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        setErrorMessage={handleErrorMessage}
+      />
 
-          // Pass the handleDeleteIngredient function to IngredientsList
-        />
-        {/* <Info
-      handleSubmit={handleSubmit}/> */}
-        <IngredientsCarousel
-          carouselIngredients={carouselIngredients}
-          onDragIngredient={handleDragIngredient}
-          onAddIngredient={handleAddIngredient}
-          selectedIngredients={selectedIngredients}
-          setSelectedIngredients={setSelectedIngredients}
-          handleAddIngredient={handleAddIngredient}
-        />
-
+      <IngredientsCarousel
+        setCarouselIngredients={setCarouselIngredients}
+        carouselIngredients={carouselIngredients}
+        // onDragIngredient={handleDragIngredient}
+        onAddIngredient={handleAddIngredient}
+        selectedIngredients={selectedIngredients}
+        setSelectedIngredients={setSelectedIngredients}
+        setErrorMessage={handleErrorMessage}
+        errorMessage={errorMessage}
+      />
+      <div className="butttons">
         <Link to="/create-recipe" onClick={handleSubmit}>
-          <button>BACK</button>
+          <button className="BACKbutton">BACK</button>
         </Link>
         <Link to="/recipe-result" onClick={handleSubmit}>
-          <button>MIX</button>
+          <button className="MIXbutton">MIX</button>
         </Link>
-
-        {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
+      </div>
+      {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
       {/* </div> */}
     </Box>
-
   );
 };
 

@@ -2,19 +2,12 @@ import React from "react";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import LandingVideo from "../LandingVideo/LandingVideo.mp4";
 import "./Landing.css"; // Import the CSS file for styling
-import About from "../About/About";
-import HowTo from "../HowTo/HowTo";
-import Hero from "../Hero/Hero";
-import Pics from "../Pics/Bowl";
 import Info from "../Info/Info"
 import Creators from '../Creators/Creators'
 
 const Landing = () => {
   return (
     <>
-      {/* <div className="landing"> */}
-        {" "}
-        {/* This is the common parent */}
         <video autoPlay muted loop>
           <source src={LandingVideo} type="video/mp4" />
         </video>
@@ -26,21 +19,7 @@ const Landing = () => {
         </div>
         <Info/>
         <Creators />
-        {/* <div className="scroll">Scroll</div> */}
 
-      {/* </div> */}
-      {/* <div className="Hero">
-        <Hero />
-      </div>
-      <div className="Pages">
-        <About />
-      </div>
-      <div className="Pages">
-        <HowTo />
-      </div> */}
-      {/* <div className="Bowl">
-        <Pics />
-      </div> */}
     </>
   );
 };
