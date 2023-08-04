@@ -3,18 +3,6 @@ import React, { useState, useEffect } from "react";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import CuisineType from "../CuisineType/CuisineType";
 import { Link as RouterLink } from "react-router-dom";
-// import { styled } from '@mui/system';
-
-// const StyledBox = styled(Box)(({ theme }) => ({
-//   backgroundImage: `url("https://images.pexels.com/photos/7605261/pexels-photo-7605261.jpeg?auto=compress&cs=tinysrgb&w=1600")`,
-//   backgroundRepeat: 'no-repeat',
-//   backgroundSize: 'cover',
-//   minHeight: '100vh',
-//   display: 'flex',
-//   flexDirection: 'column',
-//   justifyContent: 'space-between',
-// }));
-
 
 
 // Define the CuisinePage component
@@ -411,7 +399,7 @@ const CuisinePage = () => {
         <Typography
           variant="h2"
           gutterBottom
-          sx={{ color: "white", fontFamily: "Italiana", textAlign: "center", mt: 10 }}
+          sx={{ color: "white", textShadow: '3px 3px #999, 5px 5px #555, 7px 7px #333', fontFamily: "Italiana", textAlign: "center", mt: 10 }}
         >
           Time to Mix!
         </Typography>

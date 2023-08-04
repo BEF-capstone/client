@@ -7,15 +7,17 @@ import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
 /* REDUX IMPORTS */
 import { useDispatch } from "react-redux";
-import { setData } from "../../redux/store";
+import { setRecipeData } from "../../redux/recipeDataSlice";
 /* ApiClient */
 import apiClient from "../../services/apiClient";
+
 
 import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
 import Info from "../Info/Info";
 
-const IngredientsPage = () => {
+
+const IngredientsPage = ({ userId }) => {
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
@@ -78,12 +80,16 @@ const IngredientsPage = () => {
   const handleSubmit = async () => {
     try {
       // pass cuisine and ingredients array as body parameters
+      console.log(`in handle submit`);
       let body = JSON.stringify({
         cuisine: selectedCuisine,
         ingredients: selectedIngredients,
       });
+      dispatch(setRecipeData(null));
       // make POST req to openAI endpoint
+      console.log(`request to apiClient`);
       const response = await apiClient.createNewRecipe(body);
+      console.log(`request to success`);
       // get data
       const data = await response.data;
       // recipe info
@@ -91,22 +97,26 @@ const IngredientsPage = () => {
       content = JSON.parse(content);
       console.log(content);
       // send recipe to redux, to render in recipe card
-      dispatch(setData(content));
+      dispatch(setRecipeData(content));
       setRecipe(content);
       setMadeQuery(true);
       // POST recipe to recipe book table
       body = JSON.stringify({
-        recipe_name: content.recipeName,
-        description: content.recipeDescription,
-        prep_time: content.prepTime,
+        recipe_name: content.recipe_name,
+        description: content.description,
+        prep_time: content.prep_time,
         difficulty: content.difficulty,
         servings: content.servings.toString(),
         instructions: content.instructions,
         ingredients: content.ingredients,
         createdBy: userId,
       });
+
+      console.log(`trying to make req to recipe book`);
       if (content) {
+        console.log(`first if statement`);
         apiClient.addToRecipeBook(body);
+        console.log(`add to recipe book success`);
       }
     } catch (e) {
       console.error(e);
@@ -116,6 +126,7 @@ const IngredientsPage = () => {
   // Ingredients carousel and related functions
 
   const [carouselIngredients, setCarouselIngredients] = useState([
+
     {
       id: "1",
       name: "broccoli",
@@ -213,6 +224,7 @@ const IngredientsPage = () => {
       {/* <div className="Page"> */}
       <div className="banner">
         <h1 className="StirTime">Time To Stir!</h1>
+
         <p>
           Choose up to 5 ingredients or click/drag from common items from the
           carsouel into the textbox!{" "}
@@ -251,6 +263,7 @@ const IngredientsPage = () => {
           <button className="MIXbutton">MIX</button>
         </Link>
       </div>
+
       {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
       {/* </div> */}
     </Box>

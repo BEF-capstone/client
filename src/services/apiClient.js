@@ -1,3 +1,4 @@
+import { bindActionCreators } from "@reduxjs/toolkit";
 import API_BASE_URL from "../../constants";
 import axios from "axios";
 
@@ -68,6 +69,14 @@ class ApiClient {
     });
   }
 
+  async getRecipeByName(body) {
+    return await this.request({
+      endpoint: `api/recipes/recipe-by-name`,
+      method: `POST`,
+      data: body,
+    });
+  }
+
   async getUserRecipes(userInfo) {
     return await this.request({
       endpoint: `api/recipes/user-recipes`,
@@ -87,6 +96,14 @@ class ApiClient {
   async addToRecipeBook(body) {
     return await this.request({
       endpoint: `api/recipes/add-recipe`,
+      method: `POST`,
+      data: body,
+    });
+  }
+
+  async deleteRecipeFromRecipeBook(body) {
+    return await this.request({
+      endpoint: `api/recipes/delete-recipe`,
       method: `POST`,
       data: body,
     });
