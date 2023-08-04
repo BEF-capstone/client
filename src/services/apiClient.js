@@ -100,6 +100,14 @@ class ApiClient {
       data: body,
     });
   }
+
+  async deleteRecipeFromRecipeBook(body) {
+    return await this.request({
+      endpoint: `api/recipes/delete-recipe`,
+      method: `POST`,
+      data: body,
+    });
+  }
 }
 
 export default new ApiClient(API_BASE_URL);

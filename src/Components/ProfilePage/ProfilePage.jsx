@@ -6,12 +6,7 @@ import Avatar from "@mui/material/Avatar";
 
 const ProfilePage = ({ handleLogout }) => {
   const avatarImageSrc = "../images/chefprofilepic.png";
-
-  // const userData = useSelector((state) => state.userData.data);
   const userName = useSelector((state) => state.userData.userName);
-
-  console.log(`userName: ${userName} `);
-  // console.log(userData);
   return (
     <div className="ProfilePage">
       <h1 className="profileTitle">Profile</h1>

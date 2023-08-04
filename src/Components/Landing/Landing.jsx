@@ -2,32 +2,25 @@ import React from "react";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import LandingVideo from "../LandingVideo/LandingVideo.mp4";
 import "./Landing.css"; // Import the CSS file for styling
-import About from "../About/About";
-import HowTo from "../HowTo/HowTo";
-import Hero from "../Hero/Hero";
-import Pics from "../Pics/Bowl";
-import Info from "../Info/Info"
-import Creators from '../Creators/Creators'
+import Info from "../Info/Info";
+import Creators from "../Creators/Creators";
 
 const Landing = () => {
   return (
     <>
-      {/* <div className="landing"> */}
-        {" "}
-        {/* This is the common parent */}
-        <video autoPlay muted loop>
-          <source src={LandingVideo} type="video/mp4" />
-        </video>
-        <div name="/" className="typewriter-text">
-          <div className="titles">
-            <h1 className="typewriter-animation">Chef Compass </h1>
-            <p className="erasing-animation">More Eating. Less thinking.</p>
-          </div>
+      {/* <div className="landing"> */} {/* This is the common parent */}
+      <video autoPlay muted loop>
+        <source src={LandingVideo} type="video/mp4" />
+      </video>
+      <div name="/" className="typewriter-text">
+        <div className="titles">
+          <h1 className="typewriter-animation">Chef Compass </h1>
+          <p className="erasing-animation">More Eating. Less thinking.</p>
         </div>
-        <Info/>
-        <Creators />
-        {/* <div className="scroll">Scroll</div> */}
-
+      </div>
+      <Info />
+      <Creators />
+      {/* <div className="scroll">Scroll</div> */}
       {/* </div> */}
       {/* <div className="Hero">
         <Hero />
