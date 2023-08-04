@@ -39,23 +39,23 @@ function App() {
   useEffect(() => {
     checkLoggedIn();
   }, []);
-  
-// check if user is logged in
-const checkLoggedIn = () => {
-  const token = Cookies.get("token");
-  if (token) {
-    const decodeToken = jwtDecode(token);
 
-    // handle login based on token expiration
-    if (decodeToken.exp * 1000 > Date.now()) {
-      const loggedInUserData = {
-        loggedIn: true,
-        userName: decodeToken.userName,
-        userId: decodeToken.userID,
-      };
-      dispatch(setUserData(loggedInUserData));
-    } else {
-      handleLogout();
+  // check if user is logged in
+  const checkLoggedIn = () => {
+    const token = Cookies.get("token");
+    if (token) {
+      const decodeToken = jwtDecode(token);
+      // handle login based on token expiration
+      if (decodeToken.exp * 1000 > Date.now()) {
+        const loggedInUserData = {
+          loggedIn: true,
+          userName: decodeToken.userName,
+          userId: decodeToken.userID,
+        };
+        dispatch(setUserData(loggedInUserData));
+      } else {
+        handleLogout();
+      }
     }
   };
 
@@ -79,30 +79,18 @@ const checkLoggedIn = () => {
       console.error(`Login Failed : ${e}`);
     }
   };
-  //hello
+
   const handleRegistration = async (data) => {
     try {
       const { token, user, message } = data;
       if (user) {
         Cookies.set("token", token);
-
         const loggedInUserData = {
           loggedIn: true,
           userName: user.firstname,
           userId: user.id,
         };
         dispatch(setUserData(loggedInUserData));
-
-        // setLoggedIn(true);
-        // console.log(`message: ${message}`);
-        // setUserName(user.firstname);
-        // setUserId(user.id);
-
-        //         setLoggedIn(true);
-        //         console.log(`message: ${message}`);
-        //         setUserName(user.firstname);
-        //         setUserId(user.id);
-        //         setUser(user); // Update the user state here
       } else {
         console.log(`no user message: ${message}`);
       }
@@ -114,11 +102,7 @@ const checkLoggedIn = () => {
   // logout user, remove cookie and clear fields
   const handleLogout = () => {
     console.log(`logout`);
-    // setLoggedIn(false);
-    // setUserName("");
-    // setUserId("");
     dispatch(resetUserData());
-
     Cookies.remove("token");
   };
 
