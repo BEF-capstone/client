@@ -39,24 +39,23 @@ function App() {
   useEffect(() => {
     checkLoggedIn();
   }, []);
+  
+// check if user is logged in
+const checkLoggedIn = () => {
+  const token = Cookies.get("token");
+  if (token) {
+    const decodeToken = jwtDecode(token);
 
-  // check if user is logged in
-  const checkLoggedIn = () => {
-    const token = Cookies.get("token");
-    if (token) {
-      const decodeToken = jwtDecode(token);
-
-      // handle login based on token expiration
-      if (decodeToken.exp * 1000 > Date.now()) {
-        const loggedInUserData = {
-          loggedIn: true,
-          userName: decodeToken.userName,
-          userId: decodeToken.userId,
-        };
-        dispatch(setUserData(loggedInUserData));
-      } else {
-        handleLogout();
-      }
+    // handle login based on token expiration
+    if (decodeToken.exp * 1000 > Date.now()) {
+      const loggedInUserData = {
+        loggedIn: true,
+        userName: decodeToken.userName,
+        userId: decodeToken.userID,
+      };
+      dispatch(setUserData(loggedInUserData));
+    } else {
+      handleLogout();
     }
   };
 
