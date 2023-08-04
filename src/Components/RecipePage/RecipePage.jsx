@@ -14,7 +14,9 @@ const RecipePage = () => {
 
   if (!recipeData) {
     return (
-      <Box sx={{ mt: 2, mb: 5 }}>
+      <Box
+        sx={{ minHeight: "95vh", display: "flex", justifyContent: "center" }}
+      >
         <LoadingAnimation />
       </Box>
     );

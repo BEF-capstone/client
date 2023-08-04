@@ -15,7 +15,7 @@ import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
 import Info from "../Info/Info";
 
-const IngredientsPage = ({userId}) => {
+const IngredientsPage = ({ userId }) => {
   // setting limitation to the amount of ingredients added
   const maxIngredients = 5;
   const [selectedIngredients, setSelectedIngredients] = useState([]);
@@ -63,13 +63,16 @@ const IngredientsPage = ({userId}) => {
   const handleSubmit = async () => {
     try {
       // pass cuisine and ingredients array as body parameters
+      console.log(`in handle submit`);
       let body = JSON.stringify({
         cuisine: selectedCuisine,
         ingredients: selectedIngredients,
       });
       dispatch(setRecipeData(null));
       // make POST req to openAI endpoint
+      console.log(`request to apiClient`);
       const response = await apiClient.createNewRecipe(body);
+      console.log(`request to success`);
       // get data
       const data = await response.data;
       // recipe info
@@ -82,17 +85,21 @@ const IngredientsPage = ({userId}) => {
       setMadeQuery(true);
       // POST recipe to recipe book table
       body = JSON.stringify({
-        recipe_name: content.recipeName,
-        description: content.recipeDescription,
-        prep_time: content.prepTime,
+        recipe_name: content.recipe_name,
+        description: content.description,
+        prep_time: content.prep_time,
         difficulty: content.difficulty,
         servings: content.servings.toString(),
         instructions: content.instructions,
         ingredients: content.ingredients,
         createdBy: userId,
       });
+
+      console.log(`trying to make req to recipe book`);
       if (content) {
+        console.log(`first if statement`);
         apiClient.addToRecipeBook(body);
+        console.log(`add to recipe book success`);
       }
     } catch (e) {
       console.error(e);
@@ -196,10 +203,10 @@ const IngredientsPage = ({userId}) => {
         handleAddIngredient={handleAddIngredient}
       />
 
-      <Link to="/create-recipe" onClick={handleSubmit}>
+      <Link to="/create-recipe">
         <button>BACK</button>
       </Link>
-      <Link to="/recipe-result" onClick={handleSubmit}>
+      <Link to="/recipe-result" onClick={() => handleSubmit()}>
         <button>MIX</button>
       </Link>
 

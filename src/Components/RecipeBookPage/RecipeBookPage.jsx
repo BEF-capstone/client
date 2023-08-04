@@ -203,16 +203,9 @@ const RecipeBookPage = ({ LoggedIn }) => {
     return recipeDataState;
   };
 
-  // Function to handle card click event
+  // Handle submitting recipe to recipe result page
   const handleSubmitRecipe = async (recipe) => {
     try {
-      // const body = JSON.stringify({
-      //   recipeName: recipe_name,
-      // });
-      // const res = await apiClient.getRecipeByName(body);
-      // const data = await res.data;
-      // const recipe = await data.recipe;
-      // // Redux Dispatch
       dispatch(setRecipeData(recipe));
       console.log(`dispatched data to recipe slice`);
       nav("/recipe-result");
@@ -227,9 +220,15 @@ const RecipeBookPage = ({ LoggedIn }) => {
         userId: userId,
         recipeId: recipe.id,
       };
-
       await apiClient.deleteRecipeFromRecipeBook(body);
-      console.log(`here`);
+      // Update the state to remove the deleted recipe
+      setRecipes((prevRecipes) =>
+        prevRecipes.filter((r) => r.id !== recipe.id)
+      );
+      console.log(`deleted recipe from recipe book`);
+      // fetchRecipes();
+      console.log(`fetched new recipes`);
+      console.log(recipes);
     } catch (e) {
       console.error(`error deleting recipe: ${e}`);
     }
@@ -389,7 +388,14 @@ const RecipeBookPage = ({ LoggedIn }) => {
             {console.log(displayedRecipes)}
             {displayedRecipes.length > 0 ? (
               displayedRecipes.slice(3).map((recipe) => (
-                <Grid item sx={{display: 'flex', flexDirection: "column"}} xs={12} sm={6} md={4} key={recipe}>
+                <Grid
+                  item
+                  sx={{ display: "flex", flexDirection: "column" }}
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  key={recipe}
+                >
                   <Card
                     sx={{
                       // my: 5,
@@ -432,12 +438,17 @@ const RecipeBookPage = ({ LoggedIn }) => {
                     </CardActions>
                   </Card>
                   <Button
-                        onClick={() => handleDeleteRecipe(recipe)}
-                        variant="contained"
-                        sx={{ backgroundColor: "white", color: "black", display: "flex", alignItems: "center",}}
-                      >
-                        x
-                      </Button>
+                    onClick={() => handleDeleteRecipe(recipe)}
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "white",
+                      color: "black",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    x
+                  </Button>
                 </Grid>
               ))
             ) : (
