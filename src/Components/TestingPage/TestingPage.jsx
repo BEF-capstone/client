@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import RecipeResult from "../RecipeResult/RecipeResult";
-import RecipeCard from "../RecipeCard/RecipeCard";
 
 const TestingPage = () => {
   // const recipe = {

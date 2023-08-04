@@ -22,17 +22,6 @@ import { useNavigate } from "react-router-dom";
 
 import recipeDataSlice from "../../redux/recipeDataSlice";
 
-// Define a styled component for the main container with specific styles
-// const StyledBox = styled(Box)(({ theme }) => ({
-//   backgroundImage: `url(https://images.pexels.com/photos/5965947/pexels-photo-5965947.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load)`,
-//   backgroundRepeat: "no-repeat",
-//   backgroundSize: "cover",
-//   minHeight: "100vh",
-//   display: "flex",
-//   flexDirection: "column",
-//   justifyContent: "space-between",
-// }));
-
 // Function to format date in MM-DD-YYYY format
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -45,7 +34,10 @@ const formatDate = (dateString) => {
     .padStart(2, "0")}-${year}`;
 };
 
-const RecipeBookPage = ({ userId }) => {
+const RecipeBookPage = ({ LoggedIn }) => {
+
+  const userId = useSelector((state) => state.userData.userId);
+
   /* Redux Dispatch */
   const dispatch = useDispatch();
   /* React Router Dom */
@@ -60,7 +52,7 @@ const RecipeBookPage = ({ userId }) => {
   // Define state for fetching database
   const [dataLoaded, setDataLoaded] = useState(false);
 
-  // Dummy data
+  // Chef's Faves
   const [recipes, setRecipes] = useState([
     {
       recipe_name: "Waakye",
@@ -107,7 +99,6 @@ const RecipeBookPage = ({ userId }) => {
       difficulty: "Hard",
       servings: "4-6",
       instructions: [
-        "Preheat your oven to 375°F (190°C).",
         "Preheat your oven to 375°F (190°C).",
         "In a large mixing bowl, combine the shredded chicken, half of the mozzarella cheese, half of the Jack cheese, and half of the sour cream. Mix well until all the ingredients are evenly distributed.",
         "Warm the tortillas in a microwave or on a hot skillet for a few seconds to make them pliable.",
@@ -187,12 +178,15 @@ const RecipeBookPage = ({ userId }) => {
     }
   };
 
-  // Fetch recipes from backend and append to recipes array
+  
   useEffect(() => {
     console.log(`userID: ${userId}`);
-    fetchRecipes();
-    console.log(recipes);
-  }, []);
+    if (userId) {
+      console.log(`userID: ${userId}`);
+      fetchRecipes();
+      console.log(recipes);
+    }
+  }, [userId]);
 
   // Event handler for updating search term state
   const handleSearchChange = (event) => {
@@ -266,6 +260,7 @@ const RecipeBookPage = ({ userId }) => {
             color: "white",
             mt: 8,
             fontWeight: "bold",
+            textShadow: '3px 3px #999, 5px 5px #555, 7px 7px #333'
           }}
         >
           Recipes
@@ -316,11 +311,61 @@ const RecipeBookPage = ({ userId }) => {
           </Box>
         </Box>
 
-        {/* Begin Grid for recipes */}
+    
+      <Typography variant="h4" align="center" sx={{ mt: 4, mb:2, fontFamily: 'Italiana' }}>
+        Chef's Favorites
+      </Typography>
+
+      {/* Begin Grid for recipes */}
+      <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
+        {console.log(displayedRecipes)}
+        {displayedRecipes.slice(0, 3).map((recipe) => (
+          <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
+            <Card
+                sx={{
+                  my: 5,
+                  p: 2,
+                  borderRadius: 2,
+                  backgroundColor: "#5e0b15",
+                  boxShadow: 10,
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  "&:hover": {
+                    // Adding hover effect
+                    transform: "scale(1.05)",
+                    transition: "transform .3s ease-in-out",
+                  },
+                }}
+                onClick={() => handleSubmitRecipe(recipe)}
+              >
+                <Typography variant="h5" sx={{ color: "white" }}>
+                  {recipe.recipe_name}
+                </Typography>
+                <Typography sx={{ color: "white" }}>{recipe.difficulty}</Typography>
+                <Typography sx={{ color: "white" }}>
+                  {formatDate(recipe.createdAt)}
+                </Typography>
+              </Card>
+            </Grid>
+          ))}
+      </Grid>
+
+      {LoggedIn && (
+      // Title for Your Recipes
+      <Typography variant="h4" align="center" sx={{ mt: 4, mb:2, fontFamily: 'Italiana' }}>
+        Your Recipes
+      </Typography>
+    )}
+
+        {LoggedIn &&( 
+        // Begin Grid for recipes 
         <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
           {console.log(displayedRecipes)}
           {displayedRecipes.length > 0 ? (
-            displayedRecipes.map((recipe) => (
+            displayedRecipes.slice(3).map((recipe) => (
               <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
                 <Card
                   sx={{
@@ -367,9 +412,11 @@ const RecipeBookPage = ({ userId }) => {
             </Typography>
           )}
         </Grid>
+        )}
       </Container>
     </Box>
   );
 };
+
 
 export default RecipeBookPage;

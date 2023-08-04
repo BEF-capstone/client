@@ -2,8 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import RecipeResult from "../RecipeResult/RecipeResult";
 import LoadingAnimation from "../LoadingAnimations";
-import RecipeCard from "../RecipeCard/RecipeCard";
-import WorldMap from "../WorldMap/WorldMap";
+
 
 /* Redux Imports */
 import { useDispatch, useSelector } from "react-redux";

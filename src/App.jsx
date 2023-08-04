@@ -35,41 +35,30 @@ function App() {
   const userId = useSelector((state) => state.userData.userId);
   const [loginError, setLoginError] = useState("");
 
-  // const [loggedIn, setLoggedIn] = useState(false);
-  // const [userName, setUserName] = useState("");
-  // const [userId, setUserId] = useState("");
-
-  //   const [userName, setUserName] = useState("");
-  //   const [userId, setUserId] = useState("");
-  //   const [user, setUser] = useState("");
-
   /* Registartion and Login handling */
   useEffect(() => {
-    // checkLoggedIn();
+    checkLoggedIn();
   }, []);
 
-  // check if user is logged in
-  const checkLoggedIn = () => {
-    const token = Cookies.get("token");
-    if (token) {
-      const decodeToken = jwtDecode(token);
+// check if user is logged in
+const checkLoggedIn = () => {
+  const token = Cookies.get("token");
+  if (token) {
+    const decodeToken = jwtDecode(token);
 
+    // handle login based on token expiration
+    if (decodeToken.exp * 1000 > Date.now()) {
       const loggedInUserData = {
         loggedIn: true,
         userName: decodeToken.userName,
         userId: decodeToken.userId,
       };
       dispatch(setUserData(loggedInUserData));
-      //       setUserId(decodeToken.userID);
-      //       setUserName(decodeToken.userName);
-      // handle login based on token expiration
-      if (decodeToken.exp * 1000 > Date.now()) {
-        setLoggedIn(true);
-      } else {
-        handleLogout();
-      }
+    } else {
+      handleLogout();
     }
-  };
+  }
+};
 
   const handleLogin = async (data) => {
     try {
@@ -187,7 +176,7 @@ function App() {
             ></Route>
             <Route
               path="/recipe-book"
-              element={<RecipeBookPage userId={userId} />}
+              element={<RecipeBookPage checkLoggedIn={checkLoggedIn} LoggedIn={loggedIn} />}
             ></Route>
             <Route path="/grocery-list" element={<GroceryListPage />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>
