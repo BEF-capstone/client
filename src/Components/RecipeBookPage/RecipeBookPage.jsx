@@ -11,6 +11,8 @@ import {
   Grid,
   Card,
   Button,
+  CardActionArea,
+  CardActions,
 } from "@mui/material";
 // import { styled } from "@mui/system";
 import apiClient from "../../services/apiClient";
@@ -89,7 +91,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
         "Salt to taste",
         "4 cups water",
       ],
-      createdAt: "2002-12-23",
+      createdAt: "12-22-2002",
     },
     {
       recipe_name: "Green Chile Enchiladas",
@@ -125,7 +127,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
         "Fresh cilantro leaves, for garnish (optional)",
         "Sliced jalapeños, for garnish (optional)",
       ],
-      createdAt: "2002-11-18",
+      createdAt: "11-17-2002",
     },
     {
       recipe_name: "Peanut Stew",
@@ -163,7 +165,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
         "Salt to taste",
         "Cooked rice, for serving",
       ],
-      createdAt: "2003-08-16",
+      createdAt: "08-15-2003",
     },
   ]);
 
@@ -218,6 +220,20 @@ const RecipeBookPage = ({ LoggedIn }) => {
       nav("/recipe-result");
     } catch (e) {
       console.error(`error fetching recipe data: ${e}`);
+    }
+  };
+
+  const handleDeleteRecipe = async (recipe) => {
+    try {
+      const body = {
+        userId: userId,
+        recipeId: recipe.id,
+      };
+
+      await apiClient.deleteRecipeFromRecipeBook(body);
+      console.log(`here`);
+    } catch (e) {
+      console.error(`error deleting recipe: ${e}`);
     }
   };
 
@@ -366,7 +382,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
           {console.log(displayedRecipes)}
           {displayedRecipes.length > 0 ? (
             displayedRecipes.slice(3).map((recipe) => (
-              <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
+              <Grid item xs={12} sm={6} md={4} key={recipe}>
                 <Card
                   sx={{
                     my: 5,
@@ -387,22 +403,26 @@ const RecipeBookPage = ({ LoggedIn }) => {
                   }}
                   onClick={() => handleSubmitRecipe(recipe)} // Call handleSubmitRecipe with recipe name
                 >
-                  <Typography variant="h5" sx={{ color: "white" }}>
-                    {recipe.recipe_name}
-                  </Typography>
-                  <Typography sx={{ color: "white" }}>
-                    {recipe.difficulty}
-                  </Typography>
-                  <Typography sx={{ color: "white" }}>
-                    {formatDate(recipe.createdAt)}
-                  </Typography>
-                  <Button
-                    onClick={() => handleDeleteRecipe(recipe.recipe_name)}
-                    variant="contained"
-                    sx={{ mt: 3, backgroundColor: "white", color: "black" }}
-                  >
-                    x
-                  </Button>
+                  <CardActionArea>
+                    <Typography variant="h5" sx={{ color: "white" }}>
+                      {recipe.recipe_name}
+                    </Typography>
+                    <Typography sx={{ color: "white" }}>
+                      {recipe.difficulty}
+                    </Typography>
+                    <Typography sx={{ color: "white" }}>
+                      {formatDate(recipe.createdAt)}
+                    </Typography>
+                  </CardActionArea>
+                  <CardActions>
+                    <Button
+                      onClick={() => handleDeleteRecipe(recipe)}
+                      variant="contained"
+                      sx={{ mt: 3, backgroundColor: "white", color: "black" }}
+                    >
+                      x
+                    </Button>
+                  </CardActions>
                 </Card>
               </Grid>
             ))
@@ -412,7 +432,6 @@ const RecipeBookPage = ({ LoggedIn }) => {
             </Typography>
           )}
         </Grid>
-        )}
       </Container>
     </Box>
   );

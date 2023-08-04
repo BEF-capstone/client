@@ -1,23 +1,14 @@
 import React from "react";
-import { useEffect } from "react";
 import RecipeResult from "../RecipeResult/RecipeResult";
 import LoadingAnimation from "../LoadingAnimations";
-
-
 /* Redux Imports */
-import { useDispatch, useSelector } from "react-redux";
-import { Box } from "@mui/material";
+import { useSelector } from "react-redux";
+import { Box, Typography } from "@mui/material";
 import "./RecipePage.css";
 
 const RecipePage = () => {
   /* Redux Data */
-  const dispatch = useDispatch();
-
   const recipeData = useSelector((state) => state.recipeData.recipeData);
-
-  // useEffect(() => {
-  //   dispatch(fetchRecipeData());
-  // }, [dispatch]);
 
   console.log(`recipeData: ${recipeData}`);
 
@@ -30,14 +21,15 @@ const RecipePage = () => {
   }
 
   return (
-    <div className="recipe-page">
-      <h1>Recipe Page</h1>
-
-      <h2 className="chef">Yes Chef!</h2>
+    <Box sx={{ minHeight: "100vh", backgroundColor: "black" }}>
+      <Typography variant="h2" sx={{ mt: 5, color: "white" }}>
+        Yes Chef!
+      </Typography>
+      {/* <h2 className="chef">Yes Chef!</h2> */}
       <div className="recipe-display">
         <RecipeResult className="recipe_card" recipe={recipeData} />
       </div>
-    </div>
+    </Box>
   );
 };
 
