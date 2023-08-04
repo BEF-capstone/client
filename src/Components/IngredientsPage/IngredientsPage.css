@@ -16,6 +16,22 @@
   margin-top: 10px;
   margin-left: 10px;
 }
+/* .MIXbutton{
+  display:flex;
+margin-left: 75vw;
+
+}
+.BACKbutton{
+  display:flex;
+margin-right: 35vw;
+
+} */
+
+.butttons{
+  display: flex;
+  justify-content: space-around;
+
+}
 
 ul {
   display: flex;
@@ -30,7 +46,7 @@ ul {
   font-family: 'Italiana';
   font-size: 200%;
   font-weight: bold;
-  color: black;
+  color: #eabd0b;
 }
 .words{
   font-family: 'Italiana';
@@ -41,7 +57,7 @@ ul {
   color: black;
 }
 .banner{
-    background-color: #241023;
+    background-color: #C98C93;
     padding: 0.4%;
     color: white;
 }
@@ -70,7 +86,9 @@ ul {
 .images-wrapper {
   display: flex;
 }
-
+.StirTime{
+  color: #eabd0b;
+}
 .image-slide {
   flex: 1;
   padding: 10px;

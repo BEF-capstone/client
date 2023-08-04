@@ -9,9 +9,7 @@ import "./RecipePage.css";
 const RecipePage = () => {
   /* Redux Data */
   const recipeData = useSelector((state) => state.recipeData.recipeData);
-
   console.log(`recipeData: ${recipeData}`);
-
   if (!recipeData) {
     return (
       <Box
@@ -21,7 +19,6 @@ const RecipePage = () => {
       </Box>
     );
   }
-
   return (
     <Box sx={{ minHeight: "100vh", backgroundColor: "black" }}>
       <Typography variant="h2" sx={{ mt: 5, color: "white" }}>
