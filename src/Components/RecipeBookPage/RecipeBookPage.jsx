@@ -37,7 +37,6 @@ const formatDate = (dateString) => {
 };
 
 const RecipeBookPage = ({ LoggedIn }) => {
-
   const userId = useSelector((state) => state.userData.userId);
 
   /* Redux Dispatch */
@@ -180,7 +179,6 @@ const RecipeBookPage = ({ LoggedIn }) => {
     }
   };
 
-  
   useEffect(() => {
     console.log(`userID: ${userId}`);
     if (userId) {
@@ -276,7 +274,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
             color: "white",
             mt: 8,
             fontWeight: "bold",
-            textShadow: '3px 3px #999, 5px 5px #555, 7px 7px #333'
+            textShadow: "3px 3px #999, 5px 5px #555, 7px 7px #333",
           }}
         >
           Recipes
@@ -327,17 +325,20 @@ const RecipeBookPage = ({ LoggedIn }) => {
           </Box>
         </Box>
 
-    
-      <Typography variant="h4" align="center" sx={{ mt: 4, mb:2, fontFamily: 'Italiana' }}>
-        Chef's Favorites
-      </Typography>
+        <Typography
+          variant="h4"
+          align="center"
+          sx={{ mt: 4, mb: 2, fontFamily: "Italiana" }}
+        >
+          Chef's Favorites
+        </Typography>
 
-      {/* Begin Grid for recipes */}
-      <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
-        {console.log(displayedRecipes)}
-        {displayedRecipes.slice(0, 3).map((recipe) => (
-          <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
-            <Card
+        {/* Begin Grid for recipes */}
+        <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
+          {console.log(displayedRecipes)}
+          {displayedRecipes.slice(0, 3).map((recipe) => (
+            <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
+              <Card
                 sx={{
                   my: 5,
                   p: 2,
@@ -360,82 +361,88 @@ const RecipeBookPage = ({ LoggedIn }) => {
                 <Typography variant="h5" sx={{ color: "white" }}>
                   {recipe.recipe_name}
                 </Typography>
-                <Typography sx={{ color: "white" }}>{recipe.difficulty}</Typography>
+                <Typography sx={{ color: "white" }}>
+                  {recipe.difficulty}
+                </Typography>
                 <Typography sx={{ color: "white" }}>
                   {formatDate(recipe.createdAt)}
                 </Typography>
               </Card>
             </Grid>
           ))}
-      </Grid>
-
-      {LoggedIn && (
-      // Title for Your Recipes
-      <Typography variant="h4" align="center" sx={{ mt: 4, mb:2, fontFamily: 'Italiana' }}>
-        Your Recipes
-      </Typography>
-    )}
-
-        {LoggedIn &&( 
-        // Begin Grid for recipes 
-        <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
-          {console.log(displayedRecipes)}
-          {displayedRecipes.length > 0 ? (
-            displayedRecipes.slice(3).map((recipe) => (
-              <Grid item xs={12} sm={6} md={4} key={recipe}>
-                <Card
-                  sx={{
-                    my: 5,
-                    p: 2,
-                    borderRadius: 2,
-                    backgroundColor: "#5e0b15",
-                    boxShadow: 10,
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    "&:hover": {
-                      // Adding hover effect
-                      transform: "scale(1.05)",
-                      transition: "transform .3s ease-in-out",
-                    },
-                  }}
-                  onClick={() => handleSubmitRecipe(recipe)} // Call handleSubmitRecipe with recipe name
-                >
-                  <CardActionArea>
-                    <Typography variant="h5" sx={{ color: "white" }}>
-                      {recipe.recipe_name}
-                    </Typography>
-                    <Typography sx={{ color: "white" }}>
-                      {recipe.difficulty}
-                    </Typography>
-                    <Typography sx={{ color: "white" }}>
-                      {formatDate(recipe.createdAt)}
-                    </Typography>
-                  </CardActionArea>
-                  <CardActions>
-                    <Button
-                      onClick={() => handleDeleteRecipe(recipe)}
-                      variant="contained"
-                      sx={{ mt: 3, backgroundColor: "white", color: "black" }}
-                    >
-                      x
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))
-          ) : (
-            <Typography variant="h5" sx={{ my: 10, color: "white" }}>
-              No recipe found
-            </Typography>
-          )}
         </Grid>
+
+        {LoggedIn && (
+          // Title for Your Recipes
+          <Typography
+            variant="h4"
+            align="center"
+            sx={{ mt: 4, mb: 2, fontFamily: "Italiana" }}
+          >
+            Your Recipes
+          </Typography>
+        )}
+
+        {LoggedIn && (
+          // Begin Grid for recipes
+          <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
+            {console.log(displayedRecipes)}
+            {displayedRecipes.length > 0 ? (
+              displayedRecipes.slice(3).map((recipe) => (
+                <Grid item xs={12} sm={6} md={4} key={recipe}>
+                  <Card
+                    sx={{
+                      my: 5,
+                      p: 2,
+                      borderRadius: 2,
+                      backgroundColor: "#5e0b15",
+                      boxShadow: 10,
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      "&:hover": {
+                        // Adding hover effect
+                        transform: "scale(1.05)",
+                        transition: "transform .3s ease-in-out",
+                      },
+                    }}
+                    onClick={() => handleSubmitRecipe(recipe)} // Call handleSubmitRecipe with recipe name
+                  >
+                    <CardActionArea>
+                      <Typography variant="h5" sx={{ color: "white" }}>
+                        {recipe.recipe_name}
+                      </Typography>
+                      <Typography sx={{ color: "white" }}>
+                        {recipe.difficulty}
+                      </Typography>
+                      <Typography sx={{ color: "white" }}>
+                        {formatDate(recipe.createdAt)}
+                      </Typography>
+                    </CardActionArea>
+                    <CardActions>
+                      <Button
+                        onClick={() => handleDeleteRecipe(recipe)}
+                        variant="contained"
+                        sx={{ mt: 3, backgroundColor: "white", color: "black" }}
+                      >
+                        x
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))
+            ) : (
+              <Typography variant="h5" sx={{ my: 10, color: "white" }}>
+                No recipe found
+              </Typography>
+            )}
+          </Grid>
+        )}
       </Container>
     </Box>
   );
 };
-
 
 export default RecipeBookPage;
