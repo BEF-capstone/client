@@ -20,7 +20,7 @@ const RecipePage = () => {
     );
   }
   return (
-    <Box sx={{ minHeight: "100vh", backgroundColor: "black" }}>
+    <Box sx={{ minHeight: "100vh",  backgroundColor: "#241023" }}>
       <Typography variant="h2" sx={{ mt: 5, color: "white" }}>
         Yes Chef!
       </Typography>

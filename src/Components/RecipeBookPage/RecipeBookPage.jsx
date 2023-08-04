@@ -388,14 +388,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
             {console.log(displayedRecipes)}
             {displayedRecipes.length > 0 ? (
               displayedRecipes.slice(3).map((recipe) => (
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "column" }}
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  key={recipe}
-                >
+                <Grid item sx={{display: 'flex', flexDirection: "column"}} xs={12} sm={6} md={4} key={recipe}>
                   <Card
                     sx={{
                       // my: 5,
@@ -438,17 +431,12 @@ const RecipeBookPage = ({ LoggedIn }) => {
                     </CardActions>
                   </Card>
                   <Button
-                    onClick={() => handleDeleteRecipe(recipe)}
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "white",
-                      color: "black",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    x
-                  </Button>
+                        onClick={() => handleDeleteRecipe(recipe)}
+                        variant="contained"
+                        sx={{ backgroundColor: "white", color: "black", display: "flex", alignItems: "center",}}
+                      >
+                        x
+                      </Button>
                 </Grid>
               ))
             ) : (
