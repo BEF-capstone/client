@@ -10,8 +10,6 @@ const RecipePage = () => {
   /* Redux Data */
   const recipeData = useSelector((state) => state.recipeData.recipeData);
 
-  console.log(`recipeData: ${recipeData}`);
-
   if (!recipeData) {
     return (
       <Box
