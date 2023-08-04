@@ -9,17 +9,16 @@ import "./RecipePage.css";
 const RecipePage = () => {
   /* Redux Data */
   const recipeData = useSelector((state) => state.recipeData.recipeData);
-
   console.log(`recipeData: ${recipeData}`);
-
   if (!recipeData) {
     return (
-      <Box sx={{ mt: 2, mb: 5 }}>
+      <Box
+        sx={{ minHeight: "95vh", display: "flex", justifyContent: "center" }}
+      >
         <LoadingAnimation />
       </Box>
     );
   }
-
   return (
     <Box sx={{ minHeight: "100vh",  backgroundColor: "#241023" }}>
       <Typography variant="h2" sx={{ mt: 5, color: "white" }}>

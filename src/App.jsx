@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     checkLoggedIn();
   }, []);
-
+  
 // check if user is logged in
 const checkLoggedIn = () => {
   const token = Cookies.get("token");
@@ -57,8 +57,7 @@ const checkLoggedIn = () => {
     } else {
       handleLogout();
     }
-  }
-};
+  };
 
   const handleLogin = async (data) => {
     try {
@@ -72,19 +71,6 @@ const checkLoggedIn = () => {
           userId: user.id,
         };
         dispatch(setUserData(loggedInUserData));
-
-        // setLoggedIn(true);
-        // setLoginError("");
-        // console.log(message); // display success login message
-        // setUserName(user.firstname);
-        // setUserId(user.id);
-
-        //         setLoggedIn(true);
-        //         setLoginError("");
-        //         console.log(message);
-        //         setUserName(user.firstname);
-        //         setUserId(user.id);
-        //         setUser(user); // updating the user state
       } else {
         setLoginError(message);
         console.log(message);
@@ -176,7 +162,12 @@ const checkLoggedIn = () => {
             ></Route>
             <Route
               path="/recipe-book"
-              element={<RecipeBookPage checkLoggedIn={checkLoggedIn} LoggedIn={loggedIn} />}
+              element={
+                <RecipeBookPage
+                  checkLoggedIn={checkLoggedIn}
+                  LoggedIn={loggedIn}
+                />
+              }
             ></Route>
             <Route path="/grocery-list" element={<GroceryListPage />}></Route>
             <Route path="/recipe-result" element={<RecipePage />}></Route>

@@ -8,6 +8,8 @@ const IngredientsList = ({
   onAddIngredient,
   inputValue,
   setInputValue,
+  setErrorMessage
+
 }) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -19,26 +21,30 @@ const IngredientsList = ({
     const updatedIngredients = [...selectedIngredients];
     updatedIngredients.splice(index, 1);
     setSelectedIngredients(updatedIngredients);
-    console.log("done")
+    setErrorMessage(null)
+    console.log("done deleting ingredient")
     }
 
   return (
     <div className="ingredient-textbox">
    
       <h2>Ingredients List:</h2>
-      {/*  */}
-
       <ul className="INList">
         {selectedIngredients.map((ingredient, index) => (
-          <>
-            <p className="list" key={index}>{ingredient}</p>
+          
+          <div className="results" key={index} > 
+            <p className="list"  >{ingredient}</p>
 
             <button className="Delete-button" onClick={() => handleDeleteIngredient(index)}>
-              <p> x </p>
+              <p > x </p>
             </button>
-          </>
+            </div>
         ))}
       </ul>
+
+      <div style={{ display: "flex", alignItems: "center" }}>
+
+     
       <input
         type="text"
         className="Text-input"
@@ -51,7 +57,7 @@ const IngredientsList = ({
           outline: "black",
           fontSize: "16px",
           color: "black",
-          width: "100%",
+          width: "55vw",
           borderBottom: "1px solid white",
           background: "transparent",
         }}
@@ -67,12 +73,12 @@ const IngredientsList = ({
           borderColor: "white",
           fontSize: "16px",
           cursor: "pointer" ,
-          marginTop: 20,
+          marginLeft: "10px",
         }}
       >
         STIR
       </button>
-   
+      </div>
     </div>
   );
 };
