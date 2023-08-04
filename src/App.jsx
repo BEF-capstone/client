@@ -51,7 +51,7 @@ const checkLoggedIn = () => {
       const loggedInUserData = {
         loggedIn: true,
         userName: decodeToken.userName,
-        userId: decodeToken.userId,
+        userId: decodeToken.userID,
       };
       dispatch(setUserData(loggedInUserData));
     } else {
