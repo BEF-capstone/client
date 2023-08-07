@@ -57,7 +57,8 @@ function App() {
         handleLogout();
       }
     }
-  };
+  }
+};
 
   const handleLogin = async (data) => {
     try {
