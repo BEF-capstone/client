@@ -30,7 +30,7 @@ const Info = ({ handleSubmit }) => {
           <button> Learn </button>
         </div>
 
-        <div className="Get-Started">
+        <div name="info" className="Get-Started">
           <h1 className="text"> Get Started </h1>
           <p className="ptext"> 1. Select a Cuisine of your choice!</p>
           <p className="ptext"> 2. Input your ingredients</p>
