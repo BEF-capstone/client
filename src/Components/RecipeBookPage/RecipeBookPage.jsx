@@ -269,11 +269,11 @@ const RecipeBookPage = ({ LoggedIn }) => {
           variant="h1"
           sx={{
             fontFamily: "cursive",
-            fontSize: { xs: 40, md: 60 },
+            fontSize: { xs: 40, md: 70 },
             color: "white",
             mt: 8,
             fontWeight: "bold",
-            textShadow: "3px 3px #999, 5px 5px #555, 7px 7px #333",
+            textShadow: '1px 1px #999, 1px 1px #555, 2px 2px #333',
           }}
         >
           Recipes

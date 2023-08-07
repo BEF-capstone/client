@@ -57,7 +57,8 @@ const checkLoggedIn = () => {
     } else {
       handleLogout();
     }
-  };
+  }
+};
 
   const handleLogin = async (data) => {
     try {

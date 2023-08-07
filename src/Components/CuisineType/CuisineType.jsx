@@ -60,7 +60,7 @@ const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handle
             color: '#fff', 
             fontWeight: 'bold',
             position: 'absolute', 
-            textShadow: '3px 3px #999, 5px 5px #555, 7px 7px #333', // 3D effect
+            textShadow: '1px 2px #999, 2px 2px #555, 4px 4px #333', // 3D effect
           }}
         >
           {cuisine.name}

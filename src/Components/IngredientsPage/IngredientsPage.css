@@ -88,6 +88,9 @@ ul {
 }
 .StirTime{
   color: #eabd0b;
+  font-family: cursive;
+  font-size: 80px;
+  text-shadow: 1px 1px #999, 1px 1px #555, 2px 2px #333;
 }
 .image-slide {
   flex: 1;

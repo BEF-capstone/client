@@ -399,7 +399,7 @@ const CuisinePage = () => {
         <Typography
           variant="h2"
           gutterBottom
-          sx={{ color: "white", textShadow: '3px 3px #999, 5px 5px #555, 7px 7px #333', fontFamily: "Italiana", textAlign: "center", mt: 10 }}
+          sx={{ color: "white", textShadow: '1px 1px #999, 1px 1px #555, 2px 2px #333', fontFamily: "Italiana", textAlign: "center", mt: 10 }}
         >
           Time to Mix!
         </Typography>
