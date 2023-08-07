@@ -58,7 +58,7 @@ function App() {
       }
     }
   }
-};
+
 
   const handleLogin = async (data) => {
     try {
