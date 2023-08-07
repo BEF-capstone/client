@@ -1,5 +1,5 @@
 // deployed api
-// const PRODUCTION_API_BASE_URL = "https://chefcompass-api.onrender.com";
+const PRODUCTION_API_BASE_URL = "https://chefcompass-api.onrender.com";
 
 const DEVELOPMENT_API_BASE_URL = "https://chefcompass-api.onrender.com";
 // const DEVELOPMENT_API_BASE_URL = "http://localhost:3001";
