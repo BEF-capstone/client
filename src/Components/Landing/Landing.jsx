@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Grid, TextField, Typography } from "@mui/material";
-import LandingVideo from "../LandingVideo/LandingVideo.mp4";
+import LandingVideo from "../../../public/LandingVIdeo.mp4";
 import "./Landing.css"; // Import the CSS file for styling
 import Info from "../Info/Info"
 import Creators from '../Creators/Creators'
