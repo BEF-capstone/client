@@ -8,7 +8,7 @@ const creatorsData = [
     year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Waakye (Ghanaian Cuisine)',
-    imageUrl: "../images/Blessing.jpg",
+    imageUrl: '../../../public/Blessing.jpg',
   },
   {
     name: 'Efren Enriquez Mendoza',
@@ -16,7 +16,7 @@ const creatorsData = [
     year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Green Chile Enchiladas (Mexican Cuisine)',
-    imageUrl: '../images/Efren.jpg',
+    imageUrl: '../../../public/Efren.jpg',
   },
   {
     name: 'Faaizah Afoda',
@@ -24,7 +24,7 @@ const creatorsData = [
     year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Peanut Stew (Togolese Cuisine)',
-    imageUrl: '../images/Faaizah.jpg',
+    imageUrl: '../../../public/Faaizah.jpg',
   },
 ];
 
