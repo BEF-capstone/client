@@ -10,6 +10,7 @@ const creatorsData = [
     major: 'Computer Science',
     favoriteFood: 'Waakye (Ghanaian Cuisine)',
     imageUrl: Blessing,
+
   },
   {
     name: 'Efren Enriquez Mendoza',
