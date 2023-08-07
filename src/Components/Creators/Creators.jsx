@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Avatar, Typography, Grid, Box } from '@mui/material';
+import Blessing from '../../../public/Blessing.jpg'
 
 const creatorsData = [
   {
@@ -8,7 +9,7 @@ const creatorsData = [
     year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Waakye (Ghanaian Cuisine)',
-    imageUrl: '../../../public/Blessing.jpg',
+    imageUrl: Blessing,
   },
   {
     name: 'Efren Enriquez Mendoza',
