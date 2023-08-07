@@ -1,6 +1,9 @@
 import React from 'react';
 import { Card, Avatar, Typography, Grid, Box } from '@mui/material';
 import Blessing from '../../../public/Blessing.jpg'
+import Efren from '../../../public/Efren.jpg'
+import Faaizah from '../../../public/Faaizah.jpg'
+
 
 const creatorsData = [
   {
@@ -17,7 +20,7 @@ const creatorsData = [
     year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Green Chile Enchiladas (Mexican Cuisine)',
-    imageUrl: '../../../public/Efren.jpg',
+    imageUrl: Efren,
   },
   {
     name: 'Faaizah Afoda',
@@ -25,7 +28,7 @@ const creatorsData = [
     year: 'Junior (Class of 2025)',
     major: 'Computer Science',
     favoriteFood: 'Peanut Stew (Togolese Cuisine)',
-    imageUrl: '../../../public/Faaizah.jpg',
+    imageUrl: Faaizah,
   },
 ];
 
