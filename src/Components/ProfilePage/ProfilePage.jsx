@@ -5,7 +5,7 @@ import "./ProfilePage.css";
 import Avatar from "@mui/material/Avatar";
 
 const ProfilePage = ({ handleLogout }) => {
-  const avatarImageSrc = "../images/chefprofilepic.png";
+  const avatarImageSrc = '../../../public/chefprofilepic.png';
   const userName = useSelector((state) => state.userData.userName);
   return (
     <div className="ProfilePage">
