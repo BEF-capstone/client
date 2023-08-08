@@ -100,6 +100,7 @@ const IngredientsCarousel = ({
   return (
     <>
       <div className="ingredient-containment">
+        <p className="commoner"> Common Ingredients</p>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}{" "}
         {/* Render the error message */}
         <div className="MOVE">
@@ -127,7 +128,9 @@ const IngredientsCarousel = ({
                     className="ingredient-image"
                     draggable="true"
                     onDragStart={(e) => handleDragStart(e, carouselIngredients)}
-                  />{" "}
+                  />
+                   <p className="ingredient-name">{carouselIngredients.name}</p> {/* Display the ingredient name here */}
+
                 </div>
               ))}
 
