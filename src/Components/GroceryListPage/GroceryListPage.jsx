@@ -11,8 +11,9 @@ import { styled } from "@mui/material/styles";
 import apiClient from "../../Services/apiClient";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
+// styling for grocery list item container
 const StackItem = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  backgroundColor: "#fff",
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: "center",
@@ -21,30 +22,33 @@ const StackItem = styled(Paper)(({ theme }) => ({
 }));
 
 const GroceryListPage = () => {
+  /* Redux State */
   const userId = useSelector((state) => state.userData.userId);
+  /* Local State */
   const [groceryList, setGroceryList] = useState([]);
   const [makeQuery, setMakeQuery] = useState(0);
 
-  // handle remove item from grocery list
+  // handle remove item from grocery list db
+  // increase makeQuery to trigger useEffect
   const handleRemoveItem = async (item) => {
     await apiClient.removeFromGroceryList(item);
     setMakeQuery(makeQuery + 1);
-    console.log(`remove item`);
   };
 
+  // fetch grocery list from db
   const getGroceryListFromDB = async () => {
     try {
       const res = await apiClient.getGroceryList({
-        userId: 2,
+        userId: userId,
       });
       const groceryListResponse = await res.data.groceryList;
-      console.log(groceryListResponse);
       return groceryListResponse;
     } catch (e) {
       console.error(`error fetching data: ${e}`);
     }
   };
 
+  // fetch grocery list from db on page load and when makeQuery is updated
   useEffect(() => {
     const fetchGroceryList = async () => {
       const groceryListFromDB = await getGroceryListFromDB();
@@ -54,24 +58,24 @@ const GroceryListPage = () => {
   }, [makeQuery]);
 
   return (
-    groceryList.length > 0 && (
-      <Box sx={{ minHeight: "88vh", backgroundColor: "#C98C93" }}>
-        <Container maxWidth="sm">
-          <Typography
-            sx={{
-              fontFamily: "cursive",
-              fontSize: { xs: 40, md: 70 },
-              color: "white",
-              m: 8,
-              fontWeight: "bold",
-              textShadow: "1px 1px #999, 1px 1px #555, 2px 2px #333",
-            }}
-            variant="h1"
-          >
-            Grocery List
-          </Typography>
-          <Stack spacing={2} mb="20px">
-            {groceryList.map((item, index) => {
+    <Box sx={{ minHeight: "88vh", backgroundColor: "#C98C93" }}>
+      <Container maxWidth="sm">
+        <Typography
+          sx={{
+            fontFamily: "cursive",
+            fontSize: { xs: 40, md: 70 },
+            color: "white",
+            m: 8,
+            fontWeight: "bold",
+            textShadow: "1px 1px #999, 1px 1px #555, 2px 2px #333",
+          }}
+          variant="h1"
+        >
+          Grocery List
+        </Typography>
+        <Stack spacing={2} mb="20px">
+          {groceryList.length > 0 &&
+            groceryList.map((item, index) => {
               return (
                 <StackItem
                   key={index}
@@ -95,10 +99,9 @@ const GroceryListPage = () => {
                 </StackItem>
               );
             })}
-          </Stack>
-        </Container>
-      </Box>
-    )
+        </Stack>
+      </Container>
+    </Box>
   );
 };
 

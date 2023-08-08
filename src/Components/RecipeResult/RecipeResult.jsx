@@ -1,40 +1,40 @@
 import React from "react";
-
 import Loading from "../Loading/Loading";
-import { Box } from "@mui/material";
-
+import apiClient from "../../Services/apiClient";
 import {
+  Box,
   Button,
   Card,
   CardContent,
   CardHeader,
-  Checkbox,
   List,
   ListItem,
   ListItemText,
   Typography,
 } from "@mui/material";
-import apiClient from "../../Services/apiClient";
 
 const RecipeResult = ({ recipe }) => {
   const [addedItems, setAddedItems] = React.useState([]);
 
+  // check if ingredient is already added to grocery list
+  // in order to disable add button
   const isIngredientAdded = (ingredient) => {
     return addedItems.includes(ingredient);
   };
 
+  // add item to grocery list db
+  // add item to addedItems array
   const handleAddItem = async (ingredient) => {
     const newArray = await apiClient.addToGroceryList({
       userId: 2,
       newItem: ingredient,
     });
     setAddedItems((prevIngredients) => [...prevIngredients, ingredient]);
-    console.log(newArray);
-    console.log("successfully added item to grocery list");
   };
 
   return (
     <div>
+      {/* Resipe Result Card */}
       <Card>
         <CardHeader
           title={
