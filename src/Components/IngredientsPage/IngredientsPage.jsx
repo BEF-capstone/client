@@ -57,13 +57,8 @@ const IngredientsPage = ({ userId }) => {
       setErrorMessage("You have enter the max number of ingredients.");
       return;
     }
-    // if (selectedIngredients.includes(ingredient.name)) {
-    //   setErrorMessage("This ingredient is already selected.");
-    //   return;
-    //   console.log("you alreaady said that")
-    // }
-
-    if (selectedIngredients.length < 5 && inputValue.trim() !== "") {
+    if (selectedIngredients.length < 5 && inputValue.trim() !== "" )
+    {
       setErrorMessage(null);
       setSelectedIngredients([...selectedIngredients, inputValue]);
       setInputValue("");
@@ -129,37 +124,37 @@ const IngredientsPage = ({ userId }) => {
 
     {
       id: "1",
-      name: "broccoli",
+      name: "Broccoli",
       image:
         "https://chatelaine.com/wp-content/uploads/2009/06/jamie-oliver-broccoli-salad-square.jpg",
     },
     {
       id: "2",
-      name: "pasta",
+      name: "Pasta",
       image:
         "https://www.allrecipes.com/thmb/fclPUtUAfb-SvePj3o4crWTsFcM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/241920-easy-homemade-pasta-dough-ddmfs-4x3-c7172fe3104e43868f928c077d3a3397.jpg",
     },
     {
       id: "3",
-      name: "tomato",
+      name: "Tomato",
       image:
         "https://post.healthline.com/wp-content/uploads/2020/09/tomatoes-1200x628-facebook-1200x628.jpg",
     },
     {
       id: "4",
-      name: "potato",
+      name: "Potato",
       image:
         "https://www.lovefoodhatewaste.com/sites/default/files/styles/twitter_card_image/public/2022-08/Potatoes-shutterstock-1721688538.jpg?h=1dd3cf61&itok=1oEGDr7w",
     },
     {
       id: "5",
-      name: "oil",
+      name: "Oil",
       image:
         "https://cdn-prod.medicalnewstoday.com/content/images/articles/321/321246/olive-oil-in-a-bottle-which-may-be-used-on-the-face.jpg",
     },
     {
       id: "6",
-      name: "bread",
+      name: "Bread",
       image:
         "https://www.backerhausveit.com/wp-content/uploads/2021/03/17783-1.jpg",
     },
@@ -225,7 +220,7 @@ const IngredientsPage = ({ userId }) => {
       <div className="banner">
         <h1 className="StirTime">Time To Stir!</h1>
 
-        <p>
+        <p className="commoners">
           Choose up to 5 ingredients or click/drag from common items from the
           carsouel into the textbox!{" "}
         </p>

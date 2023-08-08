@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./ProfilePage.css";
 import Avatar from "@mui/material/Avatar";
+import chefprofilepic from '../../../public/chefprofilepic.png'
+
 
 const ProfilePage = ({ handleLogout }) => {
-  const avatarImageSrc = "../images/chefprofilepic.png";
+  const avatarImageSrc = chefprofilepic;
   const userName = useSelector((state) => state.userData.userName);
   return (
     <div className="ProfilePage">
