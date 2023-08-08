@@ -15,7 +15,7 @@ import {
   CardActions,
 } from "@mui/material";
 // import { styled } from "@mui/system";
-import apiClient from "../../Services/apiClient";
+import apiClient from "../../services/apiClient"
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";

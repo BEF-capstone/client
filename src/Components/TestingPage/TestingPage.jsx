@@ -1,6 +1,6 @@
 import React from "react";
 import RecipeResult from "../RecipeResult/RecipeResult";
-import apiClient from "../../Services/apiClient";
+import apiClient from "../../services/apiClient"
 
 const TestingPage = () => {
   const addItemToGroceryList = async () => {

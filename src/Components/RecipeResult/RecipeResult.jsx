@@ -1,6 +1,6 @@
 import React from "react";
 import Loading from "../Loading/Loading";
-import apiClient from "../../Services/apiClient";
+import apiClient from "../../services/apiClient"
 import {
   Box,
   Button,
