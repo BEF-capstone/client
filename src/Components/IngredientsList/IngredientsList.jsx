@@ -55,7 +55,7 @@ const IngredientsList = ({
         style={{
           border: "none",
           outline: "black",
-          fontSize: "16px",
+          fontSize: "25px",
           color: "black",
           width: "55vw",
           borderBottom: "1px solid white",
@@ -71,7 +71,7 @@ const IngredientsList = ({
           border: "3px solid #white",
           borderRadius: "5px",
           borderColor: "white",
-          fontSize: "16px",
+          fontSize: "20px",
           cursor: "pointer" ,
           marginLeft: "10px",
         }}

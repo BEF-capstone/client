@@ -45,17 +45,16 @@ const Info = ({ handleSubmit }) => {
             <Button variant="contained"> MIX </Button>
           </Link>
         </div>
+
         <div className="Recipes">
           <h1 className="text"> Recipes </h1>
           <p className="ptext"> Our aim is to satisty the taste buds of </p>
           <p className="ptext"> the most diverse palettes. </p>
-
-          <Link to="/recipe-book" onClick={handleSubmit}>          
+          <Link to="/recipe-book" onClick={handleSubmit}>
             <Button variant="contained" sx={{ width: "90px" }}>
               Explore
           </Button>
           </Link>
-
         </div>
       </Box>
     </>

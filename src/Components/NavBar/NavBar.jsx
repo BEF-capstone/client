@@ -15,6 +15,8 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+import Logo from "../Logo/Logo.png";
+
 
 export default function NavBar({ isLoggedIn, handleLogout }) {
   // Using React's useState hook to initialize and handle the state of anchorEl and mobileOpen
@@ -208,20 +210,10 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           <div style={{ display: "flex", alignItems: "center" }}>
             <Link to="/">
               <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2 }}
+                sx={{ width: "5rem", height: "5rem" }}
               >
-                <SvgIcon fontSize="large" sx={{ color: "white" }}>
-                  <path
-                    d="M15.5,5.5C15.5,4.67,16.17,4,17,4C17.83,4,18.5,4.67,18.5,5.5V8h1V5.5C19.5,3.57,17.93,2,16,2
-c-1.93,0-3.5,1.57-3.5,3.5V8h1V5.5z M12,5.5C12,3.57,10.43,2,8.5,2C6.57,2,5,3.57,5,5.5V8h1V5.5C6,4.67,6.67,4,7.5,4
-C8.33,4,9,4.67,9,5.5V8h3V5.5z M15.74,8L14,9.74V10h-4v-0.26L8.26,8H15.74z M3.37,9l-1.74,1.74L3.37,12H1v2h2v2h2v-2h6v2h2v-2h2v-2
-h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
-                  />
-                </SvgIcon>
+                <img src= {Logo}  style={{ width: "100%", height: "100%", margin: "0" }}
+/>
               </IconButton>
             </Link>
             <Link to="/">
