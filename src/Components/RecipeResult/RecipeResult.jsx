@@ -1,6 +1,6 @@
 import React from "react";
 import Loading from "../Loading/Loading";
-import apiClient from "../../services/apiClient"
+import apiClient from "../../services/apiClient";
 import {
   Box,
   Button,
@@ -12,9 +12,11 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const RecipeResult = ({ recipe }) => {
   const [addedItems, setAddedItems] = React.useState([]);
+  const userId = useSelector((state) => state.userData.userId);
 
   // check if ingredient is already added to grocery list
   // in order to disable add button
@@ -26,7 +28,7 @@ const RecipeResult = ({ recipe }) => {
   // add item to addedItems array
   const handleAddItem = async (ingredient) => {
     const newArray = await apiClient.addToGroceryList({
-      userId: 2,
+      userId: userId,
       newItem: ingredient,
     });
     setAddedItems((prevIngredients) => [...prevIngredients, ingredient]);
