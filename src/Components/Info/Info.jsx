@@ -12,7 +12,7 @@ const Info = ({ handleSubmit }) => {
 };
   return (
     <>
-      <Box
+      <Box 
         sx={{
           backgroundColor: "#5E0B15",
           minHeight: "30vh",
@@ -49,6 +49,7 @@ const Info = ({ handleSubmit }) => {
           <h1 className="text"> Recipes </h1>
           <p className="ptext"> Our aim is to satisty the taste buds of </p>
           <p className="ptext"> the most diverse palettes. </p>
+
           <Link to="/recipe-book" onClick={handleSubmit}>          
             <Button variant="contained" sx={{ width: "90px" }}>
               Explore

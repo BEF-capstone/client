@@ -83,8 +83,9 @@ ul {
   cursor: not-allowed;
 }
 
-.commoner{
+.commoners{
   font-weight: 500;
+  font-size: 160%;
   color: black;
 }
 .images-wrapper {

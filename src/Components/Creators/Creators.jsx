@@ -39,7 +39,7 @@ const creatorsData = [
 
 const Creators = () => {
   return (
-    <Box sx={{backgroundColor: '#241023'}}>
+    <Box id= "Creators" sx={{backgroundColor: '#241023'}}>
       {/* <Typography variant="h3" gutterBottom sx={{mt: 2, mb: 2, backgroundColor: '#241023', color: 'white', fontFamily: 'cursive' }}>
         Fellow Foodies
       </Typography> */}

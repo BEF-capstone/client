@@ -54,7 +54,7 @@ const IngredientsPage = ({ userId }) => {
   // Handle adding a new ingredient to the selected ingredient list
   const handleAddIngredient = (ingredient) => {
     if (selectedIngredients.length >= maxIngredients) {
-      setErrorMessage("You have enter the max number of ingredients.");
+      setErrorMessage("You have entered the max number of ingredients.");
       return;
     }
     if (selectedIngredients.length < 5 && inputValue.trim() !== "" )
