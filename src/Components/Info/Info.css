@@ -54,3 +54,23 @@ border-color: #FCCD04;
 border-width: 3px;
 padding-top: 0%;
 }
+
+.info-button{
+    color:white;
+
+}
+
+
+.info-LEARN-button{
+    color:black;
+    margin:0;
+    padding: 0;
+
+}
+
+.info-MIX-button{
+    color:black;
+    margin:0;
+    padding: 0;
+
+}

@@ -6,7 +6,7 @@ import "./Info.css";
 const Info = ({ handleSubmit }) => {
   return (
     <>
-      <Box
+      <Box 
         sx={{
           backgroundColor: "#5E0B15",
           minHeight: "30vh",
@@ -28,8 +28,14 @@ const Info = ({ handleSubmit }) => {
           </p>
           <p className="ptext"> No more fustration with Chef Compass.</p>
           <p className="ptext"> Lets prioritize the experience </p>
+          <a href="#Creators" onClick={handleSubmit}>
+          <button className="info-button"> 
+          <p className="info-LEARN-button"> 
+          Learn 
+          </p>
+          </button>
+          </a>
 
-          <button> Learn </button>
         </div>
 
         <div name="info" className="Get-Started">
@@ -38,7 +44,12 @@ const Info = ({ handleSubmit }) => {
           <p className="ptext"> 2. Input your ingredients</p>
           <p className="ptext"> 3. Click stir to get started</p>
           <Link to="/authenticate" onClick={handleSubmit}>
-            <button>MIX</button>
+            <button className="info-button">
+
+            <p className="info-MIX-button"> 
+              MIX
+              </p>
+              </button>
           </Link>
         </div>
         <div className="Recipes">
@@ -46,7 +57,9 @@ const Info = ({ handleSubmit }) => {
           <p className="ptext"> Our aim is to satisty the taste buds of </p>
           <p className="ptext"> the most diverse palettes. </p>
           <Link to="/recipe-book" onClick={handleSubmit}>
-          <button className= "Explore-button"> Explore </button>
+          <button className= "Explore-button">
+             Explore 
+              </button>
           </Link>
         </div>
       </Box>
