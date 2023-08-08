@@ -18,8 +18,6 @@ const RecipeBookTest = () => {
         );
         const data = await response.json();
         let recipes = data.recipes;
-        console.log("recipe arr: ", recipes);
-        // console.log(data.recipes);
         setRecipes(recipes);
       } catch (e) {
         console.error(e);
