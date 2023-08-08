@@ -40,11 +40,15 @@ const GroceryListPage = () => {
   // fetch grocery list from db
   const getGroceryListFromDB = async () => {
     try {
-      const res = await apiClient.getGroceryList({
-        userId: userId,
-      });
-      const groceryListResponse = await res.data.groceryList;
-      return groceryListResponse;
+      console.log(`userId ${userId}`);
+      if (userId) {
+        console.log(`userId inside ${userId}`);
+        const res = await apiClient.getGroceryList({
+          userId: userId,
+        });
+        const groceryListResponse = await res.data.groceryList;
+        return groceryListResponse;
+      }
     } catch (e) {
       console.error(`error fetching data: ${e}`);
     }
@@ -57,7 +61,7 @@ const GroceryListPage = () => {
       setGroceryList(groceryListFromDB);
     };
     fetchGroceryList();
-  }, [makeQuery]);
+  }, [makeQuery, userId]);
 
   return (
     <Box sx={{ minHeight: "88vh", backgroundColor: "#C98C93" }}>
@@ -76,7 +80,7 @@ const GroceryListPage = () => {
           Grocery List
         </Typography>
         <Stack spacing={2} mb="20px">
-          {groceryList.length > 0 &&
+          {groceryList?.length > 0 &&
             groceryList.map((item, index) => {
               return (
                 <StackItem
