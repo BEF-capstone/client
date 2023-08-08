@@ -45,12 +45,15 @@
   padding-top: 0%;
 }
 
-.Recipes{
-padding: 1%;
-border-style: dotted;
-border-color: #FCCD04;
-border-width: 3px;
-padding-top: 0%;
+.Recipes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1%;
+  border-style: dotted;
+  border-color: #FCCD04;
+  border-width: 3px;
+  padding-top: 0%;
 }
 
 .info-button{
