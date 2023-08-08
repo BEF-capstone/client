@@ -15,7 +15,7 @@ import {
   CardActions,
 } from "@mui/material";
 // import { styled } from "@mui/system";
-import apiClient from "../../services/apiClient";
+import apiClient from "../../Services/apiClient";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
@@ -278,7 +278,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
             color: "white",
             mt: 8,
             fontWeight: "bold",
-            textShadow: '1px 1px #999, 1px 1px #555, 2px 2px #333',
+            textShadow: "1px 1px #999, 1px 1px #555, 2px 2px #333",
           }}
         >
           Recipes
@@ -436,12 +436,17 @@ const RecipeBookPage = ({ LoggedIn }) => {
                     </CardActions>
                   </Card>
                   <Button
-                        onClick={() => handleDeleteRecipe(recipe)}
-                        variant="contained"
-                        sx={{ backgroundColor: "white", color: "black", display: "flex", alignItems: "center",}}
-                      >
-                        x
-                      </Button>
+                    onClick={() => handleDeleteRecipe(recipe)}
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "white",
+                      color: "black",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    x
+                  </Button>
                 </Grid>
               ))
             ) : (

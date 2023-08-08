@@ -27,6 +27,8 @@ import { setUserData, resetUserData } from "./redux/authDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
   /* Redux Dispatch */
   const dispatch = useDispatch();
   /* Authentication States */
@@ -57,8 +59,7 @@ function App() {
         handleLogout();
       }
     }
-  }
-
+  };
 
   const handleLogin = async (data) => {
     try {
