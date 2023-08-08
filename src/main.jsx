@@ -10,7 +10,11 @@ import recipeDataSlice from "./redux/recipeDataSlice.js";
 import authDataSlice from "./redux/authDataSlice.js";
 
 const theme = createTheme({
+  typography: {
+    fontFamily: "Oxygen, sans-serif",
+  },
   palette: {
+    mode: "light",
     primary: {
       main: "#FEFCF0",
       // #FEFCF0

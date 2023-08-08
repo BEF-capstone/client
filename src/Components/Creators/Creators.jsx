@@ -1,5 +1,7 @@
 import React from 'react';
 import { Card, Avatar, Typography, Grid, Box } from '@mui/material';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Link from '@mui/material/Link';
 import Blessing from '../../../public/Blessing.jpg'
 import Efren from '../../../public/Efren.jpg'
 import Faaizah from '../../../public/Faaizah.jpg'
@@ -13,7 +15,7 @@ const creatorsData = [
     major: 'Computer Science',
     favoriteFood: 'Waakye (Ghanaian Cuisine)',
     imageUrl: Blessing,
-
+    linkedIn: 'https://www.linkedin.com/in/blessingadomakoh'
   },
   {
     name: 'Efren Enriquez Mendoza',
@@ -22,6 +24,7 @@ const creatorsData = [
     major: 'Computer Science',
     favoriteFood: 'Green Chile Enchiladas (Mexican Cuisine)',
     imageUrl: Efren,
+    linkedIn: 'https://www.linkedin.com/in/emefren/',
   },
   {
     name: 'Faaizah Afoda',
@@ -30,6 +33,7 @@ const creatorsData = [
     major: 'Computer Science',
     favoriteFood: 'Peanut Stew (Togolese Cuisine)',
     imageUrl: Faaizah,
+    linkedIn: 'https://www.linkedin.com/in/faaizah-afoda-2a01391aa/',
   },
 ];
 
@@ -63,6 +67,9 @@ const Creators = () => {
               <Typography variant="body1" align="center" mb={2} sx={{color: 'white'}}>
                 Favorite Food: {creator.favoriteFood}
               </Typography>
+              <Link href={creator.linkedIn} target="_blank" rel="noopener noreferrer">
+                <LinkedInIcon sx={{ color: 'white', margin: 'auto', display: 'block', mt: 2 }} />
+              </Link>
             </Card>
           </Grid>
         ))}

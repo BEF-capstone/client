@@ -108,6 +108,30 @@ class ApiClient {
       data: body,
     });
   }
+
+  async getGroceryList(body) {
+    return await this.request({
+      endpoint: `api/grocery-list/get-grocery-list`,
+      method: `POST`,
+      data: body,
+    });
+  }
+
+  async addToGroceryList(body) {
+    return await this.request({
+      endpoint: `api/grocery-list/add-item`,
+      method: `POST`,
+      data: body,
+    });
+  }
+
+  async removeFromGroceryList(body) {
+    return await this.request({
+      endpoint: `api/grocery-list/remove-item`,
+      method: `POST`,
+      data: body,
+    });
+  }
 }
 
 export default new ApiClient(API_BASE_URL);

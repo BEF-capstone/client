@@ -1,50 +1,48 @@
-.Info{
-    height: 40vw;
-    background-color: #5E0B15 ;
-    display:flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 0vw;
-    padding-bottom: 2%;
+.Info {
+  height: 40vw;
+  background-color: #5e0b15;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 0vw;
+  padding-bottom: 2%;
 }
-.Explore-button{
-    margin:16%;
+.Explore-button {
+  margin: 16%;
 }
-.banner3{
-
-    background-color: #5E0B15 ;
-    font-family: cursive; 
-}
-
-.text{
-font-family: cursive;
-color:#FCCD04;
-font-size: 400%;
+.banner3 {
+  background-color: #5e0b15;
+  font-family: cursive;
 }
 
-.ptext{
-color:white;
-align-items: center;
-font-size: 150%;
-
+.text {
+  font-family: cursive;
+  color: #fccd04;
+  font-size: 400%;
 }
 
-.About{
-border-style: dotted;
-border-color: #FCCD04;
-/* border-bottom: 1in; */
-border-width: 3px;
-padding: 1%;
-top:0%;
-padding-top: 0%;
+.ptext {
+  color: white;
+  align-items: center;
+  font-size: 150%;
 }
 
-.Get-Started{
-padding: 4%;
-border-style: dotted;
-border-color: #FCCD04;
-border-width: 3px;
-padding-top: 0%;
+.About {
+  border-style: dotted;
+  border-color: #fccd04;
+  /* border-bottom: 1in; */
+  border-width: 3px;
+  padding: 1%;
+  top: 0%;
+  padding-top: 0%;
+}
+
+.Get-Started {
+  padding: 4%;
+  border-style: dotted;
+  border-color: #fccd04;
+  border-width: 3px;
+  padding-top: 0%;
 }
 
 .Recipes{
@@ -74,3 +72,4 @@ padding-top: 0%;
     padding: 0;
 
 }
+
