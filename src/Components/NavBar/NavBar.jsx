@@ -53,21 +53,23 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
           {/* 'to' prop of ScrollLink component represents the id of the section to scroll to */}
           
           <ScrollLink to="info" smooth={true}>
-            <MenuItem
-              sx={{
-                fontFamily: "Times New Roman",
-                color: '#eabd0b',
-                fontSize: 25,
-                fontWeight: "bold",
-                right: 20,
-                top: 5,
-                border: 3,
-                borderColor: '#eabd0b'
-              }}
-            >
-              Get Started
-            </MenuItem>
-          </ScrollLink>
+            <Link to="/"> {/* Assuming '/' is the route for your landing page */}
+                <MenuItem
+                    sx={{
+                        fontFamily: "Times New Roman",
+                        color: '#eabd0b',
+                        fontSize: 25,
+                        fontWeight: "bold",
+                        right: 20,
+                        top: 5,
+                        border: 3,
+                        borderColor: '#eabd0b'
+                    }}
+                >
+                    Get Started
+                </MenuItem>
+            </Link>
+        </ScrollLink>
           {/* Mix link is a regular link using react-router-dom's Link component to a new page '/create-recipe' */}
           <Link to="/create-recipe">
             <MenuItem
@@ -213,21 +215,23 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
           {/* Check if not mobile view and not logged in, if true display get started, recipe book, and sign in links */}
           {!isMobile && !isLoggedIn && (
             <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-              <ScrollLink to="info" smooth={true}>
-            <MenuItem
-              sx={{
-                fontFamily: "Times New Roman",
-                color: '#eabd0b',
-                fontSize: 25,
-                fontWeight: "bold",
-                right: 20,
-                top: 5,
-                border: 3,
-                borderColor: '#eabd0b'
-              }}
-            >
-              Get Started
-            </MenuItem>
+               <ScrollLink to="info" smooth={true}>
+                  <Link to="/"> 
+                      <MenuItem
+                          sx={{
+                              fontFamily: "Times New Roman",
+                              color: '#eabd0b',
+                              fontSize: 25,
+                              fontWeight: "bold",
+                              right: 20,
+                              top: 5,
+                              border: 3,
+                              borderColor: '#eabd0b'
+                          }}
+                      >
+                          Get Started
+                      </MenuItem>
+                  </Link>
               </ScrollLink>
               <Link to="/recipe-book">
                 <MenuItem
@@ -281,7 +285,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                     onClick={handleMenu}
                     color="inherit"
                   >
-                    <AccountCircle sx={{ color: '#eabd0b', mt: 1 }} />
+                    <AccountCircle sx={{ color: '#eabd0b', mt: 0, fontSize: "3rem" }} />
                   </IconButton>
                   <Menu
                     id="menu-appbar"
@@ -301,7 +305,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                     <Link to="/user-profile">
                       <MenuItem
                         onClick={handleClose}
-                        sx={{ fontFamily: "Italiana" }}
+                        sx={{ fontFamily: "Italiana", fontSize: 20, color: 'black' }}
                       >
                         My Account
                       </MenuItem>
@@ -309,7 +313,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                     <Link to="/">
                       <MenuItem
                         onClick={handleClose}
-                        sx={{ fontFamily: "Italiana" }}
+                        sx={{ fontFamily: "Italiana", fontSize: 20, color: 'black' }}
                       >
                         Logout
                       </MenuItem>
@@ -398,14 +402,13 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                 </Link>
                 <div>
                   <IconButton
-                    size="large"
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
                     aria-haspopup="true"
                     onClick={handleMenu}
                     color="inherit"
                   >
-                    <AccountCircle sx={{ color: "white", mt: 0 }} />
+                    <AccountCircle sx={{ color: '#eabd0b', mt: 0, fontSize: "3rem" }} />
                   </IconButton>
                   <Menu
                     id="menu-appbar"
@@ -425,7 +428,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                     <Link to="/user-profile">
                       <MenuItem
                         onClick={handleClose}
-                        sx={{ fontFamily: "Italiana" }}
+                        sx={{ fontFamily: "Italiana", fontSize: 20, color: 'black' }}
                       >
                         My Account
                       </MenuItem>
@@ -433,7 +436,7 @@ h-2.37l1.74-1.74L18.63,9H3.37z M11,16h-1v1H9v-1H8v-1h1v-1h1v1h1V16z"
                     <Link to="/">
                       <MenuItem
                         onClick={handleClose}
-                        sx={{ fontFamily: "Italiana" }}
+                        sx={{ fontFamily: "Italiana", fontSize: 20, color: 'black' }}
                       >
                         Logout
                       </MenuItem>

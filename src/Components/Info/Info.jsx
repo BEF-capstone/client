@@ -2,8 +2,14 @@ import React from "react";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./Info.css";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const Info = ({ handleSubmit }) => {
+  const loggedIn = useSelector((state) => state.userData.loggedIn);
+
+  const getLinkTarget = () => {
+    return loggedIn ? "/create-recipe" : "/authenticate";
+};
   return (
     <>
       <Box
@@ -35,7 +41,10 @@ const Info = ({ handleSubmit }) => {
           <p className="ptext"> 1. Select a Cuisine of your choice!</p>
           <p className="ptext"> 2. Input your ingredients</p>
           <p className="ptext"> 3. Click stir to get started</p>
-          <Link to="/authenticate" onClick={handleSubmit}>
+          {/* <Link to="/authenticate" onClick={handleSubmit}>
+            <button>MIX</button>
+          </Link> */}
+          <Link to={getLinkTarget()} onClick={handleSubmit}>
             <button>MIX</button>
           </Link>
         </div>

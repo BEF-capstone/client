@@ -53,120 +53,124 @@ const RecipeBookPage = ({ LoggedIn }) => {
   // Define state for fetching database
   const [dataLoaded, setDataLoaded] = useState(false);
 
-  // Chef's Faves
-  const [recipes, setRecipes] = useState([
-    {
-      recipe_name: "Waakye",
-      description:
-        "Waakye is a beloved Ghanaian dish known for its distinctive red color and rich flavor. This recipe combines rice and black-eyed beans with waakye leaves, creating a delightful and nutritious meal that is cherished in Ghanaian cuisine.",
-      prep_time: "1 hour 15 minutes",
-      difficulty: "Hard",
-      servings: "6",
-      instructions: [
-        "Rinse the rice and millet (if using) under cold water until the water runs clear. Drain and set aside.",
-        "In a large pot, heat the red palm oil over medium heat. Add the chopped onions and sauté until they become translucent.",
-        "Stir in the minced garlic and cook for another minute until fragrant.",
-        "Add the chopped tomatoes, ground ginger, ground paprika, ground dried shrimp (if using), and a pinch of salt. Cook the tomato mixture until it softens and the oil starts to separate.",
-        "Add the soaked black-eyed beans to the pot and stir well to coat them with the tomato mixture.",
-        "Pour in the water, cover the pot, and let it simmer for about 20 minutes or until the beans are partially cooked.",
-        "Add the waakye leaves to the pot and gently stir to combine with the beans and tomato mixture.",
-        "Now, add the rinsed rice and millet (if using) to the pot and carefully mix them with the other ingredients. Add more water if needed, making sure the rice is submerged in the liquid.",
-        "Cover the pot again and let the waakye rice cook over low heat for about 30-35 minutes or until the rice is fully cooked and the waakye leaves are tender.",
-        "Check the seasoning and add more salt if necessary.",
-        "Once the waakye rice is cooked, remove the pot from the heat and let it rest for a few minutes before fluffing the rice with a fork.",
-        "Serve the Ghanaian Waakye Rice with Black Eyed Beans hot, and enjoy this flavorful and nutritious Ghanaian delicacy!",
-      ],
-      ingredients: [
-        "2 cups rice (preferably a mix of white rice and millet)",
-        "1 cup black-eyed beans, soaked overnight and drained",
-        "2 cups waakye leaves (substitute with sorghum leaves if waakye leaves are unavailable)",
-        "1 medium onion, finely chopped",
-        "2-3 cloves of garlic, minced",
-        "2 ripe tomatoes, chopped",
-        "2 tablespoons red palm oil (substitute with vegetable oil if palm oil is unavailable)",
-        "1 teaspoon ground ginger",
-        "1 teaspoon ground paprika",
-        "1 teaspoon ground dried shrimp (optional, but adds traditional flavor)",
-        "Salt to taste",
-        "4 cups water",
-      ],
-      createdAt: "12-22-2002",
-    },
-    {
-      recipe_name: "Green Chile Enchiladas",
-      description:
-        "Green Chile Chicken Enchiladas are a delectable Mexican dish featuring tender taco-seasoned shredded chicken and a flavorful green chile enchilada sauce, all wrapped in soft tortillas and topped with a blend of creamy mozzarella and Jack cheese. These enchiladas offer a perfect balance of spice and cheese, making them a delightful treat for any occasion.",
-      prep_time: "55 minutes",
-      difficulty: "Hard",
-      servings: "4-6",
-      instructions: [
-        "Preheat your oven to 375°F (190°C).",
-        "In a large mixing bowl, combine the shredded chicken, half of the mozzarella cheese, half of the Jack cheese, and half of the sour cream. Mix well until all the ingredients are evenly distributed.",
-        "Warm the tortillas in a microwave or on a hot skillet for a few seconds to make them pliable.",
-        "Take one tortilla and spoon a generous amount of the chicken and cheese mixture onto the center of the tortilla. Roll the tortilla tightly around the filling and place it seam-side down in a greased baking dish. Repeat this process with the remaining tortillas and filling.",
-        "In a separate bowl, mix the green enchilada sauce with the diced green chilies.",
-        "Pour the green enchilada sauce mixture over the rolled tortillas, making sure they are well covered with the sauce.",
-        "Sprinkle the remaining mozzarella and Jack cheese over the top of the enchiladas.",
-        "Cover the baking dish with aluminum foil and bake in the preheated oven for 20 minutes.",
-        "After 20 minutes, remove the foil and continue baking for an additional 10 minutes or until the cheese is bubbly and golden brown.",
-        "Remove the enchiladas from the oven and let them cool slightly.",
-        "Drizzle the remaining sour cream over the top of the baked enchiladas.",
-        "Garnish with fresh cilantro leaves and sliced jalapeños, if desired.",
-        "Serve the Green Chile Chicken Enchiladas hot, and savor the tantalizing blend of flavors!",
-      ],
-      ingredients: [
-        "2 cups cooked and shredded chicken (seasoned with taco seasoning)",
-        "1 cup mozzarella cheese, shredded",
-        "1 cup Jack cheese, shredded",
-        "1 cup sour cream",
-        "1 (28-ounce) can green enchilada sauce",
-        "1 (4-ounce) can diced green chilies",
-        "8-10 soft corn or flour tortillas",
-        "1 tablespoon vegetable oil",
-        "Fresh cilantro leaves, for garnish (optional)",
-        "Sliced jalapeños, for garnish (optional)",
-      ],
-      createdAt: "11-17-2002",
-    },
-    {
-      recipe_name: "Peanut Stew",
-      description:
-        "Togolese Peanut Stew is a hearty and flavorful dish that combines the rich taste of peanuts with the spiciness of ashanti pepper and the aromatic essence of ginger and bay leaves. This traditional Togolese recipe is a delightful and comforting meal that will take your taste buds on a journey to West Africa.",
-      prep_time: "1 hour",
-      difficulty: "Hard",
-      servings: "4-6",
-      instructions: [
-        "Start by roasting the peanuts. Preheat your oven to 350°F (175°C). Spread the peanuts on a baking sheet and roast them in the oven for about 10-12 minutes or until they turn golden brown. Be sure to keep an eye on them to prevent burning. Once roasted, let the peanuts cool, and then grind them in a food processor or blender until you get a fine powder. Set aside.",
-        "In a large pot or Dutch oven, heat the vegetable oil over medium heat.",
-        "Add the chopped onion and sauté until it becomes translucent.",
-        "Stir in the minced garlic, grated ginger, chopped ashanti pepper, and bay leaves. Cook for a couple of minutes until the mixture becomes fragrant.",
-        "Add the peanut butter to the pot and stir well to combine it with the onion and spice mixture.",
-        "Slowly pour in the vegetable or chicken broth while stirring continuously to avoid lumps.",
-        "Bring the mixture to a simmer and add the diced sweet potatoes and sliced carrots.",
-        "Reduce the heat to low, cover the pot, and let it cook for about 20-25 minutes or until the sweet potatoes and carrots are tender.",
-        "Stir in the ground roasted peanuts to thicken the stew and add a rich peanut flavor. Let the stew simmer for an additional 5 minutes.",
-        "Season with salt to taste.",
-        "Remove the bay leaves before serving",
-        "Serve the Togolese Peanut Stew hot over a bed of cooked rice, and enjoy the authentic taste of West African cuisine!",
-      ],
-      ingredients: [
-        "1 cup unsalted peanuts",
-        "2 tablespoons vegetable oil",
-        "1 large onion, finely chopped",
-        "2 cloves of garlic, minced",
-        "1 tablespoon grated fresh ginger",
-        "1-2 ashanti peppers (or substitute with other hot peppers), chopped (adjust to your spice preference)",
-        "2 bay leaves",
-        "1/2 cup natural peanut butter",
-        "4 cups vegetable or chicken broth",
-        "2 large sweet potatoes, peeled and diced",
-        "2 medium carrots, peeled and sliced",
-        "Salt to taste",
-        "Cooked rice, for serving",
-      ],
-      createdAt: "08-15-2003",
-    },
-  ]);
+  const [hasSearched, setHasSearched] = useState(false);
+
+
+  //chef's favorites
+  const chefFavorites = [{
+    recipe_name: "Waakye",
+    description:
+      "Waakye is a beloved Ghanaian dish known for its distinctive red color and rich flavor. This recipe combines rice and black-eyed beans with waakye leaves, creating a delightful and nutritious meal that is cherished in Ghanaian cuisine.",
+    prep_time: "1 hour 15 minutes",
+    difficulty: "Hard",
+    servings: "6",
+    instructions: [
+      "Rinse the rice and millet (if using) under cold water until the water runs clear. Drain and set aside.",
+      "In a large pot, heat the red palm oil over medium heat. Add the chopped onions and sauté until they become translucent.",
+      "Stir in the minced garlic and cook for another minute until fragrant.",
+      "Add the chopped tomatoes, ground ginger, ground paprika, ground dried shrimp (if using), and a pinch of salt. Cook the tomato mixture until it softens and the oil starts to separate.",
+      "Add the soaked black-eyed beans to the pot and stir well to coat them with the tomato mixture.",
+      "Pour in the water, cover the pot, and let it simmer for about 20 minutes or until the beans are partially cooked.",
+      "Add the waakye leaves to the pot and gently stir to combine with the beans and tomato mixture.",
+      "Now, add the rinsed rice and millet (if using) to the pot and carefully mix them with the other ingredients. Add more water if needed, making sure the rice is submerged in the liquid.",
+      "Cover the pot again and let the waakye rice cook over low heat for about 30-35 minutes or until the rice is fully cooked and the waakye leaves are tender.",
+      "Check the seasoning and add more salt if necessary.",
+      "Once the waakye rice is cooked, remove the pot from the heat and let it rest for a few minutes before fluffing the rice with a fork.",
+      "Serve the Ghanaian Waakye Rice with Black Eyed Beans hot, and enjoy this flavorful and nutritious Ghanaian delicacy!",
+    ],
+    ingredients: [
+      "2 cups rice (preferably a mix of white rice and millet)",
+      "1 cup black-eyed beans, soaked overnight and drained",
+      "2 cups waakye leaves (substitute with sorghum leaves if waakye leaves are unavailable)",
+      "1 medium onion, finely chopped",
+      "2-3 cloves of garlic, minced",
+      "2 ripe tomatoes, chopped",
+      "2 tablespoons red palm oil (substitute with vegetable oil if palm oil is unavailable)",
+      "1 teaspoon ground ginger",
+      "1 teaspoon ground paprika",
+      "1 teaspoon ground dried shrimp (optional, but adds traditional flavor)",
+      "Salt to taste",
+      "4 cups water",
+    ],
+    createdAt: "12-22-2002",
+  },
+  {
+    recipe_name: "Green Chile Enchiladas",
+    description:
+      "Green Chile Chicken Enchiladas are a delectable Mexican dish featuring tender taco-seasoned shredded chicken and a flavorful green chile enchilada sauce, all wrapped in soft tortillas and topped with a blend of creamy mozzarella and Jack cheese. These enchiladas offer a perfect balance of spice and cheese, making them a delightful treat for any occasion.",
+    prep_time: "55 minutes",
+    difficulty: "Hard",
+    servings: "4-6",
+    instructions: [
+      "Preheat your oven to 375°F (190°C).",
+      "In a large mixing bowl, combine the shredded chicken, half of the mozzarella cheese, half of the Jack cheese, and half of the sour cream. Mix well until all the ingredients are evenly distributed.",
+      "Warm the tortillas in a microwave or on a hot skillet for a few seconds to make them pliable.",
+      "Take one tortilla and spoon a generous amount of the chicken and cheese mixture onto the center of the tortilla. Roll the tortilla tightly around the filling and place it seam-side down in a greased baking dish. Repeat this process with the remaining tortillas and filling.",
+      "In a separate bowl, mix the green enchilada sauce with the diced green chilies.",
+      "Pour the green enchilada sauce mixture over the rolled tortillas, making sure they are well covered with the sauce.",
+      "Sprinkle the remaining mozzarella and Jack cheese over the top of the enchiladas.",
+      "Cover the baking dish with aluminum foil and bake in the preheated oven for 20 minutes.",
+      "After 20 minutes, remove the foil and continue baking for an additional 10 minutes or until the cheese is bubbly and golden brown.",
+      "Remove the enchiladas from the oven and let them cool slightly.",
+      "Drizzle the remaining sour cream over the top of the baked enchiladas.",
+      "Garnish with fresh cilantro leaves and sliced jalapeños, if desired.",
+      "Serve the Green Chile Chicken Enchiladas hot, and savor the tantalizing blend of flavors!",
+    ],
+    ingredients: [
+      "2 cups cooked and shredded chicken (seasoned with taco seasoning)",
+      "1 cup mozzarella cheese, shredded",
+      "1 cup Jack cheese, shredded",
+      "1 cup sour cream",
+      "1 (28-ounce) can green enchilada sauce",
+      "1 (4-ounce) can diced green chilies",
+      "8-10 soft corn or flour tortillas",
+      "1 tablespoon vegetable oil",
+      "Fresh cilantro leaves, for garnish (optional)",
+      "Sliced jalapeños, for garnish (optional)",
+    ],
+    createdAt: "11-17-2002",
+  },
+  {
+    recipe_name: "Peanut Stew",
+    description:
+      "Togolese Peanut Stew is a hearty and flavorful dish that combines the rich taste of peanuts with the spiciness of ashanti pepper and the aromatic essence of ginger and bay leaves. This traditional Togolese recipe is a delightful and comforting meal that will take your taste buds on a journey to West Africa.",
+    prep_time: "1 hour",
+    difficulty: "Hard",
+    servings: "4-6",
+    instructions: [
+      "Start by roasting the peanuts. Preheat your oven to 350°F (175°C). Spread the peanuts on a baking sheet and roast them in the oven for about 10-12 minutes or until they turn golden brown. Be sure to keep an eye on them to prevent burning. Once roasted, let the peanuts cool, and then grind them in a food processor or blender until you get a fine powder. Set aside.",
+      "In a large pot or Dutch oven, heat the vegetable oil over medium heat.",
+      "Add the chopped onion and sauté until it becomes translucent.",
+      "Stir in the minced garlic, grated ginger, chopped ashanti pepper, and bay leaves. Cook for a couple of minutes until the mixture becomes fragrant.",
+      "Add the peanut butter to the pot and stir well to combine it with the onion and spice mixture.",
+      "Slowly pour in the vegetable or chicken broth while stirring continuously to avoid lumps.",
+      "Bring the mixture to a simmer and add the diced sweet potatoes and sliced carrots.",
+      "Reduce the heat to low, cover the pot, and let it cook for about 20-25 minutes or until the sweet potatoes and carrots are tender.",
+      "Stir in the ground roasted peanuts to thicken the stew and add a rich peanut flavor. Let the stew simmer for an additional 5 minutes.",
+      "Season with salt to taste.",
+      "Remove the bay leaves before serving",
+      "Serve the Togolese Peanut Stew hot over a bed of cooked rice, and enjoy the authentic taste of West African cuisine!",
+    ],
+    ingredients: [
+      "1 cup unsalted peanuts",
+      "2 tablespoons vegetable oil",
+      "1 large onion, finely chopped",
+      "2 cloves of garlic, minced",
+      "1 tablespoon grated fresh ginger",
+      "1-2 ashanti peppers (or substitute with other hot peppers), chopped (adjust to your spice preference)",
+      "2 bay leaves",
+      "1/2 cup natural peanut butter",
+      "4 cups vegetable or chicken broth",
+      "2 large sweet potatoes, peeled and diced",
+      "2 medium carrots, peeled and sliced",
+      "Salt to taste",
+      "Cooked rice, for serving",
+    ],
+    createdAt: "08-15-2003",
+  },
+]
+
+  const [recipes, setRecipes] = useState([]);
 
   const fetchRecipes = async () => {
     try {
@@ -191,6 +195,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
   // Event handler for updating search term state
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
+    setHasSearched(true);
   };
 
   // Event handler for updating sorting option state
@@ -334,8 +339,8 @@ const RecipeBookPage = ({ LoggedIn }) => {
 
         {/* Begin Grid for recipes */}
         <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
-          {console.log(displayedRecipes)}
-          {displayedRecipes.slice(0, 3).map((recipe) => (
+          {console.log(chefFavorites)}
+          {chefFavorites.map((recipe) => (
             <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
               <Card
                 sx={{
@@ -387,7 +392,7 @@ const RecipeBookPage = ({ LoggedIn }) => {
           <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
             {console.log(displayedRecipes)}
             {displayedRecipes.length > 0 ? (
-              displayedRecipes.slice(3).map((recipe) => (
+              displayedRecipes.map((recipe) => (
                 <Grid item sx={{display: 'flex', flexDirection: "column"}} xs={12} sm={6} md={4} key={recipe}>
                   <Card
                     sx={{
@@ -440,9 +445,10 @@ const RecipeBookPage = ({ LoggedIn }) => {
                 </Grid>
               ))
             ) : (
-              <Typography variant="h5" sx={{ my: 10, color: "white" }}>
-                No recipe found
-              </Typography>
+              hasSearched && (
+                <Typography variant="h5" sx={{ my: 10, color: "white" }}>
+                   No recipe found
+                </Typography> )
             )}
           </Grid>
         )}
