@@ -83,12 +83,16 @@ ul {
   cursor: not-allowed;
 }
 
+.commoner{
+  font-weight: 500;
+  color: black;
+}
 .images-wrapper {
   display: flex;
 }
 .StirTime{
   color: #eabd0b;
-  font-family: cursive;
+  font-family: italiana;
   font-size: 80px;
   text-shadow: 1px 1px #999, 1px 1px #555, 2px 2px #333;
 }
@@ -133,7 +137,7 @@ ul {
 }
 
 .ingredient-slide:hover {
-  background-color: blue; /* Blue hover color */
+  background-color:#eabd0b; /* Blue hover color */
 }
 
 /*  */

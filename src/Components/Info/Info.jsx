@@ -22,6 +22,8 @@ const Info = ({ handleSubmit }) => {
           justifyContent: "space-around",
           flexWrap: "wrap",
           padding: 5,
+          marginBottom: "1.5vw",
+        
         }}
       >
 
@@ -52,8 +54,9 @@ const Info = ({ handleSubmit }) => {
           <h1 className="text"> Recipes </h1>
           <p className="ptext"> Our aim is to satisty the taste buds of </p>
           <p className="ptext"> the most diverse palettes. </p>
-
+          <Link to="/recipe-book" onClick={handleSubmit}>
           <button className= "Explore-button"> Explore </button>
+          </Link>
         </div>
       </Box>
     </>
