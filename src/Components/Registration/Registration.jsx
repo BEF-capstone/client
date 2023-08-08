@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import {
   Container,
   Typography,
@@ -25,7 +26,6 @@ const Registration = ({ handleRegistration }) => {
       email: dataInput.get("email"),
       password: dataInput.get("password"),
     });
-    console.log("API REQ SUCCESFUL");
     // handle registration
     if (error) {
       console.error("error registering user");
