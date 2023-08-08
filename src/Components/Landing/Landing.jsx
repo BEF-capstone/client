@@ -8,7 +8,7 @@ import Creators from '../Creators/Creators'
 const Landing = ({loggedIn}) => {
   return (
     <>
-        <video autoPlay muted loop>
+        <video autoPlay muted loop playsInline>
           <source src={LandingVideo} type="video/mp4" />
         </video>
         <div name="/" className="typewriter-text">
