@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import {
   Container,
   Typography,
@@ -17,7 +16,6 @@ const Registration = ({ handleRegistration }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // get data from apiClient: POST /registration
-    console.log("HERE");
     const dataInput = new FormData(e.currentTarget);
 
     const { data, error } = await apiClient.register({
@@ -66,12 +64,10 @@ const Registration = ({ handleRegistration }) => {
                 autoComplete="firstname"
                 sx={{
                   "& .MuiInput-underline:after": {
-                    // This selector targets the underline in the "after" pseudo-element (which is active during focus)
-                    borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                    borderBottom: "1px solid black", 
                   },
                   "& .MuiInput-underline:before": {
-                    // This selector targets the underline in the "before" pseudo-element (which is the default state)
-                    borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                    borderBottom: "1px solid black", 
                   },
                 }}
               ></TextField>
@@ -88,12 +84,10 @@ const Registration = ({ handleRegistration }) => {
                 autoComplete="lastname"
                 sx={{
                   "& .MuiInput-underline:after": {
-                    // This selector targets the underline in the "after" pseudo-element (which is active during focus)
-                    borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                    borderBottom: "1px solid black",
                   },
                   "& .MuiInput-underline:before": {
-                    // This selector targets the underline in the "before" pseudo-element (which is the default state)
-                    borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                    borderBottom: "1px solid black", 
                   },
                 }}
               ></TextField>
@@ -112,8 +106,7 @@ const Registration = ({ handleRegistration }) => {
             autoComplete="email"
             sx={{
               "& .MuiInput-underline:after": {
-                // This selector targets the underline in the "after" pseudo-element (which is active during focus)
-                borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                borderBottom: "1px solid black", 
               },
               "& .MuiInput-underline:before": {
                 // This selector targets the underline in the "before" pseudo-element (which is the default state)
@@ -155,12 +148,10 @@ const Registration = ({ handleRegistration }) => {
             autoComplete="confirmPassword"
             sx={{
               "& .MuiInput-underline:after": {
-                // This selector targets the underline in the "after" pseudo-element (which is active during focus)
-                borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                borderBottom: "1px solid black", 
               },
               "& .MuiInput-underline:before": {
-                // This selector targets the underline in the "before" pseudo-element (which is the default state)
-                borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                borderBottom: "1px solid black", 
               },
             }}
           ></TextField>

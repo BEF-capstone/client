@@ -1,6 +1,5 @@
 //this file purpose is to render the ingredients within a carousel
 import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
 import "./IngredientsCarousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -26,7 +25,6 @@ const IngredientsCarousel = ({
       return;
     }
     const ingredientName = ingredient.name;
-    // ////////////////////
     if (selectedIngredientNames.includes(ingredientName)) {
       // If the ingredient is already in the list, remove it
       setSelectedIngredients((selectedIngredients) =>
@@ -35,18 +33,12 @@ const IngredientsCarousel = ({
         )
       );
     } else {
-      // setSelectedIngredients([...selectedIngredients, ingredientName])
-      console.log("in else");
       // remove the selectedingredients from carouselIngredients
       setCarouselIngredients((carouselIngredients) =>
       carouselIngredients.filter(
         (carouselIngredient) => carouselIngredient.name !== ingredientName
+        ))}
     
-
-      //
-    ))}
-    ///////////////////////
-    console.log("success adding another ingredient to list");
     setSelectedIngredients((prevIngredients) => [
       ...prevIngredients,
       ingredient.name,
@@ -59,7 +51,7 @@ const IngredientsCarousel = ({
     ]);
   }, [carouselIngredients]);
 
-  /// The Drag const account so passing the information from dragging to putting it in the text box
+  // The Drag const account so passing the information from dragging to putting it in the text box
   const handleDragStart = (event, ingredient) =>
     event.dataTransfer.setData("text/plain", ingredient.name);
 
@@ -69,7 +61,6 @@ const IngredientsCarousel = ({
   };
 
   // Function to handle the drop event on the carousel
-
   const handleDrop = (event) => {
     event.preventDefault();
 
@@ -120,7 +111,7 @@ const IngredientsCarousel = ({
                   className="ingredient-slide"
                   onDragOver={(e) => handleDragOver(e)} // Attach handleDragOver as an event handler
                   onDrop={(e) => handleDrop(e, carouselIngredients)} // Attach handleDrop as an event handler
-                  onClick={() => handleIngredientClick(carouselIngredients)} // Added the onClick handler for the ingredient slide
+                  onClick={() => handleIngredientClick(carouselIngredients)} // onClick handler for the ingredient slide
                 >
                   <img
                     src={carouselIngredients.image}

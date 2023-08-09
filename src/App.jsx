@@ -16,7 +16,6 @@ import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import GroceryListPage from "./Components/GroceryListPage/GroceryListPage";
 import RecipePage from "./Components/RecipePage/RecipePage";
 import TestingPage from "./Components/TestingPage/TestingPage";
-import RecipeBookTest from "./Components/RecipeBookTest";
 import NotFoundPage from "./Components/NotFoundPage/NotFoundPage";
 /* MUI Framework Imports */
 import { Container } from "@mui/material";
@@ -27,8 +26,6 @@ import { setUserData, resetUserData } from "./redux/authDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  // const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-
   /* Redux Dispatch */
   const dispatch = useDispatch();
   /* Authentication States */
@@ -37,7 +34,7 @@ function App() {
   const userId = useSelector((state) => state.userData.userId);
   const [loginError, setLoginError] = useState("");
 
-  /* Registartion and Login handling */
+  /* Registration and Login handling */
   useEffect(() => {
     checkLoggedIn();
   }, []);
@@ -75,7 +72,6 @@ function App() {
         dispatch(setUserData(loggedInUserData));
       } else {
         setLoginError(message);
-        console.log(message);
       }
     } catch (e) {
       console.error(`Login Failed : ${e}`);
@@ -103,7 +99,6 @@ function App() {
 
   // logout user, remove cookie and clear fields
   const handleLogout = () => {
-    console.log(`logout`);
     dispatch(resetUserData());
     Cookies.remove("token");
   };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./ProfilePage.css";
@@ -22,13 +22,7 @@ const ProfilePage = ({ handleLogout }) => {
         </div>
         <h2 className="name">
           Chef {userName}
-          {/* Chef {userData.firstname} */}
         </h2>
-        {/* <h3 className="fullname">
-          Full Name : {userName} */}
-          {/* Full Name: {userData.firstname} {userData.lastname} */}
-        {/* </h3> */}
-        {/* <h3 className="email">Email: {user.email}</h3> */}
         <h5>
           <Link className="logout" to="/" onClick={handleLogout}>
             Logout

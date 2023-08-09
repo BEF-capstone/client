@@ -1,4 +1,3 @@
-// Importing necessary components and hooks from the react, react-router-dom, and material-ui libraries
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
@@ -8,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import { SvgIcon, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
@@ -51,28 +50,7 @@ export default function NavBar({ isLoggedIn, handleLogout }) {
     if (isLoggedIn) {
       return (
         <>
-          {/* Links to different sections of the page that scroll smoothly */}
-          {/* 'to' prop of ScrollLink component represents the id of the section to scroll to */}
-
           <ScrollLink to="info" smooth={true}>
-            {/*
-//             <MenuItem
-//               sx={{
-//                 fontFamily: "Times New Roman",
-//                 color: "#eabd0b",
-//                 fontSize: 25,
-//                 fontWeight: "bold",
-//                 right: 20,
-//                 top: 5,
-//                 border: 3,
-//                 borderColor: "#eabd0b",
-//               }}
-//             >
-//               Get Started
-//             </MenuItem>
-//           </ScrollLink>
-            */}
-            {/* Assuming '/' is the route for your landing page */}
             <Link to="/"> 
                 <MenuItem
                     sx={{

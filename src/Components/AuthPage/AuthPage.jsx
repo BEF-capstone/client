@@ -1,17 +1,14 @@
 import React from "react";
 /* MUI IMPORTS */
-import { Grid, Box, Container, useMediaQuery, useTheme } from "@mui/material";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
 /* COMPONENT IMPORTS */
 import Registration from "../Registration/Registration";
 import Login from "../Login/Login";
 
-const AuthPage = ({ navigate, handleLogin, handleRegistration }) => {
+const AuthPage = ({ handleLogin, handleRegistration }) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const handleSuccessfulLoginOrRegistration = () => {
-    navigate("/");
-  };
 
   return (
     <Grid

@@ -9,7 +9,6 @@ import "./RecipePage.css";
 const RecipePage = () => {
   /* Redux Data */
   const recipeData = useSelector((state) => state.recipeData.recipeData);
-  console.log(`recipeData: ${recipeData}`);
   if (!recipeData) {
     return (
       <Box
@@ -24,7 +23,6 @@ const RecipePage = () => {
       <Typography variant="h2" sx={{ mt: 2, mb: 2, color: "white" }}>
         Yes Chef!
       </Typography>
-      {/* <h2 className="chef">Yes Chef!</h2> */}
       <div className="recipe-display">
         <RecipeResult className="recipe_card" recipe={recipeData} />
       </div>

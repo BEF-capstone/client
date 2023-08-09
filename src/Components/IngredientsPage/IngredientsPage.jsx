@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./IngredientsPage.css";
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import queryString from "query-string";
 import IngredientsCarousel from "../IngredientsCarousel/IngredientsCarousel";
 import IngredientsList from "../IngredientsList/IngredientsList";
@@ -11,10 +11,7 @@ import { setRecipeData } from "../../redux/recipeDataSlice";
 /* ApiClient */
 import apiClient from "../../services/apiClient";
 
-
-import axios from "axios"; // HTTP client library
 import "./IngredientsPage.css";
-import Info from "../Info/Info";
 
 
 const IngredientsPage = ({ userId }) => {
@@ -43,13 +40,7 @@ const IngredientsPage = ({ userId }) => {
   useEffect(() => {
     const values = queryString.parse(location.search);
     setSelectedCuisine(values.cuisine);
-    console.log(selectedCuisine);
-    console.log(selectedIngredients);
   }, [location]);
-
-  const handleInputValue = (e) => {
-    setInputValue(e.target.value);
-  };
 
   // Handle adding a new ingredient to the selected ingredient list
   const handleAddIngredient = (ingredient) => {
@@ -62,35 +53,24 @@ const IngredientsPage = ({ userId }) => {
       setErrorMessage(null);
       setSelectedIngredients([...selectedIngredients, inputValue]);
       setInputValue("");
-      console.log("incrementing the listtt???");
     }
   };
-
-  // handing drag event on an ingredient in the caroseul
-
-  // const handleDragIngredient = (carouselIngredient) => {
-  //   setSelectedIngredients([...selectedIngredients, carouselIngredient.name]);
-  // };
 
   const handleSubmit = async () => {
     try {
       // pass cuisine and ingredients array as body parameters
-      console.log(`in handle submit`);
       let body = JSON.stringify({
         cuisine: selectedCuisine,
         ingredients: selectedIngredients,
       });
       dispatch(setRecipeData(null));
       // make POST req to openAI endpoint
-      console.log(`request to apiClient`);
       const response = await apiClient.createNewRecipe(body);
-      console.log(`request to success`);
       // get data
       const data = await response.data;
       // recipe info
       let content = await data.choices[0].message.content;
       content = JSON.parse(content);
-      console.log(content);
       // send recipe to redux, to render in recipe card
       dispatch(setRecipeData(content));
       setRecipe(content);
@@ -107,11 +87,8 @@ const IngredientsPage = ({ userId }) => {
         createdBy: userId,
       });
 
-      console.log(`trying to make req to recipe book`);
       if (content) {
-        console.log(`first if statement`);
         apiClient.addToRecipeBook(body);
-        console.log(`add to recipe book success`);
       }
     } catch (e) {
       console.error(e);
@@ -119,7 +96,6 @@ const IngredientsPage = ({ userId }) => {
   };
 
   // Ingredients carousel and related functions
-
   const [carouselIngredients, setCarouselIngredients] = useState([
 
     {
@@ -212,11 +188,9 @@ const IngredientsPage = ({ userId }) => {
         "https://www.jessicagavin.com/wp-content/uploads/2019/02/honey-pin.jpg",
     },
   ]);
-  // Add more ingredients with their names and image paths here
 
   return (
     <Box sx={{ minHeight: "90vh", backgroundColor: "#C98C93" }}>
-      {/* <div className="Page"> */}
       <div className="banner">
         <h1 className="StirTime">Time To Stir!</h1>
 
@@ -243,7 +217,6 @@ const IngredientsPage = ({ userId }) => {
       <IngredientsCarousel
         setCarouselIngredients={setCarouselIngredients}
         carouselIngredients={carouselIngredients}
-        // onDragIngredient={handleDragIngredient}
         onAddIngredient={handleAddIngredient}
         selectedIngredients={selectedIngredients}
         setSelectedIngredients={setSelectedIngredients}
@@ -258,9 +231,6 @@ const IngredientsPage = ({ userId }) => {
           <button className="MIXbutton">MIX</button>
         </Link>
       </div>
-
-      {/* {madeQuery && <RecipeResult recipe={recipe} />} */}
-      {/* </div> */}
     </Box>
   );
 };

@@ -1,21 +1,15 @@
-// Import necessary dependencies
 import React, { useState, useEffect } from "react";
 import { Box, Grid, TextField, Typography } from "@mui/material";
 import CuisineType from "../CuisineType/CuisineType";
 import { Link as RouterLink } from "react-router-dom";
 
 
-// Define the CuisinePage component
 const CuisinePage = () => {
-  // Define state variables using the useState hook
   const [searchInput, setSearchInput] = useState(""); // State variable for search input
   const [selectedCuisine, setSelectedCuisine] = useState("");
 
   //State variable for displayed cuisines count, initially set to 9
   const [cuisinesCount, setCuisinesCount] = useState(9);
-
-  // Use useState to store the cuisines, initially set to an empty array.
-  // const [cuisines, setCuisines] = useState([]);
 
   // An array of objects, each representing a cuisine and its image.
   const initialCuisines =
@@ -274,7 +268,7 @@ const CuisinePage = () => {
       },
     ];
 
-  //Usine slice to display only the first 'cuisinesCount' cuisines
+  //Using slice to display only the first 'cuisinesCount' cuisines
   const [cuisines, setCuisines] = useState(
     initialCuisines.slice(0, cuisinesCount)
   );
@@ -282,7 +276,6 @@ const CuisinePage = () => {
   // Function to handle clicking the Load More button
   const handleLoadMore = () => {
     setCuisinesCount(cuisinesCount + 9); // increase the count by 9
-    // No need to call setCuisines here, it will be updated in the useEffect hook below.
   };
 
   // An effect that runs whenever cuisinesCount changes.

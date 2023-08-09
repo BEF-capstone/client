@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, TextField, Typography, Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./Info.css";
 import { useSelector } from "react-redux/es/hooks/useSelector";

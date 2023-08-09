@@ -72,8 +72,6 @@ h1{
 }
 .MOVE{
   width: 100vw;
-  /* display: flex; */
-
 }
 .images-wrapper {
   display: flex;
@@ -81,7 +79,6 @@ h1{
   flex-wrap: nowrap;
   overflow-x: hidden;
   padding: 10px;
-  /* color: aqua; */
 }
 
 .ingredient-slide {

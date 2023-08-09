@@ -14,15 +14,10 @@ import {
   CardActionArea,
   CardActions,
 } from "@mui/material";
-// import { styled } from "@mui/system";
 import apiClient from "../../services/apiClient"
-import Cookies from "js-cookie";
-import jwtDecode from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
 import { setRecipeData } from "../../redux/recipeDataSlice";
 import { useNavigate } from "react-router-dom";
-
-import recipeDataSlice from "../../redux/recipeDataSlice";
 
 // Function to format date in MM-DD-YYYY format
 const formatDate = (dateString) => {
@@ -184,11 +179,8 @@ const RecipeBookPage = ({ LoggedIn }) => {
   };
 
   useEffect(() => {
-    console.log(`userID: ${userId}`);
     if (userId) {
-      console.log(`userID: ${userId}`);
       fetchRecipes();
-      console.log(recipes);
     }
   }, [userId]);
 
@@ -212,7 +204,6 @@ const RecipeBookPage = ({ LoggedIn }) => {
   const handleSubmitRecipe = async (recipe) => {
     try {
       dispatch(setRecipeData(recipe));
-      console.log(`dispatched data to recipe slice`);
       nav("/recipe-result");
     } catch (e) {
       console.error(`error fetching recipe data: ${e}`);
@@ -230,10 +221,6 @@ const RecipeBookPage = ({ LoggedIn }) => {
       setRecipes((prevRecipes) =>
         prevRecipes.filter((r) => r.id !== recipe.id)
       );
-      console.log(`deleted recipe from recipe book`);
-      // fetchRecipes();
-      console.log(`fetched new recipes`);
-      console.log(recipes);
     } catch (e) {
       console.error(`error deleting recipe: ${e}`);
     }
@@ -339,7 +326,6 @@ const RecipeBookPage = ({ LoggedIn }) => {
 
         {/* Begin Grid for recipes */}
         <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
-          {console.log(chefFavorites)}
           {chefFavorites.map((recipe) => (
             <Grid item xs={12} sm={6} md={4} key={recipe.recipe_name}>
               <Card
@@ -355,7 +341,6 @@ const RecipeBookPage = ({ LoggedIn }) => {
                   alignItems: "center",
                   justifyContent: "center",
                   "&:hover": {
-                    // Adding hover effect
                     transform: "scale(1.05)",
                     transition: "transform .3s ease-in-out",
                   },
@@ -390,13 +375,11 @@ const RecipeBookPage = ({ LoggedIn }) => {
         {LoggedIn && (
           // Begin Grid for recipes
           <Grid sx={{ mb: 10 }} container spacing={3} justifyContent="center">
-            {console.log(displayedRecipes)}
             {displayedRecipes.length > 0 ? (
               displayedRecipes.map((recipe) => (
                 <Grid item sx={{display: 'flex', flexDirection: "column"}} xs={12} sm={6} md={4} key={recipe}>
                   <Card
                     sx={{
-                      // my: 5,
                       p: 2,
                       borderRadius: 2,
                       backgroundColor: "#5e0b15",
@@ -407,12 +390,11 @@ const RecipeBookPage = ({ LoggedIn }) => {
                       alignItems: "center",
                       justifyContent: "center",
                       "&:hover": {
-                        // Adding hover effect
                         transform: "scale(1.05)",
                         transition: "transform .3s ease-in-out",
                       },
                     }}
-                    onClick={() => handleSubmitRecipe(recipe)} // Call handleSubmitRecipe with recipe name
+                    onClick={() => handleSubmitRecipe(recipe)}
                   >
                     <CardActionArea>
                       <Typography variant="h5" sx={{ color: "white" }}>
@@ -426,13 +408,6 @@ const RecipeBookPage = ({ LoggedIn }) => {
                       </Typography>
                     </CardActionArea>
                     <CardActions>
-                      {/* <Button
-                        onClick={() => handleDeleteRecipe(recipe)}
-                        variant="contained"
-                        sx={{ mt: 3, backgroundColor: "white", color: "black" }}
-                      >
-                        x
-                      </Button> */}
                     </CardActions>
                   </Card>
                   <Button

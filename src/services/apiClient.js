@@ -3,8 +3,6 @@ import axios from "axios";
 
 class ApiClient {
   constructor(remoteHostUrl) {
-    console.log(import.meta.env.MODE);
-    console.log(import.meta.env.PRODUCTION_API_BASE_URL);
     this.remoteHostUrl = remoteHostUrl;
     this.token = null;
   }

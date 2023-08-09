@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, TextField, Button, Typography, Container } from "@mui/material";
 import apiClient from "../../services/apiClient";
 
 const Login = ({ handleLogin }) => {
   const nav = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -59,11 +57,11 @@ const Login = ({ handleLogin }) => {
             sx={{
               "& .MuiInput-underline:after": {
                 // This selector targets the underline in the "after" pseudo-element (which is active during focus)
-                borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                borderBottom: "1px solid black", 
               },
               "& .MuiInput-underline:before": {
                 // This selector targets the underline in the "before" pseudo-element (which is the default state)
-                borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                borderBottom: "1px solid black", 
               },
             }}
           ></TextField>
@@ -79,12 +77,10 @@ const Login = ({ handleLogin }) => {
             autoComplete="password"
             sx={{
               "& .MuiInput-underline:after": {
-                // This selector targets the underline in the "after" pseudo-element (which is active during focus)
-                borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                borderBottom: "1px solid black", 
               },
               "& .MuiInput-underline:before": {
-                // This selector targets the underline in the "before" pseudo-element (which is the default state)
-                borderBottom: "1px solid black", // Change this color to the color you want for the underline
+                borderBottom: "1px solid black", 
               },
             }}
           ></TextField>

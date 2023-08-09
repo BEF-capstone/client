@@ -3,7 +3,7 @@ import { Button, Card, Box, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
 
-const CuisineType = ({ cuisines, selectedCuisine, handleCuisineSelection, handleLoadMore }) => {
+const CuisineType = ({ cuisines, handleCuisineSelection, handleLoadMore }) => {
   if (cuisines.length === 0) {
     return <p>Loading cuisines...</p>;
   }

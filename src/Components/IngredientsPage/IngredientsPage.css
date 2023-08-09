@@ -16,16 +16,6 @@
   margin-top: 10px;
   margin-left: 10px;
 }
-/* .MIXbutton{
-  display:flex;
-margin-left: 75vw;
-
-}
-.BACKbutton{
-  display:flex;
-margin-right: 35vw;
-
-} */
 
 .butttons{
   display: flex;
@@ -132,13 +122,12 @@ ul {
   justify-content: center;
   width: 200px;
   height: 200px;
-  background-color: whitesmoke; /* Red fill color */
+  background-color: whitesmoke;
   cursor: pointer;
   transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
 .ingredient-slide:hover {
-  background-color:#eabd0b; /* Blue hover color */
+  background-color:#eabd0b; 
 }
 
-/*  */

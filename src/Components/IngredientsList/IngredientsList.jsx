@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../IngredientsList/IngredientsList.css"
 
 const IngredientsList = ({
@@ -22,7 +21,6 @@ const IngredientsList = ({
     updatedIngredients.splice(index, 1);
     setSelectedIngredients(updatedIngredients);
     setErrorMessage(null)
-    console.log("done deleting ingredient")
     }
 
   return (
