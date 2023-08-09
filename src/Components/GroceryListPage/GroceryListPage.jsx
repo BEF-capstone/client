@@ -24,8 +24,6 @@ const StackItem = styled(Paper)(({ theme }) => ({
 const GroceryListPage = () => {
   /* Redux State */
   const userId = useSelector((state) => state.userData.userId);
-
-  console.log(`userID from redux: ${userId}`);
   /* Local State */
   const [groceryList, setGroceryList] = useState([]);
   const [makeQuery, setMakeQuery] = useState(0);
